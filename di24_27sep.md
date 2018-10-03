@@ -9,9 +9,9 @@ Se configura intellij para arrancar un proyecto con interfaz gráfica. Se explic
 - Layouts utilizados
 
 
-DE FORMA MAS CONCRETA LO VISTO EN CLASE
+DE FORMA MÁS CONCRETA LO VISTO EN CLASE
 ***
-Métodos utilizados para el manejo básico de un JFrame como setVisible() setTitle setLocationRelativetoNull() pack()
+Métodos utilizados para el manejo básico de un JFrame como setVisible() setTitle() setLocationRelativetoNull() pack() set DefaultClosingOperation() setResealizable()
 
 Manejo básico de una ventana, su tamaño cualidades, etc...
 
