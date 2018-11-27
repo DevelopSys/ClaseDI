@@ -31,7 +31,7 @@ modeloDatos.addElement(Opción 2);
 modeloDatos.addElement(Opción 3);
 modeloDatos.addElement(Opción 4);
 ````
-5. Evaluar la pulación de la lista
+5. Evaluar la pulación del combo
 ````
 comboBox.addItemListener(new ItemListener() {
             @Override
@@ -44,7 +44,7 @@ comboBox.addItemListener(new ItemListener() {
 });
 ````
 
-### MIERCOLES
+### VIERNES
 
 **Evaluar acciones en un elemento JList**
 1. Evaluar el cambio de datos en una lista
