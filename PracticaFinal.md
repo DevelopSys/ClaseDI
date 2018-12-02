@@ -32,4 +32,4 @@ La práctica deberá tener los siguientes requisitos:
 
 ### Imágenes
 
-![Práctica final](https://github.com/DevelopSys/clasepmdm/blob/master/practicas/memory1.png "Práctica versiones") ![Práctica final](https://github.com/DevelopSys/clasepmdm/blob/master/practicas/memory2.png "Práctica versiones") ![Práctica final](https://github.com/DevelopSys/clasepmdm/blob/master/practicas/memory3.png "Práctica versiones") ![Práctica final](https://github.com/DevelopSys/clasepmdm/blob/master/practicas/memory4.png "Práctica versiones")
+![Práctica final](https://github.com/DevelopSys/clasedi/blob/master/practicas/texto1.png "Práctica final") ![Práctica final](https://github.com/DevelopSys/clasedi/blob/master/practicas/texto2.png "Práctica final") ![Práctica final](https://github.com/DevelopSys/clasedi/blob/master/practicas/texto3.png "Práctica final") ![Práctica final](https://github.com/DevelopSys/clasedi/blob/master/practicas/texto4.png "Práctica final") ![Práctica final](https://github.com/DevelopSys/clasedi/blob/master/practicas/texto5.png "Práctica final") 
