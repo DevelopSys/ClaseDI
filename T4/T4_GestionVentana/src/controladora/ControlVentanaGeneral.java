@@ -1,13 +1,18 @@
 package controladora;
 
 import com.jfoenix.controls.JFXButton;
+import com.sun.deploy.util.FXLoader;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 import ventanas.VentanaNueva;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -41,7 +46,15 @@ public class ControlVentanaGeneral implements Initializable, EventHandler<Action
                 e.printStackTrace();
             }
         }else if (event.getSource() == botonNuevaScena){
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("../vista/scenenueva.fxml"));
+                Scene scene = new Scene(root,600,600);
+                Stage stage = (Stage) botonNuevaScena.getScene().getWindow();
+                stage.setScene(scene);
 
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
