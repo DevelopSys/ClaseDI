@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane fx:id="border" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url(recursos/splash.png); -fx-background-size: 600 400;" xmlns="http://javafx.com/javafx/8" fx:controller="controladora.ControladoraSplash" xmlns:fx="http://javafx.com/fxml/1" />
