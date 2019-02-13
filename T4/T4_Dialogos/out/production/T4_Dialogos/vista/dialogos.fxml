@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" fx:controller="controladora.ControladorDialogos" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+  <columnConstraints>
+    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Button mnemonicParsing="false" fx:id="bInformacion" text="Información" GridPane.halignment="CENTER" />
+      <Button mnemonicParsing="false" fx:id="bWarning" text="Warning" GridPane.rowIndex="1" />
+      <Button mnemonicParsing="false" fx:id="bError" text="Error" GridPane.rowIndex="2" />
+      <Button mnemonicParsing="false" fx:id="bListas" text="Listas" GridPane.rowIndex="3" />
+      <Button mnemonicParsing="false" fx:id="bEdicion" text="Edición" GridPane.rowIndex="4" />
+      <Button mnemonicParsing="false" fx:id="bBoton" text="Botón" GridPane.rowIndex="5" />
+      <Button mnemonicParsing="false" fx:id="bConfirmacion" text="Confirmación" GridPane.rowIndex="6" />
+      <Label fx:id="lInformacion" text="" GridPane.columnIndex="1" />
+      <Label fx:id="lWarning" text="" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Label fx:id="lError" text="" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Label fx:id="lListas" text="" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Label fx:id="lEdicion" text="" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <Label fx:id="lBoton" text="" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <Label fx:id="lConfirmacion" text="" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+   </children>
+</GridPane>
