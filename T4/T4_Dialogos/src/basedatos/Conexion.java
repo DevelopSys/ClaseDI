@@ -15,7 +15,7 @@ public class Conexion {
             e.printStackTrace();
         }
         String host = "192.168.64.2:3306";
-        String dbname = "bdexamen";
+        String dbname = "bdcoches";
         String url = "jdbc:mariadb://" + host + "/" + dbname;
         String username = "adminii";
         String password = "retamar";

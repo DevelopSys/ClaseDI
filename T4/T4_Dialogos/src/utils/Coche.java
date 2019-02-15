@@ -4,10 +4,18 @@ public class Coche {
 
     int id;
     String modelo;
-    int matricula, cv, anio;
+    String matricula;
+    int cv, anio;
 
-    public Coche(int id, String modelo, int matricula, int cv, int anio) {
+    public Coche(int id, String modelo, String matricula, int cv, int anio) {
         this.id = id;
+        this.modelo = modelo;
+        this.matricula = matricula;
+        this.cv = cv;
+        this.anio = anio;
+    }
+
+    public Coche(String modelo, String matricula, int cv, int anio) {
         this.modelo = modelo;
         this.matricula = matricula;
         this.cv = cv;
@@ -22,7 +30,7 @@ public class Coche {
         return modelo;
     }
 
-    public int getMatricula() {
+    public String getMatricula() {
         return matricula;
     }
 
@@ -32,5 +40,10 @@ public class Coche {
 
     public int getAnio() {
         return anio;
+    }
+
+    @Override
+    public String toString() {
+        return getMatricula();
     }
 }
