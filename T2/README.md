@@ -210,7 +210,7 @@ container.add(new JLabel("CUATRO"));
 container.add(new JLabel("CINCO"));
 ````
 
-####BoxLayout
+#### BoxLayout
 ***
 Este tipo de layout sirve para colocar elementos en el eje de las x o en el eje de las y, repartiendo el espacio de forma absoluta
 
@@ -229,7 +229,7 @@ container.add(new JLabel("CUATRO"));
 container.add(new JLabel("CINCO"));
 ````
 
-####GridLayout
+#### GridLayout
 ****
 Para configurar un layout n eun contenedor se utilizar el método setLayout(). GridLayout dispone los elementos de izquierda a derecha en un número de filas , columnas indicados en el constructor
 
@@ -490,7 +490,7 @@ splitPane.setOneTouchExpandable(true);
 splitPane.setResizeWeight(0.5);
 ````
 
-####JTabberPane
+#### JTabberPane
 ***
 
 1. Declarar un objeto de tipo JTabbedPane
@@ -612,7 +612,7 @@ botonImagenes.setFocusPainted(false);
 botonImagenes.setBackground(null);
 ````
 
-####ToggleButton
+#### ToggleButton
 ****
 
 1. Agregar las imagenes a un paquete llamado resources
@@ -649,7 +649,7 @@ botonTog.addChangeListener(new ChangeListener() {
 });
 ````
 
-####ButonGroup http://www.developandsys.es/elementos-graficos-checkbox-radiobutton-y-otros/
+#### ButonGroup http://www.developandsys.es/elementos-graficos-checkbox-radiobutton-y-otros/
 ***
 Se trata de la unión lógica de elementos para que tan solo uno pueda estar seleccionado.
 1. Creación de los elementos
@@ -668,7 +668,7 @@ grupoBotones.add(op1);
 grupoBotones.add(op2);
 grupoBotones.add(op3);
 ````
-### CheckBox - http://www.developandsys.es/elementos-graficos-checkbox-radiobutton-y-otros/
+#### CheckBox - http://www.developandsys.es/elementos-graficos-checkbox-radiobutton-y-otros/
 ***
 Utilizado para una selección / deselección
 1. Crear el elemento check
@@ -700,7 +700,7 @@ checkBox.addItemListener(new ItemListener() {
             }
 });
 ````
-##RadioButton - http://www.developandsys.es/elementos-graficos-checkbox-radiobutton-y-otros/
+#### RadioButton - http://www.developandsys.es/elementos-graficos-checkbox-radiobutton-y-otros/
 ***
 1. Crear el elemento radio
 ````
@@ -744,7 +744,7 @@ ButtonGroup grupoRadios = new ButtonGroup();
 grupo.add(radioButtonOpcion1);
 grupo.add(radioButtonOpcion2);
 ````
-## Spinner http://www.developandsys.es/elementos-graficos-spinner-2/
+#### Spinner http://www.developandsys.es/elementos-graficos-spinner-2/
 ***
 1. Crear el elemento.
 ````
@@ -794,7 +794,7 @@ spinnerNumeros.addChangeListener(new ChangeListener() {
 });
 ````
 
-## JTextField http://www.developandsys.es/elementos-graficos-swing-textos/
+#### JTextField http://www.developandsys.es/elementos-graficos-swing-textos/
 ***
 
 Un campo de texto es el principal elemento para poder capturar datos de los usuarios mediante por ejemplo formulario
@@ -883,7 +883,7 @@ new JFormattedTextField(new NumberFormatter(formatoNumero));
 customFormatField.getValue();
 ````
 #### JTextarea
-
+***
 
 
 #### Combobox
@@ -922,7 +922,7 @@ d. Listas
 
 - http://www.developandsys.es/elementos-graficos-list/
 
-####Listas
+#### Listas
 ***
 
 1. Crear un elemento JList y un modelo de datos para asociarlo a la lista
@@ -1011,8 +1011,6 @@ f. MVC
 
 - http://www.developandsys.es/modelo-vista-controlador/
 
-**Patron MVC** http://www.developandsys.es/modelo-vista-controlador/
-***
 1. Declarar una clase que extienda de el elemento gráfico a tratar con todas sus configuraciones gráficas
 ````
 public class Vista extends JFrame {
