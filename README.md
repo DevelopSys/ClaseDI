@@ -2,17 +2,17 @@
 <a name="indice"></a>
 ## DI
 
- - [POO Java](#tema1)
+ - <a href="./T1">POO Java</a>
 	 - Sintaxis básica, variables, bucles
 	 - Clases y objetos
 	 - Colecciones
 	 - Métodos, sobrecarga y sobreescritura
 	 - Herencia y polimorfismo
 	 - Tratamiento de ficheros
- - [Swing](#tema2) 
+ - <a href="./T2">Swing</a>
 	 - Layouts
-	 - Contenedores	 
-	 - 	Manejo de eventos
+	 - Contenedores	
+	-  Manejo de eventos
 	 - JComponents principales y personalizados
 	 - Listas
 	 - MVC
@@ -23,7 +23,7 @@
 	 - Diálogos
  - [Almacenamiento](#tema3) 
 	 - JDBC
-	 - Conexions HTTP
+	 - Conexiones HTTP
  - [Despliegue y pruebas](#tema4) 
 	 - Creación de instaladores
 	 - Creación de documentación
