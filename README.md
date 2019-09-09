@@ -39,7 +39,7 @@
 		 - CSS
 
  - <a href="./T3-Angular">Angular</a> 
-	- <a href="href="./T3-Angular/T1">Introducción a Angular y TypeScript:</a>
+	- <a href="./T3-Angular/T1">Introducción a Angular y TypeScript:</a>
 		- ¿Que es Ángular?
 		- ¿Qué es TypeScript?
 		- Instalaciones necesarias
