@@ -63,6 +63,16 @@
 	- <a>Integración de librerías</a>
 	- <a>IONIC</a>
 
+***
+## Instalaciones necesarias 
+- <a>Java 1.8 o superior</a>
+- <a>Intellij</a>
+- <a>Java Scene Builder</a>
+- <a>Visual Studio Code</a>
+- <a>Node JS</a>
+- <a>Git</a>
+- <a>Extensiones Visual Studio</a>
+
 <a name="tema1"></a>
 ## POO Java 
 #### [Volver al índice](#indice)
