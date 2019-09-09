@@ -9,7 +9,7 @@
 	 - Métodos, sobrecarga y sobreescritura
 	 - Herencia y polimorfismo
 	 - Tratamiento de ficheros
-- <a>Java</a>
+- <a href="./T2-Java">Java</a>
 	 - <a href="./T2-Java/T2">Swing</a>
 	 	- Layouts
 		 - Contenedores	
@@ -22,11 +22,11 @@
 		 - Árboles
 		 - Menús
 		 - Diálogos
-	 - <a>Almacenamiento</a>
+	 - <a href="./T2-Java/T3">Almacenamiento</a>
 		 - JDBC
 		 - Conexiones HTTP
 
-	 - <a>JavaFX</a> 
+	 - <a href="./T2-Java/T3">JavaFX</a> 
 		 - Fundamentos
 	 	- Manejo de eventos
 		 - Layouts
