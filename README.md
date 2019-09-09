@@ -39,7 +39,7 @@
 		 - CSS
 
  - <a href="./T3-Angular">Angular</a> 
-	- <a href="href="./T3-Angular/T1">Introducción a Angular y TypeScript:</a>
+	- <a href="href="./T3-Angular/T1">Introducción a Angular y TypeScript:</a>
 		- ¿Que es Ángular?
 		- ¿Qué es TypeScript?
 		- Instalaciones necesarias
@@ -54,7 +54,7 @@
 		- Plantillas y Data-binding
 		- Directivas: estructurales, de atributo y personalizadas
 		- Pipes
-	- <a href="./T3-AngularT4"">Comunicación entre componentes</a>
+	- <a href="./T3-Angular/T4">Comunicación entre componentes</a>
 		- Manejo de rutas
 		- Paso de datos entre componentes padre - hijo
 		- Servicios: promesas y observables 
