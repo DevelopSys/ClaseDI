@@ -9,40 +9,36 @@
 	 - Métodos, sobrecarga y sobreescritura
 	 - Herencia y polimorfismo
 	 - Tratamiento de ficheros
- - <a href="./T2">Swing</a>
-	 - Layouts
-	 - Contenedores	
-	-  Manejo de eventos
-	 - JComponents principales y personalizados
-	 - Listas
-	 - MVC
-	 - Pestañas
-	 - Tablas
-	 - Árboles
-	 - Menús
-	 - Diálogos
- - [Almacenamiento](#tema3) 
-	 - JDBC
-	 - Conexiones HTTP
- - [Despliegue y pruebas](#tema4) 
-	 - Creación de instaladores
-	 - Creación de documentación
-	 - Pruebas JUnit
- - [JavaFX](#tema5) 
-	 - Fundamentos
-	 - Manejo de eventos
-	 - Layouts
-	 - Componentes: a. Botones, texto, radios, checks, etc…
-	 - Listas
-	 - Árboles
-	 - Menús
-	 - Diálogos
-	 - JPhoenix
-	 - CSS
- - [Informes](#tema6) 
-	 - JasperReports
+- <a>Java</a>
+	 - <a href="./T2">Swing</a>
+	 	- Layouts
+		 - Contenedores	
+		-  Manejo de eventos
+		 - JComponents principales y personalizados
+		 - Listas
+		 - MVC
+		 - Pestañas
+		 - Tablas
+		 - Árboles
+		 - Menús
+		 - Diálogos
+	 - [Almacenamiento](#tema3) 
+		 - JDBC
+		 - Conexiones HTTP
+
+	 - [JavaFX](#tema5) 
+		 - Fundamentos
+	 	- Manejo de eventos
+		 - Layouts
+		 - Componentes: a. Botones, texto, radios, checks, etc…
+		 - Listas
+		 - Árboles
+		 - Menús
+		 - Diálogos
+		 - JPhoenix
+		 - CSS
+
  - [Angular](#tema7) 
- - [IONIC](#tema8) 
 
 <a name="tema1"></a>
 ## POO Java 
