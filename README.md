@@ -44,7 +44,7 @@
 		- ¿Qué es TypeScript?
 		- Instalaciones necesarias
 		- Base TypeScript y ECMA 6
-	- <a href="href="./T3-Angular/T2">Primer proyecto:</a>
+	- <a href="./T3-Angular/T2">Primer proyecto:</a>
 		- Comandos básicos: creación y compilación proyectos
     		- Angular y GitHub 
 		- Estructura y bloques fundamentales del proyecto.
