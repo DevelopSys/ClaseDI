@@ -1289,3 +1289,198 @@ export class ComponenteServicioComponent implements OnInit {
 ````
 
 En la llamada al método se utilizan los métodos then y catch, donde se obtiene de cada uno los elementos que contestan (en este caso el array de objetos y el mensaje de error)
+
+En muchas ocasiones, el uso de las promesas puede que no sea suficiente por varios motivos: 
+- Son ejecutadas en el momento en el que la promesa ha sido creada
+- Cuando son ejecutadas no pueden ser canceladas en ningún momento, tan solo terminadas con el valor de retorno correspondiente.
+
+Para paliar este tipo de limitaciones Angular propone el uso del patrón observer de la librería RxJS. Estos elementos además de realizar tareas de forma asíncrona, tienen la capacidad de escuchar todos los cambios que se produzcan en la fuente de datos. De esta forma si mediante un observable nos subscribimos a una fuente de datos y esta añade elementos nuevos, automáticamente nos será notificado evitando que se realicen sucesivas consultas a la fuente de origen. Los principales elementos dentro de la programación mediante observables son:
+Los componentes principales de este patrón son:
+
+- Observable: Es aquello que queremos observar, que será implementado mediante una colección de eventos o valores futuros. Un observable puede ser creado a partir de eventos de usuario derivados del uso de un formulario, una llamada HTTP, un almacén de datos, etc. Mediante el observable nos podemos suscribir a eventos que nos permiten hacer cosas cuando cambia lo que se esté observando.
+- Observer: Es el actor que se dedica a observar. Básicamente se implementa mediante una colección de funciones callback que nos permiten escuchar los eventos o valores emitidos por un observable. Las callbacks permitirán especificar código a ejecutar frente a un dato en el flujo, un error o el final del flujo.
+- Subject: es el emisor de eventos, que es capaz de crear el flujo de eventos cuando el observable sufre cambios. Esos eventos serán los que se consuman en los observers.
+
+Los flujos de datos o stream, representan los datos que están presentes en la fuente original que es "vigilada". Esta fuente de datos puede estar representada desde un simple array, hasta un json completo pasando por una variable de tipo string.
+
+Con los elementos vistos anteriormente, se pude decir que un observable es un stream (flujo de datos) al que podemos suscribir observers que reaccionan cuando se emiten datos (cambios, fallos, etc...).
+
+En código, para poder crear un observable se sigue la siguiente estructura:
+````
+let myObservable = Rx.Observable.create( observer => {observer.next('cambios');}
+);
+````
+Donde dentro del método créate se crea una función de flecha donde se indica el comportamiento del observable. Los métodos que se pueden identificar son: next, complete y error.
+
+Una vez creado el observable se pueden crear observers que se subscriban al observable. Estos nuevos observables obtendrán el parámetro pasado en le funciona de next, en nuestro caso el parámetro cambios
+````
+let myObserver = myObservable.subscribe(
+(msg)=> {
+console.log(`Observable resuelto ${msg}`);
+}
+);
+````
+
+Cuando se crea un observable, del mismo modo que se ha ejecutado el método next(), también se pueden ejecutar dos métodos más para indicar que se ha producido un error o se ha completado la tarea
+````
+let observable = Rx.Observable.create(
+	(observer)=> {
+		try {
+			observer.next(1);
+		} catch(error) {
+			observer.error(error);
+		}
+		observer.complete();
+	}
+);
+````
+
+De esta forma, cuando se crea un observer también se indican las tres posibles respuestas
+````
+let observer = observableLifecycle.subscribe(
+	(msg)=> {
+		console.log(`Observable recibido: ${msg}`);	
+	},
+	(error)=> {
+		console.log(`Algo ha salido mal: ${error}`);
+	},
+	(msg)=> {
+		console.log(`Observable terminado`);
+	}
+);
+````
+
+Para poder mostrar su funcionalidad se va a realizar un ejemplo para la carga de un array de datos (**es importante tener en cuenta que la fuente de los datos puede ser cualquiera**)
+
+1. Definir el modelo de datos que será utilizado
+
+````
+export interface Coche {
+    marca: string;
+    modelo: string;
+    cv: number;
+}
+````
+
+
+2. En el servicio desde el cual se manejarán los datos, crear un array de elementos
+
+````
+export class CocheService {
+  coches: Coche[] = [
+    { marca: "Ford", modelo: "Mustang", cv: 320, matricula: "3345HYG" },
+    { marca: "Volkwagen", modelo: "Gof GTI", cv: 220, matricula: '2335POI' },
+    { marca: "Seat", modelo: "León", cv: 150, matricula: '1235fas' }
+  ];
+
+  constructor() {}
+
+}
+````
+
+
+3. Crear un método que devuelva un observable creado
+
+````
+export class CocheService {
+  coches: Coche[] = [
+    { marca: "Ford", modelo: "Mustang", cv: 320, matricula: "3345HYG" },
+    { marca: "Volkwagen", modelo: "Gof GTI", cv: 220, matricula: '2335POI' },
+    { marca: "Seat", modelo: "León", cv: 150, matricula: '1235fas' }
+
+  ];
+
+  constructor() {}
+
+  getCoches(): any {
+    const cochesObservable = new Observable(observer => {
+      setTimeout(() => {
+        try {
+          observer.next(this.coches);
+        } catch {
+          observer.error("Error en la carga");
+        }
+        observer.complete();
+      }, 1000);
+    });
+
+    return cochesObservable;
+  }
+}
+````
+
+Con el método creado se consigue que una vez suscrito un agente en el punto siguiente pasen las siguientes cosas:
+- cada vez que ocurra un cambio (con la escritura del método next()) se vuelva a pasar el array de coches a los agentes que estén escuchando
+- si se produce un error se pase un mensaje de aviso
+- se avise cuando la tarea haya sido completada
+
+5. En el componente donde se quiera cargar los datos crear en el constructor una variable del tipo del servicio. 
+
+````
+@Component({
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"]
+})
+export class AppComponent implements OnInit {
+  title = "proyectoRutas";
+
+  coches: Coche[];
+
+  constructor(
+    private servicioCoches: ObservableService
+  ) {}
+
+  ngOnInit(): void {
+        
+  }
+
+}
+
+````
+
+
+6. En la parte del código donde se quiere consultar la fuente de los datos crear un objeto de tipo observer. Para ello igualarlo al método creado en el servicio y ejecutar el método subscribe 
+
+````
+@Component({
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"]
+})
+export class AppComponent implements OnInit {
+  title = "proyectoRutas";
+
+  coches: Coche[];
+
+  constructor(
+    private servicioCoches: ObservableService
+  ) {}
+
+  ngOnInit(): void {
+    
+    let myObserver = this.servicioCoches.getCoches();
+
+    myObserver.subscribe(
+      (next) => {
+        this.coches = msg
+      },
+      (error) => {
+        console.log(`Algo ha salido mal: ${error}`);
+      },
+      () => {
+        console.log(`tarea terminado`);
+      }
+    );
+
+    
+  }
+
+}
+
+````
+
+Para poder estar avisados del cambio de datos, el método subscribe del observable obtenido del servicio ejecuta los tres métodos creados. Para ello mediante las siguientes funciones de flecha se realiza:
+- (next): función asociada a los datos publicados en el método next del observable del servicio.
+- (error): función asociada a los datos publicados en el método error del observable del servicio.
+- (): función asociada a al método next del observable del servicio.
