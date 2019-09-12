@@ -41,3 +41,25 @@ f.	Tratamiento de ficheros
 
 #### [Volver al índice](#tema1)
 ***
+
+**Ejercicios clase**
+
+- Mostrar por consola la fecha y hora, personalizando el saludo dependiendo de la hora del día. El mensaje se repetirá hasta que se indique que no se quiere volver a consultar la hora. Para ello se deberá pedir el nombre al usuario nada más arrancar el programa y una vez pulsado Enter se mostrar el mensaje: 
+
+"Por favor introduce tu nombre: "
+"Buenos días (tardes o noches) Luis, Son las  10:30 del 12/09/2019"
+"¿Quieres volver a comprobar la hora?:" S
+"Buenos días (tardes o noches) Luis, Son las  10:32 del 12/09/2019"
+"¿Quieres volver a comprobar la hora?:" S
+"Buenos días (tardes o noches) Luis, Son las  10:34 del 12/09/2019"
+"¿Quieres volver a comprobar la hora?:" N
+"Que tengas buen día"
+
+- Crear un array de elementos de tipo integer con 50 posiciones. Crear un menú que tenga las siguientes opciones:
+	- Rellenar: introducirá números de forma aleatoria (estarán comprendidos entre 1 y 200). En caso de que el array esté ya lleno pedirá confirmación.
+	- Listar: mostrará por pantalla el contenido del array con la sintaxis: Elemento 1: X
+	- Ordenar: ordenará el array con números de menos a mayor.
+	- Vaciar: dejará el array vacío
+	- Salir: terminará la ejecución del programa
+
+- Crear un juego de adivinación de números. Para ello, nada mas empezar el programa se generará un número aleatorio entre 1 y 100. El programa pedirá al usuario que introduzca números enteros hasta encontrar el correcto. Al finalizar indicará el número de intentos alcanzado. (Opcional: hacerlo iterativo, de forma que al terminar una adivinación pregunte si se quiere volver a intentar. Cada vez que se termina se indica el número de intentos medio, el número mínimo de intentos necesitados y si se ha superado el record)
