@@ -47,12 +47,19 @@ f.	Tratamiento de ficheros
 - Mostrar por consola la fecha y hora, personalizando el saludo dependiendo de la hora del día. El mensaje se repetirá hasta que se indique que no se quiere volver a consultar la hora. Para ello se deberá pedir el nombre al usuario nada más arrancar el programa y una vez pulsado Enter se mostrar el mensaje: 
 
 "Por favor introduce tu nombre: "
-"Buenos días (tardes o noches) Luis, Son las  10:30 del 12/09/2019"
+
+"Buenos días (tardes o noches) Luis, Son las  10:30 del 12 de Setiembre de 2019"
+
 "¿Quieres volver a comprobar la hora?:" S
-"Buenos días (tardes o noches) Luis, Son las  10:32 del 12/09/2019"
+
+"Buenos días (tardes o noches) Luis, Son las  10:32 del 12 de Setiembre de 2019"
+
 "¿Quieres volver a comprobar la hora?:" S
-"Buenos días (tardes o noches) Luis, Son las  10:34 del 12/09/2019"
+
+"Buenos días (tardes o noches) Luis, Son las  10:34 del 12 de Setiembre de 2019"
+
 "¿Quieres volver a comprobar la hora?:" N
+
 "Que tengas buen día"
 
 - Crear un array de elementos de tipo integer con 50 posiciones. Crear un menú que tenga las siguientes opciones:
