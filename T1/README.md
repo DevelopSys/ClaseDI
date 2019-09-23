@@ -71,7 +71,7 @@ f.	Tratamiento de ficheros
 
 - Crear un juego de adivinación de números. Para ello, nada mas empezar el programa se generará un número aleatorio entre 1 y 100. El programa pedirá al usuario que introduzca números enteros hasta encontrar el correcto. Al finalizar indicará el número de intentos alcanzado. (Opcional: hacerlo iterativo, de forma que al terminar una adivinación pregunte si se quiere volver a intentar. Cada vez que se termina se indica el número de intentos medio, el número mínimo de intentos necesitados y si se ha superado el record)
 
-- Desarrollar un programa que gestione temperaturas máximas y mínimas, y el programa calcule los extremos. Para ello hay que utilizar una coleccion de tipo ArrayList Algunas consideraciones a tener en cuenta son:
+- **(PARA ENTREGAR)** Desarrollar un programa que gestione temperaturas máximas y mínimas, y el programa calcule los extremos. Para ello hay que utilizar una coleccion de tipo ArrayList Algunas consideraciones a tener en cuenta son:
 a. Para introducir temperaturas el programa me pedirá un dato doublé
 b. Cuando me devuelva los extremos y la media, el programa me devolverá un dato double
 c. Los datos deberán ser guardados de forma dinámica (con un ArrayList)
@@ -85,7 +85,7 @@ El menú mediante el cual se introducen los datos es el siguiente:
 5. Mostrar medias
 6. Salir
 
-- Crear una apliación que permita la gestion de usuarios de tipo Alumno. Para ello hay que tener en cuenta que debe existir un Alumno que tenga nombre (string), apellido (string), dni (string) y matrícula (int). Mediante un menú se podrán realizar las siguientes operaciones:
+- **(PARA ENTREGAR)** Crear una apliación que permita la gestion de usuarios de tipo Alumno. Para ello hay que tener en cuenta que debe existir un Alumno que tenga nombre (string), apellido (string), dni (string) y matrícula (int). Mediante un menú se podrán realizar las siguientes operaciones:
 
 1. Agregar alumno
 2. Buscar alumno
@@ -98,3 +98,15 @@ En cada una de las opciones se pedirán los datos asociados a la opción. Hay qu
 
 En todos los casos deben existir mensajes de confirmación tanto si la operación se ha llevado a cabo como si se ha producido algún fallo. Para la realización del problema utilizar una colección de tipo HashTable
 
+- **(PARA ENTREGAR)** Crear una aplicación que sea capaz de gestionar elementos multimedia (Agregar, eliminar y listar elementos). Para ello se deben crear los siguientes tipos:
+
+a. Libros: con las características título, autor, año, código, edición, soporte digital y número de páginas
+b. Múscia: con las características título, autor, año, código, soporte, directo, duración
+c. Película: con las caracteristivas titulo, autor, año, código, actores, país duración
+
+La aplicación permitirá: 
+1. Agregar elemento, dando la posibilidad a agregar libro, música o película. Se pedirán los datos del elemento seleccioando. Tan solo se podrá agregar un elemento siempre y cuando no está metido en la colección
+2. Eliminiar elemento, teniendo en cuenta que solo se podrán eleminar elementos que estén en la colección
+3. Listar elementos, dando la posibilidad de listar libros, música, películas o todos
+
+El formato de salida deberá mostrar todos los datos del elemento en cuestión
