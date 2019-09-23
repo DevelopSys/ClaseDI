@@ -102,9 +102,9 @@ En todos los casos deben existir mensajes de confirmación tanto si la operació
 
 - **(PARA ENTREGAR)** Crear una aplicación que sea capaz de gestionar elementos multimedia (Agregar, eliminar y listar elementos). Para ello se deben crear los siguientes tipos:
 
-a. Libros: con las características título, autor, año, código, edición, soporte digital y número de páginas
-b. Múscia: con las características título, autor, año, código, soporte, directo, duración
-c. Película: con las caracteristivas titulo, autor, año, código, actores, país duración
+1. Libros: con las características título, autor, año, código, edición, soporte digital y número de páginas
+2. Múscia: con las características título, autor, año, código, soporte, directo, duración
+3. Película: con las caracteristivas titulo, autor, año, código, actores, país duración
 
 La aplicación permitirá: 
 1. Agregar elemento, dando la posibilidad a agregar libro, música o película. Se pedirán los datos del elemento seleccioando. Tan solo se podrá agregar un elemento siempre y cuando no está metido en la colección
