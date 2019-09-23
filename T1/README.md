@@ -73,7 +73,9 @@ f.	Tratamiento de ficheros
 
 - **(PARA ENTREGAR)** Desarrollar un programa que gestione temperaturas máximas y mínimas, y el programa calcule los extremos. Para ello hay que utilizar una coleccion de tipo ArrayList Algunas consideraciones a tener en cuenta son:
 a. Para introducir temperaturas el programa me pedirá un dato doublé
+
 b. Cuando me devuelva los extremos y la media, el programa me devolverá un dato double
+
 c. Los datos deberán ser guardados de forma dinámica (con un ArrayList)
 
 El menú mediante el cual se introducen los datos es el siguiente:
