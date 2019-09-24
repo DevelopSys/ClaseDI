@@ -101,3 +101,29 @@ En cada una de las opciones se pedirán los datos asociados a la opción. Hay qu
 En todos los casos deben existir mensajes de confirmación tanto si la operación se ha llevado a cabo como si se ha producido algún fallo. Para la realización del problema utilizar una colección de tipo HashTable
 
 
+- Realizar una aplicación para la gestión de trabajadores. La aplicación podrá registrar trabajadores (asalariados y/o autónomos. Cada uno de los anteriores tiene las siguientes características:
+
+1. Asalariados: nombre, apellido, dni, sueldo, número de pagas
+2. Autónomo:  nombre, apellido, dni, sueldo
+
+La aplicación tendrá la capacidad de:
+
+- Registrar un trabajador. Para ello preguntará si se quiere registrar un asalariado o un autónomo y pedirá los datos del trabajador
+- Listar trabajadores. Para ello preguntará si se quiere listar los asalariados, los autónomos o todos
+- Mostrar datos de trabajador. Para ello pedirá el DNI y mostrará el siguiente formato:
+
+Si es asalariado:
+- Nombre: XXX
+- Apellido: XXX
+- DNI: XXX
+- Salario Anual: XXX
+- Salario Mensual: XXX 
+- Número de Pagas: XX
+
+Si es autónomo
+- Nombre: XXX
+- Apellido: XXX
+- DNI: XXX
+- Salario Anual: XXX
+
+Utilizar la herencia y el polimorfismo para juntar el máximo de propiedades y métodos .
