@@ -132,7 +132,7 @@ Utilizar la herencia y el polimorfismo para juntar el máximo de propiedades y m
 
 1. Libros: con las características título, autor, año, código, edición, soporte digital y número de páginas
 2. Múscia: con las características título, autor, año, código, soporte, directo, duración
-3. Película: con las caracteristivas titulo, autor, año, código, actores, país duración
+3. Película: con las caracteristivas titulo, autor, año, código, actores, país, duración
 
 La aplicación permitirá: 
 1. Agregar elemento, dando la posibilidad a agregar libro, música o película. Se pedirán los datos del elemento seleccioando. Tan solo se podrá agregar un elemento siempre y cuando no está metido en la colección
