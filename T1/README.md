@@ -131,7 +131,7 @@ Utilizar la herencia y el polimorfismo para juntar el máximo de propiedades y m
 - **(PARA ENTREGAR)** Crear una aplicación que sea capaz de gestionar elementos multimedia (Agregar, eliminar y listar elementos). Para ello se deben crear los siguientes tipos:
 
 1. Libros: con las características título, autor, año, código, edición, soporte digital y número de páginas
-2. Múscia: con las características título, autor, año, código, soporte, directo, duración
+2. Múscia: con las características título, autor, año, código, tipo formato, directo, duración
 3. Película: con las caracteristivas titulo, autor, año, código, actores, país, duración
 
 La aplicación permitirá: 
