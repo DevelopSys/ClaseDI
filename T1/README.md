@@ -138,5 +138,7 @@ La aplicación permitirá:
 1. Agregar elemento, dando la posibilidad a agregar libro, música o película. Se pedirán los datos del elemento seleccioando. Tan solo se podrá agregar un elemento siempre y cuando no está metido en la colección
 2. Eliminiar elemento, teniendo en cuenta que solo se podrán eleminar elementos que estén en la colección
 3. Listar elementos, dando la posibilidad de listar libros, música, películas o todos
+4. Importar lista de elementos
+5. Exportar lista de elementos
 
 El formato de salida deberá mostrar todos los datos del elemento en cuestión
