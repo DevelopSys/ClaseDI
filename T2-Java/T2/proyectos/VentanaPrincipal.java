@@ -10,9 +10,10 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 
     JButton botonUno, botonDos, botonTres, botonCuatro;
     JButton botonSupUno, botonSupDos;
+    JButton botonAgregarEliminar;
     Container container;
     JLabel etiquetaInferior;
-    JPanel panelInferior, panelSuperior, panelCentro, panelDerecha;
+    JPanel panelInferior, panelSuperior, panelCentro, panelDerecha, panelIzquierda;
     JPanel panelCentroUno, panelCentroDos, panelCentroTres, panelCentroCuatro;
     CardLayout cardLayout;
 
@@ -30,7 +31,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         this.setLocationRelativeTo(null);
         configurarContainer();
         // this.pack();
-
+        botonSupUno.setEnabled(true);
         this.setVisible(true);
     }
 
@@ -39,6 +40,9 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         botonDos.addActionListener(this);
         botonTres.addActionListener(this);
         botonCuatro.addActionListener(this);
+        botonSupUno.addActionListener(this);
+        botonSupDos.addActionListener(this);
+        botonAgregarEliminar.addActionListener(this);
     }
 
     private void instancias() {
@@ -52,7 +56,11 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         botonCuatro = new JButton("IR A CUATRO");
         botonCuatro.setActionCommand(Constantes.ACC_B4);
         botonSupUno = new JButton("<--");
+        botonSupUno.setActionCommand(Constantes.ACC_BAT);
         botonSupDos = new JButton("-->");
+        botonSupDos.setActionCommand(Constantes.ACC_BAL);
+        botonAgregarEliminar = new JButton("Agregar / Eliminar");
+        botonAgregarEliminar.setActionCommand(Constantes.ACC_BAG);
 
         container = this.getContentPane();
         etiquetaInferior = new JLabel("EJEMPLO");
@@ -70,6 +78,9 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         panelCentroTres.setBackground(Color.BLUE);
         panelCentroCuatro = new JPanel();
         panelCentroCuatro.setBackground(Color.GREEN);
+        panelIzquierda = new JPanel();
+        panelIzquierda.setBackground(Color.PINK);
+        panelIzquierda.add(new JLabel("PANEL IZQUIEDA"));
 
         cardLayout = new CardLayout();
 
@@ -113,6 +124,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         // por defecto flowlayout
         panelSuperior.add(botonSupUno);
         panelSuperior.add(botonSupDos);
+        panelSuperior.add(botonAgregarEliminar);
         return panelSuperior;
     }
 
@@ -125,7 +137,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         panelCentro.add(panelCentroTres, Constantes.TAG_P3);
         panelCentro.add(panelCentroCuatro, Constantes.TAG_P4);
 
-        cardLayout.show(panelCentro, "panel3");
+        cardLayout.show(panelCentro, "panel1");
         // ((CardLayout)panelCentro.getLayout()).show();
         return panelCentro;
     }
@@ -146,15 +158,58 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         switch (e.getActionCommand()) {
             case Constantes.ACC_B1:
                 cardLayout.show(panelCentro, Constantes.TAG_P1);
+                botonSupUno.setEnabled(false);
+                botonSupDos.setEnabled(true);
+                etiquetaInferior.setText("PANEL1");
                 break;
             case Constantes.ACC_B2:
                 cardLayout.show(panelCentro, Constantes.TAG_P2);
+                botonSupDos.setEnabled(true);
+                botonSupUno.setEnabled(true);
+                etiquetaInferior.setText("PANEL2");
+
                 break;
             case Constantes.ACC_B3:
+                botonSupDos.setEnabled(true);
+                botonSupUno.setEnabled(true);
                 cardLayout.show(panelCentro, Constantes.TAG_P3);
+                etiquetaInferior.setText("PANEL3");
+
                 break;
             case Constantes.ACC_B4:
+
                 cardLayout.show(panelCentro, Constantes.TAG_P4);
+                botonSupDos.setEnabled(false);
+                botonSupUno.setEnabled(true);
+                etiquetaInferior.setText("PANEL4");
+
+                break;
+            case Constantes.ACC_BAL:
+                cardLayout.next(panelCentro);
+                if (panelCentroCuatro.isShowing()) {
+                    botonSupDos.setEnabled(false);
+                } else if (!panelCentroCuatro.isShowing()) {
+                    botonSupUno.setEnabled(true);
+                }
+
+                break;
+            case Constantes.ACC_BAT:
+                cardLayout.previous(panelCentro);
+                //botonSupUno.setEnabled(true);
+                //botonSupDos.setEnabled(true);
+                if (panelCentroUno.isShowing()) {
+                    botonSupUno.setEnabled(false);
+                } else if (!panelCentroUno.isShowing()) {
+                    botonSupDos.setEnabled(true);
+                }
+                break;
+            case Constantes.ACC_BAG:
+                if (panelIzquierda.isShowing()) {
+                    container.remove(panelIzquierda);
+                } else {
+                    container.add(panelIzquierda, BorderLayout.WEST);
+                }
+                pack();
                 break;
         }
     }
