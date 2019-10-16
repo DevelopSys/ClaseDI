@@ -33,7 +33,7 @@ public class Ventana extends JFrame {
     }
 
     private void configurarConstraint(int posx, int posy, int tx, int ty,
-                                      int ali, int fill, double pesx, double pesy, Component component) {
+                                      int ali, int fill, double pesx, double pesy, Component component, JPanel panel) {
 
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.gridwidth = tx;
@@ -44,12 +44,27 @@ public class Ventana extends JFrame {
         constraints.fill = fill;
         constraints.weightx = pesx;
         constraints.weighty = pesy;
-        panelCentro.add(component, constraints);
+        panel.add(component, constraints);
 
     }
 
     private JPanel configurarCentro() {
         panelCentro.setLayout(new GridBagLayout());
+        panelCentro.setBackground(Color.CYAN);
+
+
+        configurarConstraint(0, 0, 1, 1, GridBagConstraints.CENTER,
+                GridBagConstraints.HORIZONTAL, 0.2, 0, b1, panelCentro);
+        configurarConstraint(1, 0, 1, 1, GridBagConstraints.CENTER,
+                GridBagConstraints.HORIZONTAL, 0.8, 0, b2, panelCentro);
+        configurarConstraint(0, 1, 2, 3, GridBagConstraints.CENTER,
+                GridBagConstraints.BOTH, 0.2, 1, b3, panelCentro);
+        configurarConstraint(0, 4, 1, 1, GridBagConstraints.CENTER,
+                GridBagConstraints.HORIZONTAL, 0.2, 0, b4, panelCentro);
+        configurarConstraint(1, 4, 1, 1, GridBagConstraints.CENTER,
+                GridBagConstraints.HORIZONTAL, 0.8, 0, b5, panelCentro);
+
+
         /*GridBagConstraints constraints = new GridBagConstraints();
 
         constraints.gridwidth=1;
@@ -59,20 +74,9 @@ public class Ventana extends JFrame {
         constraints.anchor = GridBagConstraints.CENTER;
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.weightx=0.2;
-        constraints.weighty=0.33;*/
+        constraints.weighty=0.33;
 
-        configurarConstraint(1, 1, 0, 0, GridBagConstraints.CENTER,
-                GridBagConstraints.HORIZONTAL, 0.2, 0.33, b1);
-        configurarConstraint(1, 1, 0, 0, GridBagConstraints.CENTER,
-                GridBagConstraints.HORIZONTAL, 0.2, 0.33, b1);
-        configurarConstraint(1, 1, 0, 0, GridBagConstraints.CENTER,
-                GridBagConstraints.HORIZONTAL, 0.2, 0.33, b1);
-        configurarConstraint(1, 1, 0, 0, GridBagConstraints.CENTER,
-                GridBagConstraints.HORIZONTAL, 0.2, 0.33, b1);
-        configurarConstraint(1, 1, 0, 0, GridBagConstraints.CENTER,
-                GridBagConstraints.HORIZONTAL, 0.2, 0.33, b1);
-        //panelCentro.add(b1,constraints);
-
+        panelCentro.add(b1,constraints);
         constraints.weighty = 0.33;
         constraints.weightx = 0.8;
         constraints.gridwidth = 1;
@@ -119,7 +123,7 @@ public class Ventana extends JFrame {
         constraints.fill = GridBagConstraints.HORIZONTAL;
 
 
-        panelCentro.add(b5, constraints);
+        panelCentro.add(b5, constraints);*/
         // panelCentro.add(b6);
         return panelCentro;
 
