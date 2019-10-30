@@ -1,3 +1,4 @@
+import paneles.PestaniaCuatro;
 import paneles.PestaniaDos;
 import paneles.PestaniaTres;
 import paneles.PestaniaUno;
@@ -12,6 +13,7 @@ public class Ventana extends JFrame {
     PestaniaUno pestaniaUno;
     PestaniaDos pestaniaDos;
     PestaniaTres pestaniaTres;
+    PestaniaCuatro pestaniaCuatro;
     JTabbedPane panelPestanias;
 
     public void initGUI(){
@@ -30,6 +32,7 @@ public class Ventana extends JFrame {
         panelPestanias.addTab("Botones",pestaniaUno);
         panelPestanias.addTab("Check y radios",pestaniaDos);
         panelPestanias.addTab("Textos",pestaniaTres);
+        panelPestanias.addTab("TextosRespaso",pestaniaCuatro);
     }
 
     private void instancias() {
@@ -38,5 +41,6 @@ public class Ventana extends JFrame {
         pestaniaUno = new PestaniaUno();
         pestaniaDos = new PestaniaDos();
         pestaniaTres = new PestaniaTres();
+        pestaniaCuatro = new PestaniaCuatro();
     }
 }

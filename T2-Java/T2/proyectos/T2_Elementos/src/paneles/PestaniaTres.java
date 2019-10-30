@@ -74,7 +74,6 @@ public class PestaniaTres extends JPanel implements ChangeListener, ActionListen
         if (textoNormal.getText().equals("Aviso")){
             textoNormal.setText("");
         }
-
     }
     @Override
     public void focusLost(FocusEvent e) {
@@ -90,9 +89,6 @@ public class PestaniaTres extends JPanel implements ChangeListener, ActionListen
 
         @Override
         public void keyPressed(KeyEvent e) {
-            //super.keyPressed(e);
-            //System.out.println("pressed");
-            //System.out.println(e.getKeyChar());
             if (Character.isDigit(e.getKeyChar())){
                 System.out.println("es digito");
             }else {
