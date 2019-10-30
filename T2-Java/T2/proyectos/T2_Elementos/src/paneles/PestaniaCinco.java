@@ -4,15 +4,19 @@ import componentes.TextoPerso;
 import utils.Persona;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
-public class PestaniaCinco extends JPanel implements ActionListener {
+public class PestaniaCinco extends JPanel implements ActionListener, ChangeListener, ItemListener {
 
     JSpinner spinnerNumeros, spinnerLista, spinnerEdad;
+    JComboBox compoNormal;
     SpinnerNumberModel modeloSpinnerNumeros;
     SpinnerListModel modeloSpinnerLista;
+    DefaultComboBoxModel modeloCombo;
     ArrayList datosSpinner;
     JTextField tNombre, tApellido, tNumero;
     JCheckBox cDisponible;
@@ -27,13 +31,23 @@ public class PestaniaCinco extends JPanel implements ActionListener {
     private void initGUI() {
         instancias();
         configurarSpinnerList();
+        configurarModeloCombo();
         configurarPanel();
         acciones();
+    }
+
+    private void configurarModeloCombo() {
+        modeloCombo.addElement(new Persona("Nombre 1","a",123,
+                23,false));
+        modeloCombo.addElement(new Persona("Nombre 2","b",123,
+                23,false));
     }
 
     private void acciones() {
         tNumero.addKeyListener(new ManejoTeclas());
         bAgregar.addActionListener(this);
+        spinnerLista.addChangeListener(this);
+        compoNormal.addItemListener(this);
     }
 
     private void configurarPanel() {
@@ -117,6 +131,7 @@ public class PestaniaCinco extends JPanel implements ActionListener {
     private JPanel configurarSuperior() {
         pSuperior.add(spinnerNumeros);
         pSuperior.add(spinnerLista);
+        pSuperior.add(compoNormal);
         return pSuperior;
     }
 
@@ -142,6 +157,8 @@ public class PestaniaCinco extends JPanel implements ActionListener {
         bAgregar = new JButton("Agregar persona");
         pCentro = new JPanel();
         pSuperior = new JPanel();
+        modeloCombo = new DefaultComboBoxModel();
+        compoNormal = new JComboBox(modeloCombo);
     }
 
     @Override
@@ -150,17 +167,43 @@ public class PestaniaCinco extends JPanel implements ActionListener {
         if (e.getSource() == bAgregar){
             if (tNumero.getText().isEmpty()||tApellido.getText().isEmpty() || tNumero.getText().isEmpty()){
                 System.out.println("Faltan datos");
+                // posibilidad captura selección combo
+                // Persona p = (Persona) compoNormal.getItemAt(compoNormal.getSelectedIndex());
+                // System.out.println(p.getApellido());
+                // segunda posibilidad captura selección
+                Persona encontrada = (Persona) modeloCombo.getSelectedItem();
+                System.out.println(encontrada.isDisponibilidad());
             } else {
 
                 System.out.println(spinnerEdad.getModel().getValue());
                 String nombre = tNombre.getText();
                 String apellido = tApellido.getText();
                 int telefono = Integer.valueOf(tNumero.getText());
+                int edad = Integer.valueOf(spinnerEdad.getModel().getValue().toString());
                 boolean disponibilidad = cDisponible.isSelected();
-                Persona persona = new Persona(nombre,apellido,telefono,disponibilidad);
+                Persona persona = new Persona(nombre,apellido,telefono,edad,disponibilidad);
                 datosSpinner.add(persona);
             }
         }
+
+    }
+
+    @Override
+    public void stateChanged(ChangeEvent e) {
+        //System.out.println("Cambiado");
+        if (spinnerLista.getModel().getValue().getClass() == Persona.class){
+            Persona pSeleccionada = (Persona) spinnerLista.getModel().getValue();
+            System.out.println(pSeleccionada.isDisponibilidad());
+        }
+
+
+    }
+
+    @Override
+    public void itemStateChanged(ItemEvent e) {
+
+        Persona p = (Persona) compoNormal.getModel().getSelectedItem();
+        System.out.println(p.getApellido());
 
     }
 
