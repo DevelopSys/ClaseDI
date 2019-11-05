@@ -12,6 +12,7 @@ public class Ventana extends JFrame {
     PestaniaTres pestaniaTres;
     PestaniaCuatro pestaniaCuatro;
     PestaniaCinco pestaniaCinco;
+    PestaniaSeis pestaniaSeis;
     JTabbedPane panelPestanias;
 
     public void initGUI(){
@@ -32,6 +33,7 @@ public class Ventana extends JFrame {
         panelPestanias.addTab("Textos",pestaniaTres);
         panelPestanias.addTab("TextosRespaso",pestaniaCuatro);
         panelPestanias.addTab("Elementos datos",pestaniaCinco);
+        panelPestanias.addTab("Elementos lista",pestaniaSeis);
     }
 
     private void instancias() {
@@ -42,5 +44,6 @@ public class Ventana extends JFrame {
         pestaniaTres = new PestaniaTres();
         pestaniaCuatro = new PestaniaCuatro();
         pestaniaCinco = new PestaniaCinco();
+        pestaniaSeis = new PestaniaSeis();
     }
 }

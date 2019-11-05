@@ -85,7 +85,6 @@ public class PestaniaCinco extends JPanel implements ActionListener, ChangeListe
                 GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,
                 spinnerEdad);
 
-
         // Fila 2
 
         configurarGridBag(0,3,1,1,0,0.2,
@@ -218,6 +217,4 @@ public class PestaniaCinco extends JPanel implements ActionListener, ChangeListe
             }
         }
     }
-
-
 }
