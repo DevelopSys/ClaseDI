@@ -26,8 +26,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/paneles/PestaniaOcho.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="88" column="35" selection-start-line="88" selection-start-column="35" selection-end-line="88" selection-end-column="35" />
+            <state relative-caret-position="75">
+              <caret line="50" column="9" lean-forward="true" selection-start-line="40" selection-start-column="8" selection-end-line="50" selection-end-column="9" />
               <folding>
                 <element signature="method#configurarPanel#0;class#PestaniaOcho#0" />
                 <element signature="method#instancias#0;class#PestaniaOcho#0" />
@@ -39,8 +39,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Ventana.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="88" column="57" selection-start-line="88" selection-start-column="57" selection-end-line="88" selection-end-column="57" />
+            <state relative-caret-position="67">
+              <caret line="37" column="84" selection-start-line="37" selection-start-column="84" selection-end-line="37" selection-end-column="84" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -80,8 +80,8 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="807" />
+    <option name="width" value="1280" />
+    <option name="height" value="634" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -185,7 +185,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32909092" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.49261993" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.49261993" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -193,7 +193,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Messages" order="10" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32841328" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -331,8 +331,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Ventana.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="88" column="57" selection-start-line="88" selection-start-column="57" selection-end-line="88" selection-end-column="57" />
+        <state relative-caret-position="67">
+          <caret line="37" column="84" selection-start-line="37" selection-start-column="84" selection-end-line="37" selection-end-column="84" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -341,8 +341,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/paneles/PestaniaOcho.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="88" column="35" selection-start-line="88" selection-start-column="35" selection-end-line="88" selection-end-column="35" />
+        <state relative-caret-position="75">
+          <caret line="50" column="9" lean-forward="true" selection-start-line="40" selection-start-column="8" selection-end-line="50" selection-end-column="9" />
           <folding>
             <element signature="method#configurarPanel#0;class#PestaniaOcho#0" />
             <element signature="method#instancias#0;class#PestaniaOcho#0" />

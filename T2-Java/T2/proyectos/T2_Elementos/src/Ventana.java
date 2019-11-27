@@ -34,6 +34,18 @@ public class Ventana extends JFrame implements ActionListener, ChangeListener {
     public void initGUI(){
 
         instancias();
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
+
         configurarMenu();
         configurarContainer();
         acciones();
