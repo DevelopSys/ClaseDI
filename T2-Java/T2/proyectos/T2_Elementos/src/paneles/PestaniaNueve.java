@@ -1,5 +1,7 @@
 package paneles;
 
+import jdk.nashorn.internal.scripts.JO;
+
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -14,7 +16,7 @@ public class PestaniaNueve extends JPanel implements ActionListener {
 
     JTable tabla;
     DefaultTableModel modeloSimple;
-    JButton bAgregar, bBorrar, bSeleccinado;
+    JButton bAgregar, bBorrar, bSeleccinado, bSeleccionMultiple;
     JPanel pSur;
 
 
@@ -33,6 +35,7 @@ public class PestaniaNueve extends JPanel implements ActionListener {
         bAgregar.addActionListener(this);
         bBorrar.addActionListener(this);
         bSeleccinado.addActionListener(this);
+        bSeleccionMultiple.addActionListener(this);
         tabla.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -50,10 +53,11 @@ public class PestaniaNueve extends JPanel implements ActionListener {
     }
 
     private JPanel configurarSur(){
-        pSur.setLayout(new GridLayout(3,1));
+        pSur.setLayout(new GridLayout(4,1));
         pSur.add(bAgregar);
         pSur.add(bBorrar);
         pSur.add(bSeleccinado);
+        pSur.add(bSeleccionMultiple);
         return pSur;
     }
 
@@ -69,6 +73,7 @@ public class PestaniaNueve extends JPanel implements ActionListener {
         bBorrar = new JButton("Borrar");
         pSur = new JPanel();
         bSeleccinado =  new JButton("Seleccionado");
+        bSeleccionMultiple =  new JButton("Selección multiple");
 
 
 
@@ -79,25 +84,43 @@ public class PestaniaNueve extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == bAgregar){
             String[]datos = {"nuevo","nuevo","nuevo"};
-            modeloSimple.addRow(datos);
+            if (tabla.getSelectedRow()==-1){
+                modeloSimple.addRow(datos);
+            }else {
+                modeloSimple.insertRow(tabla.getSelectedRow(), datos);
+            }
             modeloSimple.fireTableDataChanged();
         } else if (e.getSource() == bBorrar){
 
-            int ultima = modeloSimple.getRowCount();
-            modeloSimple.removeRow(ultima);
-            //int selecccionada = tabla.getSelectedRow();
-            //modeloSimple.removeRow(selecccionada);
-            modeloSimple.fireTableDataChanged();
+            // int ultima = modeloSimple.getRowCount();
+            // modeloSimple.removeRow(ultima);
+            if (tabla.getSelectedRow()==-1){
+                JOptionPane.showMessageDialog(this,"Por favor selecciona una fila",
+                        "Fallo al borrar", JOptionPane.WARNING_MESSAGE);
+            } else {
+                modeloSimple.removeRow(tabla.getSelectedRow());
+            }modeloSimple.fireTableDataChanged();
 
         } else if (e.getSource() == bSeleccinado){
 
             /*int filaSeleccionda = tabla.getSelectedRow();
             int columnaSeleccionada = tabla.getSelectedColumn();
             System.out.println(modeloSimple.getValueAt(filaSeleccionda,columnaSeleccionada));*/
+
+            for (int i=0;i<tabla.getColumnCount();i++){
+                System.out.println(modeloSimple.getValueAt(tabla.getSelectedRow(),i));
+            }
+
+
             //tabla.getSelectionModel().
-
-
-
+        } else if (e.getSource() == bSeleccionMultiple){
+            int[]seleccionadas = tabla.getSelectedRows();
+            for (int index:seleccionadas) {
+                /*for (int i=0;i<tabla.getColumnCount();i++){
+                    System.out.println(modeloSimple.getValueAt(index,i));
+                }*/
+                modeloSimple.removeRow(index);
+            }
         }
     }
 }
