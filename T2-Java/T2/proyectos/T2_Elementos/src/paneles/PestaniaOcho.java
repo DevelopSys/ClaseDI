@@ -25,30 +25,12 @@ public class PestaniaOcho extends JPanel implements ItemListener {
         rellenarLetras();
         rellenarTamanio();
         rellenarTipo();
-        rellenarEstilos();
         configurarPanel();
         acciones();
     }
 
     private void rellenarEstilos() {
-        UIManager.LookAndFeelInfo[] estilos =
-                UIManager.getInstalledLookAndFeels();
-        for (UIManager.LookAndFeelInfo item:estilos) {
-            //System.out.println(item.getClassName());
-            modeloEstilo.addElement(item.getClassName());
-        }
 
-        try {
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (UnsupportedLookAndFeelException e) {
-            e.printStackTrace();
-        }
     }
 
     private void rellenarLetras() {

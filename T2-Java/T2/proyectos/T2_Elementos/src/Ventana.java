@@ -21,6 +21,7 @@ public class Ventana extends JFrame implements ActionListener, ChangeListener {
     PestaniaSeis pestaniaSeis;
     PestaniaSiete pestaniaSiete;
     PestaniaOcho pestaniaOcho;
+    PestaniaNueve pestaniaNueve;
     JTabbedPane panelPestanias;
 
     JMenuBar barraMenu;
@@ -34,17 +35,7 @@ public class Ventana extends JFrame implements ActionListener, ChangeListener {
     public void initGUI(){
 
         instancias();
-        try {
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (UnsupportedLookAndFeelException e) {
-            e.printStackTrace();
-        }
+
 
         configurarMenu();
         configurarContainer();
@@ -99,6 +90,7 @@ public class Ventana extends JFrame implements ActionListener, ChangeListener {
         panelPestanias.addTab("Elementos lista",pestaniaSeis);
         panelPestanias.addTab("Barra progreso",pestaniaSiete);
         panelPestanias.addTab("Personalizar",pestaniaOcho);
+        panelPestanias.addTab("Tablas",pestaniaNueve);
     }
 
     private void instancias() {
@@ -112,6 +104,7 @@ public class Ventana extends JFrame implements ActionListener, ChangeListener {
         pestaniaSeis = new PestaniaSeis();
         pestaniaSiete = new PestaniaSiete();
         pestaniaOcho = new PestaniaOcho();
+        pestaniaNueve = new PestaniaNueve();
 
         barraMenu = new JMenuBar();
         menuItems1 = new JMenu("Pestañas 1 a 3");
