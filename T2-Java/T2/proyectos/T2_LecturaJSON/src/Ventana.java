@@ -2,10 +2,14 @@ import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -39,7 +43,28 @@ public class Ventana extends JFrame {
         boton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                modeloLista.clear();
                 new MiWorker().execute();
+            }
+        });
+        lista.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                Pelicula seleccionada = (Pelicula) modeloLista.getElementAt(lista.getSelectedIndex());
+                // https://image.tmdb.org/t/p/w500/
+                String link = String.format("%s%s","https://image.tmdb.org/t/p/w500",seleccionada.getPoster_path());
+                //System.out.println(link);
+                URL urlImagen;
+                try {
+                    urlImagen = new URL(link);
+                    BufferedImage imagenInternet = ImageIO.read(urlImagen);
+                    poster.setIcon(new ImageIcon(imagenInternet));
+                    pack();
+                } catch (MalformedURLException ex) {
+                    ex.printStackTrace();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
     }
@@ -53,7 +78,7 @@ public class Ventana extends JFrame {
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(1, 2));
-        panel.add(lista);
+        panel.add(new JScrollPane(lista));
         panel.add(poster);
         return panel;
     }
@@ -99,6 +124,11 @@ public class Ventana extends JFrame {
             JSONObject jsonEntero = new JSONObject(builder.toString());
             JSONArray jsonArrayResultados = jsonEntero.getJSONArray("results");
             for (int i=0;i<jsonArrayResultados.length();i++){
+                if (i==0){
+                    boton.setEnabled(false);
+                } else if (i==jsonArrayResultados.length()-1){
+                    boton.setEnabled(true);
+                }
                 JSONObject objeto = jsonArrayResultados.getJSONObject(i);
                 Gson gson = new Gson();
                 Pelicula pelicula = gson.fromJson(objeto.toString(),Pelicula.class);
