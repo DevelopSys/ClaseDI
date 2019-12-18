@@ -3,6 +3,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,7 +15,7 @@ public class Entrada {
 
     public static void main(String[] args) throws IOException, JSONException {
 
-        String linkUrl = "https://api.themoviedb.org/3/movie/now_playing?api_key=4ef66e12cddbb8fe9d4fd03ac9632f6e&language=en-US&page=1";
+        /*String linkUrl = "https://api.themoviedb.org/3/movie/now_playing?api_key=4ef66e12cddbb8fe9d4fd03ac9632f6e&language=en-US&page=1";
         URL url = new URL(linkUrl);
         HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
         BufferedReader lector = new BufferedReader
@@ -29,13 +30,17 @@ public class Entrada {
         JSONArray jsonArray = jsonObject.getJSONArray("results");
         for (int i=0;i<jsonArray.length();i++){
             JSONObject object = (JSONObject) jsonArray.get(i);
-            String titulo = object.getString("original_title");
-            String descripcion = object.getString("overview");
-            Pelicula p =new Pelicula(titulo,descripcion);
-            Gson gson = new Gson(jsonObject,Pelicula.class);
-            gson.
-            System.out.println(String.format("Titulo: %s %n Descricion %s %n",titulo,descripcion));
-        }
+            Gson gson = new Gson();
+            Pelicula pelicula = gson.fromJson(object.toString(),Pelicula.class);
+            System.out.println(pelicula.getOriginal_title());
+        }*/
+
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                Ventana v = new Ventana();
+            }
+        });
 
     }
 }
