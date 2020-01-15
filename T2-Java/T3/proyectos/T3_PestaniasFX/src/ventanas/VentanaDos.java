@@ -26,7 +26,7 @@ public class VentanaDos extends Stage {
             Scene scene = new Scene(root, 300, 300);
             this.setScene(scene);
             this.setTitle(titulo);
-            this.initStyle(StageStyle.TRANSPARENT);
+            this.initStyle(StageStyle.DECORATED);
             this.show();
         } catch (IOException e) {
             e.printStackTrace();

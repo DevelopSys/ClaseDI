@@ -7,18 +7,21 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class VentanaUno extends Application {
+import java.io.IOException;
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
+public class VentanaUno extends Stage {
 
-        Parent root = FXMLLoader.load(getClass().getResource("../layouts/layout_ventana_uno.fxml"));
+    public VentanaUno() {
+
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("../layouts/layout_ventana_uno.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Scene scene = new Scene(root,600,400);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        this.setScene(scene);
+        this.show();
     }
 
-    public void lanzarVentana(){
-        launch();
-    }
 }
