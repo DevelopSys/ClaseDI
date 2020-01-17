@@ -77,11 +77,8 @@ public class ControladoraSplash implements Initializable {
                     Thread.sleep(100);
                 }
 
-
                 return null;
             }
         };
     }
-
-
 }

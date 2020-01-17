@@ -3,6 +3,8 @@ package controladoras;
 import com.jfoenix.controls.JFXTextField;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -45,7 +47,14 @@ public class ControladoraVentanaUno implements Initializable {
     @FXML
     TextArea textoArea;
 
+    @FXML
+    ComboBox combo;
+
+    @FXML
+    ChoiceBox choice;
+
     ToggleGroup grupoRadios;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -53,7 +62,27 @@ public class ControladoraVentanaUno implements Initializable {
         //textoArea.setWrapText(true);
         instancias();
         personalizarBoton();
+        personalizarCombo();
         acciones();
+    }
+
+    private void personalizarCombo() {
+        combo.setPromptText("Selecciona un valor");
+        combo.setVisibleRowCount(3);
+        ObservableList itemCombo = FXCollections.observableArrayList();
+        itemCombo.add(1);
+        itemCombo.add(2);
+        itemCombo.add(3);
+        itemCombo.add(4);
+
+        ObservableList itemChoice = FXCollections.observableArrayList();
+        itemChoice.add(1);
+        itemChoice.add(2);
+        itemChoice.add(3);
+        itemChoice.add(4);
+
+        combo.setItems(itemCombo);
+        choice.setItems(itemChoice);
     }
 
     private void instancias() {
@@ -76,7 +105,6 @@ public class ControladoraVentanaUno implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 VentanaDos ventanaDos = new VentanaDos(textoMaterial.getText());
-
             }
         });
 

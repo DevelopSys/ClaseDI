@@ -22,7 +22,7 @@ public class VentanaDos extends Stage {
 
     private void initGUI() {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("../layouts/layout_ventana_dos.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../layouts/layout_ventana_dos_scene_uno.fxml"));
             Scene scene = new Scene(root, 300, 300);
             this.setScene(scene);
             this.setTitle(titulo);
