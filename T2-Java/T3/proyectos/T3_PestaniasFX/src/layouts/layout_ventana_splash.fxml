@@ -7,11 +7,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladoras.ControladoraSplash">
+<BorderPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url(resources/fondo.jpeg);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladoras.ControladoraSplash">
    <center>
-      <ImageView fx:id="imagenFondo" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+      <ImageView fx:id="imagenFondo" fitHeight="400.0" fitWidth="600.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
-            <Image  url="@../resources/fondo.jpeg" />
+            <Image url="@../resources/fondo.jpeg" />
          </image>
       </ImageView>
    </center>

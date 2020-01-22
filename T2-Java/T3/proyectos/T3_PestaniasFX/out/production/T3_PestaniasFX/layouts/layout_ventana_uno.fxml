@@ -159,4 +159,13 @@
         </tabs>
       </TabPane>
    </center>
+   <bottom>
+      <FlowPane alignment="CENTER" hgap="20.0" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="bAgregar" mnemonicParsing="false" text="Agregar" />
+            <Button fx:id="bBorrar" mnemonicParsing="false" text="Borrar" />
+            <Button fx:id="bObtener" mnemonicParsing="false" text="Obtener" />
+         </children>
+      </FlowPane>
+   </bottom>
 </BorderPane>

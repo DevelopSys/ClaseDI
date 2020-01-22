@@ -38,7 +38,7 @@ public class ControladoraVentanaUno implements Initializable {
     @FXML
     Button btnNormal, btnImagen, botonPantalla, botonSeleccion, bDialogoInfo,
             bDialogoConfirmacion, bDialogoInput, bDialogoBotones, bDialogoChoice,
-            bDialogoPerso;
+            bDialogoPerso, bAgregar, bBorrar, bObtener;
 
     @FXML
     Tab tabBotones, tabTextos;
@@ -70,7 +70,10 @@ public class ControladoraVentanaUno implements Initializable {
     @FXML
     TableColumn columnaNombre, columnaApellido, columnaEdad, columnaDisponibilidad;
 
-    @FXML TextField textoBuscar;
+    @FXML
+    TextField textoBuscar;
+
+    ObservableList<Persona> listaTabla;
 
 
     ToggleGroup grupoRadios;
@@ -98,12 +101,12 @@ public class ControladoraVentanaUno implements Initializable {
         columnaEdad.setCellValueFactory(new PropertyValueFactory("propEdad"));
         columnaDisponibilidad.setCellValueFactory(new PropertyValueFactory("propDisponibilidad"));
 
-        ObservableList<Persona> listaTabla = FXCollections.observableArrayList();
+        listaTabla = FXCollections.observableArrayList();
         listaTabla.addAll(
-                new Persona("sdf","Apellido1",123,false),
-                new Persona("jghf","Apellido2",4234,true),
-                new Persona("bvncb","Apellido3",45,true),
-                new Persona("pioñjkl","Apellido$",9786,false));
+                new Persona("sdf", "Apellido1", 123, false),
+                new Persona("jghf", "Apellido2", 4234, true),
+                new Persona("bvncb", "Apellido3", 45, true),
+                new Persona("pioñjkl", "Apellido$", 9786, false));
 
         listaFiltradas = new FilteredList(listaTabla);
         listaOrdenada = new SortedList(listaFiltradas);
@@ -225,8 +228,9 @@ public class ControladoraVentanaUno implements Initializable {
         bDialogoInput.setOnAction(new ManejoPulsaciones());
         bDialogoChoice.setOnAction(new ManejoPulsaciones());
         bDialogoPerso.setOnAction(new ManejoPulsaciones());
-
-
+        bBorrar.setOnAction(new ManejoPulsaciones());
+        bAgregar.setOnAction(new ManejoPulsaciones());
+        bObtener.setOnAction(new ManejoPulsaciones());
         check.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
@@ -250,6 +254,12 @@ public class ControladoraVentanaUno implements Initializable {
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
                 Persona p = (Persona) newValue;
                 System.out.println(p.getEstado());
+            }
+        });
+        tabla.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                System.out.println(((Persona) newValue).getNombre());
             }
         });
     }
@@ -379,6 +389,22 @@ public class ControladoraVentanaUno implements Initializable {
                 }
 
 
+            } else if (event.getSource() == bAgregar) {
+                listaTabla.add(new Persona("NuevaN", "NuevoA", 123, false));
+                tabla.refresh();
+            } else if (event.getSource() == bBorrar) {
+                if (tabla.getSelectionModel().getSelectedIndex()!=-1) {
+                    listaTabla.remove(tabla.getSelectionModel().getSelectedIndex());
+                    tabla.refresh();
+                }else {
+                    Alert dialogo= new Alert(Alert.AlertType.WARNING);
+                    dialogo.setContentText("No hay nada seleccionado");
+                    dialogo.setTitle("Cuidado!");
+                    dialogo.show();
+                }
+            } else if (event.getSource() == bObtener) {
+                Persona persona = (Persona) tabla.getSelectionModel().getSelectedItem();
+                System.out.println(persona.getNombre());
             }
         }
     }

@@ -39,7 +39,7 @@ public class ControladoraSplash implements Initializable {
         progreso.progressProperty().bind(tareaSecundaria.progressProperty());
 
         FadeTransition transition = new FadeTransition(Duration.seconds(3),imagenFondo);
-        transition.setToValue(1.0);
+        transition.setToValue(0.5);
         transition.setFromValue(0.0);
         transition.play();
 
