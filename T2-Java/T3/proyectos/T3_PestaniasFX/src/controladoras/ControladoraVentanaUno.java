@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 public class ControladoraVentanaUno implements Initializable {
 
@@ -76,12 +77,15 @@ public class ControladoraVentanaUno implements Initializable {
 
     ToggleGroup grupoRadios;
     FilteredList<Persona> listaFiltradas;
+    
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         //textoArea.setWrapText(true);
+
+
         instancias();
         personalizarBoton();
         personalizarCombo();
@@ -98,10 +102,10 @@ public class ControladoraVentanaUno implements Initializable {
 
         ObservableList<Persona> listaTabla = FXCollections.observableArrayList();
         listaTabla.addAll(
-                new Persona("Nombre1","Apellido1",123,false),
-                new Persona("Nombre2","Apellido2",4234,true),
-                new Persona("Nombre3","Apellido3",45,true),
-                new Persona("Nombre4","Apellido$",9786,false));
+                new Persona("sdf","Apellido1",123,false),
+                new Persona("jghf","Apellido2",4234,true),
+                new Persona("bvncb","Apellido3",45,true),
+                new Persona("pioñjkl","Apellido$",9786,false));
 
         listaFiltradas = new FilteredList(listaTabla);
         tabla.setItems(listaFiltradas);
@@ -166,9 +170,15 @@ public class ControladoraVentanaUno implements Initializable {
             public void changed(ObservableValue<? extends String> observable,
                                 String oldValue, String newValue) {
                 //System.out.print(newValue);
-                
+                listaFiltradas.setPredicate(new Predicate<Persona>() {
+                    @Override
+                    public boolean test(Persona persona) {
+                        return persona.getNombre().contains(newValue);
+                    }
+                });
             }
         });
+
 
         botonSeleccion.setOnAction(new EventHandler<ActionEvent>() {
             @Override
