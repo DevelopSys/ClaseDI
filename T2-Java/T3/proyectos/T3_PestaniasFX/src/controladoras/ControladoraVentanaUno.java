@@ -23,6 +23,8 @@ import ventanas.VentanaDos;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -148,6 +150,8 @@ public class ControladoraVentanaUno implements Initializable {
         bDialogoInfo.setOnAction(new ManejoPulsaciones());
         bDialogoConfirmacion.setOnAction(new ManejoPulsaciones());
         bDialogoBotones.setOnAction(new ManejoPulsaciones());
+        bDialogoInput.setOnAction(new ManejoPulsaciones());
+        bDialogoChoice.setOnAction(new ManejoPulsaciones());
 
 
         check.selectedProperty().addListener(new ChangeListener<Boolean>() {
@@ -243,9 +247,36 @@ public class ControladoraVentanaUno implements Initializable {
 
             } else if (event.getSource() == bDialogoInput) {
 
+                TextInputDialog dialogoInput = new TextInputDialog("texto por defecto");
+                dialogoInput.setHeaderText("Cabecera input");
+                dialogoInput.setTitle("Titulo input");
+                dialogoInput.setContentText("Introduce nombre");
+                Optional<String> respuesta = dialogoInput.showAndWait();
+                if (respuesta.isPresent()){
+                    System.out.println(respuesta.get());
+                } else{
+                    System.out.println("no ha contestado");
+                }
 
 
             } else if (event.getSource() == bDialogoChoice) {
+
+                List listaOpciones = new ArrayList();
+                listaOpciones.add(new Persona("nombre1","asdasd"));
+                listaOpciones.add(new Persona("nombre2","asdasd"));
+                listaOpciones.add(new Persona("nombre3","asdasd"));
+                listaOpciones.add(new Persona("nombre4","asdasd"));
+                ChoiceDialog<Persona> dialogoChoice = new ChoiceDialog(listaOpciones.get(0),listaOpciones);
+                dialogoChoice.setTitle("titulo");
+                dialogoChoice.setContentText("selecciona una opcion");
+                dialogoChoice.setHeaderText("header");
+                Optional<Persona> resultado = dialogoChoice.showAndWait();
+                if (resultado.isPresent()){
+                    System.out.println(resultado.get().getEstado());
+                }else{
+                    System.out.println("No ha seleccionado persona");
+                }
+
 
             } else if (event.getSource() == bDialogoPerso) {
 
