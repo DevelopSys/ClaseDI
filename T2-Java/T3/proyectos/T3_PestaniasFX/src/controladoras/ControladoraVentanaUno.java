@@ -6,6 +6,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -27,10 +28,7 @@ import ventanas.VentanaDos;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.function.Predicate;
 
 public class ControladoraVentanaUno implements Initializable {
@@ -77,7 +75,7 @@ public class ControladoraVentanaUno implements Initializable {
 
     ToggleGroup grupoRadios;
     FilteredList<Persona> listaFiltradas;
-    
+    SortedList<Persona> listaOrdenada;
 
 
     @Override
@@ -108,7 +106,23 @@ public class ControladoraVentanaUno implements Initializable {
                 new Persona("pioñjkl","Apellido$",9786,false));
 
         listaFiltradas = new FilteredList(listaTabla);
-        tabla.setItems(listaFiltradas);
+        listaOrdenada = new SortedList(listaFiltradas);
+
+        /*listaOrdenada.setComparator(new Comparator<Persona>() {
+            @Override
+            public int compare(Persona o1, Persona o2) {
+
+                if (o1.getEdad()>o2.getEdad()){
+                    return o1.getEdad();
+                }else {
+                    return o2.getEdad();
+                }
+            }
+        });*/
+
+        listaOrdenada.comparatorProperty().bind(tabla.comparatorProperty());
+
+        tabla.setItems(listaOrdenada);
     }
 
     private void personalizarLista() {
