@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
@@ -102,15 +103,37 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                         <Label text="Combo Box" />
                         <Label text="Choice Box" GridPane.rowIndex="1" />
                         <ComboBox fx:id="combo" prefWidth="150.0" GridPane.columnIndex="1" />
                         <ChoiceBox fx:id="choice" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label text="ListView" GridPane.rowIndex="2" />
+                        <ListView fx:id="lista" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </GridPane.margin>
+                        </ListView>
+                        <Button fx:id="botonSeleccion" mnemonicParsing="false" text="Selección" GridPane.columnSpan="2" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                </content></Tab>
+            <Tab text="Diálogos">
+               <content>
+                  <FlowPane alignment="CENTER" columnHalignment="CENTER" hgap="20.0" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="bDialogoInfo" mnemonicParsing="false" text="Información" />
+                        <Button fx:id="bDialogoConfirmacion" mnemonicParsing="false" text="Confirmación" />
+                        <Button fx:id="bDialogoBotones" mnemonicParsing="false" text="Botones" />
+                        <Button fx:id="bDialogoInput" mnemonicParsing="false" text="Input" />
+                        <Button fx:id="bDialogoChoice" mnemonicParsing="false" text="Choice" />
+                        <Button fx:id="bDialogoPerso" mnemonicParsing="false" text="Perso" />
+                     </children>
+                  </FlowPane>
+               </content>
+            </Tab>
         </tabs>
       </TabPane>
    </center>

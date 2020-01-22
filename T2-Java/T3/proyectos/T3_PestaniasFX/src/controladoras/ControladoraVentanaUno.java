@@ -23,6 +23,7 @@ import ventanas.VentanaDos;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ControladoraVentanaUno implements Initializable {
@@ -30,7 +31,9 @@ public class ControladoraVentanaUno implements Initializable {
     DropShadow sombra = new DropShadow();
 
     @FXML
-    Button btnNormal, btnImagen, botonPantalla;
+    Button btnNormal, btnImagen, botonPantalla, botonSeleccion, bDialogoInfo,
+            bDialogoConfirmacion, bDialogoInput, bDialogoBotones, bDialogoChoice,
+            bDialogoPerso;
 
     @FXML
     Tab tabBotones, tabTextos;
@@ -53,6 +56,9 @@ public class ControladoraVentanaUno implements Initializable {
     @FXML
     ChoiceBox choice;
 
+    @FXML
+    ListView lista;
+
     ToggleGroup grupoRadios;
 
 
@@ -63,7 +69,19 @@ public class ControladoraVentanaUno implements Initializable {
         instancias();
         personalizarBoton();
         personalizarCombo();
+        personalizarLista();
         acciones();
+    }
+
+    private void personalizarLista() {
+        ObservableList listaElementos = FXCollections.observableArrayList();
+        listaElementos.addAll(new Persona("Nombre", "Apellido"),
+                new Persona("Nombre1", "Apellido1"),
+                new Persona("Nombre2", "Apellido1"),
+                new Persona("Nombre3", "Apellido1"),
+                new Persona("Nombre4", "Apellido1"),
+                new Persona("Nombre5", "Apellido1"));
+        lista.setItems(listaElementos);
     }
 
     private void personalizarCombo() {
@@ -101,13 +119,21 @@ public class ControladoraVentanaUno implements Initializable {
 
     private void acciones() {
 
+
+        botonSeleccion.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Persona p = (Persona) lista.getSelectionModel()
+                        .getSelectedItem();
+                System.out.println(p.getEstado());
+            }
+        });
         botonPantalla.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 VentanaDos ventanaDos = new VentanaDos(textoMaterial.getText());
             }
         });
-
         btnNormal.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -119,6 +145,11 @@ public class ControladoraVentanaUno implements Initializable {
         btnNormal.setOnMouseExited(new ManejoRaton());
         btnImagen.setOnMousePressed(new ManejoRaton());
         btnImagen.setOnMouseReleased(new ManejoRaton());
+        bDialogoInfo.setOnAction(new ManejoPulsaciones());
+        bDialogoConfirmacion.setOnAction(new ManejoPulsaciones());
+        bDialogoBotones.setOnAction(new ManejoPulsaciones());
+
+
         check.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
@@ -135,6 +166,13 @@ public class ControladoraVentanaUno implements Initializable {
                 Persona seleccionado = (Persona) newValue.getUserData();
                 System.out.println(seleccionado.getEstado()
                 );
+            }
+        });
+        lista.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                Persona p = (Persona) newValue;
+                System.out.println(p.getEstado());
             }
         });
     }
@@ -159,4 +197,60 @@ public class ControladoraVentanaUno implements Initializable {
             }
         }
     }
+
+    class ManejoPulsaciones implements EventHandler<ActionEvent> {
+
+        @Override
+        public void handle(ActionEvent event) {
+            if (event.getSource() == bDialogoInfo) {
+                Alert dialogoInfo = new Alert(Alert.AlertType.WARNING);
+                dialogoInfo.setTitle("Título info");
+                dialogoInfo.setHeaderText("Header info");
+                dialogoInfo.setContentText("Contenido del diálogo de información");
+                dialogoInfo.show();
+
+            } else if (event.getSource() == bDialogoConfirmacion) {
+
+                Alert dialogoConfirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+                dialogoConfirmacion.setTitle("Título confirmacion");
+                dialogoConfirmacion.setHeaderText("Header confirmacion");
+                dialogoConfirmacion.setContentText("Contenido del diálogo de confirmacion");
+                Optional<ButtonType> resultado = dialogoConfirmacion.showAndWait();
+
+                if (resultado.get() == ButtonType.OK) {
+                    System.out.println("pulsado ok");
+                } else if (resultado.get() == ButtonType.CANCEL) {
+                    System.out.println("pulsado cancelar");
+                }
+
+
+            } else if (event.getSource() == bDialogoBotones) {
+
+                ButtonType b1 = new ButtonType("ejemplo1");
+                ButtonType b2 = new ButtonType("ejemplo2");
+                ButtonType b3 = new ButtonType("ejemplo3");
+
+                Alert dialogoBotones = new Alert(Alert.AlertType.CONFIRMATION);
+                dialogoBotones.setTitle("Título confirmacion");
+                dialogoBotones.setHeaderText("Header confirmacion");
+                dialogoBotones.setContentText("Contenido del diálogo de confirmacion");
+                dialogoBotones.getButtonTypes().setAll(b1,b2,b3);
+                Optional<ButtonType> resultado = dialogoBotones.showAndWait();
+
+                if (resultado.get() == b1) {
+                    System.out.println("pulsado ok");
+                }
+
+            } else if (event.getSource() == bDialogoInput) {
+
+
+
+            } else if (event.getSource() == bDialogoChoice) {
+
+            } else if (event.getSource() == bDialogoPerso) {
+
+            }
+        }
+    }
+
 }
