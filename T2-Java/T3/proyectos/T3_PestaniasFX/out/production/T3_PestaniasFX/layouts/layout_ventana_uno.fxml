@@ -134,6 +134,28 @@
                   </FlowPane>
                </content>
             </Tab>
+            <Tab text="Tablas">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <center>
+                        <TableView fx:id="tabla" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
+                          <columns>
+                              <TableColumn fx:id="columnaNombre" prefWidth="75.0" text="Nombre" />
+                            <TableColumn fx:id="columnaApellido" prefWidth="75.0" text="Apellido" />
+                            <TableColumn fx:id="columnaEdad" prefWidth="75.0" text="Edad" />
+                              <TableColumn fx:id="columnaDisponibilidad" prefWidth="75.0" text="Disponibilidad" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </center>
+                     <top>
+                        <TextField fx:id="textoBuscar" promptText="introduce nombre a buscar" BorderPane.alignment="CENTER" />
+                     </top>
+                  </BorderPane>
+               </content>
+            </Tab>
         </tabs>
       </TabPane>
    </center>

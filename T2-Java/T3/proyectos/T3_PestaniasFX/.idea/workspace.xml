@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/src/controladoras/ControladoraVentanaUno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controladoras/ControladoraVentanaUno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/layout_ventana_uno.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/layout_ventana_uno.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Persona.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -65,18 +67,65 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controladoras/ControladoraVentanaUno.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="276" column="62" selection-start-line="276" selection-start-column="62" selection-end-line="276" selection-end-column="62" />
+            <state relative-caret-position="188">
+              <caret line="168" column="16" selection-start-line="168" selection-start-column="16" selection-end-line="168" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#personalizarLista#0;class#ControladoraVentanaUno#0" />
                 <element signature="method#personalizarCombo#0;class#ControladoraVentanaUno#0" />
-                <element signature="e#3813#3814#0" expanded="true" />
-                <element signature="e#3908#3909#0" expanded="true" />
+                <element signature="e#5513#5514#0" expanded="true" />
+                <element signature="e#5608#5609#0" expanded="true" />
                 <element signature="class#ManejoRaton#0;class#ControladoraVentanaUno#0" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/Persona.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-543">
+              <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#482#483#0" expanded="true" />
+                <element signature="e#684#685#0" expanded="true" />
+                <element signature="e#723#724#0" expanded="true" />
+                <element signature="e#779#780#0" expanded="true" />
+                <element signature="e#812#813#0" expanded="true" />
+                <element signature="e#851#852#0" expanded="true" />
+                <element signature="e#892#893#0" expanded="true" />
+                <element signature="e#950#951#0" expanded="true" />
+                <element signature="e#985#986#0" expanded="true" />
+                <element signature="e#1017#1018#0" expanded="true" />
+                <element signature="e#1054#1055#0" expanded="true" />
+                <element signature="e#1109#1110#0" expanded="true" />
+                <element signature="e#1140#1141#0" expanded="true" />
+                <element signature="e#1185#1186#0" expanded="true" />
+                <element signature="e#1232#1233#0" expanded="true" />
+                <element signature="e#1297#1298#0" expanded="true" />
+                <element signature="e#1338#1339#0" expanded="true" />
+                <element signature="e#376#377#0" expanded="true" />
+                <element signature="e#405#406#0" expanded="true" />
+                <element signature="e#441#442#0" expanded="true" />
+                <element signature="e#473#474#0" expanded="true" />
+                <element signature="e#501#502#0" expanded="true" />
+                <element signature="e#528#529#0" expanded="true" />
+                <element signature="e#569#570#0" expanded="true" />
+                <element signature="e#606#607#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/layouts/layout_ventana_uno.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="139">
+              <caret line="145" column="66" selection-start-line="145" selection-start-column="66" selection-end-line="145" selection-end-column="66" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
     </leaf>
@@ -100,7 +149,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/utils/Persona.java" />
         <option value="$PROJECT_DIR$/src/controladoras/ControladoraVetanaDos.java" />
         <option value="$PROJECT_DIR$/src/ventanas/VentanaUno.java" />
         <option value="$PROJECT_DIR$/src/Entrada.java" />
@@ -115,6 +163,7 @@
         <option value="$PROJECT_DIR$/src/controladoras/ControladoraVentanaDosSceneUno.java" />
         <option value="$PROJECT_DIR$/src/controladoras/ControladoraVentanaDosSceneDos.java" />
         <option value="$PROJECT_DIR$/src/layouts/layout_ventana_uno.fxml" />
+        <option value="$PROJECT_DIR$/src/utils/Persona.java" />
         <option value="$PROJECT_DIR$/src/controladoras/ControladoraVentanaUno.java" />
       </list>
     </option>
@@ -152,13 +201,7 @@
               <item name="T3_PestaniasFX" type="b2602c69:ProjectViewProjectNode" />
               <item name="T3_PestaniasFX" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="controladoras" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="T3_PestaniasFX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="T3_PestaniasFX" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="T3_PestaniasFX" type="b2602c69:ProjectViewProjectNode" />
@@ -332,7 +375,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3276515" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3276515" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -371,17 +414,6 @@
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java" />
     <entry file="file://$PROJECT_DIR$/src/resources/button_ok.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/Persona.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
-          <folding>
-            <element signature="e#353#354#0" expanded="true" />
-            <element signature="e#387#388#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Entrada.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -479,22 +511,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/layouts/layout_ventana_uno.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="131" column="52" selection-start-line="131" selection-start-column="52" selection-end-line="131" selection-end-column="52" />
+        <state relative-caret-position="139">
+          <caret line="145" column="66" selection-start-line="145" selection-start-column="66" selection-end-line="145" selection-end-column="66" />
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/Persona.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-543">
+          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#482#483#0" expanded="true" />
+            <element signature="e#684#685#0" expanded="true" />
+            <element signature="e#723#724#0" expanded="true" />
+            <element signature="e#779#780#0" expanded="true" />
+            <element signature="e#812#813#0" expanded="true" />
+            <element signature="e#851#852#0" expanded="true" />
+            <element signature="e#892#893#0" expanded="true" />
+            <element signature="e#950#951#0" expanded="true" />
+            <element signature="e#985#986#0" expanded="true" />
+            <element signature="e#1017#1018#0" expanded="true" />
+            <element signature="e#1054#1055#0" expanded="true" />
+            <element signature="e#1109#1110#0" expanded="true" />
+            <element signature="e#1140#1141#0" expanded="true" />
+            <element signature="e#1185#1186#0" expanded="true" />
+            <element signature="e#1232#1233#0" expanded="true" />
+            <element signature="e#1297#1298#0" expanded="true" />
+            <element signature="e#1338#1339#0" expanded="true" />
+            <element signature="e#376#377#0" expanded="true" />
+            <element signature="e#405#406#0" expanded="true" />
+            <element signature="e#441#442#0" expanded="true" />
+            <element signature="e#473#474#0" expanded="true" />
+            <element signature="e#501#502#0" expanded="true" />
+            <element signature="e#528#529#0" expanded="true" />
+            <element signature="e#569#570#0" expanded="true" />
+            <element signature="e#606#607#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/controladoras/ControladoraVentanaUno.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="276" column="62" selection-start-line="276" selection-start-column="62" selection-end-line="276" selection-end-column="62" />
+        <state relative-caret-position="188">
+          <caret line="168" column="16" selection-start-line="168" selection-start-column="16" selection-end-line="168" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#personalizarLista#0;class#ControladoraVentanaUno#0" />
             <element signature="method#personalizarCombo#0;class#ControladoraVentanaUno#0" />
-            <element signature="e#3813#3814#0" expanded="true" />
-            <element signature="e#3908#3909#0" expanded="true" />
+            <element signature="e#5513#5514#0" expanded="true" />
+            <element signature="e#5608#5609#0" expanded="true" />
             <element signature="class#ManejoRaton#0;class#ControladoraVentanaUno#0" />
           </folding>
         </state>
