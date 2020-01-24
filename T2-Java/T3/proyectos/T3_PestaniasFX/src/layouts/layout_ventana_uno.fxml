@@ -156,6 +156,22 @@
                   </BorderPane>
                </content>
             </Tab>
+            <Tab text="Estilos">
+               <content>
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <BorderPane opacity="0.29" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #E43333;">
+                           <StackPane.margin>
+                              <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+                           </StackPane.margin>
+                           <center>
+                              <Label style="-fx-font-size: 50px; -fx-background-color: #FFFFFF; -fx-opacity: 0.5;" text="Ejemplo de texto" BorderPane.alignment="CENTER" />
+                           </center>
+                        </BorderPane>
+                     </children>
+                  </StackPane>
+               </content>
+            </Tab>
         </tabs>
       </TabPane>
    </center>
