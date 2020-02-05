@@ -1,0 +1,22 @@
+<div class="container">
+    <h1>APP WEB realizada por {{nombre}}</h1>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Contenido de la aplicación de DI </h1>
+            <p class="lead">Esto es un ejemplo de aplicacación realizada con angular 8 para la asignarura de DI</p>
+        </div>
+    </div>
+
+
+    <div class="row">
+
+        <div class="card" style="width: 18rem;" *ngFor="let item of elementos">
+            <img [src]="item.getImagen()" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{item.getTitulo()}}</h5>
+                <p class="card-text">{{item.getDescripcion()}}</p>
+                <a href="#" class="btn btn-primary">ver detalle</a>
+            </div>
+        </div>
+
+    </div>
