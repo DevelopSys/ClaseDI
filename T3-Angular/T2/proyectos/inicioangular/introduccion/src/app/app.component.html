@@ -1,4 +1,7 @@
 <div class="container">
+
+    <app-principal></app-principal>
+
     <h1>APP WEB realizada por {{nombre}}</h1>
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
@@ -23,7 +26,7 @@
 
     <div [ngSwitch]="mostrarCurso">
         <div class="row" *ngSwitchCase="'dam1'">
-            <div class="card" style="width: 18rem;" *ngFor="let item of asignaturasDAM1">
+            <div class="card" style="width: 18rem;" *ngFor="let item of asignaturas">
                 <div class="card-header">{{item.nombre}} {{item.siglas}}</div>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
@@ -38,7 +41,7 @@
             </div>
         </div>
         <div class="row" *ngSwitchCase="'dam2'">
-            <div class="card" style="width: 18rem;" *ngFor="let item of asignaturasDAM2">
+            <div class="card" style="width: 18rem;" *ngFor="let item of asignaturas">
                 <div class="card-header">{{item.nombre}}</div>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
@@ -57,7 +60,7 @@
 
     <div class="row" *ngIf="mostrarTecnologias">
 
-        <div class="card" style="width: 18rem;" *ngFor="let item of elementos">
+        <div class="card" style="width: 18rem;" *ngFor="let item of tecnologias">
             <img [src]="item.getImagen()" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{item.getTitulo()}}</h5>
