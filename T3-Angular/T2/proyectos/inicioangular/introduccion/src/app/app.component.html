@@ -22,10 +22,36 @@
     </div>
 
     <div [ngSwitch]="mostrarCurso">
-        <div *ngSwitchCase="'dam1'">
-            <div class="card"></div>
+        <div class="row" *ngSwitchCase="'dam1'">
+            <div class="card" style="width: 18rem;" *ngFor="let item of asignaturasDAM1">
+                <div class="card-header">{{item.nombre}} {{item.siglas}}</div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" *ngFor="let itemC of item.conocimientos">{{itemC}}</li>
+                    </ul>
+                    <div class="nav justify-content-end">
+                        <img [src]="itemI.getImagen()" alt="..." style="width: 40px; height: 40px; margin-right: 10px; " *ngFor="let itemI of item.tecnologias">
+                    </div>
+
+                    <button #elemento class="btn btn-primary btn-block">ver detalle</button>
+                </div>
+            </div>
         </div>
-        <div *ngSwitchCase="'dam2'">Estas son las asignaturas de dam2</div>
+        <div class="row" *ngSwitchCase="'dam2'">
+            <div class="card" style="width: 18rem;" *ngFor="let item of asignaturasDAM2">
+                <div class="card-header">{{item.nombre}}</div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" *ngFor="let itemC of item.conocimientos">{{itemC}}</li>
+                    </ul>
+
+                    <div class="nav justify-content-end">
+                        <img [src]="itemI.getImagen()" alt="..." style="width: 40px; height: 40px; margin-right: 10px; " *ngFor="let itemI of item.tecnologias">
+                    </div>
+                    <button #elemento class="btn btn-primary btn-block">ver detalle</button>
+                </div>
+            </div>
+        </div>
         <div *ngSwitchDefault>Este es el div que se mostrará por defecto</div>
     </div>
 
