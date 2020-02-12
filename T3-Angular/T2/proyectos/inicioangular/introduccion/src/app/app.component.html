@@ -7,15 +7,36 @@
         </div>
     </div>
 
+    <button type="button" class="btn btn-success btn-block" (click)='mostrarTecnologias=!mostrarTecnologias'>Ver tecnologías</button>
 
-    <div class="row">
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" #exampleRadios1 value="dam1" (change)="cambiarCurso(exampleRadios1.value)">
+        <label class="form-check-label" for="exampleRadios1">
+          DAM 1
+        </label>
+
+        <input class="form-check-input" style="margin-left: 50px;" type="radio" name="exampleRadios" #exampleRadios2 value="dam2" (change)='cambiarCurso(exampleRadios2.value)'>
+        <label class="form-check-label" style="margin-left: 80px;" for="exampleRadios2">
+          DAM 2
+        </label>
+    </div>
+
+    <div [ngSwitch]="mostrarCurso">
+        <div *ngSwitchCase="'dam1'">
+            <div class="card"></div>
+        </div>
+        <div *ngSwitchCase="'dam2'">Estas son las asignaturas de dam2</div>
+        <div *ngSwitchDefault>Este es el div que se mostrará por defecto</div>
+    </div>
+
+    <div class="row" *ngIf="mostrarTecnologias">
 
         <div class="card" style="width: 18rem;" *ngFor="let item of elementos">
             <img [src]="item.getImagen()" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{item.getTitulo()}}</h5>
                 <p class="card-text">{{item.getDescripcion()}}</p>
-                <a href="#" class="btn btn-primary">ver detalle</a>
+                <button #elemento class="btn btn-primary btn-block" (click)="mandarMensaje(item)">ver detalle</button>
             </div>
         </div>
 

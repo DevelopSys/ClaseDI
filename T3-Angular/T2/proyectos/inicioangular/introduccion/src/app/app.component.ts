@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Tecnologia } from './utils/tecnologia';
 import { TecnologiaInt } from './utils/tecnologia_dos';
+import { Asignatura } from './utils/asignatura';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,8 @@ export class AppComponent {
 
   title = 'introduccion';
   nombre: string = 'Borja Martin';
+  mostrarTecnologias: boolean = true;
+  mostrarCurso: string;
   rutaImagen: string = '../assets/images/java.png';
   objetoJava: Tecnologia = new Tecnologia('Java', 'Multiplataforma desarrollado por Oracle', '../assets/images/java.png');
   objetoPs: Tecnologia = new Tecnologia('Powershell', 'Desarrollado para la administración de SO', '../assets/images/powershell.png');
@@ -20,8 +23,22 @@ export class AppComponent {
   objetoPy: Tecnologia = new Tecnologia('Python', 'Desarrollado para backend y ia', '../assets/images/python.jpg');
   objetoAn: Tecnologia = new Tecnologia('Angular', 'Multiplataforma desarrollado por google', '../assets/images/angular-icon.svg');
   objetoJs: Tecnologia = new Tecnologia('JavaScript', 'BackEnd y FrontEnd', '../assets/images/js.jpg');
-  elementos: Tecnologia[] = [this.objetoJava, this.objetoPs, this.objetoHtml, this.objetoMysql, this.objetoPhp, this.objetoPy, 
-    this.objetoAn, this.objetoJs];
+  elementos: Tecnologia[] = [this.objetoJava, this.objetoPs, this.objetoHtml, this.objetoMysql, this.objetoPhp, this.objetoPy, this.objetoAn, this.objetoJs];
+  asignaturasDAM1: Asignatura[];
+  asignaturasDAM2: Asignatura[];
 
+
+    mandarMensaje(elemento: Tecnologia){
+      console.log(elemento.getDescripcion());
+    }
+
+    cambiarTecnologia(){
+      console.log(this.mostrarTecnologias);
+      this.mostrarTecnologias = !this.mostrarTecnologias;
+    }
+
+    cambiarCurso(elemento: string) {
+      this.mostrarCurso = elemento;
+    }
 
 }

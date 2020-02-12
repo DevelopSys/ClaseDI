@@ -3,3 +3,4 @@ export interface TecnologiaInt {
     imagen: string;
     descripcion: string;
 }
+
