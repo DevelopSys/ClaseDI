@@ -60,42 +60,42 @@ export class DatosCiclosService {
   asignaturasDAM: Asignatura[] = [
     {
       nombre: "Programación",
-      ciclo: "DAM1",
+      ciclo: "dam1",
       siglas: "PRO",
       tecnologias: [this.objetoJava],
       conocimientos: ["Programación", "Herencia", 'Polimorfismo']
     }, 
     {
       nombre: "Sistemas",
-      ciclo: "DAM1",
+      ciclo: "dam1",
       siglas: "SI",
       tecnologias: [this.objetoPs, this.objetoJs],
       conocimientos: ['Sistemas Operativos', 'Windows', 'Linux']
     }, 
     {
       nombre: "Lenguaje de marcas",
-      ciclo: "DAM1",
+      ciclo: "dam1",
       siglas: "XML",
       tecnologias: [this.objetoJs, this.objetoHtml],
       conocimientos: ['XML', 'Webs', 'Wordpress']
     },
     {
       nombre: "Desarrollo de interfaces",
-      ciclo: "DAM2",
+      ciclo: "dam2",
       siglas: "DI",
       tecnologias: [this.objetoJava, this.objetoAn],
       conocimientos: ["Utilizadad", "Interfaces", "Multiplataforma"]
     }, 
     {
       nombre: "Programación multimedia",
-      ciclo: "DAM2",
+      ciclo: "dam2",
       siglas: "PMDM",
       tecnologias: [this.objetoJava, this.objetoAn],
       conocimientos: ['Android', 'Moviles', 'XML']
     }, 
     {
       nombre: "Programación de proceses",
-      ciclo: "DAM2",
+      ciclo: "dam2",
       siglas: "PSP",
       tecnologias: [this.objetoJava, this.objetoAn],
       conocimientos: ['Hilos', 'Procesos', 'Comunicaciones']
@@ -110,5 +110,17 @@ export class DatosCiclosService {
 
   getAllTecnologias(): Tecnologia[] {
     return this.tecnologias;
+  }
+
+  getAsignaturasDam(ciclo: string): Asignatura[] {
+
+    let asignaturasDAMCiclo: Asignatura[] = [];
+    this.asignaturasDAM.forEach(element => {
+      if (element.ciclo === ciclo){
+        asignaturasDAMCiclo.push(element);
+      }
+    });
+
+    return asignaturasDAMCiclo;
   }
 }
