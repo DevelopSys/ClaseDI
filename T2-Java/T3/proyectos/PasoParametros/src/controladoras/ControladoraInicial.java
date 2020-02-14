@@ -26,6 +26,8 @@ public class ControladoraInicial implements Initializable {
     @FXML
     BorderPane borderGeneral;
 
+    @FXML Button botonP2;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -64,7 +66,7 @@ public class ControladoraInicial implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource( "../layouts/parte_uno.fxml"));
-                loader.setController(this);
+                //loader.setController(this);
 
                 try {
                     borderGeneral.setCenter(loader.load());
@@ -73,8 +75,5 @@ public class ControladoraInicial implements Initializable {
                 }
             }
         });
-
-
-
     }
 }
