@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-barra-superior',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BarraSuperiorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private navegacion: Router) { }
 
   ngOnInit() {
+  }
+
+  navegar(parametro: string){
+    console.log(parametro);
+    this.navegacion.navigate(['tecnologias', parametro]);
   }
 
 }
