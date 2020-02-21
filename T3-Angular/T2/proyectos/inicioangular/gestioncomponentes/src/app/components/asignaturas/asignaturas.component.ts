@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { DatosService } from '../../services/datos.service';
 
 @Component({
   selector: "app-asignaturas",
@@ -7,14 +8,18 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ["./asignaturas.component.css"]
 })
 export class AsignaturasComponent implements OnInit {
+  
   parametro: string;
-
-  constructor(private rutas: ActivatedRoute) {}
+  miArray: string[];
+  constructor(private rutas: ActivatedRoute, private servicio: DatosService) {}
 
   ngOnInit() {
-    this.rutas.params.subscribe(param => {
-        console.log(param)
+    this.rutas.params.subscribe(loquesea => {
+        this.parametro = loquesea.parametro;
+
     });
-    console.log(`Elemento pasado por parámetros ${this.parametro}`);
+    console.log(`El contenido de la variable pasada es ${this.parametro}`);
+
+    this.miArray = this.servicio.getArrayDos();
   }
 }

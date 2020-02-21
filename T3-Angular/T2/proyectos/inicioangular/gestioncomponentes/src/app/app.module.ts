@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { BarraSuperiorComponent } from './components/barra-superior/barra-superior.component';
 import { CentralComponent } from './components/central/central.component';
 import { AsignaturasComponent } from './components/asignaturas/asignaturas.component';
+import { TecnologiahijoComponent } from './components/tecnologiahijo/tecnologiahijo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BarraSuperiorComponent,
     CentralComponent,
-    AsignaturasComponent
+    AsignaturasComponent,
+    TecnologiahijoComponent
   ],
   imports: [
     BrowserModule,

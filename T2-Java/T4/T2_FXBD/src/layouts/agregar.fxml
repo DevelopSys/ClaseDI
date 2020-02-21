@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" fx:controller="controladoras.ControladoraAgregar" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+  <columnConstraints>
+    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Label text="Nombre" />
+      <Label text="Apellido" GridPane.rowIndex="1" />
+      <Label text="Telefono" GridPane.rowIndex="2" />
+      <Button mnemonicParsing="false" text="Agregar" GridPane.columnSpan="2" GridPane.rowIndex="3" fx:id="boton_agregar" />
+      <TextField GridPane.columnIndex="1" fx:id="nombre" promptText="intro nombre"/>
+      <TextField GridPane.columnIndex="1" GridPane.rowIndex="1"  fx:id="apellido" promptText="intro apellido" />
+      <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="telefono" promptText="intro telefono"/>
+   </children>
+</GridPane>
