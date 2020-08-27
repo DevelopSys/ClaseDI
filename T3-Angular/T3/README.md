@@ -5,19 +5,27 @@
 	- Pipes
 #### [Volver al índice](#tema3)
 
-#### Bootstrap
+# Bootstrap
 
 Bootstrap es un framework CSS que agrega multitud de estilos a una aplicacion web. Gracias a esta cantidad de estilos, desarrollar interfaces gráficas atractivas es bastante sencillo. Existen dos posibilidades de implementación: 
 - Implementación online: se trata de una implementación donde todos los estilos estarán disponibles en la aplicación gracias a un link del framework. De forma generalizada esta es la forma de trabajar
 - Implementación offline: en algunos casos no es conveniente tener una dependencia de internet (escenarios de pruebas por ejemplo), por lo que es necesario que todos los elementos están disponibles en modo sin conexión.
 
-##### Implementación online
+## Implementación online
 
 Para poder hacer una implementación online, tan solo hay que abrir la parte de la <a href="https://getbootstrap.com/docs/4.3/getting-started/download/" target="_blank">documentación oficial</a> donde se referencia el link que debe agregarse al proyecto.
 
 Los links que se deben agregar al proyecto son los siguientes:
 ````
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+````
+
+Como muchos de los elementos de bootstrap utilizan js y librerías parecidas, también es necesario poner los links referentes a estas librerías
+
+````
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 ````
 
 Este link debe ir situado en en archivo índex.html, dentro de la etiqueta ````<head>````
@@ -33,6 +41,9 @@ Este link debe ir situado en en archivo índex.html, dentro de la etiqueta ````<
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -53,9 +64,9 @@ De esta forma dentro del proyecto se podrá utiliza cualquier estilo creado en b
 <h2>Here are some links to help you start: </h2>
 <p class="container-fluid"></p>
 ````
-En la documentación oficial se pueden buscar todas las posibilidades
 
-##### Implementación offline
+
+## Implementación offline
 
 Para poder hacer una implementación offline hay que seguir los siguientes pasos:
 1. Descargar el zip con la version de <a href="https://getbootstrap.com/docs/4.3/getting-started/download/" target="_blank">bootstrap</a>
@@ -95,10 +106,79 @@ En este caso, y para referenciar que los estilos serán manejados por el módulo
 ]
 ````
 
-**Integrar FontAwesome**
+
+En la documentación oficial se pueden buscar todas las posibilidades. Uno de los estilos de maquetación más utilizados es el de columnas o grid, donde  se divide cada fila en 12 columnas. El usuario indica cual es la forma en la que quiere que se dividan las columnas pudiendo indicar el número de columnas que quiere que ocupe el elemento
+
+En el caso de querer que las columnas ocupen lo mismo se utiliza la clase col, y en el caso de querer que ocupe una medida concreta se utiliza col-1 (o el número que se quiere utilizar)
+
+````
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Columna 1</h1>
+            <div>
+                <p>Esta es la primera columna aplicando tan solo la clase col </p>
+            </div>
+        </div>
+        <div class="col">
+            <h1>Columna 2</h1>
+            <p>Esta es la segunda columna aplicando tan solo la clase col </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <h1>Columna 1</h1>
+            <p>Esta es la segunda columna aplicando tan solo la clase col </p>
+
+        </div>
+        <div class="col-6 ">
+            <h1>Columna 2</h1>
+            <p>Esta es la segunda columna aplicando tan solo la clase col-6 </p>
+
+        </div>
+        <div class="col">
+            <h1>Columna 3</h1>
+            <p>Esta es la tercera columna aplicando tan solo la clase col </p>
+
+        </div>
+    </div>
+</div>
+````
+
+En este caso las columnas de la primera fila se reparten por igual, mientras que las columnas de la segunda fila ocupan 3, 6 y 3 respectivamente
+
+Existe la posibilidad de querer personalizar un poco la UI dependiendo de cuánto ocupe la pantalla ya que no es lo mismo una pantalla grande que una pequeña. Para esta distinción de tamaños se utilizan las siguientes medidas:
+
+- Pantallas grandes (LG) > 1200 pixels
+- Pantlallas medias (MD) > 992 pixels
+- Pantallas tipo tablet (SM) > 768 pixels
+
+Con estas medidas se puede indicar cuantas unidades ocupa cada columna dependiendo del tamaño de la pantalla de la siguiente forma
+
+````
+<div class="row">
+        <div class="lg-col-3 md-col-4 sm-col-6">
+            <h1>Columna 1</h1>
+        </div>
+        <div class="lg-col-3 md-col-4 sm-col-6">
+            <h1>Columna 2</h1>
+        </div>
+        <div class="lg-col-3 md-col-4 sm-col-6">
+            <h1>Columna 3</h1>
+        </div>
+        <div class="lg-col-3 md-col-4 sm-col-6">
+            <h1>Columna 4</h1>
+        </div>
+    </div>
+````
+
+En este ejemplo para pantallas lg se situarán 4 columnas (4*3 = 12), para pantallas md  3 columnas (3*4 = 12) y para pantallas sm 2 columnas (2*6=12)
 
 
-##### Plantillas y Data-binding
+
+
+# Plantillas y Data-binding
 
 Como ya se ha comentado, los componentes de Angular son los elementos principales de la aplicación. Estos constan de dos partes que son las que realizan casi todo el trabajo: parte gráfica y parte lógica. Lo normal es que los datos de una parte sean utilizados en la otra y viceversa. Esto es lo que se conoce como DataBinding y existen dos grandes tipos:
 
@@ -116,7 +196,7 @@ Como ya se ha comentado, los componentes de Angular son los elementos principale
 - Two Way binding: Cuando se produce una comunicación entre el componente y el DOM de la página al mismo tiempo. Muy utilizado en el caso de los formularios.````[(ngModel)]="data"````
 
 
-##### One Way binding
+## One Way binding
 Dentro de este tipo de binding lo más importante es ser capaz de diferenciar un atributo de una propiedad. Para ello es recomendable leer el siguiente <a href = "https://angular.io/guide/template-syntax#html-attribute-vs-dom-property" target="_blank">link</a>
 
 **Interpolation binding**
@@ -268,7 +348,7 @@ Del mismo modo que pasa en los bindings anteriores, a un evento también se le p
 
 ````
 
-##### Two Way binding
+## Two Way binding
 
 Sobre todo es utilizada en formularios y se produce cuando hay una comunicación bidireccional entre el elemento ts y el elemento html, es decir que sus componentes realizan comunicación en ambos sentidos. Para ello se utilizan los caracteres [()]
 
@@ -289,7 +369,7 @@ Sobre todo es utilizada en formularios y se produce cuando hay una comunicación
 
 ````
 
-#### Directivas
+# Directivas
 
 Las directivas en Angular son aquellos elementos que permiten modificar el DOM de la página de forma dinámica. Un ejemplo sería mostrar un conjunto de datos dentro de una página web donde no se sabe exactamente cuántos elementos se deben mostrar, por lo que no se puede saber cuantos divs hay que hacer. Existen 3 tipos de directivas:
 - Directivas de componente: son aquellas que permiten agregar un componente al DOM de la página. Como se explicó cuando se hablo de componentes, si se quiere agregar un componente a la parte gráfica de otro componente se debe utilizar el selector. El uso de este selector sería la propia directiva de componente.
@@ -310,7 +390,7 @@ Las directivas en Angular son aquellos elementos que permiten modificar el DOM d
 	- NgModel
 	- NgForm
 
-##### Directivas de componente
+## Directivas de componente
 Antes de ver cada una de ellas, es importante saber que tan solo se puede aplicar una directiva estructural por componente
 
 **ngIf**
@@ -650,7 +730,7 @@ grupoSeleccionado(event: any) {
 
 Para poder pasar como parámetro el evento realizado hay que poner el caracter $event 
 
-##### Directivas de atributo
+## Directivas de atributo
 
 Son aquellas que permiten modificar el DOM de la página pero no mostrando u ocultando elementos, sino que modificando propiedades de los elementos donde son configuradas. A diferencia de las anteriores, se pueden aplicar varias directivas de atributo al mismo componente
 
@@ -814,7 +894,8 @@ estilosDinamicos = {'font-size': '50px' , 'background-color' : 'green'};
 <div [ngStyle]="{'font-size': '50px' , 'background-color' : 'green'}">
 </div>
 ````
-#### Pipes
+
+# Pipes
 
 Los pipes actúan como funciones de transformación de datos, es decir que toman una entrada cualquiera y la transforman para que esta sea mostrada de forma diferente. Para poder utilizarlos el caracter | debe seguir a la información que se quiere transformar. Los tipos de pipes que existen son:
 
@@ -988,7 +1069,7 @@ Permite mostrar de forma "legible" on objeto de tipo son
 
 Permite mostrar datos que provienen de Observables o promesas 
 
-#### Personalización: Directivas y Pipes
+# Personalización: Directivas y Pipes
 
 
 

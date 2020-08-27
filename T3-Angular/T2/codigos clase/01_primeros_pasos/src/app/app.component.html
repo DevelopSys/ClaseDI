@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <h1 style="text-align: center;">Alguno de los hobbies son: (ejemplo de componentes multiples)</h1>
+
+        <div class="row" style="margin-top: 50px; ">
+            <div class="col">
+                <app-futbolistas></app-futbolistas>
+            </div>
+            <div class="col">
+                <app-videojuegos></app-videojuegos>
+            </div>
+        </div>
+
+        <div>
+            <button class="btn btn-primary" (click)='mostrarComponente()'>Mostrar el componente</button>
+
+        </div>
+
+        <app-ciclo-vida *ngIf="visibilidad"></app-ciclo-vida>
+
+    </div>
+</body>
+
+</html>

@@ -24,7 +24,7 @@ Las principales características de Angular son:
 Las versiones de Angular son:
 
 - Angular JS (v1)
-- Angular 2, 4, 5, 6, 7, 8
+- Angular 2, 4, 5, 6, 7, 8,9,10
 
 El paso de la versión 1 a la versión 2 sufrió un gran cambio, donde se incorporó el soporte al lenguaje de programación TypeScript (antes tan solo soportaba JavaScript). La versión tres no llegó nunca a ver la luz ya que en el cambio de la versión 2 a la siguiente, muchos de los componentes internos del framework estaban es su versión 3.x. Para evitar problemas el equipo de Angular decidió saltar a la versión 4, unificando asó la versión de todos sus componentes
 
@@ -275,6 +275,8 @@ if (false) {
     console.log('This will never executed.');
 }    
 ````
+
+- If ternario
 
 - Switch
 ````

@@ -70,7 +70,7 @@ ng new NombreProyecto.
 
 Esto empezará a crear el proyecto, descargando todas las dependencias necesarias. Es posible que se pregunte durante la creación si se quiere añadir el routing de Angular durante la instalación y si se quiere utilizar algún estándar para la gestión de estilos. Esto ayudará bastante a la hora de gestionar el tema de la navegación. 
 
-#### Angular y GitHub
+# Angular y GitHub
 
 Hoy en día en el mundo del desarrollo el trabajo en equipo es un pilar básico para cualquier proyecto. Por eso trabajar con un control de versiones es básico. Para ello manejar un proyecto GitHub y Angular es básico. 
 
@@ -99,7 +99,7 @@ De esta forma el proyecto queda vinculado al repositorio de GitHub. Si se produc
 
 1. Desde View -- Command Pallete seleccionar la opción Pull
 
-#### Estructura de un proyecto
+# Estructura de un proyecto
 
 Los ficheros más importantes dentro de la estructura base del proyecto son:
 
@@ -137,12 +137,109 @@ En el caso de haber iniciado el proyecto con el gestor de rutas de Angular tambi
 ng g m app-routing --routing
 ````
 
-#### Principales elementos
+# Depurar una aplicación de Angular 
 
-Los principales elementos de los que consta una aplicación de Angular son los: componentes y módulos. 
+Para depurar una aplicación de Angular se utiliza el comando ng serve o el comando npm start. Ambos comandos hacen lo mismo ya que uno arranca al otro. Una vez introducido esto en el directorio del proyecto se compila todo el código y se monta la aplicación web en la dirección https://localhost:4200. 
+
+Para poder depurar una aplicación Angular existen dos posibilidades: 
+- La primera es trabajar con la consola integrada en el IDE donde se pueden ver los errores de compilación 
+- Se segunda es trabajar con la consola integrada en la mayoría de navegadores. Se recomienda utilizar la consola de Chrome ya que además de la consola integra una serie de características muy útiles a la hora del desarrollo
+
+Antes de empezar a codificar y practicas con angular, es importantes entender cual es el orden de arranque y los elementos que se consultan.
+
+1. El primer paso que se realiza en la compilación de una aplicación Angular es la consulta del fichero index.html cuyo contenido es el siguiente: 
+
+````
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Primerospasos</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>
+
+````
+
+No sorprende que sea una web, ya que angular básicamente es una página web mejorada con diferenciación entre en fontend y el backend
+
+2. Como se puede ver en este fichero, lo que se representa es una etiqueta llamada  `<app-root>` la cual es capaz de entender ya que está declarada en el archivo main.ts:
+
+````
+import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+import { AppModule } from './app/app.module';
+import { environment } from './environments/environment';
+
+if (environment.production) {
+  enableProdMode();
+}
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));
+````
+
+Este archivo main ts indica que el modulo principal es el AppModule, pudiendo verlo en el archivo appmodule.ts
+
+````
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+````
+
+Este archivo es uno de los principales, ya que indica cuales son los elementos que están contenidos en cada módulo. Digamos que es una parte de la aplicación (inicialmente la única) que contiene todos los elementos que forman parte de ella. Se puede observar que el componente principal (bootstrap) es el AppComponent que está declarado al mismo tiempo como componente. 
+
+3. El siguiente paso es comprobar lo que indica el componente. Esto está definido el en archivo app.component (se puede ver en la importación del fichero anterior). 
+
+````
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'primerospasos';
+}
+
+````
 
 
-##### Módulos
+En este archivo se indica que se trata de un componente que tiene un selector llamado app-root (lo que se utiliza como etiqueta para que sea mostrado), una template url (el archivo html de la vista) y un styleUrls (el archivo css del componente)
+
+4. El último paso es la lectura de los componentes html y css para que se pueda representar la parte gráfica (html y css) y asociar a la parte lógica (ts)
+
+Cuando una aplicación consta de varios componentes, servicios, y módulos estos deben ser declarados dentro del fichero que representa el módulo. En este caso cuando se crea una aplicación de 0 el módulo existente es el app.module.ts, pudiendo crear tantos módulos como sean necesarios
+
+# Principales elementos
+
+Los principales elementos de los que consta una aplicación de Angular principalmente son los: componentes, módulos, pipas y servicios. 
+
+
+## Módulos
 
 Un módulo se puede definir como un aglutinado de componentes. Si estamos trabajando con aplicaciones pequeñas, solamente existirá el módulo raíz. En aplicaciones grandes, es recomendable separar la misma en diferentes módulos según funcionalidades, flujo de trabajo, o alguna otra característica.
 
@@ -170,6 +267,8 @@ export class AppModule { }
 
 ````
 
+Este es el módulo principal de carga de la aplicación.
+
 Cada uno de los elementos declarados dentro del decorador NgModule son:
 
 - declarations: Las view classes que pertenecen a este módulo. Angular tiene 3 tipos de view classes: componentes, directivas, y pipes.
@@ -183,7 +282,7 @@ Si se quiere crear un módulo se utiliza el comando
 ng g m modulo-ejemplo
 ````
 
-#### Componentes
+## Componentes
 
 Se trata del componente más importante y representa la mayor parte del trabajo en angular. Gráficamente se pueden asociar a páginas o partes de una página. Uno de sus principales beneficios es la reutilización ya que en un momento determinado en una SPA desarrollada por Angular se podría estar mostrando al mismo tiempo un componente que se encarga de mostrar un menú con las rutas, otras componente con un listado de elementos que están disponibles dentro de la aplicación, etc....  Esto garantiza tanto la reutilización de código cómo el mantenimiento de la aplicación de una forma mucho más sencilla.
 
@@ -195,10 +294,10 @@ ng g c nombre-componente
 
 Esto generará un componente, el cual está formado por:
 - Una clase typescript que tiene el decorador @Component, donde se definen:
-	- selector: elemento que será nombrado en el html donde sea utilizado
-	- templateUrl: elemento html que representa la parte gráfica del elemento. 
-	- styleUrls: elemento css que representa la parte de estios del elemento. Del mismo modo que en la templateUrl, se puede utilizar los caracteres para definirlo en el propio archivo
-	- providers: array de proveedores de inyección de dependecias (dependency injection providers) para servicios que este componente necesite. Es una de las maneras de informar a Angular que él constructor de este componente necesita una instancia de un servicio concreto. También se pueden indicar en los constructores cómo se verá más adelante.
+- selector: elemento que será nombrado en el html donde sea utilizado
+- templateUrl: elemento html que representa la parte gráfica del elemento. 
+- styleUrls: elemento css que representa la parte de estios del elemento. Del mismo modo que en la templateUrl, se puede utilizar los caracteres para definirlo en el propio archivo
+- providers: array de proveedores de inyección de dependecias (dependency injection providers) para servicios que este componente necesite. Es una de las maneras de informar a Angular que él constructor de este componente necesita una instancia de un servicio concreto. También se pueden indicar en los constructores cómo se verá más adelante.
 
 **Lo suyo es crear todos los componentes bajo una misma estructura. Para ello se puede crear una carpeta dentro de app que se llame components**
 
@@ -289,7 +388,7 @@ describe('ComponenteEjemploComponent', () => {
 
 ````
 
-Al mismo tiempo se deben actualizar dos elementos:
+Al mismo tiempo se deben actualizar dos elementos (solo si se quieren manejar rutas):
 1. **El fichero app-routing.module.ts** encargado de gestionar las rutas de la aplicación (se explicará más adelante), donde se ha incluido en el array de Route la siguiente línea.
 ````
 const routes: Routes = [
@@ -413,4 +512,627 @@ export class ComponenteEjemploComponent implements OnInit {
 
 }
 ````
+
+4. En el caso de querer utilizar un componente generado, simplemente se deberá utilizar la etiqueta (selector) que se le ha asignado en la parte del código html donde se quiera mostar
+
+## Pipes
+
+Los pipes son elementos que permiten la modificación de los datos que se quieren representar en la plantilla HTML. Existen algunos pipes creados:
+
+- uppercase y lowercase: transforma un texto en mayusculas o minúsculas
+- Slice: permite cortar una parte de texto y representarla
+- Decimal: permite representar un número en formato decimal
+- Percent: permite representar un número en formato porcentaje
+- Currency: permite representar un número en formato moneda
+- Json: permite representar un texto en formato json
+- Async: permite asignar un proceso asíncrono a la petición que se aplica
+- Date: permite representar una fecha con un formato concreto
+
+Todos estos pipes son propios de Angular y se utilizan en las plantillas html con el carácter | precedido del elemento que se quiere transformar. Por ejemplo, si en la parte lógica existe:
+
+````
+// en la parte .ts
+let texto = "esto es en minúsculas"
+
+// en la parte .html
+<p>
+En este párrafo existe una transformación por pipe: {{texto | uppercase}}
+</p>
+
+// la salida sería --> En este párrafo existe una transformación por pipe: ESTO ES EN MINÚSCULAS
+````
+
+**Lo suyo es crear todos los pipes bajo una misma estructura. Para ello se puede crear una carpeta dentro de app que se llame pipes**
+
+Al igual que existen pipes creados, nosotros podemos definir nuestros propios pipes:
+
+````
+ng g p src/app/pipe/personalizado
+````
+
+Esto genera una clase nueva que permite declarar el comportamiento del elemento al que se le aplica el pie personalizado
+
+````
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'personalizado'
+})
+export class PersonalizadoPipe implements PipeTransform {
+
+  transform(value: unknown, ...args: unknown[]): unknown {
+    return null;
+  }
+
+}
+````
+
+Se puede ver como en el decorador @pipe se indica cual es el nombre que tendrá que ser utilizado para aplicar la transformación. EN el método transform se indican los elementos que se aplicarán. Por ejemplo si se quiere aplicar una transformación donde el elemento que es pasado tiene menos de 5 letras sería lo siguiente
+
+````
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'personalizado'
+})
+export class PersonalizadoPipe implements PipeTransform {
+
+  transform(elemento: string): unknown {
+
+    if (elemento.length > 5){
+      return 'tiene más de 5 letras';
+    } else if (elemento.length === 0){
+      return 'el elemento no tiene letras';
+    } else {
+      return 'tiene entre 1 y 4 letras';
+    }
+
+  }
+
+}
+
+````
+
+Y en la parte de html se aplicaría de la siguiente forma:
+
+````
+<span>{{ title | personalizado }}: esto es un pipe personalizado</span>
+
+````
+
+En los siguientes temas se explicará el uso de todos los pipes así como sus posibles configuraciones
+
+## Servicios
+
+Los servicios son elementos que permiten la provisión de datos en la aplicación. Por regla general los servicios se conectan remotamente con APIs o servicios web para traer y rellenar de datos a la aplicación. Existen servicios propios y servicios personalizados, donde se puede personalizar el comportamiento del mismo.
+
+**Lo suyo es crear todos los services bajo una misma estructura. Para ello se puede crear una carpeta dentro de app que se llame services**
+
+````
+ng g s src/app/services/personalizado
+````
+
+Esto crea el archivo con el decorador @Injectable que indica que la clase es un servicio
+
+````
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class PersonalizadoService {
+
+  constructor() { }
+}
+````
+
+Los siguientes pasos serán la configuración del servicio y su utilización en alguno de los componentes
+
+# Creación y manejo de componentes
+
+Como se ha dicho un componente es una parte de la aplicación que puede ser o no ser reutilizada. Por ejemplo podemos decir que la parte del menú de navegación, un footer, un formulario, un login, etc... son componentes de una aplicación y estos pueden ser reutilizados si es necesario.  Antes de empezar a implementar la aplicación, es importante tener en cuenta como se va ver nuestra aplicación y cuales serán los elementos que la componen ya que de esta forma la creación y gestión de componentes será mucho más sencilla
+
+Por defecto, nada más crear la aplicación se crea un componente por defecto cuyo nombre es app.component que consta de 3 o 4 archivos:
+
+- app.component.html: representa la parte gráfica del componente. Se trata de HTML "enriquecido" donde se codificará toda la parte gráfica sobre la cual se mostrarán elementos que estarán definidos en la parte lógica (.ts)
+- app.component.ts: representa la parte lógica del componente. En realidad este fichero es el propio componente, ya que en el es donde se asocian todos los elementos entre sí. 
+- app.component.css: representa las reglas del estilo que se aplicarán al componente en cuestión: 
+- app.component.spec: representa las normas o pruebas que se realizarán para testar la funcionalidad del componente. 
+
+Si se ven fichero a fichero se comprueba lo siguiente 
+
+````
+// app.component.ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'Uno';
+}
+
+````
+
+Las importaciones indican todos los módulos, servicios o elementos que este componente podrá utilizar. El decorador @Component  indica que esta clase representa un componente en Angular, cuyos elementos html y css son los ficheros indicados y el selector es app-root. Este selector es el elemento que permitirá su utilización dentro de otros componentes (en la parte html). Por último en la clase se indica el funcionamiento de componente declarando todos los elementos que funcionarán y se relacionarán tanto con la parte gráfica como con otros elementos
+
+Para poder tener tener todo bien organizado se estructura de forma modular, creando una carpeta con el nombre components y dentro de esta otra con el nombre shared donde se ubicarán los componentes que son reutilizados:
+
+````
+src
+--app
+----components
+------shared
+````
+
+1. Dentro de la carpeta componentes se creará un componente que representará la parte central de la aplicación. Para ello se ejecuta el comando : 
+
+````
+ng g c src/app/components/home
+````
+
+La ejecución de este comando creará los ficheros mencionados al principio
+
+````
+CREATE src/app/src/app/components/home/home.component.css (0 bytes)
+CREATE src/app/src/app/components/home/home.component.html (19 bytes)
+CREATE src/app/src/app/components/home/home.component.spec.ts (614 bytes)
+CREATE src/app/src/app/components/home/home.component.ts (267 bytes)
+````
+
+Adicionalmente, cuando creamos un componentes la aplicación debe reconocerlo como tal para que este pueda ser utilizado. Por ello en el archivo app.module se debe declarar el componente generado dentro de la parte de declaraciones
+
+````
+// app.module
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './src/app/components/home/home.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HomeComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+````
+
+Así se podrá utilizar el HomeComponent en cualquier parte. Dentro de este fichero podemos encontrar la siguiente información: 
+
+- declarations: donde se definirán los componentes, pipes y/o directivas que formarán parte del módulo
+- imports: donde aparecerán los módulos externos o propios que utilizaran todos los elementos del propio módulo
+- providers: donde aparecerán los servicios que proveerán de datos a la aplicación
+- bootstrap: donde aparece el componente o módulo que se cargará de inicio.
+
+2. Para comprobar que todo ha funcionado correctamente se modifica el contenido del fichero home.component.html y se pone un simple párrafo 
+
+````
+<h1>Primer componente Angular</h1>
+<p>Este es el primer componente creado con angular creado desde la linea de comandos</p>
+````
+
+Y se comprueba cual es el selector que se debe utilizar para que el componente creado sea mostrado: 
+
+````
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
+})
+export class HomeComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
+````
+
+El selector que se tendrá que utilizar es app-home.
+
+3. En aquellas partes donde se quiere mostrar el componente se declarará como etiqueta, utilizando el selector app-home.
+
+Para ello en el archivo app.component.html se incluirá la etiqueta
+
+````
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <app-home></app-home>
+</body>
+
+</html>
+````
+
+Es importante ver que el componente cuyo selector es app-home puede ser reutilizado, de forma que si es llamado un par de veces, gráficamente será mostrado en dos ocasiones
+
+````
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <app-home></app-home>
+    <app-home></app-home>
+</body>
+
+</html>
+````
+
+Es de suponer que una aplicación Angular consta de n componentes, donde cada uno representa una parte de la aplicación y estos pueden ser mostrados de forma independiente o sobre la misma base. Esto sirve como principio de reutilización, es decir que un componente pude albergar varios componentes al mismo tiempo, de forma que estos puedan ser llamados en otro sitio si es necesario. A la hora de mantener código también se hace muy cómodo ya que tan solo se debe mantener el archivo del módulo que se quiere modificar. Como ejemplo se utilizará una aplicación que muestra hobbies, donde la aplicación consta de:
+
+- app.component: componente principal de la aplicación, donde se muestra un texto explicativo de la aplicación
+- futbolistas.component: componente incluido en app.componente donde muestra uno de los hobbies
+- videojuegos.component: componente incluido en app.componente donde muestra otro de los hobbies.
+
+En este caso tan solo se tocará la parte gráfica, ya que de momento la lógica se explicará en el siguiente tema
+
+**app.component**
+
+Se trata del componente que junta todos los componentes. En este caso se realiza una maquetación por columnas, donde en cada una de ellas aparece un componente diferente
+
+````
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Alguno de los hobbies son: (ejemplo de componentes múltiples)</h1>
+
+        <div class="row" style="margin-top: 50px; ">
+            <div class="col">
+                <app-futbolistas></app-futbolistas>
+            </div>
+            <div class="col"">
+                <app-videojuegos></app-videojuegos>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+````
+
+De forma individual, en cada uno de los componentes se configura su vista
+
+**futbolistas.component**
+
+````
+<div>
+    <h2 style="text-align: center">Fútbol</h2>
+</div>
+
+<ul class="m-2">
+    <li>
+        <h3>
+            <img src="../../../assets/images/iniesta.jpg" alt="Andres iniesta" class="img-thumbnail img-fluid imagen" /> Andres Iniesta
+        </h3>
+    </li>
+    <li>
+        <h3>
+            <img src="../../../assets/images/cantona.jpg" alt="eric cantona" class="img-thumbnail img-fluid imagen" /> Eric Cantona
+        </h3>
+    </li>
+
+    <li>
+        <h3>
+            <img src="../../../assets/images/zidane.jpg" alt="zinedine zidane" class="img-thumbnail img-fluid imagen" /> Zinedine Zidane
+        </h3>
+    </li>
+
+    <li>
+        <h3>
+            <img src="../../../assets/images/ronaldinho.jpg" alt="ronaldinho gaucho" class="img-thumbnail img-fluid imagen" /> Ronaldinho Gaucho
+        </h3>
+    </li>
+</ul>
+
+<div>
+
+</div>
+````
+
+
+**videojuegos.component**
+
+````
+<div>
+    <div>
+        <h2 style=" text-align: center ">Videojuegos</h2>
+    </div>
+
+    <ul class="m-2 ">
+        <li>
+            <h3>
+                <img src="../../../assets/images/final.png " alt="final fantasy " class="img-thumbnail img-fluid imagenxl " /> Final Fantasy X
+            </h3>
+        </li>
+        <li>
+            <h3>
+                <img src="../../../assets/images/thelast.png " alt="the last of us " class="img-thumbnail img-fluid imagenxl " /> The Last of Us
+            </h3>
+        </li>
+
+        <li>
+            <h3>
+                <img src="../../../assets/images/vice.jpg " alt="Gran Thef Auto " class="img-thumbnail img-fluid imagenxl " /> Gran Thef Auto: Vice City
+            </h3>
+        </li>
+
+        <li>
+            <h3>
+                <img src="../../../assets/images/god.png " alt="god of war " class="img-thumbnail img-fluid imagenxl " /> The God of War
+            </h3>
+        </li>
+    </ul>
+</div>
+````
+
+Ademas de la creación y codificación de cada uno de los componentes, también hay que tener en cuenta que si cada uno de ellos pertenece al mismo módulo todos deben estar declarados en el archivo que tiene todos los elementos:
+
+**app.module**
+
+````
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { FutbolistasComponent } from './components/futbolistas/futbolistas.component';
+import { VideojuegosComponent } from './components/videojuegos/videojuegos.component';
+
+
+@NgModule({
+  declarations: [
+    AppComponent, FutbolistasComponent, VideojuegosComponent
+    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+````
+
+# Ciclo de vida de un componente (Hooks)
+
+Al igual que pasa en aplicaciones que manejan diferentes componentes, Angular cuenta con una serie de eventos (interfaces) que permiten manejar el comportamiento a lo largo de la estancia de un componente en la aplicación. Hay que tener en cuenta que todo componente puede ser creado, ser mantenido y ser eliminado de la aplicación y depende del estado de componente se ejecutará un evento u otro. Otra cosa que es importante tener en cuenta es que el constructor es totalmente independiente del estado en el que se encuentre el componente, ya que es el primer método que se ejecuta siempre cuando el componente es agregado en la parte gráfica de la aplicación. 
+
+Para poder utilizar los estados o hooks es necesaria la implementación de su interfaz asociada, lo que lleva a la escritura del método del evento
+
+Los principales hooks de los componentes angular son:
+
+- OnInit: ejecutado nada mas cargar un componente, tras la ejecución del constructor. Se puede utilizar para inicializar algunas variables tras ser recibidas por el constructor (por ejemplo por parámetros)
+- DoCheck: ejecutado cuando hay algún cambio en el componente o en la aplicación de angular, bien sea un cambio de propiedad, agregar un nodo, etc...
+- OnDestroy: ejecutado cuando el componente deja de estar mostrado en la aplicación.
+
+Para este ejemplo se crea un componente llamado ciclo-vida (angular lo interpretada como ciclo-vida) y se importa en el fichero del módulo
+
+````
+ng g c components/cicloVida
+````
+
+````
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { FutbolistasComponent } from './components/futbolistas/futbolistas.component';
+import { VideojuegosComponent } from './components/videojuegos/videojuegos.component';
+import { CicloVidaComponent } from './components/ciclo-vida/ciclo-vida.component';
+
+
+@NgModule({
+  declarations: [
+    AppComponent, FutbolistasComponent, VideojuegosComponent, CicloVidaComponent, CicloVidasComponent
+    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+````
+
+En siguiente paso es codificar la parte lódiga, para ello se implementan los hooks vistos:
+
+````
+import { Component, OnInit, DoCheck, OnDestroy } from '@angular/core';
+
+@Component({
+  selector: 'app-ciclo-vida',
+  templateUrl: './ciclo-vida.component.html',
+  styleUrls: ['./ciclo-vida.component.css']
+})
+export class CicloVidaComponent implements OnInit, DoCheck, OnDestroy {
+
+  constructor() {
+    console.log('ejecutado constructor ciclo vida');
+   }
+  ngOnDestroy(): void {
+    console.log('On Destroy ejecutado');
+    
+  }
+  ngDoCheck(): void {
+    console.log('Algo ha cambiado en la aplicación');
+  }
+
+  ngOnInit(): void {
+
+    console.log('onInit ciclo de vida iniciado');
+
+  }
+
+}
+````
+
+Nada más ejecutar la aplicación se puede ver que la salida por consola será la siguiente:
+
+````
+ejecutado constructor ciclo vida
+onInit iniciado
+````
+
+Se ejecuta el constructor en primera instancia y después el hook OnInit ya que el constructor ha terminado de cargarse
+
+Para comprobar el funcionamiento de los otros dos hooks se van a crear dos botones: uno que cambie una propiedad (creado en el propio componente y otro en el app.component que quite la visibilidad del componente ciclo-vida
+
+1. El primer botón es muy sencillo ya que tan solo ejecuta un método que cambia el contenido de una propiedad en el componente ciclo-vida
+
+````
+<button class="btn btn-primary" (click)='cambiarPropiedad()'>Cambiar alguna propiedad</button>
+````
+
+Este botón tiene un método asociado mediante un evento click, por lo que es necesario declarar el método en la parte .ts
+
+````
+import { Component, OnInit, DoCheck, OnDestroy } from '@angular/core';
+
+@Component({
+  selector: 'app-ciclo-vida',
+  templateUrl: './ciclo-vida.component.html',
+  styleUrls: ['./ciclo-vida.component.css']
+})
+export class CicloVidaComponent implements OnInit, DoCheck, OnDestroy {
+
+titulo = 'Ejemplos de los hooks de un componente';
+
+  constructor() {
+    console.log('ejecutado constructor ciclo vida');
+   }
+  ngOnDestroy(): void {
+    console.log('On Destroy ejecutado');
+    
+  }
+  ngDoCheck(): void {
+    console.log('Algo ha cambiado en la aplicación');
+  }
+
+  ngOnInit(): void {
+
+    console.log('onInit ciclo vida');
+
+  }
+
+  cambiarPropiedad(){
+    this.titulo.concat(' cambio');
+  }
+
+}
+````
+
+El método cambiar propiedad tan solo añade la palabra cambio a la variable título cuando el botón sea pulsado. En este caso la salida por consola tras la pulsación del botón será la siguiente
+
+````
+// al ejecutarse la aplicación
+ejecutado constructor ciclo vida
+onInit iniciado
+
+// al pulsarse el botón
+Algo ha cambiado en la aplicación
+````
+
+En este caso se produce el cambio en el propio componente, pero si fuese en cualquier componente se ejecutaría de la misma forma.
+
+2. Para el segundo caso se crea un botón en app.component y se asocia a un método igual que se ha hecho en el punto anterior
+
+````
+<div>
+	<button class="btn btn-primary" (click)='mostrarComponente()'>Mostrar el componente</button>
+
+</div>
+
+<app-ciclo-vida *ngIf="visibilidad"></app-ciclo-vida>
+````
+
+Ademas de añadirle el botón con su correspondiente método, a la etiqueta app-ciclo-vida se a puesto una directiva gIf (se explicará en el siguiente tema). En la parte lógica se crea una variable llamada visibilidad, cuyo contenido cambia al pulsar el botón (en la ejecución del método)
+
+````
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'Uno';
+  visibilidad = true;
+
+  mostrarComponente(){
+    this.visibilidad = !this.visibilidad;
+  }
+
+}
+````
+
+En este caso, nada la salida por consola sería la siguiente:
+
+````
+// al ejecutarse la aplicación
+ejecutado constructor ciclo vida
+onInit iniciado
+// al pulsar el botón que oculta el componente
+On Destroy ejecutado
+// al volver a pulsar el botón que muestra el componente
+ejecutado constructor ciclo vida
+onInit ciclo vida
+Algo ha cambiado en la aplicación
+````
+
+Se puede ver que al dejar de mostrar el componente se ejecuta el OnDestroy y al volver a mostrarlo se ejecuta el ciclo completo, desde el constructor al OnInit.
+
+Estos son los principales, pero no los únicos hooks que existen. Todos son:
+
+- OnChanges: primer hooks ejecutado tras el constructor. Se ejecuta cuando se detecta un cambio en alguno de los inputs del propios componente, sin tener en cuenta el resto de la aplicación
+- AfterContentInit: se ejecuta al realiza cualquier muestra de contenido dentro de las vistas de componentes y justo después de ngDoCheck
+- AfterContentChecked: se ejecuta cada vez que el contenido del componente ha sido verificado
+- AfterViewInit: se ejecuta cuando la vista del componente se ha ejecutado por completo y el componente está totalmente disponible
+- AfterViewChecked: ejecutado cada vez que la vista del componente ha verificado algún cambio. 
+
+El orden del ciclo de ejecución completa es la siguiente:
+
+![hooks angular](./images/hooks.png)
+
+# Manejo clases Angular
 
