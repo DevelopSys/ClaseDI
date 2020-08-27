@@ -1,0 +1,70 @@
+<div class="container">
+
+    <h1>APP WEB realizada por {{nombre}}</h1>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Contenido de la aplicación de DI </h1>
+            <p class="lead">Esto es un ejemplo de aplicacación realizada con angular 8 para la asignarura de DI</p>
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-success btn-block" (click)='mostrarTecnologias=!mostrarTecnologias'>Ver tecnologías</button>
+
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" #exampleRadios1 value="dam1" (change)="cambiarCurso(exampleRadios1.value)">
+        <label class="form-check-label" for="exampleRadios1">
+          DAM 1
+        </label>
+
+        <input class="form-check-input" style="margin-left: 50px;" type="radio" name="exampleRadios" #exampleRadios2 value="dam2" (change)='cambiarCurso(exampleRadios2.value)'>
+        <label class="form-check-label" style="margin-left: 80px;" for="exampleRadios2">
+          DAM 2
+        </label>
+    </div>
+
+    <div [ngSwitch]="mostrarCurso">
+        <div class="row" *ngSwitchCase="'dam1'">
+            <div class="card" style="width: 18rem;" *ngFor="let item of asignaturas">
+                <div class="card-header">{{item.nombre}} {{item.siglas}}</div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" *ngFor="let itemC of item.conocimientos">{{itemC}}</li>
+                    </ul>
+                    <div class="nav justify-content-end">
+                        <img [src]="itemI.getImagen()" alt="..." style="width: 40px; height: 40px; margin-right: 10px; " *ngFor="let itemI of item.tecnologias">
+                    </div>
+
+                    <button #elemento class="btn btn-primary btn-block">ver detalle</button>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngSwitchCase="'dam2'">
+            <div class="card" style="width: 18rem;" *ngFor="let item of asignaturas">
+                <div class="card-header">{{item.nombre}}</div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" *ngFor="let itemC of item.conocimientos">{{itemC}}</li>
+                    </ul>
+
+                    <div class="nav justify-content-end">
+                        <img [src]="itemI.getImagen()" alt="..." style="width: 40px; height: 40px; margin-right: 10px; " *ngFor="let itemI of item.tecnologias">
+                    </div>
+                    <button #elemento class="btn btn-primary btn-block">ver detalle</button>
+                </div>
+            </div>
+        </div>
+        <div *ngSwitchDefault>Este es el div que se mostrará por defecto</div>
+    </div>
+
+    <div class="row" *ngIf="mostrarTecnologias">
+
+        <div class="card" style="width: 18rem;" *ngFor="let item of tecnologias">
+            <img [src]="item.getImagen()" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{item.getTitulo()}}</h5>
+                <p class="card-text">{{item.getDescripcion()}}</p>
+                <button #elemento class="btn btn-primary btn-block" (click)="mandarMensaje(item)">ver detalle</button>
+            </div>
+        </div>
+
+    </div>

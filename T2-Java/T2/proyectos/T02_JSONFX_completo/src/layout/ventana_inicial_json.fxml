@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.ListView?>
+
+<BorderPane fx:id="border_principal" prefHeight="400" prefWidth="400" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controladora.ControladoraInicial">
+
+    <top>
+        <MenuBar>
+           <menus>
+               <Menu text="Escena">
+                  <items>
+                      <MenuItem text="Parte uno" fx:id="menu_parte_uno" />
+                      <MenuItem text="Parte dos" fx:id="menu_parte_dos"/>
+                  </items>
+               </Menu>
+           </menus>
+        </MenuBar>
+    </top>
+    <center>
+        <GridPane>
+           <children>
+               <ListView fx:id="lista" />
+               <ImageView fx:id="imagen_ejemplo" GridPane.columnIndex="1" />
+           </children>
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+    </center>
+
+</BorderPane>
