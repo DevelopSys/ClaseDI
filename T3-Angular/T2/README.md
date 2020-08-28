@@ -1136,3 +1136,63 @@ El orden del ciclo de ejecución completa es la siguiente:
 
 # Manejo clases Angular
 
+Como ya se vio en el primer tema de TypeScript, se pueden crear tantas clases como sean necesarias para manejar objetos con métodos y atributos (la forma de crear un objeto puede ser mediante constructor o mediante notación JSON). 
+
+En este ejemplo se creará una clase llamada futbolista con los atributos nombre, club, posición e imagen
+
+````
+class Jugador {
+    
+    nombre: string;
+    equipo: string;
+    posicion: string;
+    imagen: string;
+
+    constructor(name, club, position, img) {
+        this.equipo = club;
+        this.nombre = name;
+        this.posicion = position;
+        this.imagen = img;
+    }
+
+    mostrarDatos(){
+        console.log(`Los datos del jugador son ${this.nombre} ${this.equipo} ${this.posicion}`);
+    }
+
+}
+````
+
+En este caso la creación del objeto se hará mediante constructor, por lo que se crea una clase que contiene la palabra export para que pueda ser utilizada desde cualquier clase diferente a esta (previa importación).
+
+En el componente de nueva creación clases.component se creará un futbolista utilizando como modelo la clase creada
+
+````
+import { Component, OnInit } from '@angular/core';
+import { Jugador } from '../../utils/jugador';
+
+@Component({
+  selector: 'app-clases',
+  templateUrl: './clases.component.html',
+  styleUrls: ['./clases.component.css']
+})
+export class ClasesComponent implements OnInit {
+
+
+  unJugador;
+
+  constructor() { }
+
+  ngOnInit(): void {
+    this.unJugador = new Jugador('Andres Iniesta','Visel Kobe','MID','src/assets/images/iniesta.jpg');
+    console.log(this.unJugador.mostrarDatos());
+  }
+
+}
+````
+En este caso en el momento de construir el componente se crea un objeto de tipo Jugador. Para poder utilizar esta clase se debe importar
+
+````
+import { Jugador } from '../../utils/jugador';
+````
+
+Más adelante se podrán utilizar todas las características del objeto para poder por ejemplo representarlas en la parte gráfica, añadirlo a un array, etc...
