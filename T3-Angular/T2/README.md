@@ -1147,14 +1147,19 @@ class Jugador {
     equipo: string;
     posicion: string;
     imagen: string;
+    mostrarDatos()
 
-    constructor(name, club, position, img) {
-        this.equipo = club;
-        this.nombre = name;
-        this.posicion = position;
-        this.imagen = img;
-    }
+}
+````
 
+Otra posibilidad sería la de declarar las variables publicas dentro del constructor sin necesidad de declararlas como variable de clase, ya que así se definen automáticamente como variable de clase
+
+````
+class Jugador {
+    
+   
+    constructor(public name: string,public club: string,public position: string,public img: string) {
+           }
     mostrarDatos(){
         console.log(`Los datos del jugador son ${this.nombre} ${this.equipo} ${this.posicion}`);
     }
@@ -1162,7 +1167,19 @@ class Jugador {
 }
 ````
 
-En este caso la creación del objeto se hará mediante constructor, por lo que se crea una clase que contiene la palabra export para que pueda ser utilizada desde cualquier clase diferente a esta (previa importación).
+En este caso la creación del objeto se hará mediante constructor, por lo que se crea una clase que contiene la palabra export para que pueda ser utilizada desde cualquier clase diferente a esta (previa importación). Otra de las posibilidades habría sido la de declarar el objeto como una interfaz para así poder crearlo como una notación JSON:
+
+````
+export interface JugadorInterfaz {
+  nombre: string;
+  equipo: string;
+  posicion: string;
+  imagen: string;
+  mostrarDatos();
+}
+
+````
+
 
 En el componente de nueva creación clases.component se creará un futbolista utilizando como modelo la clase creada
 
@@ -1196,3 +1213,34 @@ import { Jugador } from '../../utils/jugador';
 ````
 
 Más adelante se podrán utilizar todas las características del objeto para poder por ejemplo representarlas en la parte gráfica, añadirlo a un array, etc...
+
+En el caso de haber declarado al jugador como interfaz, para poder crearlo en el componente sería de la siguiente forma:
+
+````
+import { Component, OnInit } from '@angular/core';
+import { JugadorInterfaz } from '../../utils/jugador-interfaz';
+
+@Component({
+  selector: 'app-clases',
+  templateUrl: './clases.component.html',
+  styleUrls: ['./clases.component.css'],
+})
+export class ClasesComponent implements OnInit {
+  unJugadorInterfaz: JugadorInterfaz;
+
+  constructor() {}
+
+  ngOnInit(): void {
+    this.unJugadorInterfaz = {
+      nombre: 'Eric Cantona',
+      equipo: 'Manchester United',
+      posicion: 'DEL',
+      imagen: 'src/assets/images/cantona.jpg',
+      mostrarDatos: () => {
+        console.log('mostrar los datos');
+      }
+    };
+  }
+}
+
+````
