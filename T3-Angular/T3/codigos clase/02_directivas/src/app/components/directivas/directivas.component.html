@@ -1,0 +1,73 @@
+<div class="row" style="margin: 50px">
+    <div class="col">
+        <h2>Directiva NgModel</h2>
+        <input type="text" [(ngModel)]="nombre" />
+        <p>El valor de la variable nombre es: {{ nombre }}</p>
+    </div>
+    <div class="col">
+        <h2>Directiva NgIf</h2>
+        <input type="text" [(ngModel)]="directivaif" />
+        <div class="alert alert-primary" role="alert" *ngIf="directivaif.length >= 5">
+            La palabra es correcta
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="directivaif.length < 5">
+            La palabra es demasiado corta
+        </div>
+    </div>
+</div>
+<div class="row" style="margin: 50px">
+    <div class="col">
+        <h2>Directiva NgFor</h2>
+        <input type="text" [(ngModel)]="elemento" />
+        <button (click)="agregarElemento()">Agregar elemento</button>
+        <ul>
+            <li *ngFor="let item of elementos">
+                {{ item }}
+            </li>
+        </ul>
+    </div>
+    <div class="col">
+        <h2>Directiva NgSwitch</h2>
+        <input type="text" [(ngModel)]="directivasw" />
+        <div [ngSwitch]="directivasw">
+            <div *ngSwitchCase="1">
+                <div class="alert alert-primary" role="alert">Introducido el uno</div>
+            </div>
+            <div *ngSwitchCase="2">
+                <div class="alert alert-secondary" role="alert">Introducido el dos</div>
+            </div>
+            <div *ngSwitchCase="3">
+                <div class="alert alert-success" role="alert">Introducido el tres</div>
+            </div>
+            <div *ngSwitchCase="4">
+                <div class="alert alert-danger" role="alert">Introducido el cuatro</div>
+            </div>
+            <div *ngSwitchDefault>
+                <div class="alert alert-warning" role="alert">
+                    No se reconoce elemento introducido
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col" [ngClass]="{ pequenia: pequeniaCh, mediana: medianaCh, grande: grandeCh }">
+        <h2>Directiva NgClass</h2>
+
+        <p>Por favor selecciona las clases que quieres aplicar.</p>
+        <form>
+            <div class="form-group">
+                <label for="pequeniaCh">Pequeña</label>
+                <input type="checkbox" id="pequeniaCh" [(ngModel)]="pequeniaCh" [ngModelOptions]="{ standalone: true }" class="form-control" />
+                <label for="medianaCh">Mediana</label>
+                <input type="checkbox" id="medianaCh" [(ngModel)]="medianaCh" [ngModelOptions]="{ standalone: true }" class="form-control" />
+                <label for="grandeCh">Grande</label>
+                <input type="checkbox" id="grandeCh" [(ngModel)]="grandeCh" [ngModelOptions]="{ standalone: true }" class="form-control" />
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <h2>Directiva ngStyle</h2>
+
+    </div>
+</div>

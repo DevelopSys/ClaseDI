@@ -1,0 +1,20 @@
+.mediana {
+    font-style: italic;
+    font-size: medium;
+    background-color: #2a9d8f;
+    color: #e9c46a;
+}
+
+.grande {
+    font-style: oblique;
+    font-size: large;
+    background-color: #d62828;
+    color: #eae2b7;
+}
+
+.pequenia {
+    font-style: normal;
+    font-size: small;
+    background-color: #f1faee;
+    color: #457b9d;
+}

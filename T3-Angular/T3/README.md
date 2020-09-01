@@ -107,7 +107,7 @@ En este caso, y para referenciar que los estilos serán manejados por el módulo
 ````
 
 
-En la documentación oficial se pueden buscar todas las posibilidades. Uno de los estilos de maquetación más utilizados es el de columnas o grid, donde  se divide cada fila en 12 columnas. El usuario indica cual es la forma en la que quiere que se dividan las columnas pudiendo indicar el número de columnas que quiere que ocupe el elemento
+En la documentación oficial se pueden buscar todas las posibilidades. Uno de los estilos de maquetación= más utilizados es el de columnas o grid, donde  se divide cada fila en 12 columnas. El usuario indica cual es la forma en la que quiere que se dividan las columnas pudiendo indicar el número de columnas que quiere que ocupe el elemento
 
 En el caso de querer que las columnas ocupen lo mismo se utiliza la clase col, y en el caso de querer que ocupe una medida concreta se utiliza col-1 (o el número que se quiere utilizar)
 
@@ -174,8 +174,6 @@ Con estas medidas se puede indicar cuantas unidades ocupa cada columna dependien
 ````
 
 En este ejemplo para pantallas lg se situarán 4 columnas (4*3 = 12), para pantallas md  3 columnas (3*4 = 12) y para pantallas sm 2 columnas (2*6=12)
-
-
 
 
 # Plantillas y Data-binding
@@ -350,28 +348,57 @@ Del mismo modo que pasa en los bindings anteriores, a un evento también se le p
 
 ## Two Way binding
 
-Sobre todo es utilizada en formularios y se produce cuando hay una comunicación bidireccional entre el elemento ts y el elemento html, es decir que sus componentes realizan comunicación en ambos sentidos. Para ello se utilizan los caracteres [()]
+Sobre todo es utilizada en formularios y se produce cuando hay una comunicación bidireccional entre el elemento ts y el elemento html, es decir que sus componentes realizan comunicación en ambos sentidos. Para ello se utilizan los caracteres [()] y solo es efectiva si está activo el módulo de formularios, por lo que el primer paso es incluirlo dentro del fichero app.module
 
 ````
-<input [(ngModel)]="variable" />
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { DirectivasComponent } from './components/directivas/directivas.component';
+
+
+@NgModule({
+  declarations: [
+	DirectivasComponent
+    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule, FormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+````
+
+
+````
+<input type="text" [(ngModel)]="nombre">
 ````
 
 [()] es una "abreviatura" del siguiente código:
 
 ````
-<input [ngModel]="variable" (ngModel)="variable=$event.target.value"/>
+<input [ngModel]="nombre" (ngModel)="nombre=$event.target.value"/>
 ````
 
 ó
 
 ````
-<input [value]="variable" (click)="variable=$event.target.value"/>
+<input [value]="nombre" (click)="nombre=$event.target.value"/>
 
 ````
+
+De esta forma el valor de la variable nombre declarada en la parta .ts se actualizará automáticamente, sin necesidad de que se produzca un evento de enviado, reservado para el envío de los datos (no la captura) y la acción propia de enviado.
 
 # Directivas
 
 Las directivas en Angular son aquellos elementos que permiten modificar el DOM de la página de forma dinámica. Un ejemplo sería mostrar un conjunto de datos dentro de una página web donde no se sabe exactamente cuántos elementos se deben mostrar, por lo que no se puede saber cuantos divs hay que hacer. Existen 3 tipos de directivas:
+
 - Directivas de componente: son aquellas que permiten agregar un componente al DOM de la página. Como se explicó cuando se hablo de componentes, si se quiere agregar un componente a la parte gráfica de otro componente se debe utilizar el selector. El uso de este selector sería la propia directiva de componente.
 ````
 <div>
@@ -894,6 +921,8 @@ estilosDinamicos = {'font-size': '50px' , 'background-color' : 'green'};
 <div [ngStyle]="{'font-size': '50px' , 'background-color' : 'green'}">
 </div>
 ````
+
+**Existen otros tipos de directivas que se irán explicando a lo largo de los siguientes temas ya que se mezclan con otros elementos como por ejemplo los formularios**
 
 # Pipes
 
