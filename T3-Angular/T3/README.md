@@ -1101,8 +1101,42 @@ Permite mostrar datos que provienen de Observables o promesas
 # Personalización: Directivas y Pipes
 
 
+Al igual que existen tanto directivas como pipes ya creados en Angular, un usuario puede crear sus propios elementos ya que en muchas ocasiones es necesario personalizar al máximos las tareas que se realizan. 
+
+## Pipes personalizados
+
+Para poder generar un pie se debe poner el comando 
+
+````
+````
+
+Esto genera el pipe personalizado
+
+````
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'pipePerso'
+})
+export class PipePersoPipe implements PipeTransform {
+
+  transform(value: unknown, ...args: unknown[]): unknown {
+    return null;
+  }
+
+}
+````
+
+Esto genera una clase que implementa PipTrasform donde se crea un método transform que es el ejecutado cuando el pie es llamado. Entre los valores que tiene el método (args), se encuentran todos los elementos que podrá obtener el pie en entrada. Para el ejemplo se utilizará una lista de cartas con una imagen y un texto. En el caso de no encontrar la imagen se cargará una por defecto mediante un pipe. Para ello los pasos son los siguientes
+
+1. Se crea el componente PipesPersonalizados y se crea un array de objetos donde cada uno de ellos tiene nombre e imagen. 
+
+````
+
+````
 
 
+2. En la parte html se cargan una serie de cartas donde aparece la imagen y el nombre.
 
 
 

@@ -5,13 +5,13 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DirectivasComponent } from './components/directivas/directivas.component';
-import { PipesCompComponent } from './components/pipes-comp/pipes-comp.component';
+import { PipesPersoComponent } from './components/pipes-perso/pipes-perso.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DirectivasComponent,
-    PipesCompComponent
+    PipesPersoComponent
     ],
   imports: [
     BrowserModule,
