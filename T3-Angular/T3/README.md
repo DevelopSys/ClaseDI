@@ -1127,19 +1127,92 @@ export class PipePersoPipe implements PipeTransform {
 }
 ````
 
-Esto genera una clase que implementa PipTrasform donde se crea un método transform que es el ejecutado cuando el pie es llamado. Entre los valores que tiene el método (args), se encuentran todos los elementos que podrá obtener el pie en entrada. Para el ejemplo se utilizará una lista de cartas con una imagen y un texto. En el caso de no encontrar la imagen se cargará una por defecto mediante un pipe. Para ello los pasos son los siguientes
+Esto genera una clase que implementa PipTrasform donde se crea un método transform que es el ejecutado cuando el pie es llamado. Entre los valores que tiene el método (value), se encuentra el elemento que podrá obtener el pie en entrada. Para el ejemplo se utilizará una lista de cartas con una imagen y un texto. En el caso de no encontrar la imagen se cargará una por defecto mediante un pipe. Para ello los pasos son los siguientes
 
-1. Se crea el componente PipesPersonalizados y se crea un array de objetos donde cada uno de ellos tiene nombre e imagen. 
+1. Se crea el componente PipesPersonalizados y se crea un array de objetos donde cada uno de ellos tiene nombre e imagen. Para esto también es necesario crear la plantilla de un objeto de tipo Ciudad de modo que se más sencillo el manejo de objetos.
+
+````
+export interface Ciudad{
+    nombre: string;
+    imagen: string;
+}
+````
+
+
+````
+import { Component, OnInit } from '@angular/core';
+import { Ciudad } from '../../utils/Ciudad';
+
+@Component({
+  selector: 'app-pipes-perso',
+  templateUrl: './pipes-perso.component.html',
+  styleUrls: ['./pipes-perso.component.css'],
+})
+export class PipesPersoComponent implements OnInit {
+  ciudades: Ciudad[];
+
+  constructor() {}
+
+  ngOnInit(): void {
+    this.ciudades = [
+      {
+        nombre: 'NEW YORK',
+        imagen: 'assets/images/new_york.jpg',
+      },
+      {
+        nombre: 'SAN FRANCISCO',
+        imagen: 'assets/images/san_francisco.jpg',
+      },
+      {
+        nombre: 'MADRID',
+        imagen: 'assets/images/madrid.jpg',
+      },
+      { nombre: 'BARCELONA', imagen: '' },
+      { nombre: 'BARCELONA', imagen: '' }
+    ];
+  }
+}
 
 ````
 
+
+2. En la parte html se cargan una serie de cartas donde aparece la imagen y el nombre utilizando la directiva ngFor.
+
+````
+<div class="card-group">
+    <div class="card" *ngFor="let item of ciudades">
+      <img class="card-img-top" [src]="item.imagen | pipePerso" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{item.nombre}}</h5>
+        <p class="card-text"></p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
+    </div>
+</div>
 ````
 
+En la parte de la etiqueta img, se aplica el pipe personalizado dentro del atributo src (pasado como binding de atributo). En el pipe creado se codificará de la siguiente forma
 
-2. En la parte html se cargan una serie de cartas donde aparece la imagen y el nombre.
+````
+import { Pipe, PipeTransform } from '@angular/core';
 
+@Pipe({
+  name: 'pipePerso',
+})
+export class PipePersoPipe implements PipeTransform {
+  transform(value: unknown, ...args: unknown[]): unknown {
+    if (!value) {
+      return 'assets/images/ciudad.jpg';
+    } else {
+      return value;
+    }
+  }
+}
+````
 
-
+Donde en método transform recibe como parámetros el objeto value, que en este caso es el elemento item.imagen. Se hace una comprobación y en el caso de no haber pasado nada se retorna una imagen por defecto. En el caso de haber pasado algo por parámetros se retorna el mismo objeto.
 
 
 
