@@ -6,7 +6,7 @@
 	- Servicios
 #### [Volver al índice](#tema4)
 
-#### Manejo de rutas
+# Manejo de rutas
 
 Como toda aplicación, lo normal es que esta no conste solo de un elemento, sino que tenga más y se necesite navegar entre ellos. Para ello Angular tienen un módulo que se encarga de la gestión de todas las rutas de forma que el programador no necesita configurar mucho código a la hora de realizar la navegación. Este módulo es routing que se pregunta cuándo se crea un proyecto. En el caso de tener un proyecto que no tenga el módulo de rutas iniciado se puede crear con el siguiente parámetro
 ````
@@ -30,105 +30,14 @@ export class AppRoutingModule { }
 ````
 
 Donde:
+
 - Las importaciones son el módulo de rutas (RouterModule), el tipo de las rutas que se definirá en la clase (Routes) y el decorador del módulo (NgModule)
 - Una constante donde se declararán cada una de las rutas que se querrán gestionar por medio del módulo de rutas. Este array inicialmente está vacío, hay que ir rellenando manualmente con las opciones que se verán más adelante.
 - El decorador del módulo: donde:
 	- se importa el módulo de rutas indicando el array con las rutas que se deben gestionar
 	- se exporta el módulo de rutas para que puede ser utilizado desde cualquier parte.
 
-De este archivo no hay nada más reseñable. Lo que sí es muy importante es saber como configurar una ruta. Para ello se va a seguir el siguiente ejemplo:
-
-1. Crear dos componentes cuales quiera con el nombre componente-uno y componente-dos
-````
-ng g c components/componente-uno
-ng g c components/componente-dos
-````
-
-Se puede comprobar que cada uno de ellos tiene sus correspondientes archivos asociados. En los archivos .ts se comprueba el selector asociado a cada uno de ellos y el nombre de la clase. Esto último será lo utilizado para asociarlo en el archivo de rutas
-````
-// componente uno
-import { Component, OnInit } from '@angular/core';
-
-@Component({
-  selector: 'app-componente-uno',
-  templateUrl: './componente-uno.component.html',
-  styleUrls: ['./componente-uno.component.css']
-})
-export class ComponenteunoComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
-
-````
-
-````
-// componente dos
-import { Component, OnInit } from '@angular/core';
-
-@Component({
-  selector: 'app-componente-dos',
-  templateUrl: './componente-dos.component.html',
-  styleUrls: ['./componente-dos.component.css']
-})
-export class ComponenteDosComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
-
-````
-
-
-2. En el archivo de rutas, crear un objeto de tipo Routes donde se indica el path (nombre que se utilizará para llamar al componente) y el component (componente asociado al path creado)
-
-````
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
-const routes: Routes = [{path:'', component:}];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
-````
-
-
-3. El path es definido por el programador, y será utilizado para llamar al componente desde "cualquier" navegación. El componente es el nombre de la clase del componente que se quiere asociar
-````
-const routes: Routes = [{path: 'compouno', component: ComponenteUnoComponent}];
-
-````
-
-Con los dos componentes creados en el primer punto el archivo quedaría de la siguiente forma
-
-````
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import { ComponenteUnoComponent } from "./components/componente-uno/componente-uno.component";
-import { ComponenteDosComponent } from "./components/componente-dos/componente-dos.component";
-
-const routes: Routes = [
-  { path: "compouno", component: ComponenteUnoComponent },
-  { path: "compodos", component: ComponenteDosComponent }
-];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule {}
-````
-
-5. Por último, hay que asegurarse que el módulo creado está importado en el archivo app.module.ts (al igual que los dos componente creados que se han importado de forma automática) y que está configurada la ruta base en el archivo índex.html
+Si abrimos el fichero del módulo, podemos observar que el módulo de rutas es importado para que se pueda utilizar por todos los componentes
 
 ````
 import { BrowserModule } from '@angular/platform-browser';
@@ -136,14 +45,10 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ComponenteUnoComponent } from './components/componente-uno/componente-uno.component';
-import { ComponenteDosComponent } from './components/componente-dos/componente-dos.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ComponenteUnoComponent,
-    ComponenteDosComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -153,6 +58,178 @@ import { ComponenteDosComponent } from './components/componente-dos/componente-d
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+````
+
+## Rutas con atributo routerLink
+
+
+Una vez entendido esto, es importante saber que las rutas solo son utilizadas si nosotros realmente las necesitamos. Para una aplicación pequeña que conste de pocos componentes ni siquiera serán necesarias. En el caso de tener muchos componentes sí que necesitaremos que cada uno se muestre de una forma diferente al pulsar un menú por ejemplo. En este caso el uso de rutas es obligatorio. Para mostrar esta funcionalidad se va a realizar un ejemplo con varios componentes que aparecen según la selección de diferentes menús. 
+
+1. Crear dos componentes y preparación del sistema 
+````
+ng g c components/fubol
+ng g c components/juegos
+````
+
+Se puede comprobar que cada uno de ellos tiene sus correspondientes archivos asociados. En los archivos .ts se comprueba el selector asociado a cada uno de ellos y el nombre de la clase. Esto último será lo utilizado para asociarlo en el archivo de rutas
+````
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-futbol',
+  templateUrl: './futbol.component.html',
+  styleUrls: ['./futbol.component.css']
+})
+export class FutbolComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
+````
+
+````
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-juegos',
+  templateUrl: './juegos.component.html',
+  styleUrls: ['./juegos.component.css']
+})
+export class JuegosComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
+````
+
+Adicionalmente para que estos dos componentes se puedan utilizar en la aplicación deberán ser declarados en el archivo app.module en la parte de declarations
+
+````
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { FutbolComponent } from './components/futbol/futbol.component';
+import { JuegosComponent } from './components/juegos/juegos.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    FutbolComponent,
+    JuegosComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+````
+
+En el caso de querer que los dos elementos se visualizan en la misma pantalla, ya sabríamos como hacerlo por lo que simplemente se declaran las dos etiquetas dentro del html del app.component.html
+
+````
+<div class="container">
+
+    <app-futbol></app-futbol>
+    <app-juegos></app-juegos>
+
+</div>
+````
+
+Sin embargo en este caso lo que nos interesa es tener una barra superior que nos permita seleccionar un menú y que depende de este se muestre un componente u otro. Para ello se creará otro componente llamado menú-barra y se colocará en app.component.html ()
+
+````
+ng g c components/fubol
+
+````
+
+
+````
+<div class="container-fluid">
+
+    <app-menu-barra></app-menu-barra>
+
+</div>
+````
+
+Como lo que se quiere es que al pulsar cada uno de los ítem del menú aparezca un componente u otro, se debe utilizar un elemento particular de angular que se llama router-outlet. Esta etiqueta es el sitio donde se ubicarán todos los componentes llamados mediante rutas. Para ello se modifica el contenido del fichero app.component.html
+
+````
+<div class="container-fluid">
+
+    <app-menu-barra></app-menu-barra>
+    <router-outlet></router-outlet>
+</div>
+````
+
+
+2. Para poder gestionar las rutas, lo siguiente que hay que hacer es en el archivo de rutas, crear un objeto de tipo Routes donde se indica el path (nombre que se utilizará para llamar al componente) y el component (componente asociado al path creado)
+
+````
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { FutbolComponent } from './components/futbol/futbol.component';
+import { JuegosComponent } from './components/juegos/juegos.component';
+
+const routes: Routes = [
+  { path: 'futbol', component: FutbolComponent },
+  { path: 'videojuegos', component: JuegosComponent },
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+})
+export class AppRoutingModule {}
+
+````
+
+3. El path es definido por el programador, y será utilizado para llamar al componente desde "cualquier" navegación. El componente es el nombre de la clase del componente que se quiere asociar
+````
+const routes: Routes = [{path: 'compouno', component: ComponenteUnoComponent}];
+
+````
+
+4. Por último, hay que asegurarse que el módulo creado está importado en el archivo app.module.ts (al igual que los dos componente creados que se han importado de forma automática) y que está configurada la ruta base en el archivo índex.html
+
+````
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { FutbolComponent } from './components/futbol/futbol.component';
+import { JuegosComponent } from './components/juegos/juegos.component';
+import { MenuBarraComponent } from './components/shared/menu-barra/menu-barra.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    FutbolComponent,
+    JuegosComponent,
+    MenuBarraComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
 ````
 
 
@@ -206,47 +283,42 @@ Antes de explicar cómo poder realizar la navegación, merece la pena ver cuales
 
 ****
 
-**Navegación entre las rutas**
-
-Como se ha explicado antes, en el módulo de rutas se indica el array con las rutas que son gestionables. Según el ejemplo de antes se tendrían 3 componentes: compouno, compodos, compohome (creado nuevo) y el módulo de rutas tendría el siguiente aspecto:
+5. Como se ha explicado antes, en el módulo de rutas se indica el array con las rutas que son gestionables. Según el ejemplo de antes se tendrían 3 componentes: compouno, compodos, compohome (creado nuevo) y el módulo de rutas tendría el siguiente aspecto:
 
 ````
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import { ComponenteUnoComponent } from "./components/componente-uno/componente-uno.component";
-import { ComponenteDosComponent } from "./components/componente-dos/componente-dos.component";
-import { ComponenteHomeComponent } from "./components/componente-home/componente-home.component";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { FutbolComponent } from './components/futbol/futbol.component';
+import { JuegosComponent } from './components/juegos/juegos.component';
 
 const routes: Routes = [
-  { path: "compouno", component: ComponenteUnoComponent },
-  { path: "compodos", component: ComponenteDosComponent },
-  { path: "compohome", component: ComponenteHomeComponent },
-  { path: "", redirectTo: "compohome", pathMatch: "full" },
-  { path: "**", component: ComponenteHomeComponent }
+  { path: 'futbol', component: FutbolComponent },
+  { path: 'videojuegos', component: JuegosComponent },
+  { path: '', redirectTo: '/', pathMatch: 'full'}
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
-
 ````
 
 Además de la definición de los componentes esto quiere decir que: 
 
-- Si no se mete ninguna ruta redirigirá al componente compohome
-- Si se mete mal una ruta redirigirá al componente compohome
+- Si no se mete ninguna ruta redirigirá al componente /
+- Si se mete mal una ruta redirigirá al componente /
 
 Para poder funcionar con las rutas, lo que el módulo hace un mareo de URL según el path indicado. Esto quiere decir que si se navega hasta compouno el módulo de rutas interpretará la URL como http://nombre/compouno
 
 Si en el navegador se introducen las siguientes rutas, el componente mostrado será:
-- Si no se mete ninguna ruta será http://localhost:4200/compohome y el componente mostrado será ComponenteHomeComponent
-- Si se mete la ruta http://localhost:4200/compouno el componente mostrado será ComponenteUnoComponent
-- Si se mete la ruta http://localhost:4200/compodos el componente mostrado será ComponenteDosComponent
-- Si se mete mal la ruta http://localhost:4200/asasdasd se redirigirá a http://localhost:4200/compohome y el componente mostrado será ComponenteHomeComponent
+- Si no se mete ninguna ruta será http://localhost:4200/futbol y el componente mostrado será FutbolComponent
+- Si se mete la ruta http://localhost:4200/videojujuegos el componente mostrado será JuegosComponent
 
-Esto es gracias a las ordenes que se han indicado en el módulo de rutas. **Mucho cuidado con poner** ````  { path: "**", component: ComponenteHomeComponent }```` **la primera línea**
+- Si se mete mal la ruta http://localhost:4200/asasdasd se redirigirá a http://localhost:4200/ y el AppComponent
+
+Esto es gracias a las ordenes que se han indicado en el módulo de rutas. **Mucho cuidado con poner** ````  { path: "**", component:AppComponent }```` **la primera línea**
 
 Al tratarse de una SPA para que se puedan visualizar las rutas cuando un componente sea llamado y no tenga necesidad de recargar el navegador, se debe utilizar la etiqueta router-outlet en el sitio donde se mostrará el componente llamado mediante URL. Para ello (en este ejemplo) en el archivo  app-component.ts se incluye dicha etiqueta:
 
@@ -284,21 +356,37 @@ h2>Zona de navegación</h2>
 
 Esto indica que al pulsar el primer link, el módulo de las rutas redirigirá a lo indicado en el archivo app-routing.ts. Normalmente la directiva routerlink se suele acompañar con directiva routerLinkActive, la cual se asocia con una clase css que indica que el link está activado y lo representará de forma diferente
 ````
-<h2>Zona de navegación</h2>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-<ul>
-  <li>
-    <a [routerLink]="['/compouno']" routerLinkActive="active" class="nav-link">link al componente uno</a>
-  </li>
-  <li>
-    <a [routerLink]="['/compodos']" routerLinkActive="active" class="nav-link">link al componente dos</a>
-  </li>
-</ul>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/futbol']" routerLinkActive="router-link-active">Futbol</a>
+            </li>
 
-<router-outlet></router-outlet>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/videojuegos']" routerLinkActive="router-link-active" tabindex="-1">Videojuegos</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
 ````
 
 *¿Qué pasa si se utiliza la propiedad href en vez de la directiva routerlink?*
+
+## Rutas desde el código
+
 
 Toda la gestión de rutas vista en los puntos anteriores se realiza de forma estática, ya que no hay posibilidad de cambiar el atributo routerLink (si no es con directiva). En algunos casos es necesario que estos links actúen de forma dinámica, para lo cual se debe realizar de forma programática. Para ello hay que utilizar el módulo Router de Angular y su método navigate.
 
@@ -306,58 +394,65 @@ Para poder utilizarlo:
 
 1. Declarar un componente que pueda producir un evento que actúe como elemento de navegación y asociarle un evento mediante binding 
 
+
 ````
-<button type="button" class="btn btn-primary" (click)="navegar()">Navegar</button>
+ng g c components/libros 
+````
+
+Se agrega un elemento en la barra de navegación, por lo que se añade en el archivo menú-barra.component.html y li y se le asocia un evento de click (que habrá que definir en la parte ts)
+
+````
+<li class="nav-item">
+	<a class="nav-link" tabindex="-1" (click)="navegar()">libros</a>
+</li>
 ````
 
 3. En el constructor de la clase, declarar un parámetro de tipo Router para que pueda ser utilizado en toda la clase
 
 ````
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-menu-barra',
+  templateUrl: './menu-barra.component.html',
+  styleUrls: ['./menu-barra.component.css'],
 })
-export class AppComponent {
-  title = 'proyectoRutas';
-  constructor(private navegador: Router){
+export class MenuBarraComponent implements OnInit {
+  constructor(private navegador: Router) {}
 
-  }
-
+  ngOnInit(): void {}
 
 }
+
 ````
 
 4. En el método que gestiona el evento utilizar el parámetro creado en el punto anterior y llamar al método navigate, pasando como parámetro un array con la ruta a la que se quiere navegar (el path indicado en el modulo de rutas)
 
 ````
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-menu-barra',
+  templateUrl: './menu-barra.component.html',
+  styleUrls: ['./menu-barra.component.css'],
 })
-export class AppComponent {
-  title = 'proyectoRutas';
+export class MenuBarraComponent implements OnInit {
+  constructor(private navegador: Router) {}
 
-  constructor(private navegador: Router){
-  }
+  ngOnInit(): void {}
 
   navegar() {
-    this.navegador.navigate(['compolazyuno']);
-  }
 
+    this.navegador.navigate(['libros']);
+
+  }
 }
 
 ````
-****
 
-##### LazyLoad
+## LazyLoad
 
 Una de las cosas buenas que tiene las SPA realizadas por Angular es la velocidad, tanto de carga inicial como cada vez que se navega a cada uno de los componentes que componen la aplicación. Esto se debe a que la aplicación tan solo carga una página (el componente root) el cual es el encargado de renderizar el resto de componentes cuando estos son llamados. En la carga inicial, la aplicación lee el archivo de rutas y carga todos los elementos en memoria. Para aplicaciones pequeñas / medianas no hay gran problema ya que el tamaño de la carga no es relevante, pero para aplicaciones grandes sí se nota en rendimiento. Por ejemplo, para la aplicación con fichero de rutas:
 
@@ -395,7 +490,7 @@ Inicialmente las aplicaciones de angular están divididas de la siguiente forma:
 	- declara los componentes AppComponent y todos aquellos que serán cargados de forma inicial
 	- importa el módulo de rutas
 - App.routing.module 
-	- identifica todas las ruas que serán cargadas cuando se llame a un path
+	- identifica todas las rutas que serán cargadas cuando se llame a un path
 - src
 	- componentes que forman parte de la aplicación 
 
@@ -551,70 +646,101 @@ Como se puede ver en el ejemplo el componente indicado podrá ser accedido tanto
 { path: "nombrePath/:parametro/:parametro", component: componenteCargar },
 ````
 
-Esto se puede hacer tanto desde el código html como desde el código ts
+Esto se puede hacer tanto desde el código html como desde el código ts. Para este ejemplo se va a utilizar los componentes ya definidos en la aplicación, agregándoles la posibilidad de recibir parámetros. Se modificará el menú realizado para que existe un desplegable con las dos opciones:
 
-1. Declarar un nuevo componente con el nombre componente-destino. Este componente será el que sea abierto.
-````
-ng g c components/componente-destino
-````
-
-2. Declarar en el módulo de rutas un objeto que incluya la posibilidad de admitir parámetros.
+- sin parámetros (lo explicado hasta ahora)
+- con parámetros
 
 ````
-{ path: "compodest/:id", component: ComponeneteDestinoComponent },
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Fútbol
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" >Sin parámetros</a>
+                    <a class="dropdown-item" >Con parámetros </a>
+                </div>
+            </li>
 ````
 
-Esto quiere decir que al componente destino creado se le podrá pasar un dato cuyo nombre es 'id'. Este nombre es importante ya que será el utilizado para recuperar el dato en el componente destino.
 
-3. Declarar en la parte html del componente inicial, un elemento que active la navegación. En este ejemplo se utilizará un botón 
+Los pasos a seguir son los siguientes
+
+1. Declarar en el módulo de rutas un objeto que incluya la posibilidad de admitir parámetros.
 
 ````
-<button type="button">Mandar datos</button>
+{ path: "compodest/:id", component: ComponeneteDestinoComponent }
 ````
+
+Esto quiere decir que al componente destino creado se le podrá pasar un dato cuyo nombre es 'id'. Este nombre es importante ya que será el utilizado para recuperar el dato en el componente destino. Para el ejemplo se utilizará lo siguiente
+
+````
+  { path: 'futbol', component: FutbolComponent },
+  { path: 'futbol/:id', component: FutbolComponent },
+
+````
+
+De esta forma se podrá llegar al componente de ambas maneras.
 
 
 Dependiendo de como se quiera hacer, el código cambiará
 
 **Desde html**
 
-1. Si lo que se quiere es pasar un dato estático, directamente se indica desde el routerLink del botón el dato que se quiere pasar guardando la sintaxis declarada en el módulo de rutas. 
+1. Si lo que se quiere es pasar un dato estático, directamente se indica desde el routerLink del li el dato que se quiere pasar guardando la sintaxis declarada en el módulo de rutas. 
 ````
-<button type="button" class="btn btn-primary" [routerLink]="['/compodest',3]" routerLinkActive="active">Mandar datos</button>
+<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	<a class="dropdown-item" [routerLink]="['/futbol']" routerLinkActive="router-link-active">Sin parámetros</a>
+	<a class="dropdown-item" [routerLink]="['/futbol',4]" routerLinkActive="router-link-active">Con parámetros </a>
+</div>
 
 ````
-
-De esta forma se abrirá un nuevo componente al cual se le pasa un dato cuyo valor es 3 
+En el primer caso se abrirá un nuevo componente sin paso de parámetros
+En el segundo caso se abrirá un nuevo componente al cual se le pasa un dato cuyo valor es 4
 
 **Desde ts**
 1. En el botón declarado se incluye un evento el cual se asocia a un método de la parte lógica
 ````
-<button type="button" class="btn btn-primary" (click)="mandarDatos()">Mandar datos por programación</button>
+<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	<a class="dropdown-item" routerLinkActive="router-link-active" (click)="navegarParametros()">Sin parámetros</a>
+	<a class="dropdown-item" routerLinkActive="router-link-active" (click)="navegarParametros(4)">Con parámetros </a>
+</div>
 
 ````
+
+Como en este ejemplo se puede hacer con / sin parámetros, se declara el evento click para los dos elementos, donde uno pasará como parámetro aquello que se quiera enviar a la ruta y el otro pasará vacío
+
 2. Se declara el método en la parte lógica. Para poder realizar la navegación se utiliza la variable de tipo Router explicada en puntos anteriores. Al tener que pasar datos, en el método navigate se incluyen en forma de array todos los datos que se deben pasar
 ````
-import { Component } from '@angular/core';
-import { Router, RouterState } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-menu-barra',
+  templateUrl: './menu-barra.component.html',
+  styleUrls: ['./menu-barra.component.css'],
 })
-export class AppComponent {
-  title = 'proyectoRutas';
+export class MenuBarraComponent implements OnInit {
+  constructor(private navegador: Router) {}
 
-  constructor(private navegador: Router) {
+  ngOnInit(): void {}
+
+  navegar() {
+    this.navegador.navigate(['libros']);
   }
 
-  mandarDatos() {
-    this.navegador.navigate(['compodest', 3]);
+  navegarParametros(parametro?) {
+    if (parametro) {
+      this.navegador.navigate(['videojuegos', parametro]);
+    } else {
+      this.navegador.navigate(['videojuegos']);
+    }
   }
-
 }
+
 ````
 
-De esta forma se pasará al componente asociado al path compodes el dato 3
+De esta forma se pasará al componente asociado al path el dato 4 cuando hay parámetro, en el caso de no haber nada pasará al componente directamente
 
 En el caso de querer pasar un elemento que está dentro de un cuadro de texto, se puede hacer de múltiples formas. Utilizando una variable de referencia sería:
 
@@ -665,12 +791,12 @@ export class AppComponent {
 
 Una vez se ha realizado el envío de parámetros mediante una ruta, el siguiente paso lógico es recogerlo. Para ello es importante saber cuál es el nombre con el que se ha mandado el parámetro. En el ejemplo anterior, en el módulo de las rutas se configuró la ruta con parámetros de la siguiente forma: 
 ````
-{ path: "compodest/:id", component: ComponeneteDestinoComponent },
+  { path: 'futbol/:id', component: FutbolComponent },
 ````
 
-Esto quiere decir que al componente cuyo path es compodest se le agrega un parámetro que va asociado a la clave id. Esta clave es la necesaria para poder recuperar el dato. Para ello se utiliza el módulo ActivatedRoute con sus métodos snapshot.paramMap.get(). En el método get se indica el nombre del parámetro que se quiere recoger, en el ejemplo visto anteriormente sería 
+Esto quiere decir que al componente cuyo path es futbol se le agrega un parámetro que va asociado a la clave id. Esta clave es la necesaria para poder recuperar el dato. Para ello se utiliza el módulo ActivatedRoute con sus métodos snapshot.paramMap.params. a 
 ````
-snapshot.paramMap.get('id');
+console.log(this.rutaActiva.snapshot.paramMap.params['id']);
 ````
 
 Para poder hacer esto se necesita una variable en el componente destino de tipo ActivatedRoute, desde la cual acceder a los métodos mencionados. Para ello (suponiendo que se ha mandado un dato desde otro componente mediante la ruta):
@@ -681,41 +807,17 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-componenete-destino',
-  templateUrl: './componenete-destino.component.html',
-  styleUrls: ['./componenete-destino.component.css']
+  selector: 'app-juegos',
+  templateUrl: './juegos.component.html',
+  styleUrls: ['./juegos.component.css']
 })
-export class ComponeneteDestinoComponent implements OnInit {
+export class JuegosComponent implements OnInit {
 
-  constructor(private manejoRutas: ActivatedRoute) { }
+  constructor(private rutaActiva: ActivatedRoute) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    console.log(this.rutaActiva.snapshot.paramMap.params['id']);
   }
-
-}
-````
-
-2. En el momento de querer recibir el dato acceder a los métodos snapshot.paramMap.get(), donde se debe indicar cual es la clave del elemento a recuperar. Normalmente esto se suele hacer en el método onInit()
-````
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-
-@Component({
-  selector: 'app-componenete-destino',
-  templateUrl: './componenete-destino.component.html',
-  styleUrls: ['./componenete-destino.component.css']
-})
-export class ComponeneteDestinoComponent implements OnInit {
-
-  constructor(private manejoRutas: ActivatedRoute) { }
-
-  ngOnInit() {
-    console.log(this.manejoRutas.snapshot.paramMap.get('id'));
-    // también se puede utilizar el acceso directo a la propiedad
-    this.manejoRutas.snapshot.params.id
-  }
-
-}
 ````
 
 La variable ActivatedRouter proporciona la siguiente información:
@@ -732,6 +834,56 @@ outlet: El nombre del RouterOutlet utilizado para renderizar la ruta. A un outle
 - parent: El objeto ActivatedRoute del "padre" cuando la ruta actual es una ruta "hija".
 - firstChild: El objeto ActivatedRoute de la primera de las rutas "hijas" de la ruta actual.
 - children: Contiene todas las rutas "hijas" activadas por la ruta actual.
+
+Inicialmente esta forma de capturar parámetros funciona perfectamente. Hay que tener en cuenta que este parámetro debería ser capturado en el método OnInit, de forma que esté disponible cuando el componente este inicializado
+
+````
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+@Component({
+  selector: 'app-juegos',
+  templateUrl: './juegos.component.html',
+  styleUrls: ['./juegos.component.css']
+})
+export class JuegosComponent implements OnInit {
+
+  constructor(private rutaActiva: ActivatedRoute) { }
+
+  ngOnInit(): void {
+    console.log(this.rutaActiva.snapshot.paramMap.params['id']);
+  }
+
+}
+
+````
+
+Sin embargo esto puede no funcionar siempre. Imaginad el caso en el que el componente cambia internamente y el parámetro pasado es cambia en un momento dado. Con la técnica anterior el cambio no queda registrado ya que tan solo se ha accedido a un snapshot, que más o menos es como una fotografía del momento. Para que pueda funcionar con cambios se utiliza la suscripción a los parámetros. 
+
+````
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+
+@Component({
+  selector: 'app-juegos',
+  templateUrl: './juegos.component.html',
+  styleUrls: ['./juegos.component.css'],
+})
+export class JuegosComponent implements OnInit {
+  constructor(private rutaActiva: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this.rutaActiva.paramMap.subscribe((parametros: Params) => {
+      console.log(parametros.id);
+    });
+  }
+}
+
+````
+
+El método subscribe es un observable que permite notificar cambios en el momento en que estos son producidos. Para ello se crea una función de flecha que tiene como paramentos los propios parámetros y se pueden utilizad como se quieran. 
+
+En el caso de utilizar esta suscripción a los parámetros de la URL se debería quitar esta suscripción en el método OnDestroy
 
 Además de poder capturar los elementos de una ruta mediante el módulo ActivatedRouter, también es posible gestionar los eventos que la navegación produce. Para ello se utiliza el módulo Router y la subscripción a los eventos que puede producir, los cuales son:
 
@@ -763,7 +915,7 @@ export class ComponeneteDestinoComponent implements OnInit {
 ````
 
 ****
-##### Comunicación entre componentes (sin rutas)
+# Comunicación entre componentes (sin rutas)
 
 Del mismo modo que podemos comunicar dos componentes mediante una ruta, en muchos de los casos no es necesaria la utilización de rutas para poder comunicar elementos. Los escenarios que nos podemos encontrar por ejemplo son:
 - La comunicación se produce entre la parte lógica y la parte gráfica del mismo elemento
@@ -1027,57 +1179,61 @@ De esta forma se podrán comunicar los componentes entre sí de una forma sencil
 
 ****
 
-##### Servicios
+# Servicios
 
 Los servicios en Angular se pueden definir cómo aquellos elementos capaces de **proveer** a componentes de datos y lógica. Como se verá a continuación, los servicios no dejan de ser clases al uso pero que van acompañadas del decorador @Injectable de la librería core. Esto quiere decir que la clase que representa el servicio podrá ser inyectada como dependencia en todos aquellos sitios que sea necesaria. 
 
 Para poder crear un servicio se utiliza el comando 
 ````
-ng g s services/test
+ng g s services/futbolData
 ````
 
 Lo cual genera una clase con el siguiente código:
 ````
 import { Injectable } from '@angular/core';
+import { Liga } from '../utils/ligas';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class TestService {
 
-  constructor() { }
+  constructor() {}
+
+  
 }
+
 
 ````
 
 Con el paso anterior el servicio está creado, y puede ser utilizado por cualquier elemento que esté cargado desde el root. Por defecto el servicio es inyectado en el componente root. De esta forma de trabajar puede parecer beneficiosa ya que es muy sencillo, sin embargo cuando estamos hablando de elementos que son muy grandes el tiempo de carga se empieza a ver afectado. En el caso de que el servicio sea utilizado por varios componentes se puede dejar inyectado en el root. En el caso de ser utilizado solo por algunos módulo, el servicio sería inyectado en las dependencias del módulo concreto
+
 ````
 @NgModule({
   declarations: [
     AppComponent,
-    ComponentePadreComponent,
-    ComponenteHijoComponent,
-    ComponenteServicioComponent
+    FutbolComponent,
+    JuegosComponent,
+    MenuBarraComponent,
+    LibrosComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [TestService],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, SecundarioModule],
+  providers: [FutbolDataService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
+
 
 ````
 
-Como se ha dicho anteriormente, un servicio es utilizado para la gestión de los datos de la aplicación. Para ello se va a realizar un ejemplo donde se cargarán datos de un objeto coche.
+Como se ha dicho anteriormente, un servicio es utilizado para la gestión de los datos de la aplicación. Para ello se va a realizar un ejemplo donde se cargarán datos de un objeto Liga al pulsar en el menú Futbol. Si no se pasan parámetros se cargarán todas las ligas. En el caso de pasar algún parámetro se cargará solo la liga que cumpla con el parámetro pasado.
 
 1. Crear la interface para la creación del objeto
 ````
-export interface Coche {
-    marca: string;
-    modelo: string;
-    cv: number;
+export interface Liga {
+    id: number;
+    nombre: string;
+    pais: string;
+    logo: string;
 }
 ````
 
@@ -1085,20 +1241,20 @@ Sería una buena práctica que todas las clases que representen utilizades quede
 
 2. Crear un servicio y declararlo como provider en el módulo donde va a ser utilizado
 ````
-ng g s services/coches-servicio
+ng g s services/futbolData
 ````
 
 ````
 import { Injectable } from '@angular/core';
-import { Coche } from '../utils/coche';
+import { Liga } from '../utils/ligas';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class CocheService {
 
-  constructor() { }
+  constructor() {}
 
+  
 }
 ````
 
@@ -1106,94 +1262,161 @@ export class CocheService {
 @NgModule({
   declarations: [
     AppComponent,
-    ComponentePadreComponent,
-    ComponenteHijoComponent,
-    ComponenteServicioComponent
+    FutbolComponent,
+    JuegosComponent,
+    MenuBarraComponent,
+    LibrosComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [CocheService],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, SecundarioModule],
+  providers: [FutbolDataService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
+
 ````
 
 
 3. En el servicio crear un array de objetos. Del mismo modo crear un método que devuelva dicho array de objetos
 ````
 import { Injectable } from '@angular/core';
-import { Coche } from '../utils/coche';
+import { Liga } from '../utils/ligas';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class CocheService {
+export class FutbolDataService {
+  ligas = [
+    {
+      id: 1,
+      nombre: 'La Liga',
+      pais: 'España',
+      logo:
+        'https://3.bp.blogspot.com/-8D_PYiuqhiw/VeSXbIfc_MI/AAAAAAAAAM4/XRzqhoZ6Y2k/s1600/LigaBBVA.png',
+    },
+    {
+      id: 2,
+      nombre: 'Premiere League',
+      pais: 'Inglaterra',
+      logo:
+        'https://2.bp.blogspot.com/-4tg1eX1A_pY/WVOHis9gtWI/AAAAAAABKB8/gFWgwyWBjjUiP9IaqHibaD1iRh10B4sXQCLcBGAs/s1600/Premier%2BLeague.png',
+    },
+    {
+      id: 3,
+      nombre: 'Serie A',
+      pais: 'Italia',
+      logo:
+        'https://3.bp.blogspot.com/-1wJdeqXqXGU/WPFobp4_h3I/AAAAAAAAA2Y/JDAb0rJGboQGfnztRrnhxyBJh4e_D-NogCLcB/s1600/Serie%2BA%2BTIM%2BLogo.png'
+    }
+  ];
 
+  constructor() {}
 
-  coches: Coche[] = [{marca: "Ford", modelo: "Mustang", cv: 320}, {marca: "Volkwagen", modelo: "Gof GTI", cv: 220}];
+  getLiga(id: number): Liga[] {
 
-  constructor() { }
+    let ligasFiltradas = [];
 
-  getAllCoches() {
-    return this.coches;
+    this.ligas.forEach(element => {
+      if (element.id == id){
+        ligasFiltradas.push(element);
+      }
+    });
+
+    return ligasFiltradas;
+  }
+
+  getLigas(): Liga[] {
+    
+    return this.ligas;
   }
 }
+
 ````
+
+Adicionalmente se crea un método que reciba por parámetros un número y filtre de la lista de ligas aquella que tiene el id del parámetro pasado. Estos dos métodos serán los llamados por el componente futbol cuando se allamado
 
 4. En el componente donde son necesarios los datos, crear en el constructor una variable del tipo del servicio para que pueda ser utilizada en la clase
 ````
 import { Component, OnInit } from '@angular/core';
-import { Coche } from '../../utils/coche';
-import { CocheService } from '../../services/coche.service';
+import { FutbolDataService } from '../../services/futbol-data.service';
+import { Liga } from '../../utils/ligas';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
-  selector: 'app-componente-servicio',
-  templateUrl: './componente-servicio.component.html',
-  styleUrls: ['./componente-servicio.component.css']
+  selector: 'app-futbol',
+  templateUrl: './futbol.component.html',
+  styleUrls: ['./futbol.component.css'],
 })
-export class ComponenteServicioComponent implements OnInit {
+export class FutbolComponent implements OnInit {
+  ligas: Liga[];
+  id;
 
-  coches: Coche[];
+  constructor(
+    private servicioFutbol: FutbolDataService,
+    private rutaActiva: ActivatedRoute
+  ) {}
 
-  constructor(private servicioCoches: CocheService) { }
+  ngOnInit(): void {
 
-  ngOnInit() {
   }
-
 }
+
 ````
 
 5. En el método ngOnInit (cuando el componente se cargado) llamar al método que devuelve el array de objetos desde la variable de tipo servicio 
 ````
 import { Component, OnInit } from '@angular/core';
-import { Coche } from '../../utils/coche';
-import { CocheService } from '../../services/coche.service';
+import { FutbolDataService } from '../../services/futbol-data.service';
+import { Liga } from '../../utils/ligas';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
-  selector: 'app-componente-servicio',
-  templateUrl: './componente-servicio.component.html',
-  styleUrls: ['./componente-servicio.component.css']
+  selector: 'app-futbol',
+  templateUrl: './futbol.component.html',
+  styleUrls: ['./futbol.component.css'],
 })
-export class ComponenteServicioComponent implements OnInit {
+export class FutbolComponent implements OnInit {
+  ligas: Liga[];
+  id;
 
-  coches: Coche[];
+  constructor(
+    private servicioFutbol: FutbolDataService,
+    private rutaActiva: ActivatedRoute
+  ) {}
 
-  constructor(private servicioCoches: CocheService) { }
+  ngOnInit(): void {
+    this.rutaActiva.paramMap.subscribe((paramentros: ParamMap) => {
+      this.id = paramentros.get('id');
+    });
 
-  ngOnInit() {
-    this.coches = this.servicioCoches.getAllCoches();
+    //console.log(this.id);
+    
+    if (this.id){
+      this.ligas = this.servicioFutbol.getLiga(this.id);
+    } else {
+      this.ligas = this.servicioFutbol.getLigas();
+      console.log(this.ligas);
+    }
   }
-
 }
+
 ````
+
+Es importante tener en cuenta que se utiliza la suscripción al paramMap para que se tenga la posibilidad de capturar cualquier cambio que se realiza en los parámetros pasados.
+
 6. En el caso de querer mostrarlos todos en una lista de la parte gráfica, utilizar el array de la clase.
 ````
-<p>componente-servicio works!</p>
-<ul *ngFor="let item of coches; let i = index">
-    <li>{{i}} {{item.marca}} </li>
-</ul>
+<div class="card-deck">
+    <div class="card" *ngFor="let liga of ligas">
+        <img [src]="liga.logo" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{liga.nombre}}</h5>
+            <button class="btn btn-primary btn-block">Ver detalle</button>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">{{liga.pais}}</small>
+        </div>
+    </div>
+</div>
 ````
 
 Del mismo modo se pueden agregar métodos en el servicio que sirvan de funcionalidad adicional, como por ejemplo búsquedas, mostrado de datos de forma específica, etc ...
@@ -1484,3 +1707,199 @@ Para poder estar avisados del cambio de datos, el método subscribe del observab
 - (next): función asociada a los datos publicados en el método next del observable del servicio.
 - (error): función asociada a los datos publicados en el método error del observable del servicio.
 - (): función asociada a al método next del observable del servicio.
+
+## Consulta de servicios mediante promesas
+
+En muchas ocasiones la provisión de datos viene de un servicio externo que se ejecuta en un servidor y es mostrado en la aplicación. En la mayoría de los casos se utilizan APIS que realizan una tarea y dan los datos resultantes en un formato JSON. 
+
+Lo primero que hay que tener en cuenta a la hora de realizar peticiones externas es que el servicio creado utilice el módulo de HttpClient, ya que es el que posibilita dicha comunicación. Al ser un módulo externo no vale con ponerlo en el servicio o componente que lo vaya a utilizar, sino también en las importaciones del archivo app.module.ts
+
+Para el ejemplo se va a realizar una consulta al api de deportes thesportdb, y en concreto a la url que muestra todas las competiciones.
+
+````
+https://www.thesportsdb.com/api/v1/json/1/all_leagues.php
+````
+
+1. Crear el servicio asociado que traerá todos los datos. En el ejemplo se utilizará el servicio creado anteriormente FutbolDataService. En este servicio se creará una variable que sea de tipo httpclient para poder realizar peticiones externas
+
+````
+import { Injectable } from '@angular/core';
+import { Liga } from '../utils/ligas';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from "rxjs/operators";
+
+
+@Injectable({
+  providedIn: 'root',
+})
+export class FutbolDataService {
+  
+  constructor(private conexion: HttpClient) {}
+ 
+}
+
+````
+
+Adicionalmente se importará el módulo httpClientmodule en el archivo app.module
+
+````
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { FutbolComponent } from './components/futbol/futbol.component';
+import { JuegosComponent } from './components/juegos/juegos.component';
+import { MenuBarraComponent } from './components/shared/menu-barra/menu-barra.component';
+import { SecundarioModule } from './components/secundario/secundario.module';
+import { LibrosComponent } from './components/libros/libros.component';
+import { FutbolDataService } from './services/futbol-data.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ImagenPipe } from './pipes/imagen.pipe';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    FutbolComponent,
+    JuegosComponent,
+    MenuBarraComponent,
+    LibrosComponent,
+    ImagenPipe,
+  ],
+  imports: [BrowserModule, AppRoutingModule, SecundarioModule, HttpClientModule],
+  providers: [FutbolDataService],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+
+````
+
+Una vez hecho esto, el servicio esta preparado para realizar peticiones externas
+
+2. En el propio servicio se crea un método llamado getLigasAPI en el cual se realiza la petición con el objeto http creado y el método get()
+
+````
+import { Injectable } from '@angular/core';
+import { Liga } from '../utils/ligas';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from "rxjs/operators";
+
+
+@Injectable({
+  providedIn: 'root',
+})
+export class FutbolDataService {
+  
+  constructor(private conexion: HttpClient) {}
+
+  getLigasAPI() {
+    return this.conexion.get(
+      'https://www.thesportsdb.com/api/v1/json/1/all_leagues.php'
+    );
+  }
+  
+}
+````
+
+Este método devuelve un **observable**, ya que los datos pueden cambiar en cualquier momento en la url servida y ser refrescados automáticamente. 
+
+3. El siguiente paso es utilizar este elemento como parte de un componente. Es importante notar que la llamada a este método devuelve un observable, por lo que habría que utilizar el método suscribe para detectar los cambios que se pueden producir
+
+````
+import { Component, OnInit } from '@angular/core';
+import { FutbolDataService } from '../../services/futbol-data.service';
+import { Liga } from '../../utils/ligas';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+
+@Component({
+  selector: 'app-futbol',
+  templateUrl: './futbol.component.html',
+  styleUrls: ['./futbol.component.css'],
+})
+export class FutbolComponent implements OnInit {
+  ligasServicio: [];
+  id;
+
+  constructor(
+    private servicioFutbol: FutbolDataService,
+    private rutaActiva: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+   
+	this.servicioFutbol.getLigasAPI().subscribe((elementos)=>{this.ligasServicio = elementos['leagues']});
+
+    }
+
+  }
+}
+
+````
+
+En el método OnInit, habría que igualar el objeto ligasServicio a los elementos que trae la suscripción al observable. Es importante ver como del parámetros que tiene la función de flecha tan solo se selecciona el elemento que tiene como key la palabra leagues ya que el objeto que se devuelve es el siguiente:
+ 
+````
+{
+    "leagues": [
+        {
+            "idLeague": "4328",
+            "strLeague": "English Premier League",
+            "strSport": "Soccer",
+            "strLeagueAlternate": "Premier League"
+        },
+        {
+            "idLeague": "4329",
+            "strLeague": "English League Championship",
+            "strSport": "Soccer",
+            "strLeagueAlternate": "],
+     "count":234
+}
+````
+
+
+En este caso el filtrado de datos se se produce en la parte del componente, pero también es posible realizarlo desde el lado del servicio y que el componente reciban los datos definitivos.  Para ello se utiliza en el lado del servicio un mapeado de datos 
+
+````
+  getLigasAPIFiltrado() {
+    return this.conexion
+      .get('https://www.thesportsdb.com/api/v1/json/1/all_leagues.php')
+      .pipe(
+        map((resultado) => {
+          return resultado['leagues'];
+        })
+      );
+  }
+````
+ 
+Donde el método map retorna el elemento concreto ya filtrado y el método getLigasAPIFiltrado() retorna el observable ya completo para que el componente lo pueda utilizar sin necesidad de filtrarlo.
+
+````
+import { Component, OnInit } from '@angular/core';
+import { FutbolDataService } from '../../services/futbol-data.service';
+import { Liga } from '../../utils/ligas';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+
+@Component({
+  selector: 'app-futbol',
+  templateUrl: './futbol.component.html',
+  styleUrls: ['./futbol.component.css'],
+})
+export class FutbolComponent implements OnInit {
+  ligas: Liga[];
+  ligasServicio: [];
+  id;
+
+  constructor(
+    private servicioFutbol: FutbolDataService,
+    private rutaActiva: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+   
+      this.servicioFutbol.getLigasAPIFiltrado().subscribe((elementos)=>{this.ligasServicio = elementos});
+  }
+}
+
+````
