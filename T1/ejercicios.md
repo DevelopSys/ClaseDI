@@ -35,9 +35,10 @@ pizza funghi familiar, servida
 pizza cuatro quesos mediana, pedida
 esa pizza ya se ha servido
 pedidas: 3
+servidas: 1
+
 ````
 
-servidas: 1
 
 4. Queremos gestionar la venta de entradas (no numeradas) de Expocoches Campanillas que tiene 3 zonas, la sala principal con 1000 entradas disponibles, la zona de compra-venta con 200 entradas disponibles y la zona vip con 25 entradas disponibles. Hay que controlar que existen entradas antes de venderlas.
 
