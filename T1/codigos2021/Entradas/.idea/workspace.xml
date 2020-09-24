@@ -1,20 +1,186 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:T3-Angular" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:T3-Angular" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:T2" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:T3-Angular" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:T2" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:proyectos" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:T3-Angular" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:T2" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:proyectos" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:angular01" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:T3-Angular" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:T2" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:proyectos" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:angular01" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:inicio" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:T3-Angular" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:T2" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:proyectos" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:inicioangular" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:T3-Angular" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:T2" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:proyectos" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:inicioangular" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:gestioncomponentes" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:T3-Angular" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:T2" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:proyectos" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:inicioangular" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:introduccion" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="062f3bef-8cc7-478f-9bac-b4e3a1f9d4de" name="Default Changelist" comment="" />
+    <list default="true" id="062f3bef-8cc7-478f-9bac-b4e3a1f9d4de" name="Default Changelist" comment="update">
+      <change afterPath="$PROJECT_DIR$/src/Pizza.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entradas/Inicio.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entradas/Ticket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entradas/VentaEntradas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entrada.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entrada.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
   <component name="ProjectId" id="1hwp6dvJwBz3MLbzR9fJpAYYp8H" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RunManager" selected="Application.Inicio">
+    <configuration name="Entrada" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Entrada" />
+      <module name="Entradas" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Inicio" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="entradas.Inicio" />
+      <module name="Entradas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="entradas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Inicio" />
+        <item itemvalue="Application.Entrada" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -25,6 +191,75 @@
       <option name="presentableId" value="Default" />
       <updated>1600931836232</updated>
     </task>
+    <task id="LOCAL-00001" summary="update">
+      <created>1600931988595</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1600931988595</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="533" y="150" key="#com.intellij.ide.util.MemberChooser" timestamp="1600933475104">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state x="533" y="150" key="#com.intellij.ide.util.MemberChooser/0.23.1440.809@0.23.1440.809" timestamp="1600933475104" />
+    <state width="1398" height="258" key="GridCell.Tab.0.bottom" timestamp="1600934419963">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state width="1398" height="258" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1600934419963" />
+    <state width="1398" height="258" key="GridCell.Tab.0.center" timestamp="1600934419963">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state width="1398" height="258" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1600934419963" />
+    <state width="1398" height="258" key="GridCell.Tab.0.left" timestamp="1600934419962">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state width="1398" height="258" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1600934419962" />
+    <state width="1398" height="258" key="GridCell.Tab.0.right" timestamp="1600934419963">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state width="1398" height="258" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1600934419963" />
+    <state width="1398" height="258" key="GridCell.Tab.1.bottom" timestamp="1600934419963">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state width="1398" height="258" key="GridCell.Tab.1.bottom/0.23.1440.809@0.23.1440.809" timestamp="1600934419963" />
+    <state width="1398" height="258" key="GridCell.Tab.1.center" timestamp="1600934419963">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state width="1398" height="258" key="GridCell.Tab.1.center/0.23.1440.809@0.23.1440.809" timestamp="1600934419963" />
+    <state width="1398" height="258" key="GridCell.Tab.1.left" timestamp="1600934419963">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state width="1398" height="258" key="GridCell.Tab.1.left/0.23.1440.809@0.23.1440.809" timestamp="1600934419963" />
+    <state width="1398" height="258" key="GridCell.Tab.1.right" timestamp="1600934419963">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state width="1398" height="258" key="GridCell.Tab.1.right/0.23.1440.809@0.23.1440.809" timestamp="1600934419963" />
+    <state x="320" y="168" key="Vcs.Push.Dialog.v2" timestamp="1600931993273">
+      <screen x="0" y="23" width="1440" height="811" />
+    </state>
+    <state x="320" y="168" key="Vcs.Push.Dialog.v2/0.23.1440.811@0.23.1440.811" timestamp="1600931993273" />
+    <state x="88" y="50" key="new project wizard" timestamp="1600933016955">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state x="88" y="50" key="new project wizard/0.23.1440.809@0.23.1440.809" timestamp="1600933016955" />
   </component>
 </project>
