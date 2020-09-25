@@ -92,3 +92,8 @@ Un coche está formado por los siguientes atributos: marca (string) modelo (stri
 ````
 
 
+6.  Crear una aplicación que sea capaz de gestionar elementos multimedia (Agregar, eliminar, buscar y listar elementos). Para ello se deben crear los siguientes tipos:
+
+- Libros: con las características título, autor, año, código, edición, soporte digital y número de páginas
+- Múscia: con las características título, autor, año, código, tipo formato, directo, duración
+- Película: con las caracteristivas titulo, autor, año, código, actores, país, duración
