@@ -82,7 +82,8 @@ La entrada y salida de mercancía supone respectivamente el incremento y decreme
 ````
 1. Registrar usuario
 2. Buscar usuario
-3. Listar usario
+3. Listar usuario
+4. Resetear contraseña
 4. Acceder al sistema
 5. Salir
 ````
