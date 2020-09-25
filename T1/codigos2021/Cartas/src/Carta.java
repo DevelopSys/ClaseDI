@@ -1,3 +1,5 @@
+import java.util.Comparator;
+
 public class Carta {
 
     int valor;
@@ -31,4 +33,6 @@ public class Carta {
                 ", palo='" + palo + '\'' +
                 '}';
     }
+
+
 }

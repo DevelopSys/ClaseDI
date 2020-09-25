@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class Entrada {
@@ -34,6 +35,8 @@ public class Entrada {
         for (Carta item:cartas) {
             System.out.println(item);
         }
+
+
 
 
     }

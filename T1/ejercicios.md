@@ -77,7 +77,16 @@ La entrada y salida de mercancía supone respectivamente el incremento y decreme
 
 3. Modifica el programa anterior de tal forma que las cartas se muestren ordenadas. Primero se ordenarán por palo: bastos, copas, espadas, oros. Cuando coincida el palo, se ordenará por número: as, 2, 3, 4, 5, 6, 7, sota, caballo, rey.
 
-2. Implementa el control de acceso al área restringida de un programa. Se debe pedir un nombre de usuario y una contraseña. Si el usuario introduce los datos correctamente, el programa dirá “Ha accedido al área restringida”. El usuario tendrá un máximo de 3 oportunidades. Si se agotan las oportunidades el programa dirá “Lo siento, no tiene acceso al área restringida”. Los nombres de usuario con sus correspondientes contraseñas deben estar almacenados en una estructura de la clase HashTable
+2. Implementa el control de acceso al área restringida de un programa. Se debe pedir un nombre de usuario y una contraseña. Si el usuario introduce los datos correctamente, el programa dirá “Ha accedido al área restringida”. El usuario tendrá un máximo de 3 oportunidades. Si se agotan las oportunidades el programa dirá “Lo siento, no tiene acceso al área restringida”. Los nombres de usuario con sus correspondientes contraseñas deben estar almacenados en una estructura de la clase HashTable. La funcionalidad del programa será la siguiente:
+
+````
+1. Registrar usuario
+2. Buscar usuario
+3. Listar usario
+4. Acceder al sistema
+5. Salir
+````
+
 
 5. Desarrollar una aplicación para el control de un garaje. El funcionamiento de la aplicación será desde consola mediante un menú que permita acceder a las diferentes opciones. Para la aplicación tendremos que tener en cuenta las siguientes cosas:
 Un coche está formado por los siguientes atributos: marca (string) modelo (string), coste (int), matricula (string). Las opciones de la aplicación serán las siguientes:
