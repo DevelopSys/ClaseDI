@@ -33,7 +33,7 @@ public class Main extends Application {
         primaryStage.setTitle("Borja Martin Herrera");
 
         // parteGrafica, tamX, tamY
-        Scene scene = new Scene(root,600,400);
+        Scene scene = new Scene(fxmlLoader.load(),600,400);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

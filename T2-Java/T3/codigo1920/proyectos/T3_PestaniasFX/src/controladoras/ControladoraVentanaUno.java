@@ -1,6 +1,6 @@
 package controladoras;
 
-import com.jfoenix.controls.JFXTextField;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -50,7 +50,7 @@ public class ControladoraVentanaUno implements Initializable {
     RadioButton radioUno, radioDos, radioTres;
 
     @FXML
-    JFXTextField textoMaterial;
+    TextField textoMaterial;
 
     @FXML
     TextArea textoArea;
