@@ -2,6 +2,7 @@ package sample;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,6 +14,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import sample.utils.Persona;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,28 +24,55 @@ public class ControladorInicial implements Initializable {
     @FXML
     Button botonImagen, botonCambio;
 
+    @FXML RadioButton radio1,radio2,radio3,radio4;
+
     DropShadow sombraExterior;
+
+    ToggleGroup grupoRadios;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         instancias();
         personalizarBotones();
         acciones();
-
     }
 
     private void instancias() {
-
         sombraExterior = new DropShadow();
+        grupoRadios = new ToggleGroup();
+        asociarDatos();
+        grupoRadios.getToggles().addAll(radio1,radio2,radio3,radio4);
+    }
+
+    private void asociarDatos() {
+        radio1.setUserData(new Persona("Borja", "Martin",123213));
+        radio2.setUserData(new Persona("Jose", "Martin",123213));
+        radio3.setUserData(new Persona("Roberto", "Martin",123213));
+        radio4.setUserData(new Persona("David", "Martin",123213));
     }
 
     private void acciones() {
+
         botonImagen.addEventHandler(MouseEvent.MOUSE_ENTERED, new ManejoRaton());
         botonImagen.addEventHandler(MouseEvent.MOUSE_EXITED, new ManejoRaton());
-
         botonCambio.addEventHandler(MouseEvent.MOUSE_ENTERED, new ManejoRaton());
         botonCambio.addEventHandler(MouseEvent.MOUSE_EXITED, new ManejoRaton());
+        botonImagen.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println(grupoRadios.getSelectedToggle());
+            }
+        });
+        grupoRadios.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observableValue, Toggle oldValue, Toggle newValue) {
+                /*System.out.println("cambio");
+                System.out.println(oldValue);
+                System.out.println(newValue);*/
+                Persona personaRecuerada = (Persona) newValue.getUserData();
+                System.out.println(personaRecuerada.getNombre());
+            }
+        });
 
 
     }
@@ -59,6 +88,7 @@ public class ControladorInicial implements Initializable {
         botonCambio.setBackground(null);
         //botonImagen.setEffect(sombraExterior);
     }
+
 
     class ManejoRaton implements EventHandler<MouseEvent> {
 
