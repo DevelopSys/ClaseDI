@@ -6,10 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.Toggle;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -26,9 +23,13 @@ public class ControladorInicial implements Initializable {
 
     @FXML RadioButton radio1,radio2,radio3,radio4;
 
-    DropShadow sombraExterior;
+    @FXML
+    ToggleButton toggle1, toggle2;
 
-    ToggleGroup grupoRadios;
+    @FXML CheckBox check1;
+
+    DropShadow sombraExterior;
+    ToggleGroup grupoRadios, grupoToggles;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -40,8 +41,10 @@ public class ControladorInicial implements Initializable {
     private void instancias() {
         sombraExterior = new DropShadow();
         grupoRadios = new ToggleGroup();
+        grupoToggles = new ToggleGroup();
         asociarDatos();
         grupoRadios.getToggles().addAll(radio1,radio2,radio3,radio4);
+        grupoToggles.getToggles().addAll(toggle1, toggle2);
     }
 
     private void asociarDatos() {
@@ -73,7 +76,19 @@ public class ControladorInicial implements Initializable {
                 System.out.println(personaRecuerada.getNombre());
             }
         });
-
+        grupoToggles.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observableValue, Toggle toggle, Toggle t1) {
+                System.out.println("cambio");
+            }
+        });
+        check1.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
+                //System.out.println(t1);
+                botonImagen.setDisable(t1);
+            }
+        });
 
     }
 

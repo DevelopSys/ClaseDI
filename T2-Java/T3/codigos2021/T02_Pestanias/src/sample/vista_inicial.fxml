@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
@@ -81,8 +82,13 @@
                                     <RadioButton fx:id="radio4" mnemonicParsing="false" text="RadioButton" GridPane.columnIndex="3" />
                                  </children>
                               </GridPane>
-                              <ToggleButton mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <CheckBox mnemonicParsing="false" text="CheckBox" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <CheckBox fx:id="check1" mnemonicParsing="false" text="CheckBox" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <FlowPane alignment="CENTER" hgap="5.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <children>
+                                    <ToggleButton fx:id="toggle1" mnemonicParsing="false" text="ToggleButton" />
+                                    <ToggleButton fx:id="toggle2" mnemonicParsing="false" text="ToggleButton" />
+                                 </children>
+                              </FlowPane>
                            </children>
                         </GridPane>
                      </center>
