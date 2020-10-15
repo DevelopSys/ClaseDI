@@ -10,6 +10,8 @@ import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import sample.utils.Persona;
 
@@ -19,12 +21,17 @@ import java.util.ResourceBundle;
 public class ControladorInicial implements Initializable {
 
     @FXML
-    Button botonImagen, botonCambio;
+    Button botonImagen, botonCambio, botonCapturaTexto;
 
     @FXML RadioButton radio1,radio2,radio3,radio4;
 
     @FXML
     ToggleButton toggle1, toggle2;
+
+    @FXML TextField textoNormal;
+    @FXML TextArea textoArea;
+    @FXML PasswordField textoPass;
+
 
     @FXML CheckBox check1;
 
@@ -60,12 +67,8 @@ public class ControladorInicial implements Initializable {
         botonImagen.addEventHandler(MouseEvent.MOUSE_EXITED, new ManejoRaton());
         botonCambio.addEventHandler(MouseEvent.MOUSE_ENTERED, new ManejoRaton());
         botonCambio.addEventHandler(MouseEvent.MOUSE_EXITED, new ManejoRaton());
-        botonImagen.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                System.out.println(grupoRadios.getSelectedToggle());
-            }
-        });
+        botonImagen.setOnAction(new ManejoPulsaciones());
+        botonCapturaTexto.setOnAction(new ManejoPulsaciones());
         grupoRadios.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> observableValue, Toggle oldValue, Toggle newValue) {
@@ -89,6 +92,7 @@ public class ControladorInicial implements Initializable {
                 botonImagen.setDisable(t1);
             }
         });
+        textoNormal.addEventHandler(KeyEvent.KEY_TYPED, new ManejoTeclas());
 
     }
 
@@ -103,8 +107,13 @@ public class ControladorInicial implements Initializable {
         botonCambio.setBackground(null);
         //botonImagen.setEffect(sombraExterior);
     }
+    class ManejoTeclas implements EventHandler<KeyEvent>{
 
+        @Override
+        public void handle(KeyEvent keyEvent) {
 
+        }
+    }
     class ManejoRaton implements EventHandler<MouseEvent> {
 
         @Override
@@ -133,6 +142,26 @@ public class ControladorInicial implements Initializable {
             // que evento ha generado
                 // quien lo ha hecho
 
+        }
+    }
+    class ManejoPulsaciones implements EventHandler<ActionEvent>{
+        @Override
+        public void handle(ActionEvent actionEvent) {
+            if (actionEvent.getSource() == botonImagen ){
+                System.out.println(grupoRadios.getSelectedToggle());
+            } else if (actionEvent.getSource() == botonCapturaTexto){
+                /*System.out.println(textoNormal.getText());
+                System.out.println(textoArea.getText());
+                System.out.println(textoPass.getText());*/
+                textoNormal.appendText("s");
+                String numero = textoNormal.getText();
+                numero = numero.substring(0,numero.length()-1);
+                textoNormal.setText(numero);
+                String palabra = "sdfghjklñ";
+                // substring 0,5 --> sdfghj
+
+                
+            }
         }
     }
 }
