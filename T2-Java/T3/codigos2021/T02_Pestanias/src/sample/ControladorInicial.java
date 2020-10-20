@@ -67,7 +67,7 @@ public class ControladorInicial implements Initializable {
                 new Persona("Luis", "Diego", 23456), new Persona("Luis", "Diego", 23456)
                 , new Persona("Luis", "Diego", 23456), new Persona("Luis", "Diego", 23456), new Persona("Luis", "Diego", 23456), new Persona("Luis", "Diego", 23456), new Persona("Luis", "Diego", 23456));
 
-        
+
         combo.setItems(listaCombo);
         listaCombo.addAll(new Persona("Borja", "Martin", 1234),
                 new Persona("Luis", "Diego", 23456));
@@ -200,14 +200,17 @@ public class ControladorInicial implements Initializable {
                 textoNormal.setText(numero);
                 String palabra = "sdfghjklñ";
                 // substring 0,5 --> sdfghj
-            } else if(actionEvent.getSource() == botonListas){
-                listaChoice.add(new Persona("Nueva","Nueva",123));
+            } else if (actionEvent.getSource() == botonListas) {
 
-                if (choice.getSelectionModel().getSelectedIndex()!=-1
-                        && combo.getSelectionModel().getSelectedIndex() != -1 ){
-                    Persona persona = listaChoice.get(choice.getSelectionModel().getSelectedIndex());
-                    System.out.println(persona);
-                    System.out.println("añadido");
+                if (choice.getSelectionModel().getSelectedIndex() != -1
+                        && combo.getSelectionModel().getSelectedIndex() != -1
+                        && listView.getSelectionModel().getSelectedIndex() != -1) {
+                    Persona personaChoice = listaChoice.get(choice.getSelectionModel().getSelectedIndex());
+                    Persona personaCombo = listaChoice.get(combo.getSelectionModel().getSelectedIndex());
+                    Persona personaList = listaChoice.get(listView.getSelectionModel().getSelectedIndex());
+                    System.out.println("La persona del choice es: "+personaChoice);
+                    System.out.println("La persona del combo es: "+personaCombo);
+                    System.out.println("La persona del listView es: "+personaList);
 
 
                 }
