@@ -187,9 +187,9 @@
                               <Label text="Choice" />
                               <Label text="Combo" GridPane.rowIndex="1" />
                               <Label text="ListView" GridPane.rowIndex="2" />
-                              <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" />
-                              <ComboBox prefWidth="150.0" promptText="selecciona un elemento" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <ListView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <ChoiceBox fx:id="choice" prefWidth="150.0" GridPane.columnIndex="1" />
+                              <ComboBox fx:id="combo" prefWidth="150.0" promptText="selecciona un elemento" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <ListView fx:id="listView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                            </children>
                         </GridPane>
                      </center>
