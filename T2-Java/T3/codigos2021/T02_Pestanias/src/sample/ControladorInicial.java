@@ -203,7 +203,8 @@ public class ControladorInicial implements Initializable {
             } else if(actionEvent.getSource() == botonListas){
                 listaChoice.add(new Persona("Nueva","Nueva",123));
 
-                if (choice.getSelectionModel().getSelectedIndex()!=-1){
+                if (choice.getSelectionModel().getSelectedIndex()!=-1
+                        && combo.getSelectionModel().getSelectedIndex() != -1 ){
                     Persona persona = listaChoice.get(choice.getSelectionModel().getSelectedIndex());
                     System.out.println(persona);
                     System.out.println("añadido");
