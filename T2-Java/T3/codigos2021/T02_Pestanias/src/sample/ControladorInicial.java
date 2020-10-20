@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
 public class ControladorInicial implements Initializable {
 
     @FXML
-    Button botonImagen, botonCambio, botonCapturaTexto;
+    Button botonImagen, botonCambio, botonCapturaTexto, botonListas;
 
     @FXML
     RadioButton radio1, radio2, radio3, radio4;
@@ -104,6 +104,7 @@ public class ControladorInicial implements Initializable {
         botonCambio.addEventHandler(MouseEvent.MOUSE_ENTERED, new ManejoRaton());
         botonCambio.addEventHandler(MouseEvent.MOUSE_EXITED, new ManejoRaton());
         botonImagen.setOnAction(new ManejoPulsaciones());
+        botonListas.setOnAction(new ManejoPulsaciones());
         botonCapturaTexto.setOnAction(new ManejoPulsaciones());
         grupoRadios.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
@@ -198,7 +199,12 @@ public class ControladorInicial implements Initializable {
                 textoNormal.setText(numero);
                 String palabra = "sdfghjklñ";
                 // substring 0,5 --> sdfghj
+            } else if(actionEvent.getSource() == botonListas){
 
+                if (choice.getSelectionModel().getSelectedIndex()!=-1){
+                    Persona persona = listaChoice.get(choice.getSelectionModel().getSelectedIndex());
+                    System.out.println(persona);
+                }
 
             }
         }

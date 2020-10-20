@@ -193,6 +193,13 @@
                            </children>
                         </GridPane>
                      </center>
+                     <bottom>
+                        <Button fx:id="botonListas" mnemonicParsing="false" text="Obtener datos" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets bottom="20.0" />
+                           </BorderPane.margin>
+                        </Button>
+                     </bottom>
                   </BorderPane>
                </content>
             </Tab>
