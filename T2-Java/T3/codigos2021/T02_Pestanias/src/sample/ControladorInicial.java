@@ -31,9 +31,10 @@ public class ControladorInicial implements Initializable {
     @FXML TextField textoNormal;
     @FXML TextArea textoArea;
     @FXML PasswordField textoPass;
-
-
     @FXML CheckBox check1;
+    @FXML ComboBox combo;
+    @FXML ChoiceBox choice;
+    @FXML ListView listView;
 
     DropShadow sombraExterior;
     ToggleGroup grupoRadios, grupoToggles;
