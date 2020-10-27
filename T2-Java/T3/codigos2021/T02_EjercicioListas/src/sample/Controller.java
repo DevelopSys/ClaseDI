@@ -9,6 +9,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import sample.utils.Persona;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -57,7 +58,7 @@ public class Controller implements Initializable {
         listView.setItems(listaListView);
         combo.setItems(listaCombo);
         choice.setItems(listaChoice);
-        listaEstado.addAll("Soltero","Casado","Divorciado");
+        listaEstado.addAll("Soltero", "Casado", "Divorciado");
     }
 
     private void acciones() {
@@ -82,9 +83,11 @@ public class Controller implements Initializable {
         comboEstado.setDisable(false);
         checkDispo.setDisable(false);
     }
+
     private void personalizarGrupo() {
         grupoRadios.getToggles().addAll(radioChoice, radioCombo, radioLista, radioTodas);
     }
+
     private void instancias() {
 
         grupoRadios = new ToggleGroup();
@@ -95,11 +98,30 @@ public class Controller implements Initializable {
 
     }
 
-    class ManejoPulsaciones implements EventHandler<ActionEvent>{
+    class ManejoPulsaciones implements EventHandler<ActionEvent> {
 
         @Override
         public void handle(ActionEvent actionEvent) {
-
+            if (actionEvent.getSource() == botonAgregar) {
+                /*String nombre = textNombre.getText();
+                String apellido = textApellido.getText();
+                int telefono = Integer.parseInt(textTelefono.getText());
+                String estado = comboEstado.getSelectionModel().getSelectedItem().toString();
+                Boolean disponibilidad = checkDispo.isSelected();
+                Persona p = new Persona(nombre, apellido, estado, telefono, disponibilidad);*/
+                String seleccion = ((RadioButton) grupoRadios.getSelectedToggle()).getText();
+                switch (seleccion) {
+                    case "Todas":
+                        System.out.println("todas seleccionadas");
+                        break;
+                    case "Combo":
+                        break;
+                    case "Lista":
+                        break;
+                    case "Choice":
+                        break;
+                }
+            }
         }
     }
 }
