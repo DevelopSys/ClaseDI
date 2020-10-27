@@ -23,13 +23,16 @@ public class Controller implements Initializable {
     RadioButton radioLista, radioCombo, radioChoice, radioTodas;
 
     @FXML
-    ComboBox comboEstado, combo;
+    ComboBox comboEstado;
+
+    @FXML ComboBox<Persona>
+    combo;
 
     @FXML
-    ListView listView;
+    ListView<Persona> listView;
 
     @FXML
-    ChoiceBox choice;
+    ChoiceBox<Persona> choice;
 
     @FXML
     TextField textNombre, textApellido, textTelefono;
@@ -72,6 +75,12 @@ public class Controller implements Initializable {
         });
         botonAgregar.setOnAction(new ManejoPulsaciones());
         botonLimpiar.setOnAction(new ManejoPulsaciones());
+
+        listView.getSelectionModel().selectedItemProperty().addListener(new ManejoCambios());
+        choice.getSelectionModel().selectedItemProperty().addListener(new ManejoCambios());
+        combo.getSelectionModel().selectedItemProperty().addListener(new ManejoCambios());
+
+
     }
 
     private void habilitarElementos() {
@@ -103,25 +112,44 @@ public class Controller implements Initializable {
         @Override
         public void handle(ActionEvent actionEvent) {
             if (actionEvent.getSource() == botonAgregar) {
-                /*String nombre = textNombre.getText();
+                String nombre = textNombre.getText();
                 String apellido = textApellido.getText();
                 int telefono = Integer.parseInt(textTelefono.getText());
                 String estado = comboEstado.getSelectionModel().getSelectedItem().toString();
                 Boolean disponibilidad = checkDispo.isSelected();
-                Persona p = new Persona(nombre, apellido, estado, telefono, disponibilidad);*/
+                Persona persona = new Persona(nombre, apellido, estado, telefono, disponibilidad);
                 String seleccion = ((RadioButton) grupoRadios.getSelectedToggle()).getText();
                 switch (seleccion) {
                     case "Todas":
-                        System.out.println("todas seleccionadas");
+                        //System.out.println("todas seleccionadas");
+                        listaChoice.addAll(persona);
+                        listaCombo.addAll(persona);
+                        listaListView.addAll(persona);
                         break;
                     case "Combo":
+                        listaCombo.addAll(persona);
                         break;
                     case "Lista":
+                        listaListView.addAll(persona);
                         break;
                     case "Choice":
+                        listaChoice.addAll(persona);
                         break;
                 }
             }
+            else if (actionEvent.getSource() == botonLimpiar){
+                textNombre.clear();
+                textApellido.clear();
+                textTelefono.clear();
+                checkDispo.setSelected(false);
+                comboEstado.getSelectionModel().select(-1);
+            }
+        }
+    }
+    class ManejoCambios implements ChangeListener<Persona>{
+        @Override
+        public void changed(ObservableValue observableValue, Persona o, Persona t1) {
+            labelSeleccion.setText(t1.getNombre()+ t1.getApellido()+t1.getEstado()+t1.getTelefono());
         }
     }
 }

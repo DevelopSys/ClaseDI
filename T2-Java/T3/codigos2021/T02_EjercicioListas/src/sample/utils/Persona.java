@@ -53,4 +53,9 @@ public final class Persona {
     public void setDisponibilidad(boolean disponibilidad) {
         this.disponibilidad = disponibilidad;
     }
+
+    @Override
+    public String toString() {
+        return getNombre() +" "+getApellido();
+    }
 }
