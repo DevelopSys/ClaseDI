@@ -16,6 +16,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import sample.utils.Persona;
+import sample.utils.PersonaTabla;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,13 +24,13 @@ import java.util.ResourceBundle;
 public class ControladorInicial implements Initializable {
 
     @FXML
-    Button botonImagen, botonCambio, botonCapturaTexto, botonListas, botonAgregarLista, botonDefectoLista;
+    Button botonImagen, botonCambio, botonCapturaTexto, botonListas, botonAgregarLista, botonDefectoLista, botonAgregarTabla, botonBorrarTabla, botonObtenerTabla;
     @FXML
     RadioButton radio1, radio2, radio3, radio4;
     @FXML
     ToggleButton toggle1, toggle2;
     @FXML
-    TextField textoNormal;
+    TextField textoNormal, textoFiltrar;
     @FXML
     TextArea textoArea;
     @FXML
@@ -43,9 +44,15 @@ public class ControladorInicial implements Initializable {
     @FXML
     ListView listView;
 
+    @FXML TableColumn columnaNombre, columnaApellido, columnaEdad, columnaDisponibilidad;
+
+    @FXML TableView tabla;
+
     ObservableList<Persona> listaChoice;
     ObservableList<Persona> listaCombo;
     ObservableList<Persona> listaListView;
+    ObservableList listaTabla;
+
 
     DropShadow sombraExterior;
     ToggleGroup grupoRadios, grupoToggles;
@@ -55,7 +62,15 @@ public class ControladorInicial implements Initializable {
         instancias();
         personalizarBotones();
         personalizarListas();
+        personalizarTabla();
         acciones();
+    }
+
+    private void personalizarTabla() {
+            tabla.setItems(listaTabla);
+            listaTabla.addAll(new PersonaTabla("nombre","apellido",123,false));
+            listaTabla.addAll(new PersonaTabla("nombre","apellido",123,false));
+            listaTabla.addAll(new PersonaTabla("nombre","apellido",123,false));
     }
 
     private void personalizarListas() {
@@ -82,6 +97,7 @@ public class ControladorInicial implements Initializable {
         listaChoice = FXCollections.observableArrayList();
         listaCombo = FXCollections.observableArrayList();
         listaListView = FXCollections.observableArrayList();
+        listaTabla = FXCollections.observableArrayList();
 
         asociarDatos();
         grupoRadios.getToggles().addAll(radio1, radio2, radio3, radio4);

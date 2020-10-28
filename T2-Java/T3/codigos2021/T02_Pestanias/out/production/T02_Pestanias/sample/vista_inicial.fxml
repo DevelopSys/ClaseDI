@@ -11,6 +11,8 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
@@ -199,6 +201,37 @@
                               <Button fx:id="botonListas" mnemonicParsing="false" text="Obtener datos" />
                               <Button fx:id="botonAgregarLista" mnemonicParsing="false" text="Agregar dato" />
                               <Button fx:id="botonDefectoLista" mnemonicParsing="false" text="Por defecto" />
+                           </children>
+                        </FlowPane>
+                     </bottom>
+                  </BorderPane>
+               </content>
+            </Tab>
+            <Tab text="Tablas">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <top>
+                        <TextField fx:id="textoFiltrar" promptText="introduce nombre a filtrar" BorderPane.alignment="CENTER" />
+                     </top>
+                     <center>
+                        <TableView fx:id="tabla" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
+                          <columns>
+                            <TableColumn fx:id="columnaNombre" prefWidth="75.0" text="Nombre" />
+                            <TableColumn fx:id="columnaApellido" prefWidth="75.0" text="Apellido" />
+                              <TableColumn fx:id="columnaEdad" prefWidth="75.0" text="Edad" />
+                              <TableColumn fx:id="columnaDisponibilidad" prefWidth="75.0" text="Disponiblidad" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </center>
+                     <bottom>
+                        <FlowPane alignment="CENTER" hgap="20.0" prefHeight="50.0" prefWidth="50.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Button fx:id="botonAgregarTabla" mnemonicParsing="false" text="Agregar" />
+                              <Button fx:id="botonBorrarTabla" mnemonicParsing="false" text="Borrar" />
+                              <Button fx:id="botonObtenerTabla" mnemonicParsing="false" text="Obtener" />
                            </children>
                         </FlowPane>
                      </bottom>
