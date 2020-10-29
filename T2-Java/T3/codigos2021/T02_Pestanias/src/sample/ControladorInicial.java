@@ -4,19 +4,19 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import sample.utils.Persona;
-import sample.utils.PersonaTabla;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -52,6 +52,7 @@ public class ControladorInicial implements Initializable {
     ObservableList<Persona> listaCombo;
     ObservableList<Persona> listaListView;
     ObservableList listaTabla;
+    FilteredList listaFiltrada;
 
 
     DropShadow sombraExterior;
@@ -67,10 +68,23 @@ public class ControladorInicial implements Initializable {
     }
 
     private void personalizarTabla() {
-            tabla.setItems(listaTabla);
-            listaTabla.addAll(new PersonaTabla("nombre","apellido",123,false));
-            listaTabla.addAll(new PersonaTabla("nombre","apellido",123,false));
-            listaTabla.addAll(new PersonaTabla("nombre","apellido",123,false));
+            columnaNombre.setCellValueFactory(new PropertyValueFactory("nombre"));
+            columnaApellido.setCellValueFactory(new PropertyValueFactory("apellido"));
+            columnaEdad.setCellValueFactory(new PropertyValueFactory("edad"));
+            columnaDisponibilidad.setCellValueFactory(new PropertyValueFactory("disponibilidad"));
+
+            listaTabla.addAll(new PersonaTabla("eds","uytfcv",123,false));
+            listaTabla.addAll(new PersonaTabla("fgdfv","juytf",432,true));
+            listaTabla.addAll(new PersonaTabla("yrte","hytrf",645,true));
+            listaTabla.addAll(new PersonaTabla("asd","hytrf",645,false));
+            listaTabla.addAll(new PersonaTabla("bnm","hytrf",645,false));
+            listaTabla.addAll(new PersonaTabla("cvb","hytrf",645,true));
+            listaTabla.addAll(new PersonaTabla("dfg","hytrf",645,false));
+            listaTabla.addAll(new PersonaTabla("ert","hytrf",645,false));
+            listaTabla.addAll(new PersonaTabla("yrte","hytrf",645,true));
+
+
+
     }
 
     private void personalizarListas() {
@@ -98,6 +112,8 @@ public class ControladorInicial implements Initializable {
         listaCombo = FXCollections.observableArrayList();
         listaListView = FXCollections.observableArrayList();
         listaTabla = FXCollections.observableArrayList();
+        listaFiltrada = new FilteredList(listaTabla);
+        tabla.setItems(listaFiltrada);
 
         asociarDatos();
         grupoRadios.getToggles().addAll(radio1, radio2, radio3, radio4);

@@ -1,9 +1,7 @@
-package sample.utils;
+package sample;
 
 import javafx.beans.InvalidationListener;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
@@ -11,16 +9,22 @@ public class PersonaTabla {
 
     String nombre, apellido;
     int edad;
-    boolean disponibilidad;
-    StringProperty nombrePropiedad, apellidoPropiedad;
-    IntegerProperty edadPropiedad;
-    BooleanProperty disponibilidadPropiedad;
+    boolean disponibilidad, estado;
+
+    SimpleStringProperty nombrePropiedad, apellidoPropiedad;
+    SimpleIntegerProperty edadPropiedad;
+    SimpleBooleanProperty disponibilidadPropiedad;
 
     public PersonaTabla(String nombre, String apellido, int edad, boolean disponibilidad) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
         this.disponibilidad = disponibilidad;
+        nombrePropiedad = new SimpleStringProperty(nombre);
+        edadPropiedad = new SimpleIntegerProperty(edad);
+        apellidoPropiedad = new SimpleStringProperty(apellido);
+        disponibilidadPropiedad = new SimpleBooleanProperty(disponibilidad);
+        this.estado = false;
     }
 
     public String getNombre() {
