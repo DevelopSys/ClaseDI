@@ -46,9 +46,10 @@ public class ControladoraSplash implements Initializable {
         transition.setOnFinished(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                /*VentanaUno ventanaUno = new VentanaUno();
-                Stage stage = (Stage) imagenFondo.getScene().getWindow();
-                stage.hide();*/
+                VentanaUno ventanaUno = new VentanaUno();
+                //Stage stage = (Stage) imagenFondo.getScene().getWindow();
+                //stage.hide();
+                ventanaUno.show();
                 new Thread(tareaSecundaria).start();
             }
         });

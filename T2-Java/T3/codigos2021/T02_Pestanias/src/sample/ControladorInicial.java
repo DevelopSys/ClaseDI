@@ -20,6 +20,7 @@ import sample.utils.Persona;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 public class ControladorInicial implements Initializable {
 
@@ -44,9 +45,11 @@ public class ControladorInicial implements Initializable {
     @FXML
     ListView listView;
 
-    @FXML TableColumn columnaNombre, columnaApellido, columnaEdad, columnaDisponibilidad;
+    @FXML
+    TableColumn columnaNombre, columnaApellido, columnaEdad, columnaDisponibilidad;
 
-    @FXML TableView tabla;
+    @FXML
+    TableView<PersonaTabla> tabla;
 
     ObservableList<Persona> listaChoice;
     ObservableList<Persona> listaCombo;
@@ -68,21 +71,23 @@ public class ControladorInicial implements Initializable {
     }
 
     private void personalizarTabla() {
-            columnaNombre.setCellValueFactory(new PropertyValueFactory("nombre"));
-            columnaApellido.setCellValueFactory(new PropertyValueFactory("apellido"));
-            columnaEdad.setCellValueFactory(new PropertyValueFactory("edad"));
-            columnaDisponibilidad.setCellValueFactory(new PropertyValueFactory("disponibilidad"));
+        columnaNombre.setCellValueFactory(new PropertyValueFactory("nombre"));
+        columnaApellido.setCellValueFactory(new PropertyValueFactory("apellido"));
+        columnaEdad.setCellValueFactory(new PropertyValueFactory("edad"));
+        columnaDisponibilidad.setCellValueFactory(new PropertyValueFactory("disponibilidad"));
 
-            listaTabla.addAll(new PersonaTabla("eds","uytfcv",123,false));
-            listaTabla.addAll(new PersonaTabla("fgdfv","juytf",432,true));
-            listaTabla.addAll(new PersonaTabla("yrte","hytrf",645,true));
-            listaTabla.addAll(new PersonaTabla("asd","hytrf",645,false));
-            listaTabla.addAll(new PersonaTabla("bnm","hytrf",645,false));
-            listaTabla.addAll(new PersonaTabla("cvb","hytrf",645,true));
-            listaTabla.addAll(new PersonaTabla("dfg","hytrf",645,false));
-            listaTabla.addAll(new PersonaTabla("ert","hytrf",645,false));
-            listaTabla.addAll(new PersonaTabla("yrte","hytrf",645,true));
+        listaTabla.addAll(new PersonaTabla("eds", "uytfcv", 123, false));
+        listaTabla.addAll(new PersonaTabla("fgdfv", "juytf", 432, true));
+        listaTabla.addAll(new PersonaTabla("yrte", "hytrf", 645, true));
+        listaTabla.addAll(new PersonaTabla("asd", "hytrf", 645, false));
+        listaTabla.addAll(new PersonaTabla("bnm", "hytrf", 645, false));
+        listaTabla.addAll(new PersonaTabla("cvb", "hytrf", 645, true));
+        listaTabla.addAll(new PersonaTabla("dfg", "hytrf", 645, false));
+        listaTabla.addAll(new PersonaTabla("ert", "hytrf", 645, false));
+        listaTabla.addAll(new PersonaTabla("yrte", "hytrf", 645, true));
 
+        listaFiltrada = new FilteredList(listaTabla);
+        tabla.setItems(listaFiltrada);
 
 
     }
@@ -112,8 +117,6 @@ public class ControladorInicial implements Initializable {
         listaCombo = FXCollections.observableArrayList();
         listaListView = FXCollections.observableArrayList();
         listaTabla = FXCollections.observableArrayList();
-        listaFiltrada = new FilteredList(listaTabla);
-        tabla.setItems(listaFiltrada);
 
         asociarDatos();
         grupoRadios.getToggles().addAll(radio1, radio2, radio3, radio4);
@@ -255,11 +258,11 @@ public class ControladorInicial implements Initializable {
                     System.out.println("La persona del combo es: " + personaCombo);
                     System.out.println("La persona del listView es: " + personaList);
                 }
-            } else if(actionEvent.getSource() == botonAgregarLista){
-                listaCombo.add(new Persona("Nueva","Nueva",1234));
-                listaChoice.add(new Persona("Nueva","Nueva",1234));
-                listaListView.add(new Persona("Nueva","Nueva",1234));
-            } else if (actionEvent.getSource() == botonDefectoLista){
+            } else if (actionEvent.getSource() == botonAgregarLista) {
+                listaCombo.add(new Persona("Nueva", "Nueva", 1234));
+                listaChoice.add(new Persona("Nueva", "Nueva", 1234));
+                listaListView.add(new Persona("Nueva", "Nueva", 1234));
+            } else if (actionEvent.getSource() == botonDefectoLista) {
                 combo.getSelectionModel().select(0);
                 choice.getSelectionModel().select(0);
                 listView.getSelectionModel().select(0);

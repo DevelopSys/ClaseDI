@@ -109,7 +109,7 @@ public class ControladoraVentanaUno implements Initializable {
                 new Persona("pioñjkl", "Apellido$", 9786, false));
 
         listaFiltradas = new FilteredList(listaTabla);
-        listaOrdenada = new SortedList(listaFiltradas);
+        //listaOrdenada = new SortedList(listaFiltradas);
 
         /*listaOrdenada.setComparator(new Comparator<Persona>() {
             @Override
@@ -125,7 +125,7 @@ public class ControladoraVentanaUno implements Initializable {
 
         listaOrdenada.comparatorProperty().bind(tabla.comparatorProperty());
 
-        tabla.setItems(listaOrdenada);
+        tabla.setItems(listaFiltradas);
     }
 
     private void personalizarLista() {
