@@ -236,6 +236,28 @@
                            </children>
                         </FlowPane>
                      </bottom>
+                     <right>
+                        <GridPane BorderPane.alignment="CENTER">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <TextField fx:id="nombreTabla" />
+                              <TextField fx:id="apellidoTabla" GridPane.rowIndex="1" />
+                              <ComboBox fx:id="edadTabla" prefWidth="150.0" GridPane.rowIndex="2" />
+                              <CheckBox fx:id="disponibilidadTabla" mnemonicParsing="false" text="Disponibilidad" GridPane.rowIndex="3" />
+                           </children>
+                           <BorderPane.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </BorderPane.margin>
+                        </GridPane>
+                     </right>
                   </BorderPane>
                </content>
             </Tab>

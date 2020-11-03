@@ -31,15 +31,15 @@ public class ControladorInicial implements Initializable {
     @FXML
     ToggleButton toggle1, toggle2;
     @FXML
-    TextField textoNormal, textoFiltrar;
+    TextField textoNormal, textoFiltrar, nombreTabla, apellidoTabla;
     @FXML
     TextArea textoArea;
     @FXML
     PasswordField textoPass;
     @FXML
-    CheckBox check1;
+    CheckBox check1, disponibilidadTabla;
     @FXML
-    ComboBox combo;
+    ComboBox combo, edadTabla;
     @FXML
     ChoiceBox choice;
     @FXML
@@ -54,6 +54,7 @@ public class ControladorInicial implements Initializable {
     ObservableList<Persona> listaChoice;
     ObservableList<Persona> listaCombo;
     ObservableList<Persona> listaListView;
+    ObservableList listaEdades;
 
     ObservableList<PersonaTabla> listaTabla;
     FilteredList<PersonaTabla> listaFiltrada;
@@ -68,7 +69,17 @@ public class ControladorInicial implements Initializable {
         personalizarBotones();
         personalizarListas();
         personalizarTabla();
+        personalizarFormulario();
         acciones();
+    }
+
+    private void personalizarFormulario() {
+
+        edadTabla.setItems(listaEdades);
+        for(int i=18;i<100;i++){
+            listaEdades.add(i);
+        }
+
     }
 
     private void personalizarTabla() {
@@ -120,6 +131,7 @@ public class ControladorInicial implements Initializable {
         listaCombo = FXCollections.observableArrayList();
         listaListView = FXCollections.observableArrayList();
         listaTabla = FXCollections.observableArrayList();
+        listaEdades = FXCollections.observableArrayList();
 
         asociarDatos();
         grupoRadios.getToggles().addAll(radio1, radio2, radio3, radio4);
@@ -203,8 +215,14 @@ public class ControladorInicial implements Initializable {
         tabla.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<PersonaTabla>() {
             @Override
             public void changed(ObservableValue<? extends PersonaTabla> observableValue, PersonaTabla oldValue, PersonaTabla newValue) {
-                System.out.println("Cambio en la seleccion de la tabla");
-                System.out.println(newValue.isDisponibilidad());
+                //System.out.println("Cambio en la seleccion de la tabla");
+                //System.out.println(newValue.isDisponibilidad());
+                nombreTabla.setText(newValue.getNombre());
+                apellidoTabla.setText(newValue.getApellido());
+                edadTabla.getSelectionModel().select(newValue.getEdad()-18);
+                // select(22)  -> 18+22
+                nombreTabla.setText(newValue.getApellido());
+                disponibilidadTabla.setSelected(newValue.isDisponibilidad());
             }
         });
 
@@ -297,8 +315,14 @@ public class ControladorInicial implements Initializable {
                 choice.getSelectionModel().select(0);
                 listView.getSelectionModel().select(0);
             } else if (actionEvent.getSource() == botonAgregarTabla) {
-                PersonaTabla personaTabla = new PersonaTabla("PersonaNueva", "ApellidoNuevo", 23, false);
-                listaTabla.add(personaTabla);
+                //PersonaTabla personaTabla = new PersonaTabla("PersonaNueva", "ApellidoNuevo", 23, false);
+
+                if(!nombreTabla.getText().equals("") && !apellidoTabla.getText().equals("")
+                        && edadTabla.getSelectionModel().getSelectedIndex()!= -1 ) {
+                    PersonaTabla personaTabla = new PersonaTabla(nombreTabla.getText(), apellidoTabla.getText(),
+                            (int) edadTabla.getSelectionModel().getSelectedItem(), disponibilidadTabla.isSelected());
+                    listaTabla.add(personaTabla);
+                }
             } else if (actionEvent.getSource() == botonBorrarTabla) {
 
                 if (listaTabla.size() != 0) {
@@ -320,7 +344,11 @@ public class ControladorInicial implements Initializable {
                 }
             } else if (actionEvent.getSource() == botonModificarTabla){
                 PersonaTabla personaTabla = tabla.getSelectionModel().getSelectedItem();
-                personaTabla.setDisponibilidad(!personaTabla.isDisponibilidad());
+                personaTabla.setDisponibilidad(disponibilidadTabla.isSelected());
+                personaTabla.setApellido(apellidoTabla.getText());
+                personaTabla.setNombre(nombreTabla.getText());
+                personaTabla.setEdad((Integer) edadTabla.getSelectionModel().getSelectedItem());
+                //personaTabla.setDisponibilidad(disponibilidadTabla.isSelected());
                 //tabla.getSelectionModel().getSelectedItem().setDisponibilidad(!tabla.getSelectionModel().getSelectedItem().isDisponibilidad());
                 tabla.refresh();
 
