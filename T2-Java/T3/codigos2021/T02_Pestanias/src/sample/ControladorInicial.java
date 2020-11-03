@@ -54,8 +54,9 @@ public class ControladorInicial implements Initializable {
     ObservableList<Persona> listaChoice;
     ObservableList<Persona> listaCombo;
     ObservableList<Persona> listaListView;
-    ObservableList listaTabla;
-    FilteredList listaFiltrada;
+
+    ObservableList<PersonaTabla> listaTabla;
+    FilteredList<PersonaTabla> listaFiltrada;
 
 
     DropShadow sombraExterior;
@@ -77,14 +78,16 @@ public class ControladorInicial implements Initializable {
         columnaDisponibilidad.setCellValueFactory(new PropertyValueFactory("disponibilidad"));
 
         listaTabla.addAll(new PersonaTabla("eds", "uytfcv", 123, false));
-        listaTabla.addAll(new PersonaTabla("fgdfv", "juytf", 432, true));
-        listaTabla.addAll(new PersonaTabla("yrte", "hytrf", 645, true));
-        listaTabla.addAll(new PersonaTabla("asd", "hytrf", 645, false));
-        listaTabla.addAll(new PersonaTabla("bnm", "hytrf", 645, false));
-        listaTabla.addAll(new PersonaTabla("cvb", "hytrf", 645, true));
-        listaTabla.addAll(new PersonaTabla("dfg", "hytrf", 645, false));
+        listaTabla.addAll(new PersonaTabla("fgdfv", "fsdfsd", 432, true));
+        listaTabla.addAll(new PersonaTabla("yrte", "ertert", 645, true));
+        listaTabla.addAll(new PersonaTabla("asd", "gdfgdf", 645, false));
+        listaTabla.addAll(new PersonaTabla("bnm", "ert", 645, false));
+        listaTabla.addAll(new PersonaTabla("cvb", "gdfgd", 645, true));
+        listaTabla.addAll(new PersonaTabla("dfg", "cvbcvb", 645, false));
         listaTabla.addAll(new PersonaTabla("ert", "hytrf", 645, false));
-        listaTabla.addAll(new PersonaTabla("yrte", "hytrf", 645, true));
+        listaTabla.addAll(new PersonaTabla("yrte", "asdfg", 645, true));
+
+        //tabla.setItems(listaTabla);
 
         listaFiltrada = new FilteredList(listaTabla);
         tabla.setItems(listaFiltrada);
@@ -141,6 +144,8 @@ public class ControladorInicial implements Initializable {
         botonAgregarLista.setOnAction(new ManejoPulsaciones());
         botonDefectoLista.setOnAction(new ManejoPulsaciones());
         botonCapturaTexto.setOnAction(new ManejoPulsaciones());
+        botonAgregarTabla.setOnAction(new ManejoPulsaciones());
+        botonBorrarTabla.setOnAction(new ManejoPulsaciones());
         grupoRadios.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> observableValue, Toggle oldValue, Toggle newValue) {
@@ -175,6 +180,23 @@ public class ControladorInicial implements Initializable {
             @Override
             public void changed(ObservableValue observableValue, Persona o, Persona t1) {
                 System.out.println(t1.getNombre());
+            }
+        });
+
+        textoFiltrar.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                System.out.println(t1);
+                //e y --> {e,y}
+                String[] palabras = t1.split(" ");
+                //System.out.println(palabras.length);
+
+                listaFiltrada.setPredicate(new Predicate<PersonaTabla>() {
+                    @Override
+                    public boolean test(PersonaTabla persona) {
+                        return (persona.getNombre().contains(t1));
+                    }
+                });
             }
         });
 
@@ -266,6 +288,20 @@ public class ControladorInicial implements Initializable {
                 combo.getSelectionModel().select(0);
                 choice.getSelectionModel().select(0);
                 listView.getSelectionModel().select(0);
+            } else if (actionEvent.getSource() == botonAgregarTabla) {
+                PersonaTabla personaTabla = new PersonaTabla("PersonaNueva", "ApellidoNuevo", 23, false);
+                listaTabla.add(personaTabla);
+            } else if (actionEvent.getSource() == botonBorrarTabla) {
+
+                if (listaTabla.size() != 0) {
+                    if (tabla.getSelectionModel().getSelectedItem() != null) {
+                        //listaTabla.re remove(tabla.getSelectionModel().getSelectedItem());
+                    } else {
+                        System.out.println("Por favor selecciona algo");
+                    }
+                } else {
+                    System.out.println("Tabla vacía");
+                }
             }
         }
     }
