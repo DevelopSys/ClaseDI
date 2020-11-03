@@ -25,7 +25,7 @@ import java.util.function.Predicate;
 public class ControladorInicial implements Initializable {
 
     @FXML
-    Button botonImagen, botonCambio, botonCapturaTexto, botonListas, botonAgregarLista, botonDefectoLista, botonAgregarTabla, botonBorrarTabla, botonObtenerTabla;
+    Button botonImagen, botonCambio, botonCapturaTexto, botonListas, botonAgregarLista, botonDefectoLista, botonAgregarTabla, botonBorrarTabla, botonObtenerTabla, botonModificarTabla;
     @FXML
     RadioButton radio1, radio2, radio3, radio4;
     @FXML
@@ -146,6 +146,8 @@ public class ControladorInicial implements Initializable {
         botonCapturaTexto.setOnAction(new ManejoPulsaciones());
         botonAgregarTabla.setOnAction(new ManejoPulsaciones());
         botonBorrarTabla.setOnAction(new ManejoPulsaciones());
+        botonObtenerTabla.setOnAction(new ManejoPulsaciones());
+        botonObtenerTabla.setOnAction(new ManejoPulsaciones());
         grupoRadios.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> observableValue, Toggle oldValue, Toggle newValue) {
@@ -295,12 +297,20 @@ public class ControladorInicial implements Initializable {
 
                 if (listaTabla.size() != 0) {
                     if (tabla.getSelectionModel().getSelectedItem() != null) {
-                        //listaTabla.re remove(tabla.getSelectionModel().getSelectedItem());
+                        listaTabla.remove(tabla.getSelectionModel().getSelectedItem());
                     } else {
                         System.out.println("Por favor selecciona algo");
                     }
                 } else {
                     System.out.println("Tabla vacía");
+                }
+            } else if (actionEvent.getSource() == botonObtenerTabla){
+                if (tabla.getSelectionModel().getSelectedIndex() != -1){
+                    /*PersonaTabla personaTabla = listaTabla.get(tabla.getSelectionModel().getSelectedIndex());
+                    System.out.println(personaTabla.getNombre());*/
+
+                    PersonaTabla personaTabla = tabla.getSelectionModel().getSelectedItem();
+                    System.out.println(personaTabla.getNombre());
                 }
             }
         }

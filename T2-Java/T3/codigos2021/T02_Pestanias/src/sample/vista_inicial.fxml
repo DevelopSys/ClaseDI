@@ -232,6 +232,7 @@
                               <Button fx:id="botonAgregarTabla" mnemonicParsing="false" text="Agregar" />
                               <Button fx:id="botonBorrarTabla" mnemonicParsing="false" text="Borrar" />
                               <Button fx:id="botonObtenerTabla" mnemonicParsing="false" text="Obtener" />
+                              <Button fx:id="botonModificarTabla" mnemonicParsing="false" text="Modificar" />
                            </children>
                         </FlowPane>
                      </bottom>
