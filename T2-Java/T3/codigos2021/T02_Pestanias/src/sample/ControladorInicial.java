@@ -147,7 +147,7 @@ public class ControladorInicial implements Initializable {
         botonAgregarTabla.setOnAction(new ManejoPulsaciones());
         botonBorrarTabla.setOnAction(new ManejoPulsaciones());
         botonObtenerTabla.setOnAction(new ManejoPulsaciones());
-        botonObtenerTabla.setOnAction(new ManejoPulsaciones());
+        botonModificarTabla.setOnAction(new ManejoPulsaciones());
         grupoRadios.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> observableValue, Toggle oldValue, Toggle newValue) {
@@ -184,7 +184,6 @@ public class ControladorInicial implements Initializable {
                 System.out.println(t1.getNombre());
             }
         });
-
         textoFiltrar.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
@@ -199,6 +198,13 @@ public class ControladorInicial implements Initializable {
                         return (persona.getNombre().contains(t1));
                     }
                 });
+            }
+        });
+        tabla.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<PersonaTabla>() {
+            @Override
+            public void changed(ObservableValue<? extends PersonaTabla> observableValue, PersonaTabla oldValue, PersonaTabla newValue) {
+                System.out.println("Cambio en la seleccion de la tabla");
+                System.out.println(newValue.isDisponibilidad());
             }
         });
 
@@ -312,6 +318,12 @@ public class ControladorInicial implements Initializable {
                     PersonaTabla personaTabla = tabla.getSelectionModel().getSelectedItem();
                     System.out.println(personaTabla.getNombre());
                 }
+            } else if (actionEvent.getSource() == botonModificarTabla){
+                PersonaTabla personaTabla = tabla.getSelectionModel().getSelectedItem();
+                personaTabla.setDisponibilidad(!personaTabla.isDisponibilidad());
+                //tabla.getSelectionModel().getSelectedItem().setDisponibilidad(!tabla.getSelectionModel().getSelectedItem().isDisponibilidad());
+                tabla.refresh();
+
             }
         }
     }
