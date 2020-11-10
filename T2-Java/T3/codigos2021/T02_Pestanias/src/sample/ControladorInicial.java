@@ -14,25 +14,33 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import sample.utils.Persona;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
 public class ControladorInicial implements Initializable {
 
 
-    @FXML TabPane panelPestanias;
+    @FXML
+    TabPane panelPestanias;
 
-    @FXML RadioMenuItem menuActivar, menuDesactivar;
+    @FXML
+    RadioMenuItem menuActivar, menuDesactivar;
 
     @FXML
     MenuItem menuBotones, menuTextos, menuTablas, menuListas;
     @FXML
     Button botonImagen, botonCambio, botonCapturaTexto, botonListas, botonAgregarLista, botonDefectoLista, botonAgregarTabla, botonBorrarTabla, botonObtenerTabla, botonModificarTabla;
+
+    @FXML
+    Button dialogoWarning, dialogoFile, dialogoColor, dialogoError, dialogoConf, dialogoConfPerso, dialogoInfo, dialogoEleccion, dialogoEntrada;
+
     @FXML
     RadioButton radio1, radio2, radio3, radio4;
     @FXML
@@ -72,12 +80,26 @@ public class ControladorInicial implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         instancias();
+        personalizarMenu();
         personalizarBotones();
         personalizarListas();
         personalizarTabla();
         personalizarFormulario();
         acciones();
+    }
+
+    private void personalizarMenu() {
+        Image imagenOk = new Image(getClass().getResourceAsStream("resources/botones.png"));
+        menuBotones.setGraphic(new ImageView(imagenOk));
+        menuBotones.setAccelerator(KeyCombination.keyCombination("Ctrl+B"));
+        menuTextos.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("resources/textos.png"))));
+        menuTextos.setAccelerator(KeyCombination.keyCombination("Ctrl+X"));
+        menuTablas.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("resources/tablas.png"))));
+        menuTablas.setAccelerator(KeyCombination.keyCombination("Ctrl+T"));
+        menuListas.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("resources/listas.png"))));
+        menuListas.setAccelerator(KeyCombination.keyCombination("Ctrl+L"));
     }
 
     private void personalizarFormulario() {
@@ -144,7 +166,7 @@ public class ControladorInicial implements Initializable {
         asociarDatos();
         grupoRadios.getToggles().addAll(radio1, radio2, radio3, radio4);
         grupoToggles.getToggles().addAll(toggle1, toggle2);
-        grupoOpciones.getToggles().addAll(menuActivar,menuDesactivar);
+        grupoOpciones.getToggles().addAll(menuActivar, menuDesactivar);
     }
 
     private void asociarDatos() {
@@ -169,6 +191,11 @@ public class ControladorInicial implements Initializable {
         botonBorrarTabla.setOnAction(new ManejoPulsaciones());
         botonObtenerTabla.setOnAction(new ManejoPulsaciones());
         botonModificarTabla.setOnAction(new ManejoPulsaciones());
+        dialogoInfo.setOnAction(new ManejoPulsaciones());
+        dialogoError.setOnAction(new ManejoPulsaciones());
+        dialogoWarning.setOnAction(new ManejoPulsaciones());
+        dialogoConf.setOnAction(new ManejoPulsaciones());
+        dialogoConfPerso.setOnAction(new ManejoPulsaciones());
         menuBotones.setOnAction(new ManejoPulsaciones());
         menuListas.setOnAction(new ManejoPulsaciones());
         menuTablas.setOnAction(new ManejoPulsaciones());
@@ -241,9 +268,9 @@ public class ControladorInicial implements Initializable {
         grupoOpciones.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> observableValue, Toggle toggle, Toggle t1) {
-                if (t1 == menuActivar){
+                if (t1 == menuActivar) {
                     panelPestanias.setDisable(false);
-                }else if (t1 == menuDesactivar){
+                } else if (t1 == menuDesactivar) {
                     panelPestanias.setDisable(true);
                 }
             }
@@ -387,6 +414,60 @@ public class ControladorInicial implements Initializable {
             } else if (actionEvent.getSource() == menuTextos) {
                 //System.out.println("pulsado menu textos");
                 panelPestanias.getSelectionModel().select(1);
+            } else if (actionEvent.getSource() == dialogoInfo) {
+                Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
+                alertInfo.setTitle("Diálogo información");
+                alertInfo.setHeaderText("Cabecera de información");
+                alertInfo.setContentText("Cuerpo del cuadro de diálogo");
+                alertInfo.show();
+            } else if (actionEvent.getSource() == dialogoError) {
+                Alert alertInfo = new Alert(Alert.AlertType.ERROR);
+                alertInfo.setTitle("Diálogo información");
+                alertInfo.setHeaderText("Cabecera de información");
+                alertInfo.setContentText("Cuerpo del cuadro de diálogo");
+                alertInfo.show();
+            } else if (actionEvent.getSource() == dialogoWarning) {
+                Alert alertInfo = new Alert(Alert.AlertType.WARNING);
+                alertInfo.setTitle("Diálogo información");
+                alertInfo.setHeaderText("Cabecera de información");
+                alertInfo.setContentText("Cuerpo del cuadro de diálogo");
+                alertInfo.show();
+            } else if (actionEvent.getSource() == dialogoConf) {
+                Alert alertConfirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+                alertConfirmacion.setTitle("Diálogo confirmación");
+                alertConfirmacion.setHeaderText("Cabecera de confirmación");
+                alertConfirmacion.setContentText("Cuerpo del cuadro de diálogo");
+                Optional<ButtonType> seccion = alertConfirmacion.showAndWait();
+                System.out.println(seccion);
+                if (seccion.get() == ButtonType.OK) {
+                    System.out.println("Seleccionado aceptar");
+                } else if (seccion.get() == ButtonType.CANCEL) {
+                    System.out.println("Seleccionado cancelar");
+                }
+            } else if (actionEvent.getSource() == dialogoConfPerso) {
+                Alert confirmacionPerso = new Alert(Alert.AlertType.CONFIRMATION);
+                confirmacionPerso.setTitle("Titulo");
+                confirmacionPerso.setContentText("Contenido");
+                confirmacionPerso.setHeaderText("Cabecera");
+                ButtonType opcion1 = new ButtonType("Opcion1");
+                ButtonType opcion2 = new ButtonType("Opcion2");
+                ButtonType opcion3 = new ButtonType("Opcion3");
+                ButtonType opcion4 = new ButtonType("Opcion4");
+                confirmacionPerso.getButtonTypes()
+                        .setAll(opcion1,opcion2,opcion3,opcion4, ButtonType.CANCEL);
+
+                Optional<ButtonType> seleccion = confirmacionPerso.showAndWait();
+                if (seleccion.get() == opcion1){
+
+                }else if (seleccion.get() == opcion2){
+
+                }else if (seleccion.get() == opcion3){
+
+                }else if (seleccion.get() == opcion4){
+
+                } else if (seleccion.get() == ButtonType.CANCEL){
+
+                }
             }
         }
     }
