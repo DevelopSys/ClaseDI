@@ -25,7 +25,12 @@ import java.util.function.Predicate;
 public class ControladorInicial implements Initializable {
 
 
-    @FXML MenuItem menuBotones, menuTextos, menuTablas, menuListas;
+    @FXML TabPane panelPestanias;
+
+    @FXML RadioMenuItem menuActivar, menuDesactivar;
+
+    @FXML
+    MenuItem menuBotones, menuTextos, menuTablas, menuListas;
     @FXML
     Button botonImagen, botonCambio, botonCapturaTexto, botonListas, botonAgregarLista, botonDefectoLista, botonAgregarTabla, botonBorrarTabla, botonObtenerTabla, botonModificarTabla;
     @FXML
@@ -63,7 +68,7 @@ public class ControladorInicial implements Initializable {
 
 
     DropShadow sombraExterior;
-    ToggleGroup grupoRadios, grupoToggles;
+    ToggleGroup grupoRadios, grupoToggles, grupoOpciones;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -78,7 +83,7 @@ public class ControladorInicial implements Initializable {
     private void personalizarFormulario() {
 
         edadTabla.setItems(listaEdades);
-        for(int i=18;i<100;i++){
+        for (int i = 18; i < 100; i++) {
             listaEdades.add(i);
         }
 
@@ -128,6 +133,7 @@ public class ControladorInicial implements Initializable {
         sombraExterior = new DropShadow();
         grupoRadios = new ToggleGroup();
         grupoToggles = new ToggleGroup();
+        grupoOpciones = new ToggleGroup();
 
         listaChoice = FXCollections.observableArrayList();
         listaCombo = FXCollections.observableArrayList();
@@ -138,6 +144,7 @@ public class ControladorInicial implements Initializable {
         asociarDatos();
         grupoRadios.getToggles().addAll(radio1, radio2, radio3, radio4);
         grupoToggles.getToggles().addAll(toggle1, toggle2);
+        grupoOpciones.getToggles().addAll(menuActivar,menuDesactivar);
     }
 
     private void asociarDatos() {
@@ -162,6 +169,10 @@ public class ControladorInicial implements Initializable {
         botonBorrarTabla.setOnAction(new ManejoPulsaciones());
         botonObtenerTabla.setOnAction(new ManejoPulsaciones());
         botonModificarTabla.setOnAction(new ManejoPulsaciones());
+        menuBotones.setOnAction(new ManejoPulsaciones());
+        menuListas.setOnAction(new ManejoPulsaciones());
+        menuTablas.setOnAction(new ManejoPulsaciones());
+        menuTextos.setOnAction(new ManejoPulsaciones());
         grupoRadios.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> observableValue, Toggle oldValue, Toggle newValue) {
@@ -221,10 +232,20 @@ public class ControladorInicial implements Initializable {
                 //System.out.println(newValue.isDisponibilidad());
                 nombreTabla.setText(newValue.getNombre());
                 apellidoTabla.setText(newValue.getApellido());
-                edadTabla.getSelectionModel().select(newValue.getEdad()-18);
+                edadTabla.getSelectionModel().select(newValue.getEdad() - 18);
                 // select(22)  -> 18+22
                 nombreTabla.setText(newValue.getApellido());
                 disponibilidadTabla.setSelected(newValue.isDisponibilidad());
+            }
+        });
+        grupoOpciones.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observableValue, Toggle toggle, Toggle t1) {
+                if (t1 == menuActivar){
+                    panelPestanias.setDisable(false);
+                }else if (t1 == menuDesactivar){
+                    panelPestanias.setDisable(true);
+                }
             }
         });
 
@@ -319,8 +340,8 @@ public class ControladorInicial implements Initializable {
             } else if (actionEvent.getSource() == botonAgregarTabla) {
                 //PersonaTabla personaTabla = new PersonaTabla("PersonaNueva", "ApellidoNuevo", 23, false);
 
-                if(!nombreTabla.getText().equals("") && !apellidoTabla.getText().equals("")
-                        && edadTabla.getSelectionModel().getSelectedIndex()!= -1 ) {
+                if (!nombreTabla.getText().equals("") && !apellidoTabla.getText().equals("")
+                        && edadTabla.getSelectionModel().getSelectedIndex() != -1) {
                     PersonaTabla personaTabla = new PersonaTabla(nombreTabla.getText(), apellidoTabla.getText(),
                             (int) edadTabla.getSelectionModel().getSelectedItem(), disponibilidadTabla.isSelected());
                     listaTabla.add(personaTabla);
@@ -336,15 +357,15 @@ public class ControladorInicial implements Initializable {
                 } else {
                     System.out.println("Tabla vacía");
                 }
-            } else if (actionEvent.getSource() == botonObtenerTabla){
-                if (tabla.getSelectionModel().getSelectedIndex() != -1){
+            } else if (actionEvent.getSource() == botonObtenerTabla) {
+                if (tabla.getSelectionModel().getSelectedIndex() != -1) {
                     /*PersonaTabla personaTabla = listaTabla.get(tabla.getSelectionModel().getSelectedIndex());
                     System.out.println(personaTabla.getNombre());*/
 
                     PersonaTabla personaTabla = tabla.getSelectionModel().getSelectedItem();
                     System.out.println(personaTabla.getNombre());
                 }
-            } else if (actionEvent.getSource() == botonModificarTabla){
+            } else if (actionEvent.getSource() == botonModificarTabla) {
                 PersonaTabla personaTabla = tabla.getSelectionModel().getSelectedItem();
                 personaTabla.setDisponibilidad(disponibilidadTabla.isSelected());
                 personaTabla.setApellido(apellidoTabla.getText());
@@ -354,6 +375,18 @@ public class ControladorInicial implements Initializable {
                 //tabla.getSelectionModel().getSelectedItem().setDisponibilidad(!tabla.getSelectionModel().getSelectedItem().isDisponibilidad());
                 tabla.refresh();
 
+            } else if (actionEvent.getSource() == menuBotones) {
+                //System.out.println("pulsado menu botones");
+                panelPestanias.getSelectionModel().select(0);
+            } else if (actionEvent.getSource() == menuListas) {
+                //System.out.println("pulsado menu listas");
+                panelPestanias.getSelectionModel().select(2);
+            } else if (actionEvent.getSource() == menuTablas) {
+                //System.out.println("pulsado menu tablas");
+                panelPestanias.getSelectionModel().select(3);
+            } else if (actionEvent.getSource() == menuTextos) {
+                //System.out.println("pulsado menu textos");
+                panelPestanias.getSelectionModel().select(1);
             }
         }
     }
