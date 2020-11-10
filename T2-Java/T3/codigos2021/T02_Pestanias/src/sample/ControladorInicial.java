@@ -24,6 +24,8 @@ import java.util.function.Predicate;
 
 public class ControladorInicial implements Initializable {
 
+
+    @FXML MenuItem menuBotones, menuTextos, menuTablas, menuListas;
     @FXML
     Button botonImagen, botonCambio, botonCapturaTexto, botonListas, botonAgregarLista, botonDefectoLista, botonAgregarTabla, botonBorrarTabla, botonObtenerTabla, botonModificarTabla;
     @FXML

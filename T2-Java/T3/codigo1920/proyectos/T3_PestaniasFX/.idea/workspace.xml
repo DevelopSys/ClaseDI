@@ -183,8 +183,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Main" />
       <item itemvalue="Application.Entrada" />
+      <item itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list>
