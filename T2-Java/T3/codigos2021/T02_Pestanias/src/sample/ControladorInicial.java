@@ -20,6 +20,7 @@ import javafx.scene.input.MouseEvent;
 import sample.utils.Persona;
 
 import java.net.URL;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
@@ -196,6 +197,8 @@ public class ControladorInicial implements Initializable {
         dialogoWarning.setOnAction(new ManejoPulsaciones());
         dialogoConf.setOnAction(new ManejoPulsaciones());
         dialogoConfPerso.setOnAction(new ManejoPulsaciones());
+        dialogoEntrada.setOnAction(new ManejoPulsaciones());
+
         menuBotones.setOnAction(new ManejoPulsaciones());
         menuListas.setOnAction(new ManejoPulsaciones());
         menuTablas.setOnAction(new ManejoPulsaciones());
@@ -468,6 +471,39 @@ public class ControladorInicial implements Initializable {
                 } else if (seleccion.get() == ButtonType.CANCEL){
 
                 }
+            } else if (actionEvent.getSource() == dialogoEntrada){
+
+                boolean entrar = false;
+
+
+                try{
+                    do{
+                        TextInputDialog dialogoEntrada = new TextInputDialog();
+                        dialogoEntrada.setTitle("Titulo");
+                        dialogoEntrada.setHeaderText("Cabecera");
+                        dialogoEntrada.setContentText("Contenido");
+                        Optional<String> texto = dialogoEntrada.showAndWait();
+
+                        if (texto.get().equals("")){
+                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                            alert.setContentText("Estás seguro???");
+                            Optional<ButtonType> contestacion = alert.showAndWait();
+                            if (contestacion.get() == ButtonType.CANCEL){
+                                entrar = true;
+                            } else {
+                                break;
+                            }
+                        } else {
+                            System.out.println(texto.get());
+                            break;
+                        }
+
+                    }while(entrar);
+
+                }catch (NoSuchElementException e){
+                    System.out.println("No hay valor");
+                }
+
             }
         }
     }
