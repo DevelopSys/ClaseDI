@@ -533,7 +533,7 @@ public class ControladorInicial implements Initializable {
                         new Persona("Jose", "Martin", 23456789),
                         new Persona("Luis", "Martin", 13));
 
-                ChoiceDialog<Persona> dialogoChoice = new ChoiceDialog<>(lista.get(0),lista);
+                ChoiceDialog<Persona> dialogoChoice = new ChoiceDialog<>(lista.get(0), lista);
                 Optional<Persona> seleccionPersona = dialogoChoice.showAndWait();
 
                 FileChooser fileChooser = new FileChooser();
@@ -581,10 +581,26 @@ public class ControladorInicial implements Initializable {
                 }
 
 
-            } else if (actionEvent.getSource() == dialogoBuscador){
-                
-            }
+            } else if (actionEvent.getSource() == dialogoBuscador) {
 
+                FileChooser fileChooser = new FileChooser();
+                File fichero = fileChooser.showOpenDialog(dialogoBuscador.getScene().getWindow());
+                File[] listaFicheros = fichero.getParentFile().listFiles();
+                for (File file :listaFicheros) {
+                    System.out.println(file);
+                    if (file.isDirectory()){
+                        listar(file);
+                    }
+                }
+
+            }
+        }
+    }
+
+    public void listar(File directorio){
+        File[] listaFicheros = directorio.listFiles();
+        for (File file :listaFicheros) {
+            System.out.println(file);
         }
     }
 }
