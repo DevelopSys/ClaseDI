@@ -339,7 +339,7 @@
                                                 GridPane.columnIndex="2" GridPane.rowIndex="2"/>
                                         <Button mnemonicParsing="false" fx:id="dialogoEleccion" text="Elección"
                                                 GridPane.rowIndex="3"/>
-                                        <Button mnemonicParsing="false" fx:id="dialogoColor" text="Color"
+                                        <Button mnemonicParsing="false" fx:id="dialogoBuscador" text="Buscador"
                                                 GridPane.columnIndex="1" GridPane.rowIndex="3"/>
                                         <Button mnemonicParsing="false" fx:id="dialogoFile" text="Ficheros"
                                                 GridPane.columnIndex="2" GridPane.rowIndex="3"/>

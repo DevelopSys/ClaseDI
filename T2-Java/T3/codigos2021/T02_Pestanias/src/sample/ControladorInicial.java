@@ -17,8 +17,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
+import javafx.stage.Window;
 import sample.utils.Persona;
 
+import java.io.*;
 import java.net.URL;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -40,7 +43,7 @@ public class ControladorInicial implements Initializable {
     Button botonImagen, botonCambio, botonCapturaTexto, botonListas, botonAgregarLista, botonDefectoLista, botonAgregarTabla, botonBorrarTabla, botonObtenerTabla, botonModificarTabla;
 
     @FXML
-    Button dialogoWarning, dialogoFile, dialogoColor, dialogoError, dialogoConf, dialogoConfPerso, dialogoInfo, dialogoEleccion, dialogoEntrada;
+    Button dialogoWarning, dialogoFile, dialogoBuscador, dialogoError, dialogoConf, dialogoConfPerso, dialogoInfo, dialogoEleccion, dialogoEntrada;
 
     @FXML
     RadioButton radio1, radio2, radio3, radio4;
@@ -198,6 +201,9 @@ public class ControladorInicial implements Initializable {
         dialogoConf.setOnAction(new ManejoPulsaciones());
         dialogoConfPerso.setOnAction(new ManejoPulsaciones());
         dialogoEntrada.setOnAction(new ManejoPulsaciones());
+        dialogoEleccion.setOnAction(new ManejoPulsaciones());
+        dialogoFile.setOnAction(new ManejoPulsaciones());
+        dialogoBuscador.setOnAction(new ManejoPulsaciones());
 
         menuBotones.setOnAction(new ManejoPulsaciones());
         menuListas.setOnAction(new ManejoPulsaciones());
@@ -457,38 +463,36 @@ public class ControladorInicial implements Initializable {
                 ButtonType opcion3 = new ButtonType("Opcion3");
                 ButtonType opcion4 = new ButtonType("Opcion4");
                 confirmacionPerso.getButtonTypes()
-                        .setAll(opcion1,opcion2,opcion3,opcion4, ButtonType.CANCEL);
+                        .setAll(opcion1, opcion2, opcion3, opcion4, ButtonType.CANCEL);
 
                 Optional<ButtonType> seleccion = confirmacionPerso.showAndWait();
-                if (seleccion.get() == opcion1){
+                if (seleccion.get() == opcion1) {
 
-                }else if (seleccion.get() == opcion2){
+                } else if (seleccion.get() == opcion2) {
 
-                }else if (seleccion.get() == opcion3){
+                } else if (seleccion.get() == opcion3) {
 
-                }else if (seleccion.get() == opcion4){
+                } else if (seleccion.get() == opcion4) {
 
-                } else if (seleccion.get() == ButtonType.CANCEL){
+                } else if (seleccion.get() == ButtonType.CANCEL) {
 
                 }
-            } else if (actionEvent.getSource() == dialogoEntrada){
+            } else if (actionEvent.getSource() == dialogoEntrada) {
 
                 boolean entrar = false;
-
-
-                try{
-                    do{
+                try {
+                    do {
                         TextInputDialog dialogoEntrada = new TextInputDialog();
                         dialogoEntrada.setTitle("Titulo");
                         dialogoEntrada.setHeaderText("Cabecera");
                         dialogoEntrada.setContentText("Contenido");
                         Optional<String> texto = dialogoEntrada.showAndWait();
 
-                        if (texto.get().equals("")){
+                        if (texto.get().equals("")) {
                             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                             alert.setContentText("Estás seguro???");
                             Optional<ButtonType> contestacion = alert.showAndWait();
-                            if (contestacion.get() == ButtonType.CANCEL){
+                            if (contestacion.get() == ButtonType.CANCEL) {
                                 entrar = true;
                             } else {
                                 break;
@@ -498,13 +502,89 @@ public class ControladorInicial implements Initializable {
                             break;
                         }
 
-                    }while(entrar);
+                    } while (entrar);
 
-                }catch (NoSuchElementException e){
+                } catch (NoSuchElementException e) {
                     System.out.println("No hay valor");
                 }
 
+            } else if (actionEvent.getSource() == dialogoEleccion) {
+
+                ObservableList lista = FXCollections.observableArrayList();
+                lista.addAll(new Persona("Borja", "Martin", 13),
+                        new Persona("Pedro", "Martin", 13),
+                        new Persona("Jose", "Martin", 23456789),
+                        new Persona("Luis", "Martin", 13));
+
+                ChoiceDialog<Persona> choiceDialog = new ChoiceDialog(lista.get(3), lista);
+                choiceDialog.setContentText("Contenido");
+                choiceDialog.setTitle("Titulo");
+                choiceDialog.setHeaderText("Cabecera");
+                Optional<Persona> seleccion = choiceDialog.showAndWait();
+                System.out.println(seleccion.get().getTelefono());
+            } else if (actionEvent.getSource() == dialogoFile) {
+
+
+                TextInputDialog textInputDialog = new TextInputDialog("valor por defecto");
+                Optional seleccion = textInputDialog.showAndWait();
+                ObservableList lista = FXCollections.observableArrayList();
+                lista.addAll(new Persona("Borja", "Martin", 13),
+                        new Persona("Pedro", "Martin", 13),
+                        new Persona("Jose", "Martin", 23456789),
+                        new Persona("Luis", "Martin", 13));
+
+                ChoiceDialog<Persona> dialogoChoice = new ChoiceDialog<>(lista.get(0),lista);
+                Optional<Persona> seleccionPersona = dialogoChoice.showAndWait();
+
+                FileChooser fileChooser = new FileChooser();
+                //File file = fileChooser.showOpenDialog(dialogoFile.getScene().getWindow());
+                File file = fileChooser.showSaveDialog(dialogoFile.getScene().getWindow());
+                // System.out.println(file.getAbsolutePath());
+                // File -- FileReader -- BufferedReader
+                /*if (file.canRead()){
+                    FileReader fileReader = null;
+                    BufferedReader bufferedReader = null;
+
+                    try {
+                        fileReader = new FileReader(file);
+                        bufferedReader = new BufferedReader(fileReader);
+                        System.out.println(bufferedReader.readLine());
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }*/
+                // File -- FileWriter -- BufferedWriter
+
+                if (file.getParentFile().canWrite()) {
+
+                    FileWriter fileWriter = null;
+                    BufferedWriter bufferedWriter = null;
+
+                    try {
+                        file.createNewFile();
+                        fileWriter = new FileWriter(file);
+                        bufferedWriter = new BufferedWriter(fileWriter);
+                        bufferedWriter.write(seleccion.get().toString());
+                        bufferedWriter.newLine();
+                        bufferedWriter.write(seleccionPersona.get().toString());
+                        bufferedWriter.newLine();
+                        bufferedWriter.write("asdasdasdasdasdasdasdasdasdasdasd");
+                        bufferedWriter.close();
+                        fileWriter.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    System.out.println("No hay permisos");
+                }
+
+
+            } else if (actionEvent.getSource() == dialogoBuscador){
+                
             }
+
         }
     }
 }
