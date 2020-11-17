@@ -8,7 +8,10 @@ import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.DropShadow;
@@ -17,12 +20,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.stage.Window;
 import sample.utils.Persona;
 
 import java.io.*;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -44,6 +50,18 @@ public class ControladorInicial implements Initializable {
 
     @FXML
     Button dialogoWarning, dialogoFile, dialogoBuscador, dialogoError, dialogoConf, dialogoConfPerso, dialogoInfo, dialogoEleccion, dialogoEntrada;
+
+    @FXML
+    Button botonComunicar;
+
+    @FXML
+    TextField textoComunicar;
+
+    @FXML
+    ColorPicker dialogoColor;
+
+    @FXML
+    DatePicker dialogoFecha;
 
     @FXML
     RadioButton radio1, radio2, radio3, radio4;
@@ -204,6 +222,10 @@ public class ControladorInicial implements Initializable {
         dialogoEleccion.setOnAction(new ManejoPulsaciones());
         dialogoFile.setOnAction(new ManejoPulsaciones());
         dialogoBuscador.setOnAction(new ManejoPulsaciones());
+        dialogoColor.setOnAction(new ManejoPulsaciones());
+        dialogoFecha.setOnAction(new ManejoPulsaciones());
+
+        botonComunicar.setOnAction(new ManejoPulsaciones());
 
         menuBotones.setOnAction(new ManejoPulsaciones());
         menuListas.setOnAction(new ManejoPulsaciones());
@@ -297,6 +319,14 @@ public class ControladorInicial implements Initializable {
         botonCambio.setText("");
         botonCambio.setBackground(null);
         //botonImagen.setEffect(sombraExterior);
+    }
+
+    public void terminarComunicacion(String texto){
+        textoComunicar.setText(texto);
+    }
+
+    public void cerrarVentana(){
+        botonComunicar.getScene().getWindow().hide();
     }
 
     class ManejoTeclas implements EventHandler<KeyEvent> {
@@ -586,20 +616,48 @@ public class ControladorInicial implements Initializable {
                 FileChooser fileChooser = new FileChooser();
                 File fichero = fileChooser.showOpenDialog(dialogoBuscador.getScene().getWindow());
                 File[] listaFicheros = fichero.getParentFile().listFiles();
-                for (File file :listaFicheros) {
+                for (File file : listaFicheros) {
                     System.out.println(file);
-                    if (file.isDirectory()){
+                    if (file.isDirectory()) {
                         listar(file);
                     }
+                }
+            } else if (actionEvent.getSource() == dialogoColor) {
+                System.out.println(dialogoColor.getValue());
+                Color color = dialogoColor.getValue();
+                System.out.println("#" + color.toString().substring(2, color.toString().length() - 2));
+            } else if (actionEvent.getSource() == dialogoFecha) {
+                System.out.println(dialogoFecha.getValue());
+                LocalDate localDate = dialogoFecha.getValue();
+            } else if (actionEvent.getSource() == botonComunicar) {
+                // Stage(ventana) -> Scene(Parent --> FXML + Controller) -> Nodes
+
+                try {
+                    //Parent root = FXMLLoader.load(getClass().getResource("ventana_adicional.fxml"));
+                    // necesito la controladora del nuevo FXML
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("ventana_adicional.fxml"));
+                    Parent root = loader.load();
+                    ControladorAdicional controladorAdicional = loader.getController();
+                    //controladorAdicional.comunicarTexto(textoComunicar.getText());
+                    controladorAdicional.comunicarTexto(new Persona("Borja","Apellido",123),
+                            ControladorInicial.this);
+
+                    Scene scene = new Scene(root,300,300);
+                    Stage ventanaAdicional = new Stage();
+                    ventanaAdicional.setScene(scene);
+                    ventanaAdicional.show();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
 
             }
         }
     }
 
-    public void listar(File directorio){
+    public void listar(File directorio) {
         File[] listaFicheros = directorio.listFiles();
-        for (File file :listaFicheros) {
+        for (File file : listaFicheros) {
             System.out.println(file);
         }
     }
