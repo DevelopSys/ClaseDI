@@ -67,7 +67,7 @@ public class VentanaSplash implements Initializable {
         });*/
         FadeTransition transition = new FadeTransition();
         transition.setNode(nodoPrincipal);
-        transition.setDuration(Duration.seconds(2));
+        transition.setDuration(Duration.seconds(10));
         transition.setFromValue(0);
         transition.setToValue(1);
         transition.play();
@@ -77,7 +77,7 @@ public class VentanaSplash implements Initializable {
         Task task = new Task() {
             @Override
             protected Object call() throws Exception {
-                for (int i = 0; i < 100; i+=5) {
+                for (int i = 0; i < 101; i++) {
                     updateProgress(i,100);
                     Thread.sleep(10);
                 }
