@@ -1,6 +1,14 @@
 package sample;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,9 +25,17 @@ import java.util.ResourceBundle;
 public class VentanaPrincipal implements Initializable {
 
     String peticionAPI = "https://www.thesportsdb.com/api/v1/json/1/search_all_teams.php?s=Soccer&c=Spain";
+    ObservableList<Equipo> listaEquipos;
+    @FXML
+    ListView<Equipo> listView;
+    @FXML
+    ImageView imagen;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        listaEquipos = FXCollections.observableArrayList();
+        listView.setItems(listaEquipos);
 
         try {
             URL urlAPI = new URL(peticionAPI);
@@ -36,8 +52,13 @@ public class VentanaPrincipal implements Initializable {
                 JSONObject object = arrayEquipos.getJSONObject(i);
                 String nombre = object.getString("strTeam");
                 String anio = object.getString("intFormedYear");
-                Equipo equipo = new Equipo(nombre,anio);
+                String escudo = object.getString("strTeamBadge");
+                Equipo equipo = new Equipo(nombre,anio,escudo);
+                //System.out.println(nombre);
+                listaEquipos.addAll(equipo);
             }
+
+
 
 
 
@@ -51,5 +72,19 @@ public class VentanaPrincipal implements Initializable {
         }
 
 
+        acciones();
+
     }
+
+    private void acciones() {
+        listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Equipo>() {
+            @Override
+            public void changed(ObservableValue<? extends Equipo> observableValue, Equipo equipo, Equipo t1) {
+                //System.out.println(t1.getNombre());
+                imagen.setImage(new Image(t1.getEscudo()));
+
+            }
+        });
+    }
+
 }

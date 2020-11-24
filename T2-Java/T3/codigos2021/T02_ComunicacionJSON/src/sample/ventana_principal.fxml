@@ -6,6 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.image.ImageView?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="sample.VentanaPrincipal"
@@ -14,5 +15,12 @@
     <top>
         <Label text="Ventana JSON" alignment="CENTER"></Label>
     </top>
+    <center>
+        <ListView fx:id="listView"/>
+    </center>
+
+    <bottom>
+        <ImageView fx:id="imagen"/>
+    </bottom>
 
 </BorderPane>
