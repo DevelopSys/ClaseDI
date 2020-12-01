@@ -44,6 +44,8 @@ public class ControllerMain implements Initializable {
     @FXML
     ImageView imagen;
 
+    int contador=0;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -118,7 +120,8 @@ public class ControllerMain implements Initializable {
                 try {
                     Parent root = loader.load();
                     ControllerAgregar controllerAgregar = loader.getController();
-                    controllerAgregar.setControllerMain(ControllerMain.this,1);
+                    controllerAgregar.setControllerMain(ControllerMain.this,1, contador);
+                    contador++;
                     Scene scene = new Scene(root,300,300);
                     stage.setScene(scene);
                     stage.show();
@@ -135,7 +138,7 @@ public class ControllerMain implements Initializable {
                 try {
                     Parent root = loader.load();
                     ControllerAgregar controllerAgregar = loader.getController();
-                    controllerAgregar.setControllerMain(ControllerMain.this,3);
+                    controllerAgregar.setControllerMain(ControllerMain.this,3,0);
                     controllerAgregar.detallePedido(tablaPedidos.getSelectionModel().getSelectedItem());
                     Scene scene = new Scene(root,300,300);
                     stage.setScene(scene);
@@ -172,7 +175,7 @@ public class ControllerMain implements Initializable {
                 try {
                     Parent root = loader.load();
                     ControllerAgregar controllerAgregar = loader.getController();
-                    controllerAgregar.setControllerMain(ControllerMain.this,2);
+                    controllerAgregar.setControllerMain(ControllerMain.this,2, 0);
                     controllerAgregar.comunicarPedido((Pedido) tablaPedidos.getSelectionModel().getSelectedItem());
                     Scene scene = new Scene(root,300,300);
                     stage.setScene(scene);

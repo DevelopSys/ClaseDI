@@ -20,6 +20,8 @@ public class ControllerAgregar implements Initializable {
 
     ControllerMain controllerMain;
 
+    int numero;
+
     int tipo;
 
     @Override
@@ -35,7 +37,6 @@ public class ControllerAgregar implements Initializable {
                 String producto = productoAgregar.getText();
                 String localidad = localidadAgregar.getText();
                 int telefono = Integer.parseInt(telefonoAgregar.getText());
-                int numero = 0;
                 Pedido p = new Pedido(nombre, localidad, producto, telefono, numero);
                 // quier ejecutar agregarProducto(p)
                 if (tipo == 1) {
@@ -68,8 +69,9 @@ public class ControllerAgregar implements Initializable {
         productoAgregar.setText(pedido.getProducto());
     }
 
-    public void setControllerMain(ControllerMain controllerMain, int tipo) {
+    public void setControllerMain(ControllerMain controllerMain, int tipo, int numero) {
         this.controllerMain = controllerMain;
         this.tipo = tipo;
+        this.numero = numero;
     }
 }
