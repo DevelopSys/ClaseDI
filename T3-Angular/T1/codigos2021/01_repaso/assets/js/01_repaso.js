@@ -115,3 +115,30 @@ coleccion.forEach((element) => {
 console.log(`La longitud del array despues de añadir es ${coleccion.length}`);
 
 // sacar las palabras que tienen 5 o más letras
+/*console.log("Palabras con 5 letras");
+coleccion.forEach((element) => {
+  if (element.length >= 5) {
+    console.log(element);
+  }
+});*/
+
+console.log("eliminando la primera posicion del array");
+coleccion.shift();
+
+coleccion.forEach((element) => {
+  console.log(element);
+});
+
+console.log("Elimindo la ultima posicion del array");
+coleccion.pop();
+
+coleccion.forEach((element) => {
+  console.log(element);
+});
+
+console.log("Añado en la primera posicion del array");
+coleccion.unshift("Primero");
+
+coleccion.forEach((element) => {
+  console.log(element);
+});
