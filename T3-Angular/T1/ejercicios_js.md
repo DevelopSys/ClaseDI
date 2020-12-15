@@ -12,4 +12,7 @@
 	- Utiliza las funciones creadas en los puntos anteriores
 3. Coge el link de classroom y guarda todo el contenido del json en una variable llamada temporada1920 y realiza las siguientes acciones:
 	- Crea una función que admita por parámetros el nombre de un equipo y muestre todos los partidos de la temporada de dicho equipo con el siguiente formato: Equipo1 X - Equipo2 X
-	- Crea una función que admita 
+	- Crea una función que admita por parámetros el nombre del equipo y muestre las alineaciones utilizadas en cada uno de los partidos con el siguiente formato: 
+		- Partido 1 Equipo1 vs Equipo2 
+		- Alineación Local : Jugador1 Jugador2 Jugador3 Jugador4 Equipo1 vs Equipo2 
+		- Alineación Local : Jugador1 Jugador2 Jugador3 Jugador4
