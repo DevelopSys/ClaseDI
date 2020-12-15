@@ -1,6 +1,7 @@
 1. Crear una aplicación web que tenga lo siguientes:
 	- Objeto llamado obj1 con la siguiente estructura {nombre: "Valor correcto", apellido: "Apellido correcto", edad: 23, hobbies: ["Futbol","Series", "Videojuegos","Cine"]}
 	- Objeto llamado obj2 con la siguiente estructura {nombre: "Valor", apellido: "Apellido", edad: 32, hobbies: ["Lectura", "Televisión"]}
+	- Crear un array llamado usuarios, donde se guardan el obj1 y el obj2
 	- Saca por consola todos aquellos hobbies del objeto cuyo nombre es Valor correcto
 2. Crea dos arrays de jugadores (jugadoresMadrid y jugadoresBarsa). Realiza las siguientes operaciones sobre los arrays:
 	3. 
