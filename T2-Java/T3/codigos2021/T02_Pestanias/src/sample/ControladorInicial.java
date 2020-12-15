@@ -23,7 +23,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import sample.utils.Persona;
 
 import java.io.*;
@@ -110,17 +109,19 @@ public class ControladorInicial implements Initializable {
         personalizarTabla();
         personalizarFormulario();
         acciones();
+
+
     }
 
     private void personalizarMenu() {
-        Image imagenOk = new Image(getClass().getResourceAsStream("resources/botones.png"));
+        Image imagenOk = new Image(getClass().getResourceAsStream("sample/resources/botones.png"));
         menuBotones.setGraphic(new ImageView(imagenOk));
         menuBotones.setAccelerator(KeyCombination.keyCombination("Ctrl+B"));
-        menuTextos.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("resources/textos.png"))));
+        menuTextos.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("sample/resources/textos.png"))));
         menuTextos.setAccelerator(KeyCombination.keyCombination("Ctrl+X"));
-        menuTablas.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("resources/tablas.png"))));
+        menuTablas.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("sample/resources/tablas.png"))));
         menuTablas.setAccelerator(KeyCombination.keyCombination("Ctrl+T"));
-        menuListas.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("resources/listas.png"))));
+        menuListas.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("sample/resources/listas.png"))));
         menuListas.setAccelerator(KeyCombination.keyCombination("Ctrl+L"));
     }
 
@@ -311,11 +312,11 @@ public class ControladorInicial implements Initializable {
 
     private void personalizarBotones() {
 
-        Image imagenOk = new Image(getClass().getResourceAsStream("resources/button_on.png"));
+        Image imagenOk = new Image(getClass().getResourceAsStream("sample/resources/button_on.png"));
         botonImagen.setGraphic(new ImageView(imagenOk));
         botonImagen.setBackground(null);
         botonCambio.setGraphic(new ImageView
-                (new Image(getClass().getResourceAsStream("resources/button_ok.png"))));
+                (new Image(getClass().getResourceAsStream("sample/resources/button_ok.png"))));
         botonCambio.setText("");
         botonCambio.setBackground(null);
         //botonImagen.setEffect(sombraExterior);
@@ -353,11 +354,11 @@ public class ControladorInicial implements Initializable {
             } else if (event.getSource() == botonCambio) {
                 if (event.getEventType() == MouseEvent.MOUSE_ENTERED) {
                     botonCambio.setGraphic(new ImageView
-                            (new Image(getClass().getResourceAsStream("resources/button_cancel.png"))));
+                            (new Image(getClass().getResourceAsStream("sample/resources/button_cancel.png"))));
                     botonCambio.setEffect(sombraExterior);
                 } else if (event.getEventType() == MouseEvent.MOUSE_EXITED) {
                     botonCambio.setGraphic(new ImageView
-                            (new Image(getClass().getResourceAsStream("resources/button_ok.png"))));
+                            (new Image(getClass().getResourceAsStream("sample/resources/button_ok.png"))));
                     botonCambio.setEffect(null);
                 }
             }
