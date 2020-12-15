@@ -62,6 +62,12 @@ function funcionConCallback(param1, param2, param3) {
   );
 }
 
+function funcionCallbackRetorno(param1, param2) {
+  return (param1, param2) => {
+    console.log(`la suma de los dos parametros es ${param1 + param2}`);
+  };
+}
+
 //funcionInicial();
 //funcionParametros();
 //funcionParametros(1, 4);
