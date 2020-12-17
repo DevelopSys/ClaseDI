@@ -7169,5 +7169,18 @@ let temporada1920 = {
     },
   ],
 };
+let partidos = temporada1920.events;
+getPartidosEquipo("Ath Madrid");
 
-console.log(temporada1920.events[21]);
+function getPartidosEquipo(equipo) {
+  partidos.forEach((element) => {
+    //console.log(element);
+    if (element.strHomeTeam == equipo || element.strAwayTeam == equipo) {
+      console.log(element.strEvent);
+    }
+    /*
+    "strHomeTeam": "Ath Bilbao",
+    "strAwayTeam": "Barcelona",
+    */
+  });
+}
