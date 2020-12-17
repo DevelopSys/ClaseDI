@@ -25,14 +25,52 @@
     <div class="container mt-5" id="contenendorPrincipal">
       <h1>Ejemplo de modiificacion DOM</h1>
       <div class="row">
-        <div class="col-8">
+        <div class="col">
           <h2>Columna 1</h2>
+          <div>
+            <input
+              class="form-control"
+              placeholder="Introduce datos"
+              type="text"
+              id="inputCol1"
+              value="Ejemplo de valor"
+            />
+            <button
+              class="btn btn-primary btn-block"
+              id="botonCol1"
+              onclick="botonUnoPulsado()"
+            >
+              Obtener datos
+            </button>
+          </div>
         </div>
-        <div class="col-2">
+        <div class="col">
           <h2>Columna 2</h2>
+          <div>
+            <input
+              class="form-control"
+              placeholder="Introduce datos"
+              type="number"
+              id="inputCol2"
+            />
+            <button class="btn btn-primary btn-block" id="botonCol2">
+              Obtener datos
+            </button>
+          </div>
         </div>
-        <div class="col-2">
+        <div class="col">
           <h2>Columna 3</h2>
+          <div>
+            <input
+              class="form-control"
+              placeholder="Introduce datos"
+              type="date"
+              id="inputCol3"
+            />
+            <button class="btn btn-primary btn-block" id="botonCol3">
+              Obtener datos
+            </button>
+          </div>
         </div>
       </div>
     </div>
