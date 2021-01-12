@@ -7188,3 +7188,4 @@ function getPartidosEquipo(equipo) {
 // Sevilla - 4 vs Getafe - 2
 // alineacion sevilla: dfghjklkjhgfhjgkhljhkh
 // alineacion getafe: xdfghjkjhgfdfghjkjhgf
+// crear un objeto partido (local, goleslocal, visitrante, golesVisitante)
