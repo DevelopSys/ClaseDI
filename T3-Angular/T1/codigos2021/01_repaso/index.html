@@ -34,11 +34,12 @@
               type="text"
               id="inputCol1"
               value="Ejemplo de valor"
+              onchange="inputPulsado(event)"
             />
             <button
               class="btn btn-primary btn-block"
               id="botonCol1"
-              onclick="botonUnoPulsado()"
+              onclick="botonPulsado(inputCol1)"
             >
               Obtener datos
             </button>
@@ -52,8 +53,13 @@
               placeholder="Introduce datos"
               type="number"
               id="inputCol2"
+              onchange="inputPulsado(event)"
             />
-            <button class="btn btn-primary btn-block" id="botonCol2">
+            <button
+              class="btn btn-primary btn-block"
+              id="botonCol2"
+              onclick="botonPulsado(inputCol2)"
+            >
               Obtener datos
             </button>
           </div>
@@ -66,8 +72,13 @@
               placeholder="Introduce datos"
               type="date"
               id="inputCol3"
+              onchange="inputPulsado(event)"
             />
-            <button class="btn btn-primary btn-block" id="botonCol3">
+            <button
+              class="btn btn-primary btn-block"
+              id="botonCol3"
+              onclick="botonPulsado(inputCol3)"
+            >
               Obtener datos
             </button>
           </div>
@@ -75,5 +86,7 @@
       </div>
     </div>
     <script src="./assets/js/08_repaso_dom.js"></script>
+    <script src="./assets/js/09_objetosclase.js"></script>
+    <script src="./assets/js/10_juntarobjetos.js"></script>
   </body>
 </html>
