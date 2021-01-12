@@ -16,3 +16,10 @@
 		- Partido 1 Equipo1 vs Equipo2 
 		- Alineación Local : Jugador1 Jugador2 Jugador3 Jugador4 Equipo1 vs Equipo2 
 		- Alineación Local : Jugador1 Jugador2 Jugador3 Jugador4
+4. Modificar el ejercicio anterior para que todos los datos sean cargados desde el link de classroom directamente, es decir ejecutando una función fetch
+5. Modifica el ejercicio anterior para que:
+	- Se cree un objeto de tipo partido con los siguientes datos
+		- EquipoLocal, EquipoVisitante, GolesLocales, GolesVisitante, AlineacionLocal, AlineacionVisitante
+		- Un método mostrarDatos con la estructura indicada en el ejercicio 3
+	- Cada vez que se hace una lectura en la promesa de la función fetch se cree un objeto del tipo indicado anteriormente y se guarde en un array llamado partidos
+	- Muestra el contenido de todos los equipos guardados en el array partidos, ejecutando el método mostrarDatos creado
