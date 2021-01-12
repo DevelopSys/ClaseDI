@@ -7170,7 +7170,7 @@ let temporada1920 = {
   ],
 };
 let partidos = temporada1920.events;
-getPartidosEquipo("Ath Madrid");
+getPartidosEquipo("Sevilla");
 
 function getPartidosEquipo(equipo) {
   partidos.forEach((element) => {
@@ -7184,3 +7184,7 @@ function getPartidosEquipo(equipo) {
     */
   });
 }
+
+// Sevilla - 4 vs Getafe - 2
+// alineacion sevilla: dfghjklkjhgfhjgkhljhkh
+// alineacion getafe: xdfghjkjhgfdfghjkjhgf
