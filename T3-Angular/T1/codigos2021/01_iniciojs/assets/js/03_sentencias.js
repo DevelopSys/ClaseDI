@@ -32,3 +32,51 @@ switch (opcion) {
     console.log("no vale nada de lo anterior");
     break;
 }
+
+numeroUno = 5;
+while (numeroUno > 0) {
+  console.log(`${numeroUno}`);
+  numeroUno--;
+}
+numeroUno = 5;
+do {
+  console.log(`${numeroUno}`);
+  numeroUno--;
+} while (numeroUno > 0);
+
+/*for(let inicio; finally; incremento){
+
+}*/
+let numeroFor = 5;
+for (let index = 0; index < numeroFor; index++) {
+  //const element = array[index];
+  console.log(`Entrada en el for: ${index}`);
+}
+
+let arrayEquipo = ["Barcelona", "Madrid", "Atleti", "Sevilla", "Betis"];
+console.log("Ejecucion del for");
+for (let index = 0; index < arrayEquipo.length; index++) {
+  console.log(`Equipo: ${arrayEquipo[index]}`);
+}
+
+console.log("Ejecucion del foreach");
+/*
+foreach(String item : arrayEquipos){
+
+}
+*/
+// funcion flecha (paramentros)=>{}
+arrayEquipo.forEach((element, index) => {
+  console.log(`Equipo ${index}: ${element}`);
+  //arrayEquipo[index] = "asdasdasd";
+});
+
+console.log("Ejecucion del for of");
+for (const equipo of arrayEquipo) {
+  console.log(`Equipo: ${equipo}`);
+}
+
+console.log("Ejecucion del for in");
+for (const key in arrayEquipo) {
+  console.log(key);
+}
