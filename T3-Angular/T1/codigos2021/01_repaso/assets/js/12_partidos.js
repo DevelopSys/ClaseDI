@@ -12,6 +12,7 @@ function mostrarPartidos(equipo) {
   if (equipo.length == 0) {
     alert("Por favor mete algo");
   } else {
+    let numeroPartidos = 0;
     fetch(
       "https://www.thesportsdb.com/api/v1/json/1/eventsseason.php?id=4335&s=2019-2020"
     )
@@ -28,13 +29,58 @@ function mostrarPartidos(equipo) {
               element.strHomeTeam == equipo ||
               element.strAwayTeam == equipo
             ) {
+              numeroPartidos++;
               console.log(
                 `${element.strHomeTeam}: ${element.intHomeScore} vs ${element.strAwayTeam}: ${element.intAwayScore}`
               );
             }
           });
+
+          numeroPartidos < 1 &&
+            alert("No se han encontrado partidos del equipo");
         }
       );
+  }
+}
+
+let misPartidos = [];
+function cargarPartidos(equipo) {
+  misPartidos = [];
+  if (equipo.length == 0) {
+    alert("Por favor mete algo");
+  } else {
+    let numeroPartidos = 0;
+    fetch(
+      "https://www.thesportsdb.com/api/v1/json/1/eventsseason.php?id=4335&s=2019-2020"
+    )
+      .then((data) => data.json())
+      .then((data) => {
+        let partidos = data.events;
+        partidos.forEach((element) => {
+          if (element.strHomeTeam == equipo || element.strAwayTeam == equipo) {
+            numeroPartidos++;
+            let partidoIndividual = new Partido(
+              element.strHomeTeam,
+              element.intHomeScore,
+              element.strAwayTeam,
+              element.intAwayScore
+            );
+            misPartidos.push(partidoIndividual);
+          }
+        });
+
+        numeroPartidos < 1 && alert("No se han encontrado partidos del equipo");
+      });
+  }
+}
+
+function mostrarCargados() {
+  if (misPartidos.length > 0) {
+    misPartidos.forEach((element) => {
+      element.mostrarDatos();
+    });
+  } else {
+    alert("no hay partidos cargados");
   }
 }
 
