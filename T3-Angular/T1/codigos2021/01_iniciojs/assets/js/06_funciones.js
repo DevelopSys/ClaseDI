@@ -37,7 +37,34 @@ let funcionFlechaParam = (param1, param2) => {
   return 6;
 };
 
-primeraFuncion();
+function funcionConCallBack(nombre, apellido, edad, peso, funcionParametro) {
+  console.log(`${nombre} ${apellido}`);
+  funcionParametro(edad, peso);
+}
+
+function funconConCallBackRetorno(n1, n2) {
+  return (paramentroNuevo) => {
+    console.log(`La suma de los dos parametros es ${n1 + n2}`);
+    console.log(`El parámetro nuevo es ${paramentroNuevo}`);
+  };
+}
+setInterval(() => {
+  console.log("ejecucion por paramtro en intervalo");
+}, 2000);
+
+setTimeout(() => {
+  console.log("ejecucion por parametro");
+}, 3000);
+
+/*function sumaConstntes(edad, peso) {
+  console.log(`La suma de los parametros es ${edad + peso}`);
+}
+
+function mostrarContantes(edad, peso) {
+  console.log(`Sus valores vitales son ${edad} ${peso}`);
+}*/
+
+/*primeraFuncion();
 funcionAnonima();
 funcionParametros(1, "Hola", false);
 funcionParametros(1, "Hola", false, 34, 34, 123, 123, false);
@@ -45,4 +72,13 @@ funcionParamentrosArguments("parametro1", "parametro2", 3, false);
 funcionPorDefecto(1, 7);
 console.log(funcionRetorno(15, 9));
 //funcionFlechaParam(2, 3);
-console.log(funcionFlechaParam(123, 123));
+console.log(funcionFlechaParam(123, 123));*/
+/*funcionConCallBack("Borja", "Martin", 20, 70, (n1, n2) => {
+  console.log(`La suma de los parametros es ${n1 + n2}`);
+});
+
+funcionConCallBack("Borja", "Martin", 34, 180, (n1, n2) => {
+  console.log(`Sus valores vitales son ${n1} ${n2}`);
+});*/
+
+funconConCallBackRetorno(1, 2)("Nueva comunicación");
