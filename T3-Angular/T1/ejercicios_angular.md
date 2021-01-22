@@ -1,3 +1,5 @@
+# Ejercicio creación de componentes
+
 - En el index.hmtl incluye los script y hojas de estilo necesarios para que fuiones bootstrap en la aplicación Angular
 - Modifica el contenido del componente app-root para que solo aparezca un encabezado h1 con el texto Primer componente de angular
 - En html del componente AppComponent crea un div con la clase row y dentro de este div tres más con la clase col cada uno de ellos
