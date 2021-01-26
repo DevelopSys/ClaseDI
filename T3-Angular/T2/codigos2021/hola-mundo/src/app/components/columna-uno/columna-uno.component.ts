@@ -12,4 +12,9 @@ export class ColumnaUnoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  manejoPulsacion(){
+    console.log('Boton pulsado desde HTML');
+  }
+
+
 }

@@ -1,5 +1,10 @@
+<app-barra-navegacion></app-barra-navegacion>
 <div class="container">
   <h1>Primer componente de Angular</h1>
+  <p>
+    Nombre: {{ nombre }}<br />Curso: {{ curso }}<br />Asignatura:
+    {{ asignatura }}
+  </p>
   <div class="row">
     <div class="col">
       <componente-uno></componente-uno>
@@ -9,6 +14,11 @@
     </div>
     <div class="col">
       <componente-tres></componente-tres>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <app-materia></app-materia>
     </div>
   </div>
 </div>
