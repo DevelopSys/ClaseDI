@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ComponenteInicialComponent } from './componente-inicial.component';
+import { ColumnaUnoComponent } from './columna-uno.component';
 
-describe('ComponenteInicialComponent', () => {
-  let component: ComponenteInicialComponent;
-  let fixture: ComponentFixture<ComponenteInicialComponent>;
+describe('ColumnaUnoComponent', () => {
+  let component: ColumnaUnoComponent;
+  let fixture: ComponentFixture<ColumnaUnoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ComponenteInicialComponent ]
+      declarations: [ ColumnaUnoComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ComponenteInicialComponent);
+    fixture = TestBed.createComponent(ColumnaUnoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
