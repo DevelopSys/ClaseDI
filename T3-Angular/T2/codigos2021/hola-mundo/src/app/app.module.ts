@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 import { ColumnaUnoComponent } from './components/columna-uno/columna-uno.component';
 import { ColumnaDosComponent } from './components/columna-dos/columna-dos.component';
 import { ColumnaTresComponent } from './components/columna-tres/columna-tres.component';
-import {BarraNavegacionComponent} from './components/barra-navegacion/barra-navegacion.component';
+import { BarraNavegacionComponent } from './components/barra-navegacion/barra-navegacion.component';
 import { MateriaComponent } from './components/materia/materia.component';
+import { DirectivaIfComponent } from './components/directiva-if/directiva-if.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +17,11 @@ import { MateriaComponent } from './components/materia/materia.component';
     ColumnaDosComponent,
     ColumnaTresComponent,
     BarraNavegacionComponent,
-    MateriaComponent
+    MateriaComponent,
+    DirectivaIfComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

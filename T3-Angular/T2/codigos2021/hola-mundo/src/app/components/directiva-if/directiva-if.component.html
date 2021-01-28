@@ -1,0 +1,44 @@
+<h2>Directiva IF</h2>
+<p>La directiva if evaluar el contenido logico de una variable</p>
+<p>La variable de mostrar mostrar es {{ mostar }}</p>
+<button (click)="cambiarMostrar()">Cambiar valor</button>
+
+<div *ngIf="mostar">
+  <div class="alert alert-success" role="alert">
+    A simple success alert—check it out!
+  </div>
+  <div class="alert alert-danger" role="alert">
+    A simple danger alert—check it out!
+  </div>
+</div>
+
+<div class="mt-4">
+  <input placeholder="introduce nombre J1" class="form-control mt-4" #inputJ1 />
+  <input placeholder="introduce nombre J2" class="form-control" #inputJ2 />
+  <button
+    class="btn btn-primary mt-4"
+    (click)="empezarJuego(inputJ1.value, inputJ2.value)"
+  >
+    Empezar
+  </button>
+  <button
+    *ngIf="jugadorUno.puntuacion < 10 && jugadorDos.puntuacion < 10"
+    class="btn btn-primary mt-4"
+    (click)="jugarRonda()"
+  >
+    Jugar
+  </button>
+
+  <p *ngIf="jugadorUno.nombre.length > 0">
+    {{ jugadorUno.nombre }} : {{ jugadorUno.puntuacion }} <br />
+    {{ jugadorDos.nombre }} : {{ jugadorDos.puntuacion }}
+  </p>
+
+  <div
+    *ngIf="jugadorUno.puntuacion > 9 || jugadorDos.puntuacion > 9"
+    class="alert alert-primary"
+    role="alert"
+  >
+    Uno de los dos jugadores ha ganado {{ ganador }}
+  </div>
+</div>
