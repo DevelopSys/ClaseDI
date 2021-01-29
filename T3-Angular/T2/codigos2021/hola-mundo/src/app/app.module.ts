@@ -9,6 +9,7 @@ import { ColumnaTresComponent } from './components/columna-tres/columna-tres.com
 import { BarraNavegacionComponent } from './components/barra-navegacion/barra-navegacion.component';
 import { MateriaComponent } from './components/materia/materia.component';
 import { DirectivaIfComponent } from './components/directiva-if/directiva-if.component';
+import { DirectivaSwitchComponent } from './components/directiva-switch/directiva-switch.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { DirectivaIfComponent } from './components/directiva-if/directiva-if.com
     BarraNavegacionComponent,
     MateriaComponent,
     DirectivaIfComponent,
+    DirectivaSwitchComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
