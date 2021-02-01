@@ -54,4 +54,4 @@ let metodos = {
 };
 
 //metodos.listarEquipo("madrid");
-metodos.listarPlantilla("madrid");
+metodos.listarPlantilla("barcelona");
