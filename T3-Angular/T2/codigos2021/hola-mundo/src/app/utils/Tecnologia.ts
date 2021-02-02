@@ -12,6 +12,12 @@ export class Tecnologia {
     get getNombre(){
         return this.nombre
     }
+    get getDescripcion(){
+        return this.descricion
+    }
+    get getImagen(){
+        return this.imagen
+    }
 
     set setNombre(nombre:string){
         this.nombre = nombre;

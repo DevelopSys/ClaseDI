@@ -11,6 +11,7 @@ import { MateriaComponent } from './components/materia/materia.component';
 import { DirectivaIfComponent } from './components/directiva-if/directiva-if.component';
 import { DirectivaSwitchComponent } from './components/directiva-switch/directiva-switch.component';
 import { DirectivaForComponent } from './components/directiva-for/directiva-for.component';
+import { TecnologiasService } from './services/tecnologias.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { DirectivaForComponent } from './components/directiva-for/directiva-for.
     DirectivaForComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
-  providers: [],
+  providers: [TecnologiasService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
