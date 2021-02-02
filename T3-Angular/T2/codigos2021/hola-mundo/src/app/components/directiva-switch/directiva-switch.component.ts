@@ -16,7 +16,15 @@ export class DirectivaSwitchComponent implements OnInit {
     this.valorInput = valor;
   }
 
+  mostrarPulsacion(valor:any){
+    console.log("pulsado boton");
+    console.log(valor);
+    this.valorInput = valor;
+    
+    
+  }
+
   mostrarDatos(evento: Event) {
-    console.log(evento.target.value);
+    //console.log(evento.target.value);
   }
 }
