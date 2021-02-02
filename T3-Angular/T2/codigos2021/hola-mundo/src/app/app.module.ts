@@ -10,6 +10,7 @@ import { BarraNavegacionComponent } from './components/barra-navegacion/barra-na
 import { MateriaComponent } from './components/materia/materia.component';
 import { DirectivaIfComponent } from './components/directiva-if/directiva-if.component';
 import { DirectivaSwitchComponent } from './components/directiva-switch/directiva-switch.component';
+import { DirectivaForComponent } from './components/directiva-for/directiva-for.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { DirectivaSwitchComponent } from './components/directiva-switch/directiv
     MateriaComponent,
     DirectivaIfComponent,
     DirectivaSwitchComponent,
+    DirectivaForComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
