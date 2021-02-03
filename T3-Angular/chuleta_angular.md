@@ -42,3 +42,88 @@
 	- app.module (módulo principal de la aplicación, que carga cada uno de los elementos que están dentro de el)
 - index.html
 - style.css
+
+# Estructura de un componentes
+
+````
+// importación de los elementos que con necesarios en esta clase
+import { Component, OnInit } from '@angular/core';
+
+// declaración del componente como tal
+@Component({
+// el selector que deberá utilizarse en la parte html cuando quiera ser llamado el componente 
+  selector: 'componente-uno',
+// "link a la parte gráfica"
+  templateUrl: './columna-uno.component.html',
+// link a la parte lógica
+  styleUrls: ['./columna-uno.component.css']
+})
+
+// la clase debe ser exportada para que pueda ser llamada desde otro sitio
+export class ColumnaUnoComponent implements OnInit {
+// constructor de la clase. Aquí se pueden pasar por parámetros tantos elementos como sean necesarios
+  constructor() { }
+
+// primer método del ciclo de vida ejecutado. Simiar al onCreate de Android
+  ngOnInit(): void {
+  }
+}
+````
+
+
+# Estructura de pipes
+
+````
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+// nombre que será utilizado cuando se quiera realizar la transformación indicada
+  name: 'imagenes',
+})
+export class PipePersonalizado implements PipeTransform {
+// método que se ejecutará para hacer la transformación
+  transform(value: string, ...args: unknown[]): unknown {
+// valor que se renderizará dependiendo de las consideraciones realizadas con el valué y los args
+       return value;
+  }
+}
+````
+
+
+# Estructura de servicios
+
+````
+import { Injectable } from '@angular/core';
+@Injectable({
+  providedIn: 'root',
+})
+export class TecnologiasService {
+    constructor() {}
+}
+````
+
+# Estructura de módulos
+
+````
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+
+
+@NgModule({
+// declaración de todos los elementos que formarán parte del módulo. 
+  declarations: [
+    AppComponent,
+  ],
+// otros módulos que son utilizados en este módulo. Por defecto usa las rutas y la búsqueda
+  imports: [BrowserModule, AppRoutingModule],
+// proveedores de contenido, como por ejemplo los servicios
+  providers: [],
+// elemento principal de la aplicación
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+
+````
+ 
