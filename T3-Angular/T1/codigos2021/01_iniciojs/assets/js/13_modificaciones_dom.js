@@ -60,3 +60,22 @@ const vaciarDatos = () => {
   //document.querySelector("#inputPass").value = "";
   //document.querySelector("#inputCheck").checked = false;
 };
+
+let botonChiste = document.querySelector("#boton_chiste");
+botonChiste.addEventListener("click", () => {
+  console.log("pulsado");
+  fetch("https://api.chucknorris.io/jokes/random")
+    .then((data) => data.json())
+    .then((data) => {
+      document.querySelector(
+        "#chiste_div"
+      ).innerHTML = `<div class="card" style="width: 18rem;">
+      <img src="${data.icon_url}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">${data.id}</h5>
+        <p class="card-text">${data.value}</p>
+        <a href="${data.url}" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>`;
+    });
+});
