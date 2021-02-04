@@ -1,7 +1,6 @@
-import { TecnologiaInterfaz } from './../../utils/TecnologiaInterfaz';
 import { Tecnologia } from './../../utils/Tecnologia';
 import { Component, OnInit } from '@angular/core';
-
+import { TecnologiaService } from '../../services/tecnologia.service';
 
 @Component({
   selector: 'app-materia',
@@ -9,26 +8,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./materia.component.css'],
 })
 export class MateriaComponent implements OnInit {
+  /*
+  tecnoInterfaz: TecnologiaInterfaz = {
+    nombre: 'texIf',
+    imagen: 'asdasd',
+    descripcion: 'asdasda',
+  };
 
+  tecnologiaObj = new Tecnologia(
+    'Angular',
+    'Descripcion Angular',
+    'foto angular'
+  );
 
-  tecnoInterfaz: TecnologiaInterfaz = { nombre:"texIf",imagen:"asdasd", descripcion:"asdasda"}
-
-  tecnologiaObj = new Tecnologia("Angular","Descripcion Angular","foto angular");
-
-  nombreTec: string = this.tecnologiaObj.nombre
+  nombreTec: string = this.tecnologiaObj.nombre;
 
   angular: TecnologiaInterfaz = {
     nombre: 'Angular 11.0',
     descripcion: 'Framework JS para la creación de aplicaciones de tipo SPA',
     imagen: 'assets/images/angular.png',
   };
-  
+
   java: TecnologiaInterfaz = {
     nombre: 'Java',
     descripcion: 'Lenguaje de programación multiplataforma',
     imagen: 'assets/images/java.png',
   };
-  
+
   js: TecnologiaInterfaz = {
     nombre: 'JavaScript',
     descripcion: 'Lenguaje de programación web interpretado por el navegador',
@@ -36,7 +42,8 @@ export class MateriaComponent implements OnInit {
   };
   pw: TecnologiaInterfaz = {
     nombre: 'Powershell',
-    descripcion: 'Lenguaje de programación orientado a segudidad y automatización',
+    descripcion:
+      'Lenguaje de programación orientado a segudidad y automatización',
     imagen: 'assets/images/powershell.png',
   };
   python: TecnologiaInterfaz = {
@@ -59,15 +66,26 @@ export class MateriaComponent implements OnInit {
     descripcion: 'Lenguaje de marcado destinado a la creción de webs estáticas',
     imagen: 'assets/images/html.jpeg',
   };
-  tecnologias: TecnologiaInterfaz[] = [this.angular, this.html, this.js, this.pw, this.python,this.java,this.xml]
-  tecnologiasArray: Tecnologia[] = [new Tecnologia("HMTL","Lenguaje de webs estáticas","assets/images/html.jpeg"), 
-  new Tecnologia("JS","Leguaje para webs dinámicas","assets/images/js.jpg")];
+  tecnologias: TecnologiaInterfaz[] = [
+    this.angular,
+    this.html,
+    this.js,
+    this.pw,
+    this.python,
+    this.java,
+    this.xml,
+  ];
+*/
+
+  tecnologiasArray: Tecnologia[] = [];
 
   /*imagen = "assets/images/angular.png"
   nombre = "Angular 11.0"
   descripcion = "Framework JS para la creación de aplicaciones de tipo SPA"*/
 
-  constructor() {}
+  constructor(private servicioTecnologia: TecnologiaService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.tecnologiasArray = this.servicioTecnologia.getAllTecnologias();
+  }
 }
