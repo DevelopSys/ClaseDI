@@ -79,3 +79,45 @@ botonChiste.addEventListener("click", () => {
     </div>`;
     });
 });
+
+document.querySelector("#boton_usuarios").addEventListener("click", () => {
+  // al pulsar el boton se pinten tantas cartas com
+  // usuarios tenga el JSON
+  fetch("https://randomuser.me/api/?results=50")
+    .then((data) => data.json())
+    .then((data) => {
+      //console.log(data.results);
+      data.results.forEach((contacto) => {
+        let nodo = document.createElement("div");
+        nodo.className = "col";
+        nodo.innerHTML = `<div class="card" style="width: 18rem">
+        <img src="${contacto.picture.large}" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">${contacto.name.first} ${contacto.name.last}</h5>
+          <p class="card-text">
+            ${contacto.email}
+          </p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>`;
+
+        document.querySelector("#contenedor_usuarios").append(nodo);
+      });
+
+      {
+        /* <div class="card" style="width: 18rem">
+            <img src="..." class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up the
+                bulk of the card's content.
+              </p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div> */
+      }
+    });
+});
+
+// https://randomuser.me/api/?results=50
