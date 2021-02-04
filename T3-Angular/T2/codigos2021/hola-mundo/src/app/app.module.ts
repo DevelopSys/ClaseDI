@@ -11,7 +11,9 @@ import { MateriaComponent } from './components/materia/materia.component';
 import { DirectivaIfComponent } from './components/directiva-if/directiva-if.component';
 import { DirectivaSwitchComponent } from './components/directiva-switch/directiva-switch.component';
 import { DirectivaForComponent } from './components/directiva-for/directiva-for.component';
-import { TecnologiasService } from './services/tecnologias.service';
+import { PersonalizadoPipe } from './pipe/personalizado.pipe';
+import { ImagenPipe } from './pipe/imagen.pipe';
+import { TecnologiaService } from './services/tecnologia.service';
 
 @NgModule({
   declarations: [
@@ -24,9 +26,11 @@ import { TecnologiasService } from './services/tecnologias.service';
     DirectivaIfComponent,
     DirectivaSwitchComponent,
     DirectivaForComponent,
+    PersonalizadoPipe,
+    ImagenPipe,
   ],
   imports: [BrowserModule, AppRoutingModule],
-  providers: [TecnologiasService],
+  providers: [TecnologiaService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

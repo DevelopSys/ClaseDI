@@ -1,9 +1,11 @@
 <div class="row mt-4">
   <div class="col" *ngFor="let tec of tecnologiasArray">
     <div class="card" style="width: 18rem">
-      <img [src]="tec.getImagen" class="card-img-top" alt="..." />
+      <img [src]="tec.getImagen | imagen" class="card-img-top" alt="..." />
       <div class="card-body">
-        <h5 class="card-title">{{ tec.getNombre }}</h5>
+        <h5 class="card-title">
+          {{ tec.getNombre }}
+        </h5>
         <p class="card-text">
           {{ tec.getDescripcion }}
         </p>
