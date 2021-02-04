@@ -29,11 +29,34 @@ boton.addEventListener("click", () => {
   let pass = document.querySelector("#inputPass").value;
   let experiencia = document.querySelector("#inputCheck").checked;
 
-  console.log(`${nombre} ${email} ${pass} ${experiencia} `);
+  //console.log(`${nombre} ${email} ${pass} ${experiencia} `);
+  //nodo.classList.add("list-group-item");
+  //nodo.innerHTML = `<p> ${nombre} ${email} ${pass}</p>`;
+  //document.querySelector("#lista_usuarios").classList.add("list-group");)
 
-  let nodo = document.createElement("li");
-  nodo.classList.add("list-group-item");
-  nodo.innerHTML = `<p> ${nombre} ${email} ${pass}</p>`;
-  document.querySelector("#lista_usuarios").append(nodo);
-  document.querySelector("#lista_usuarios").classList.add("list-group");
+  if (experiencia) {
+    let nodo = document.createElement("li");
+    document.querySelector("#lista_usuarios").append(nodo);
+    nodo.innerHTML = `<p>${nombre} ${email} ${pass}</p>`;
+
+    nodo.classList.remove("list-group-item");
+    //nodo.innerHTML = `<p> ${nombre} ${email} ${pass}</p>`;
+    document.querySelector("#lista_usuarios").append(nodo);
+    vaciarDatos();
+    //document.querySelector("#lista_usuarios").classList.add("list-group");
+  } else {
+    alert("no puedo añadir porque no hay experiencia");
+  }
 });
+
+const vaciarDatos = () => {
+  let inputText = document.querySelectorAll("input.form-control");
+  inputText.forEach((element) => {
+    element.value = "";
+  });
+
+  //document.querySelector("#inputEmail").value = "";
+  //document.querySelector("#inputNombre").value = "";
+  //document.querySelector("#inputPass").value = "";
+  //document.querySelector("#inputCheck").checked = false;
+};
