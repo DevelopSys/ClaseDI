@@ -78,6 +78,7 @@ export class MateriaComponent implements OnInit {
 */
 
   tecnologiasArray: Tecnologia[] = [];
+  tecnologiasArrayBusqueda: Tecnologia[] = [];
 
   /*imagen = "assets/images/angular.png"
   nombre = "Angular 11.0"
@@ -87,5 +88,16 @@ export class MateriaComponent implements OnInit {
 
   ngOnInit(): void {
     this.tecnologiasArray = this.servicioTecnologia.getAllTecnologias();
+  }
+
+  buscarTecnologia(nombre: string) {
+    //console.log(nombre);
+    this.tecnologiasArrayBusqueda = [];
+    this.tecnologiasArray.forEach((tec) => {
+      if (tec.getNombre.toLowerCase().includes(nombre.toLowerCase())) {
+        //console.log(tec);
+        this.tecnologiasArrayBusqueda.push(tec);
+      }
+    });
   }
 }

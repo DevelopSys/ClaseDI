@@ -1,3 +1,45 @@
+<h2>Buscador tecnologia</h2>
+<div>
+  <input
+    type="text"
+    placeholder="introduce tecnoligia"
+    class="form-control"
+    #inputBuscar
+  />
+  <button class="btn btn-primary" (click)="buscarTecnologia(inputBuscar.value)">
+    Buscar
+  </button>
+  <div class="row">
+    <div [ngSwitch]="tecnologiasArrayBusqueda.length">
+      <div *ngSwitchCase="0">
+        <div class="alert alert-secondary" role="alert">No hay tecnologias</div>
+      </div>
+      <div *ngSwitchDefault>
+        <div class="col" *ngFor="let tec of tecnologiasArrayBusqueda">
+          <div class="card" style="width: 18rem">
+            <img
+              [src]="tec.getImagen | imagen"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ tec.getNombre }}
+              </h5>
+              <p class="card-text">
+                {{ tec.getDescripcion }}
+              </p>
+              <a href="#" class="btn btn-primary">Ver detalle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2>Listado total</h2>
+
 <div class="row mt-4">
   <div class="col" *ngFor="let tec of tecnologiasArray">
     <div class="card" style="width: 18rem">
