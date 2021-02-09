@@ -1,4 +1,7 @@
+import { Noticia } from './../../utils/Noticia';
+import { RouterModule } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { NoticiasService } from 'src/app/services/noticias.service';
 
 @Component({
   selector: 'app-noticias',
@@ -7,11 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NoticiasComponent implements OnInit {
 
-  mostrar:boolean = true;
+  mostrar:boolean = false;
+  noticias: Noticia[] ;
+  noticiasFiltradas: Noticia[] = [];
 
-  constructor() { }
+  constructor(private servicioNoticias: NoticiasService) { 
+
+
+  }
 
   ngOnInit(): void {
+    this.noticias = this.servicioNoticias.getAllNoticias();
+  }
+
+  mostrarNoticias(categoria: string){
+    console.log(categoria);
+   
+    this.noticiasFiltradas = []
+        this.noticias.forEach(element => {
+          if (element.category == categoria){
+            this.noticiasFiltradas.push(element)
+          }
+        });
+
+        console.log(this.noticiasFiltradas);
+        
+  
+ 
   }
 
 }
