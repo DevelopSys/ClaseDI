@@ -1,0 +1,52 @@
+<!-- div botones -->
+<div class="row mt-4">
+  <button class="btn btn-primary col">Deportes</button>
+  <button class="btn btn-primary col">Politica</button>
+  <button class="btn btn-primary col">Sociedad</button>
+  <button class="btn btn-primary col">Todas</button>
+</div>
+
+<!-- div noticas -->
+<div class="row mt-4">
+  <div class="col-8">
+    <h2>Titulares</h2>
+
+    <!-- columna card -->
+    <div class="col">
+      <div class="card" style="width: 18rem">
+        <img src="..." class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <h2>Contenido</h2>
+
+    <div class="alert alert-primary" role="alert" *ngIf="!mostrar">
+      Por favor selecciona noticia para ver el detalle
+    </div>
+
+    <!-- columna card -->
+
+    <div class="col" *ngIf="mostrar">
+      <div class="card" style="width: 18rem">
+        <img src="..." class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
