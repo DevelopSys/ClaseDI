@@ -200,9 +200,11 @@ export class NoticiasService {
   getNoticiasFiltradas(categoria: string): Noticia[]{
 
     // elemento es la noticia que itera
-    this.noticiasFiltradas = this.noticias.filter((elemento)=>{ if(elemento.category == categoria){
-      return elemento
-    } });
+    this.noticiasFiltradas = this.noticias.filter((elemento)=>{ 
+      
+      return elemento.category === categoria
+      
+  });
 
     return this.noticiasFiltradas;
   }

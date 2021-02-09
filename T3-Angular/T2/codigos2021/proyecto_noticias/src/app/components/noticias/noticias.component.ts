@@ -12,11 +12,9 @@ export class NoticiasComponent implements OnInit {
 
   mostrar:boolean = false;
   noticias: Noticia[] ;
-  noticiasFiltradas: Noticia[] = [];
+  noticiaDetalle: Noticia;
 
   constructor(private servicioNoticias: NoticiasService) { 
-
-
   }
 
   ngOnInit(): void {
@@ -24,19 +22,19 @@ export class NoticiasComponent implements OnInit {
   }
 
   mostrarNoticias(categoria: string){
-    console.log(categoria);
-   
-    this.noticiasFiltradas = []
-        this.noticias.forEach(element => {
-          if (element.category == categoria){
-            this.noticiasFiltradas.push(element)
-          }
-        });
-
-        console.log(this.noticiasFiltradas);
-        
-  
+    //console.log(categoria);
+    if(categoria!=="todas"){
+      this.noticias = this.servicioNoticias.getNoticiasFiltradas(categoria)  
+    } else {
+      this.noticias = this.servicioNoticias.getAllNoticias();
+    }
+    
  
+  }
+
+  mostrarDetalle(item: Noticia){
+    this.noticiaDetalle = item
+    this.mostrar = true;
   }
 
 }
