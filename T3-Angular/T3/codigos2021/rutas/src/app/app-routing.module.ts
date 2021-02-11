@@ -1,14 +1,14 @@
-import { InicialComponent } from './components/inicial/inicial.component';
+import { AsignaturasComponent } from './components/asignaturas/asignaturas.component';
+import { CiclosComponent } from './components/ciclos/ciclos.component';
+import { HomeComponent } from './components/home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SecundarioComponent } from './components/secundario/secundario.component';
 
 
 const routes: Routes = [
-
-  {path:"compo-uno",component:InicialComponent},
-  {path:"compo-dos",component:SecundarioComponent}
-
+{path:"home", component:HomeComponent},
+{path:"ciclos", component:CiclosComponent},
+{path:"asignaturas", component:AsignaturasComponent}
 ];
 
 @NgModule({

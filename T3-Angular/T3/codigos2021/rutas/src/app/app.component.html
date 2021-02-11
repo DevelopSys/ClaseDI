@@ -1,41 +1,36 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a
-            class="nav-link active"
-            aria-current="page"
-            [routerLink]="['/compo-uno']"
-            >Componente uno</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/compo-dos']">Componente dos</a>
-        </li>
-      </ul>
-      <form class="d-flex">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
-<router-outlet></router-outlet>
+<app-navbar></app-navbar>
+
+<div class="container">
+  <!-- sitio de los componentes llamados por las rutas -->
+  <router-outlet></router-outlet>
+</div>
+
+<!-- Dos clases:
+
+  - Asigntura: Nombre: string, profesor: string, conocimientos: [{nombre:"string",imagen:"ruta"}, curso: number ] 
+  - Ciclo: nombre: string, curso: number, asignturas: Asignatura[]
+
+  pmdm: Asignatura = {nombre: "Programacion Multimedia",profesor:"Borja Martin",conocimientos: [{nombre:"Java",imagen:"./asdasd"},{nombre:"xml",imagen:"./assets/asdasd"}]} 
+  di: Asignatura = {nombre: "Programacion Multimedia",profesor:"Borja Martin",conocimientos: [{nombre:"Java",imagen:"./asdasd"},{nombre:"xml",imagen:"./assets/asdasd"}]} 
+  ad: Asignatura = {nombre: "Programacion Multimedia",profesor:"Borja Martin",conocimientos: [{nombre:"Java",imagen:"./asdasd"},{nombre:"xml",imagen:"./assets/asdasd"}]} 
+
+  ciclo: Ciclo = { nombre: "DAM", curso: 2, asignaturas: [pmdm,di,ad] }
+
+-->
+
+<!-- Dos Servicios 
+
+- Servicio asginaturas: todas las asignaturas de DAM, DAW, ASIR
+
+getAsignturasDAM(): Asignaturas[]{
+  return 
+}
+
+- Servicio ciclos: todos los ciclos: ASIR, DAM, DAW
+
+getCicloDAM(): Ciclo{
+
+
+}
+
+-->

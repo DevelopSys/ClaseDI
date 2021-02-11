@@ -3,14 +3,26 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { InicialComponent } from './components/inicial/inicial.component';
-import { SecundarioComponent } from './components/secundario/secundario.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './components/home/home.component';
+import { CiclosComponent } from './components/ciclos/ciclos.component';
+import { AsirComponent } from './components/asir/asir.component';
+import { DamComponent } from './components/dam/dam.component';
+import { DawComponent } from './components/daw/daw.component';
+import { AsignaturaComponent } from './components/asignatura/asignatura.component';
+import { AsignaturasComponent } from './components/asignaturas/asignaturas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InicialComponent,
-    SecundarioComponent
+    NavbarComponent,
+    HomeComponent,
+    CiclosComponent,
+    AsirComponent,
+    DamComponent,
+    DawComponent,
+    AsignaturaComponent,
+    AsignaturasComponent
   ],
   imports: [
     BrowserModule,
