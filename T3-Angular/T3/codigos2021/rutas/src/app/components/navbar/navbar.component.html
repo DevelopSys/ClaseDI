@@ -23,6 +23,7 @@
             >Inicio</a
           >
         </li>
+
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
@@ -36,15 +37,10 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
-              <a class="dropdown-item">DAM</a>
+              <a class="dropdown-item" (click)="irCiclo(1)">DAM</a>
             </li>
             <li>
-              <a
-                class="dropdown-item"
-                [routerLink]="['/ciclos']"
-                routerLinkActive="active"
-                >DAW</a
-              >
+              <a class="dropdown-item" (click)="irCiclo(2)">DAW</a>
             </li>
           </ul>
         </li>

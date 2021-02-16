@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+
+  // necesito el objeto Router
+  datoPasar= 1;
+
+  constructor(private gestorRutas: Router) { }
 
   ngOnInit(): void {
+  }
+
+  irCiclo(numero:number){
+    //console.log("Elemento pulsado");
+    // voy a navegar desde el Router
+    this.gestorRutas.navigate(['ciclos',numero])
+    
   }
 
 }

@@ -1,1 +1,19 @@
 <p>ciclos works!</p>
+<p>Dato pasado:</p>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let item of elementos">{{ item }}</li>
+</ul>
+
+<ul *ngFor="let item of elementosJSON" class="list-group">
+  <li class="list-group-item">
+    {{ item.nombre }}
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let conocimiento of item.conocimientos"
+      >
+        {{ conocimiento }}
+      </li>
+    </ul>
+  </li>
+</ul>
