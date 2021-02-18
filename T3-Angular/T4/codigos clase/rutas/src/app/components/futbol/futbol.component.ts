@@ -19,6 +19,7 @@ export class FutbolComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.rutaActiva.snapShot.paramMap.get('id')
     this.rutaActiva.paramMap.subscribe((paramentros: ParamMap) => {
       this.id = paramentros.get('id');
     });

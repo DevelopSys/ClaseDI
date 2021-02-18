@@ -1,1 +1,9 @@
-<p>asignaturas works!</p>
+<h2>Las asignaturas son</h2>
+<!-- NG FOR SOBRE DATOS DE ASIGNATURAS (SERVICIO) -->
+
+<div class="row">
+  <div class="col" *ngFor="let item of asignaturasPintar">
+    <!-- repetido tantas veces como elementos tenga asignaturasPintar -->
+    <app-asignatura [asignatura]="item"></app-asignatura>
+  </div>
+</div>

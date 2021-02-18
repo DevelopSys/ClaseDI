@@ -1,4 +1,6 @@
+import { DatosService } from './../../services/datos.service';
 import { Component, OnInit } from '@angular/core';
+import { Asignatura } from 'src/app/utils/Asignatura';
 
 @Component({
   selector: 'app-asignaturas',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AsignaturasComponent implements OnInit {
 
-  constructor() { }
+  asignaturasPintar: Asignatura[];
+
+  constructor(private servicio: DatosService) { }
 
   ngOnInit(): void {
+    this.asignaturasPintar = this.servicio.getAsignaturas()
   }
 
 }
