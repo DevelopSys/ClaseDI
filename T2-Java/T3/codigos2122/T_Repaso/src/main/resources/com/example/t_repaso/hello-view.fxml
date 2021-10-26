@@ -8,9 +8,9 @@
    <top>
       <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Boton1" fx:id="botonUno"/>
-            <Button mnemonicParsing="false" text="Boton2" fx:id="botonDos"/>
-            <Button mnemonicParsing="false" text="Boton3" fx:id="botonTres"/>
+            <Button fx:id="botonUno" mnemonicParsing="false" text="Boton1" />
+            <Button fx:id="botonDos" mnemonicParsing="false" text="Boton2" />
+            <Button fx:id="botonTres" mnemonicParsing="false" text="Boton3" />
          </children>
       </HBox>
    </top>
