@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
@@ -14,4 +18,17 @@
          </children>
       </HBox>
    </top>
+   <center>
+      <TextField fx:id="textoInicial" promptText="numero introducido" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </BorderPane.margin>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </TextField>
+   </center>
+   <bottom>
+      <ToggleButton mnemonicParsing="false" text="ToggleButton" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>
