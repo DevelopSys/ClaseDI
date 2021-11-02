@@ -8,9 +8,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
@@ -20,6 +22,8 @@ public class HelloController implements Initializable, EventHandler<Event> {
 
     @FXML
     Button botonUno, botonDos, botonTres;
+    @FXML
+    TextField textoCentro;
 
     DropShadow dropShadow;
 
@@ -43,7 +47,6 @@ public class HelloController implements Initializable, EventHandler<Event> {
         botonDos.setGraphic(new ImageView(new Image(HelloController.class.getResourceAsStream("playb.png"))));
 
 
-
     }
 
     private void instancias() {
@@ -54,9 +57,15 @@ public class HelloController implements Initializable, EventHandler<Event> {
         /*botonUno.setOnAction(this);
         botonDos.setOnAction(this);
         botonTres.setOnAction(this);*/
-        botonUno.addEventHandler(ActionEvent.ACTION,this);
+        botonUno.addEventHandler(ActionEvent.ACTION, this);
+        textoCentro.setOnKeyTyped(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                ((Event)keyEvent).consume();
+            }
+        });
         //botonUno.setOnMouseEntered(new ManejoRaton());
-        botonUno.addEventHandler(MouseEvent.MOUSE_ENTERED,this);
+        botonUno.addEventHandler(MouseEvent.MOUSE_ENTERED, this);
         botonUno.setOnMouseExited(new ManejoRaton());
         botonDos.setOnMouseEntered(new ManejoRaton());
         botonDos.setOnMouseExited(new ManejoRaton());
@@ -66,13 +75,12 @@ public class HelloController implements Initializable, EventHandler<Event> {
 
     @Override
     public void handle(Event event) {
-        if (event.getSource() == botonUno){
-            if (event.getEventType() == MouseEvent.MOUSE_ENTERED){
-
+        if (event.getSource() == botonUno) {
+            if (event.getEventType() == ActionEvent.ACTION) {
+                // capturar el texto del campo de texto
+                String textoCapturado = textoCentro.getText();
+                System.out.println(textoCapturado);
             }
-
-        } else if (event.getEventType() == MouseEvent.MOUSE_ENTERED){
-
         }
     }
 
@@ -104,11 +112,11 @@ public class HelloController implements Initializable, EventHandler<Event> {
                 btnAux.setEffect(dropShadow);
             }
 
-            if (mouseEvent.getSource() == botonDos){
-                if (mouseEvent.getEventType() == MouseEvent.MOUSE_ENTERED){
+            if (mouseEvent.getSource() == botonDos) {
+                if (mouseEvent.getEventType() == MouseEvent.MOUSE_ENTERED) {
                     botonDos.setGraphic(new ImageView(new Image(HelloController.class.getResourceAsStream("playre.png"))));
 
-                } else if (mouseEvent.getEventType() == MouseEvent.MOUSE_EXITED){
+                } else if (mouseEvent.getEventType() == MouseEvent.MOUSE_EXITED) {
                     botonDos.setGraphic(new ImageView(new Image(HelloController.class.getResourceAsStream("playb.png"))));
 
                 }
