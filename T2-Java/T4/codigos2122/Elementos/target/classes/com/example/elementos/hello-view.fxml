@@ -49,9 +49,9 @@
                         </HBox>
                         <HBox fx:id="panelCheck" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="3">
                            <children>
-                              <CheckBox mnemonicParsing="false" text="Op1" />
-                              <CheckBox mnemonicParsing="false" text="Op2" />
-                              <CheckBox mnemonicParsing="false" text="Op3" />
+                              <CheckBox mnemonicParsing="false" text="Op1" fx:id="checkUno" />
+                              <CheckBox mnemonicParsing="false" text="Op2" fx:id="checkDos"/>
+                              <CheckBox mnemonicParsing="false" text="Op3" fx:id="checkTres"/>
                            </children>
                         </HBox>
                      </children>
