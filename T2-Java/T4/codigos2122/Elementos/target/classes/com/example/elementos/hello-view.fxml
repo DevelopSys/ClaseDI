@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Tab?>
@@ -46,6 +47,13 @@
                               <RadioButton fx:id="radioTres" mnemonicParsing="false" text="OP3" />
                            </children>
                         </HBox>
+                        <HBox fx:id="panelCheck" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="3">
+                           <children>
+                              <CheckBox mnemonicParsing="false" text="Op1" />
+                              <CheckBox mnemonicParsing="false" text="Op2" />
+                              <CheckBox mnemonicParsing="false" text="Op3" />
+                           </children>
+                        </HBox>
                      </children>
                   </GridPane>
                </content>
@@ -55,7 +63,7 @@
       </TabPane>
    </center>
    <left>
-      <GridPane BorderPane.alignment="CENTER" fx:id="gridAdicional">
+      <GridPane fx:id="gridAdicional" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
