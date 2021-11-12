@@ -53,4 +53,9 @@ public class Personaje {
     public void setConcetracion(int concetracion) {
         this.concetracion = concetracion;
     }
+
+    @Override
+    public String toString() {
+        return getNombre() + " - "+getPoder();
+    }
 }
