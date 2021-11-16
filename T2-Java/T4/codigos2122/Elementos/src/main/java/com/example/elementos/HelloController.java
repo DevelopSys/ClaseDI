@@ -1,11 +1,13 @@
 package com.example.elementos;
 
 import com.example.elementos.utils.CuentaCorriente;
+import com.example.elementos.utils.Pelicula;
 import com.example.elementos.utils.Personaje;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -55,17 +57,24 @@ public class HelloController implements Initializable {
     private ChoiceBox<Personaje> choice;
 
     @FXML
-    private ListView listView;
+    private ListView<Pelicula> listView;
 
-    private ObservableList<Personaje> listaCombo, listaChoice, listaListView;
+    @FXML
+    private ProgressBar barraProgreso;
+
+    private ObservableList<Personaje> listaCombo, listaChoice;
+
+    private ObservableList<Pelicula> listaListView;
 
     private ToggleGroup grupoRadios;
 
     private ObservableList<Personaje> listaPersonajes;
 
+    private Task tareaJson;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // System.out.println(Thread.currentThread().getName());
         instancias();
         lecturaJSON();
         iniciarListas();
@@ -97,25 +106,60 @@ public class HelloController implements Initializable {
 
     }
 
-    private void lecturaJSON(){
+    private void lecturaJSON() {
+
+
         String url = "https://api.themoviedb.org/3/movie/now_playing?api_key=4ef66e12cddbb8fe9d4fd03ac9632f6e&language=en-US&page=1";
-        InputStream input;
-        try {
-            input = new URL(url).openStream();
-            BufferedReader bis = new BufferedReader(new InputStreamReader(input));
-            String respuesta = bis.readLine();
-            JSONObject jsonGeneral = new JSONObject(respuesta);
-            JSONArray arrayPeliculas = jsonGeneral.getJSONArray("results");
-            JSONObject pelicula = arrayPeliculas.getJSONObject(6);
-            String titulo = pelicula.getString("original_title");
 
-            System.out.println(titulo);
+        tareaJson = new Task() {
+
+            @Override
+            protected void succeeded() {
+                super.succeeded();
+                System.out.println("Carga completada con exito");
+            }
+
+            @Override
+            protected void updateProgress(double v, double v1) {
+                super.updateProgress(v, v1);
+                double progreso = v/v1;
+                System.out.println(progreso);
+                barraProgreso.setProgress(progreso);
+            }
+
+            @Override
+            protected Object call() throws Exception {
+                // tarea en segundo plano
+                InputStream input;
+                try {
+                    input = new URL(url).openStream();
+                    BufferedReader bis = new BufferedReader(new InputStreamReader(input));
+                    String respuesta = bis.readLine();
+                    JSONObject jsonGeneral = new JSONObject(respuesta);
+                    JSONArray arrayPeliculas = jsonGeneral.getJSONArray("results");
+
+                    for (int i = 0; i < arrayPeliculas.length(); i++) {
+                        //System.out.println(Thread.currentThread().getName());
+                        JSONObject pelicula = arrayPeliculas.getJSONObject(i);
+                        String titulo = pelicula.getString("original_title");
+                        String imagen = pelicula.getString("poster_path");
+                        int id = pelicula.getInt("id");
+                        //System.out.println(titulo);
+
+                        updateProgress(i, arrayPeliculas.length());
+                        Thread.sleep(500);
+                        listaListView.add(new Pelicula(titulo,imagen,id));
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+        };
 
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
+
 
     private void asociarElementos() {
 
@@ -144,6 +188,7 @@ public class HelloController implements Initializable {
     }
 
     private void iniciarElementos() {
+
         btnToggle.setSelected(false);
         ventanaGeneral.getChildren().remove(gridAdicional);
         btnToggle.setBackground(null);
@@ -176,6 +221,8 @@ public class HelloController implements Initializable {
 
             }
         });*/
+
+
         btnToggle.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean oldValue, Boolean newValue) {
@@ -199,8 +246,10 @@ public class HelloController implements Initializable {
         btnListas.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println(combo.getSelectionModel().getSelectedItem().getNombre());
-                System.out.println(choice.getSelectionModel().getSelectedItem().getNombre());
+                //System.out.println(combo.getSelectionModel().getSelectedItem().getNombre());
+                //System.out.println(choice.getSelectionModel().getSelectedItem().getNombre());
+                System.out.println(Thread.currentThread().getName());
+                new Thread(tareaJson).start();
             }
         });
         for (Node elemento : listaElementos) {
