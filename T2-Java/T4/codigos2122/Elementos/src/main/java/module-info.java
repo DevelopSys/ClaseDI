@@ -9,6 +9,8 @@ module com.example.elementos {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires org.json;
+    requires mysql.connector.java;
 
     opens com.example.elementos to javafx.fxml;
     exports com.example.elementos;

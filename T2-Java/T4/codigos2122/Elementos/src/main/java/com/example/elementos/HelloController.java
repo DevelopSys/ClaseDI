@@ -17,6 +17,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -63,7 +67,9 @@ public class HelloController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         instancias();
+        lecturaJSON();
         iniciarListas();
+
         asociarElementos();
         iniciarElementos();
         acciones();
@@ -77,7 +83,7 @@ public class HelloController implements Initializable {
         listaCombo = listaPersonajes;
         listaChoice = listaPersonajes;
 
-        listaListView.addAll(new Personaje("Spiderman", "Telas", 12, 23, 53)
+        /*listaListView.addAll(new Personaje("Spiderman", "Telas", 12, 23, 53)
                 , new Personaje("Venom", "Otro", 123, 32, 5)
                 , new Personaje("CapitanAmerica", "Loquesea", 123, 56, 765), new Personaje("Spiderman", "Telas", 12, 23, 53)
                 , new Personaje("Venom", "Otro", 123, 32, 5)
@@ -87,7 +93,28 @@ public class HelloController implements Initializable {
                 , new Personaje("Venom", "Otro", 123, 32, 5)
                 , new Personaje("CapitanAmerica", "Loquesea", 123, 56, 765), new Personaje("Spiderman", "Telas", 12, 23, 53)
                 , new Personaje("Venom", "Otro", 123, 32, 5)
-                , new Personaje("CapitanAmerica", "Loquesea", 123, 56, 765));
+                , new Personaje("CapitanAmerica", "Loquesea", 123, 56, 765));*/
+
+    }
+
+    private void lecturaJSON(){
+        String url = "https://api.themoviedb.org/3/movie/now_playing?api_key=4ef66e12cddbb8fe9d4fd03ac9632f6e&language=en-US&page=1";
+        InputStream input;
+        try {
+            input = new URL(url).openStream();
+            BufferedReader bis = new BufferedReader(new InputStreamReader(input));
+            String respuesta = bis.readLine();
+            JSONObject jsonGeneral = new JSONObject(respuesta);
+            JSONArray arrayPeliculas = jsonGeneral.getJSONArray("results");
+            JSONObject pelicula = arrayPeliculas.getJSONObject(6);
+            String titulo = pelicula.getString("original_title");
+
+            System.out.println(titulo);
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void asociarElementos() {
