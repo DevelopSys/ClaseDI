@@ -12,14 +12,18 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -37,7 +41,7 @@ public class HelloController implements Initializable {
     private RadioButton radioUno, radioDos, radioTres;
 
     @FXML
-    private Button btnComprobar, btnImagen, btnListas;
+    private Button btnComprobar, btnImagen, btnListas, btnDetalle;
 
     @FXML
     private BorderPane ventanaGeneral;
@@ -62,6 +66,8 @@ public class HelloController implements Initializable {
 
     @FXML
     private ProgressBar barraProgreso;
+
+    @FXML ImageView imagenPelicula;
 
     private ObservableList<Personaje> listaCombo, listaChoice;
 
@@ -109,7 +115,7 @@ public class HelloController implements Initializable {
     private void lecturaJSON() {
 
 
-        
+
 
         String url = "https://api.themoviedb.org/3/movie/now_playing?api_key=4ef66e12cddbb8fe9d4fd03ac9632f6e&language=en-US&page=1";
 
@@ -205,6 +211,14 @@ public class HelloController implements Initializable {
         });*/
 
 
+        listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Pelicula>() {
+            @Override
+            public void changed(ObservableValue<? extends Pelicula> observableValue, Pelicula pelicula, Pelicula t1) {
+                System.out.println("https://image.tmdb.org/t/p/w500"+t1.getImagen());
+                imagenPelicula.setImage(new Image("https://image.tmdb.org/t/p/w500/"+t1.getImagen()));
+            }
+        });
+
         btnToggle.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean oldValue, Boolean newValue) {
@@ -259,6 +273,7 @@ public class HelloController implements Initializable {
                 System.out.println(t1.getNombre());
             }
         });
+        btnDetalle.setOnAction(new ManejoPulsaciones());
     }
 
     class ManejoPulsaciones implements EventHandler<ActionEvent> {
@@ -270,6 +285,26 @@ public class HelloController implements Initializable {
             if (bAux != btnImagen) {
                 // textfield.appedText(bAux.getText())
                 System.out.println(bAux.getText());
+            }
+
+            if (actionEvent.getSource() == btnDetalle){
+                // abrir una ventana nueva con el detalle de la pelicula
+                Stage ventanaDetalle = new Stage();
+                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("detalle-view.fxml"));
+                Scene scene = null;
+                Parent root = null;
+                try {
+                    root =  fxmlLoader.load();
+                    scene = new Scene(root,400,400);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                ventanaDetalle.setScene(scene);
+                DetalleController detalleController = fxmlLoader.getController();
+                detalleController.setearPelicula(listView.getSelectionModel().getSelectedItem());
+                ventanaDetalle.setTitle("Detalle de la pelicula");
+                ventanaDetalle.show();
             }
 
 
