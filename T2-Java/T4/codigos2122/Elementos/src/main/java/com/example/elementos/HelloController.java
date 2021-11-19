@@ -3,6 +3,7 @@ package com.example.elementos;
 import com.example.elementos.utils.CuentaCorriente;
 import com.example.elementos.utils.Pelicula;
 import com.example.elementos.utils.Personaje;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -76,9 +77,8 @@ public class HelloController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // System.out.println(Thread.currentThread().getName());
         instancias();
-        lecturaJSON();
+        //lecturaJSON();
         iniciarListas();
-
         asociarElementos();
         iniciarElementos();
         acciones();
@@ -109,53 +109,35 @@ public class HelloController implements Initializable {
     private void lecturaJSON() {
 
 
+        
+
         String url = "https://api.themoviedb.org/3/movie/now_playing?api_key=4ef66e12cddbb8fe9d4fd03ac9632f6e&language=en-US&page=1";
 
-        tareaJson = new Task() {
+        InputStream input;
+        try {
+            input = new URL(url).openStream();
+            BufferedReader bis = new BufferedReader(new InputStreamReader(input));
+            String respuesta = bis.readLine();
+            JSONObject jsonGeneral = new JSONObject(respuesta);
+            JSONArray arrayPeliculas = jsonGeneral.getJSONArray("results");
 
-            @Override
-            protected void succeeded() {
-                super.succeeded();
-                System.out.println("Carga completada con exito");
+            for (int i = 0; i < arrayPeliculas.length(); i++) {
+                //System.out.println(Thread.currentThread().getName());
+                JSONObject pelicula = arrayPeliculas.getJSONObject(i);
+                String titulo = pelicula.getString("original_title");
+                String imagen = pelicula.getString("poster_path");
+                int id = pelicula.getInt("id");
+                //Thread.sleep(100);
+                barraProgreso.setProgress((double) i/(double) arrayPeliculas.length());
+                //System.out.println(titulo);
+
+
+                listaListView.add(new Pelicula(titulo, imagen, id));
             }
-
-            @Override
-            protected void updateProgress(double v, double v1) {
-                super.updateProgress(v, v1);
-                double progreso = v/v1;
-                System.out.println(progreso);
-                barraProgreso.setProgress(progreso);
-            }
-
-            @Override
-            protected Object call() throws Exception {
-                // tarea en segundo plano
-                InputStream input;
-                try {
-                    input = new URL(url).openStream();
-                    BufferedReader bis = new BufferedReader(new InputStreamReader(input));
-                    String respuesta = bis.readLine();
-                    JSONObject jsonGeneral = new JSONObject(respuesta);
-                    JSONArray arrayPeliculas = jsonGeneral.getJSONArray("results");
-
-                    for (int i = 0; i < arrayPeliculas.length(); i++) {
-                        //System.out.println(Thread.currentThread().getName());
-                        JSONObject pelicula = arrayPeliculas.getJSONObject(i);
-                        String titulo = pelicula.getString("original_title");
-                        String imagen = pelicula.getString("poster_path");
-                        int id = pelicula.getInt("id");
-                        //System.out.println(titulo);
-
-                        updateProgress(i, arrayPeliculas.length());
-                        Thread.sleep(500);
-                        listaListView.add(new Pelicula(titulo,imagen,id));
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
-        };
+            barraProgreso.setProgress(1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
     }
@@ -246,10 +228,19 @@ public class HelloController implements Initializable {
         btnListas.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                System.out.println(Thread.currentThread());
                 //System.out.println(combo.getSelectionModel().getSelectedItem().getNombre());
                 //System.out.println(choice.getSelectionModel().getSelectedItem().getNombre());
-                System.out.println(Thread.currentThread().getName());
-                new Thread(tareaJson).start();
+                //System.out.println(Thread.currentThread().getName());
+                //new Thread(tareaJson).start();
+                //barraProgreso.setProgress(0.6);
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        System.out.println(Thread.currentThread());
+                        lecturaJSON();
+                    }
+                });
             }
         });
         for (Node elemento : listaElementos) {
