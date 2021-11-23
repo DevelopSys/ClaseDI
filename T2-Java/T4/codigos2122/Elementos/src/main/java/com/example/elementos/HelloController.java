@@ -132,13 +132,14 @@ public class HelloController implements Initializable {
                 JSONObject pelicula = arrayPeliculas.getJSONObject(i);
                 String titulo = pelicula.getString("original_title");
                 String imagen = pelicula.getString("poster_path");
+                String descripcion = pelicula.getString("overview");
                 int id = pelicula.getInt("id");
                 //Thread.sleep(100);
                 barraProgreso.setProgress((double) i/(double) arrayPeliculas.length());
                 //System.out.println(titulo);
 
 
-                listaListView.add(new Pelicula(titulo, imagen, id));
+                listaListView.add(new Pelicula(titulo, imagen, id, descripcion));
             }
             barraProgreso.setProgress(1);
         } catch (IOException e) {
@@ -276,6 +277,10 @@ public class HelloController implements Initializable {
         btnDetalle.setOnAction(new ManejoPulsaciones());
     }
 
+    public void metodoObtenerRespuesta(String respuesta){
+        System.out.println(respuesta);
+    }
+
     class ManejoPulsaciones implements EventHandler<ActionEvent> {
 
         @Override
@@ -303,7 +308,7 @@ public class HelloController implements Initializable {
                 if (listView.getSelectionModel().getSelectedIndex()>-1){
                     ventanaDetalle.setScene(scene);
                     DetalleController detalleController = fxmlLoader.getController();
-                    detalleController.setearPelicula(listView.getSelectionModel().getSelectedItem());
+                    detalleController.setearPelicula(listView.getSelectionModel().getSelectedItem(), HelloController.this);
                     ventanaDetalle.setTitle("Detalle de la pelicula");
                     ventanaDetalle.show();
                 }
