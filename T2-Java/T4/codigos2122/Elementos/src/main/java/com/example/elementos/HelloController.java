@@ -300,11 +300,14 @@ public class HelloController implements Initializable {
                     e.printStackTrace();
                 }
 
-                ventanaDetalle.setScene(scene);
-                DetalleController detalleController = fxmlLoader.getController();
-                detalleController.setearPelicula(listView.getSelectionModel().getSelectedItem());
-                ventanaDetalle.setTitle("Detalle de la pelicula");
-                ventanaDetalle.show();
+                if (listView.getSelectionModel().getSelectedIndex()>-1){
+                    ventanaDetalle.setScene(scene);
+                    DetalleController detalleController = fxmlLoader.getController();
+                    detalleController.setearPelicula(listView.getSelectionModel().getSelectedItem());
+                    ventanaDetalle.setTitle("Detalle de la pelicula");
+                    ventanaDetalle.show();
+                }
+
             }
 
 
