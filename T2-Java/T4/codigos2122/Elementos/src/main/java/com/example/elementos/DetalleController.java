@@ -34,6 +34,8 @@ public class DetalleController implements Initializable {
            public void handle(ActionEvent actionEvent) {
                //System.out.println(controller.imagenPelicula.toString());
                controller.metodoObtenerRespuesta("Te he contestado con esto");
+               // Stage --> hide()
+               
            }
        });
     }
