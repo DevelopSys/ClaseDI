@@ -1,7 +1,6 @@
 package com.example.elementos;
 
 import com.example.elementos.utils.CuentaCorriente;
-import com.example.elementos.utils.Pelicula;
 import com.example.elementos.utils.Personaje;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -18,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -41,7 +41,7 @@ public class HelloController implements Initializable {
     private RadioButton radioUno, radioDos, radioTres;
 
     @FXML
-    private Button btnComprobar, btnImagen, btnListas, btnDetalle;
+    private Button btnComprobar, btnImagen, btnListas, btnDetalle, btnInfo;
 
     @FXML
     private BorderPane ventanaGeneral;
@@ -67,7 +67,18 @@ public class HelloController implements Initializable {
     @FXML
     private ProgressBar barraProgreso;
 
-    @FXML ImageView imagenPelicula;
+    @FXML
+    private ImageView imagenPelicula;
+
+    @FXML
+    private TableView tabla;
+    @FXML
+    private TableColumn columnaId, columnaTitulo, columnaFecha, columnaIdioma;
+
+    @FXML
+    TextField textoFiltrar;
+
+    private ObservableList<Pelicula> listaTabla;
 
     private ObservableList<Personaje> listaCombo, listaChoice;
 
@@ -86,6 +97,7 @@ public class HelloController implements Initializable {
         //lecturaJSON();
         iniciarListas();
         asociarElementos();
+        iniciarTabla();
         iniciarElementos();
         acciones();
     }
@@ -97,6 +109,11 @@ public class HelloController implements Initializable {
 
         listaCombo = listaPersonajes;
         listaChoice = listaPersonajes;
+
+        listaTabla.add(new Pelicula(1,"Titulo","Fecha","Eng"));
+        listaTabla.add(new Pelicula(2,"Titulo","Fecha","Eng"));
+        listaTabla.add(new Pelicula(3,"Titulo","Fecha","Eng"));
+        listaTabla.add(new Pelicula(4,"Titulo","Fecha","Eng"));
 
         /*listaListView.addAll(new Personaje("Spiderman", "Telas", 12, 23, 53)
                 , new Personaje("Venom", "Otro", 123, 32, 5)
@@ -113,8 +130,6 @@ public class HelloController implements Initializable {
     }
 
     private void lecturaJSON() {
-
-
 
 
         String url = "https://api.themoviedb.org/3/movie/now_playing?api_key=4ef66e12cddbb8fe9d4fd03ac9632f6e&language=en-US&page=1";
@@ -135,7 +150,7 @@ public class HelloController implements Initializable {
                 String descripcion = pelicula.getString("overview");
                 int id = pelicula.getInt("id");
                 //Thread.sleep(100);
-                barraProgreso.setProgress((double) i/(double) arrayPeliculas.length());
+                barraProgreso.setProgress((double) i / (double) arrayPeliculas.length());
                 //System.out.println(titulo);
 
 
@@ -149,9 +164,16 @@ public class HelloController implements Initializable {
 
     }
 
+    private void iniciarTabla() {
+        columnaId.setCellValueFactory(new PropertyValueFactory("propId"));
+        columnaFecha.setCellValueFactory(new PropertyValueFactory("propFecha"));
+        columnaTitulo.setCellValueFactory(new PropertyValueFactory("propTitulo"));
+        columnaIdioma.setCellValueFactory(new PropertyValueFactory("propIdioma"));
+    }
 
     private void asociarElementos() {
 
+        tabla.setItems(listaTabla);
         combo.setItems(listaCombo);
         choice.setItems(listaChoice);
         listView.setItems(listaListView);
@@ -173,6 +195,7 @@ public class HelloController implements Initializable {
         listaCombo = FXCollections.observableArrayList();
         listaChoice = FXCollections.observableArrayList();
         listaListView = FXCollections.observableArrayList();
+        listaTabla = FXCollections.observableArrayList();
         grupoRadios.getToggles().addAll(radioUno, radioDos, radioTres);
     }
 
@@ -215,8 +238,8 @@ public class HelloController implements Initializable {
         listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Pelicula>() {
             @Override
             public void changed(ObservableValue<? extends Pelicula> observableValue, Pelicula pelicula, Pelicula t1) {
-                System.out.println("https://image.tmdb.org/t/p/w500"+t1.getImagen());
-                imagenPelicula.setImage(new Image("https://image.tmdb.org/t/p/w500/"+t1.getImagen()));
+                System.out.println("https://image.tmdb.org/t/p/w500" + t1.getImagen());
+                imagenPelicula.setImage(new Image("https://image.tmdb.org/t/p/w500/" + t1.getImagen()));
             }
         });
 
@@ -277,7 +300,7 @@ public class HelloController implements Initializable {
         btnDetalle.setOnAction(new ManejoPulsaciones());
     }
 
-    public void metodoObtenerRespuesta(String respuesta){
+    public void metodoObtenerRespuesta(String respuesta) {
         System.out.println(respuesta);
     }
 
@@ -292,20 +315,20 @@ public class HelloController implements Initializable {
                 System.out.println(bAux.getText());
             }
 
-            if (actionEvent.getSource() == btnDetalle){
+            if (actionEvent.getSource() == btnDetalle) {
                 // abrir una ventana nueva con el detalle de la pelicula
                 Stage ventanaDetalle = new Stage();
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("detalle-view.fxml"));
                 Scene scene = null;
                 Parent root = null;
                 try {
-                    root =  fxmlLoader.load();
-                    scene = new Scene(root,400,400);
+                    root = fxmlLoader.load();
+                    scene = new Scene(root, 400, 400);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
 
-                if (listView.getSelectionModel().getSelectedIndex()>-1){
+                if (listView.getSelectionModel().getSelectedIndex() > -1) {
                     ventanaDetalle.setScene(scene);
                     DetalleController detalleController = fxmlLoader.getController();
                     detalleController.setearPelicula(listView.getSelectionModel().getSelectedItem(), HelloController.this);
