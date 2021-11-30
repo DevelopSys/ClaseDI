@@ -1,5 +1,7 @@
 package com.example.repaso;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -11,11 +13,17 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.scene.control.ListView;
 import org.json.*;
 
 public class HelloController implements Initializable {
     @FXML
     private Label welcomeText;
+
+    @FXML
+    ListView lista;
+
+    ObservableList listaPeliculas;
 
     @FXML
     protected void onHelloButtonClick() {
@@ -24,6 +32,10 @@ public class HelloController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        listaPeliculas = FXCollections.observableArrayList();
+        lista.setItems(listaPeliculas);
+
         String urlJSON = "https://api.themoviedb.org/3/movie/now_playing?api_key=4ef66e12cddbb8fe9d4fd03ac9632f6e&language=en-US&page=1";
         InputStream inputStream;
         try {
@@ -38,6 +50,10 @@ public class HelloController implements Initializable {
                 String descripcion = pelicula.getString("overview");
                 System.out.println(titulo);
                 System.out.println(descripcion);
+                listaPeliculas.add(titulo);
+
+                //int aleatorio = (int) (Math.random()* listaPeliculas.size());
+
             }
 
         } catch (IOException e) {
