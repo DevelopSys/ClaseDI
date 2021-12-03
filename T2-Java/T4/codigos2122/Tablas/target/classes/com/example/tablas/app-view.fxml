@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tablas.AppController">
+   <center>
+      <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" fx:id="tablaPeliculas">
+        <columns>
+          <TableColumn fx:id="columnaID" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="columnaTitulo" prefWidth="75.0" text="TITULO" />
+            <TableColumn fx:id="columnaPopularidad" prefWidth="75.0" text="POPULARIDAD" />
+            <TableColumn fx:id="columnaIdioma" prefWidth="75.0" text="IDIOMA" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </center>
+   <bottom>
+      <TextField fx:id="textoFiltrar" promptText="introduce titulo a buscar" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>
