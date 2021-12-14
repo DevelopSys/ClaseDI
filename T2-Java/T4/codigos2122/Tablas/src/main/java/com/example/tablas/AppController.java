@@ -146,15 +146,13 @@ public class AppController implements Initializable, EventHandler<ActionEvent> {
             try {
                 root = fxmlLoader.load();
 
-
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
             Scene scene = new Scene(root);
             stage.setWidth(root.getScene().getWidth());
             stage.setHeight(root.getScene().getHeight());
-            
+
             stage.setScene(scene);
         }
     }
