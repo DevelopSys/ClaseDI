@@ -7,13 +7,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.json.*;
 
@@ -23,7 +26,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
-public class AppController implements Initializable {
+public class AppController implements Initializable, EventHandler<ActionEvent> {
 
     @FXML
     private TableColumn columnaID, columnaIdioma, columnaPopularidad, columnaTitulo;
@@ -33,6 +36,9 @@ public class AppController implements Initializable {
 
     @FXML
     private TextField textoFiltrar;
+
+    @FXML
+    private MenuItem menuTablas, menuDialogos;
 
     private ObservableList<Pelicula> listaPeliculas;
 
@@ -75,11 +81,11 @@ public class AppController implements Initializable {
                         JSONObject peliculaActual = jsonArray.getJSONObject(i);
                         String titulo = peliculaActual.getString("original_title");
                         String descripcion = peliculaActual.getString("overview");
-                        String imagen = "https://image.tmdb.org/t/p/w500"+peliculaActual.getString("poster_path");
+                        String imagen = "https://image.tmdb.org/t/p/w500" + peliculaActual.getString("poster_path");
                         String idioma = peliculaActual.getString("original_language");
                         int id = peliculaActual.getInt("id");
                         double popularidad = peliculaActual.getDouble("popularity");
-                        listaPeliculas.add(new Pelicula(id,titulo,idioma, imagen, descripcion, popularidad));
+                        listaPeliculas.add(new Pelicula(id, titulo, idioma, imagen, descripcion, popularidad));
 
                     }
 
@@ -115,6 +121,8 @@ public class AppController implements Initializable {
                 });
             }
         });
+        menuTablas.setOnAction(this);
+        menuDialogos.setOnAction(this);
     }
 
     private void instancias() {
@@ -124,5 +132,30 @@ public class AppController implements Initializable {
         columnaTitulo.setCellValueFactory(new PropertyValueFactory("titulo"));
         columnaPopularidad.setCellValueFactory(new PropertyValueFactory("popularidad"));
         columnaIdioma.setCellValueFactory(new PropertyValueFactory("idioma"));
+    }
+
+    @Override
+    public void handle(ActionEvent actionEvent) {
+        if (actionEvent.getSource() == menuTablas){
+            System.out.println("Seleccionado menu tablas");
+        } else if (actionEvent.getSource() == menuDialogos) {
+            System.out.println("Seleccionado menu diálogos");
+            Stage stage = (Stage) textoFiltrar.getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(AppController.class.getResource("dialogos-view.fxml"));
+            Parent root = null;
+            try {
+                root = fxmlLoader.load();
+
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Scene scene = new Scene(root);
+            stage.setWidth(root.getScene().getWidth());
+            stage.setHeight(root.getScene().getHeight());
+            
+            stage.setScene(scene);
+        }
     }
 }
