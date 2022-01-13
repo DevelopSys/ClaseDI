@@ -11,3 +11,14 @@ h1{
 .letras_importantes{
     color: brown;
 }
+
+.elemento_alumno{
+    background-color: cadetblue;
+    font-family: 'Twinkle Star', cursive;
+}
+
+.elemento_profesor{
+    
+    font-family: 'Courier New', Courier, monospace;
+    background-color: darkkhaki;
+}
