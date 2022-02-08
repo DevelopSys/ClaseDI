@@ -102,11 +102,11 @@ export class ForComponent implements OnInit {
 
 
     //curso.toLowerCase() == item.toLowerCase();
-    this.asignaturasFiltradas = this.arrayCurso(curso)
+    this.asignaturasFiltradas = this.arrayCurso(curso, Number(numero))
     this.numeroAsignturas = this.asignaturasFiltradas.length
   }
 
-  arrayCurso(curso: string): any[] {
+  arrayCurso(curso: string, numero: number): any[] {
     /*this.asignaturas.forEach(element => {
         if (element.curso == curso){
           this.asignaturasFiltradas.push(element)
@@ -120,7 +120,7 @@ export class ForComponent implements OnInit {
       }
       else {
         this.asignaturasFiltradas = this.asignaturas.filter(
-          (element) => element.curso == curso
+          (element) => element.curso == curso && element.horas >=numero
         );
 
         return this.asignaturasFiltradas;
