@@ -7,6 +7,7 @@ import { BindComponent } from './components/bind/bind.component';
 import { ForComponent } from './components/for/for.component';
 import { IfComponent } from './components/if/if.component';
 import { SwitchComponent } from './components/switch/switch.component';
+import { ImagenPipe } from './pipe/imagen.pipe';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { SwitchComponent } from './components/switch/switch.component';
     BindComponent,
     IfComponent,
     SwitchComponent,
-    ForComponent  ],
+    ForComponent,
+    ImagenPipe  ],
   imports: [
     BrowserModule,
     AppRoutingModule

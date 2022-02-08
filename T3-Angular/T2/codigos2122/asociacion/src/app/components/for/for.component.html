@@ -18,7 +18,15 @@
 </ul> -->
 
 <input type="text" class="form-control m-4" placeholder="Introduce curso a mostar" #inputFiltro>
-<input type="number" class="form-control m-4" placeholder="Introduce numero horas" #inputHoras>
+<!-- <input type="number" class="form-control m-4" placeholder="Introduce numero horas" #inputHoras> -->
+<select #inputHoras>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+</select>
 <button class="btn btn-primary" (click)="metodoFiltrar(inputFiltro.value, inputHoras.value)">Filtrar</button>
 
 <ng-container *ngIf="numeroAsignturas==0; else elseTemplate">
@@ -35,9 +43,9 @@
 
     <div *ngFor="let item of asignaturasFiltradas" class="col">
       <div class="card" style="width: 18rem">
-        <img [src]="item.imagen" class="card-img-top" alt="..." />
+        <img [src]="item.imagen | imagen" class="card-img-top" [alt]="item.nombre" />
         <div class="card-body">
-          <h5 class="card-title">{{item.nombre}}</h5>
+          <h5 class="card-title">{{item.nombre | uppercase}}</h5>
           <p class="card-text">
             {{item.siglas}} {{item.profesor}} {{item.horas}}
           </p>

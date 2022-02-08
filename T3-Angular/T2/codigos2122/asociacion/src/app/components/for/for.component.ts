@@ -32,8 +32,7 @@ export class ForComponent implements OnInit {
       curso: 'DAM1',
     },
     {
-      imagen:
-        'https://www.ymant.com/wp-content/uploads/Base-de-Datos-YMANT.jpg',
+      imagen: undefined,
       nombre: 'Base de datos',
       siglas: 'BD',
       profesor: 'Javier García',
@@ -115,7 +114,7 @@ export class ForComponent implements OnInit {
 
 
       if (curso == "todas"){
-        this.asignaturasFiltradas = this.asignaturas;
+        this.asignaturasFiltradas = this.asignaturas.filter(e=> e.horas >= numero);
         return this.asignaturasFiltradas;
       }
       else {
