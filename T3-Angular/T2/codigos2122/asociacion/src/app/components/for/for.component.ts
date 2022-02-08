@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForComponent implements OnInit {
 
- numeroAsignturas: number = 0;
+ numeroAsignturas: number = 1;
 
   asignaturas: any[] = [
     {
@@ -92,6 +92,8 @@ export class ForComponent implements OnInit {
 
   constructor() {
     //this.arrayCurso("DAM2")
+    this.asignaturasFiltradas = this.asignaturas;
+    this.numeroAsignturas = this.asignaturasFiltradas.length
   }
 
   ngOnInit(): void {}
