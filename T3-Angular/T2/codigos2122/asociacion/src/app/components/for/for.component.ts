@@ -113,10 +113,19 @@ export class ForComponent implements OnInit {
         }
       });*/
 
-    this.asignaturasFiltradas = this.asignaturas.filter(
-      (element) => element.curso == curso
-    );
 
-    return this.asignaturasFiltradas;
+      if (curso == "todas"){
+        this.asignaturasFiltradas = this.asignaturas;
+        return this.asignaturasFiltradas;
+      }
+      else {
+        this.asignaturasFiltradas = this.asignaturas.filter(
+          (element) => element.curso == curso
+        );
+
+        return this.asignaturasFiltradas;
+      }
+
+
   }
 }
