@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./for.component.css'],
 })
 export class ForComponent implements OnInit {
+
+ numeroAsignturas: number = 0;
+
   asignaturas: any[] = [
     {
       imagen:
@@ -94,10 +97,11 @@ export class ForComponent implements OnInit {
   ngOnInit(): void {}
 
   metodoFiltrar(curso: string) {
-    console.log(curso);
+
 
     //curso.toLowerCase() == item.toLowerCase();
     this.asignaturasFiltradas = this.arrayCurso(curso)
+    this.numeroAsignturas = this.asignaturasFiltradas.length
   }
 
   arrayCurso(curso: string): any[] {

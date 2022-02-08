@@ -20,26 +20,33 @@
 <input type="text" class="form-control m-4" placeholder="Introduce curso a mostar" #inputFiltro>
 <button class="btn btn-primary" (click)="metodoFiltrar(inputFiltro.value)">Filtrar</button>
 
-<div class="row">
+<ng-container *ngIf="numeroAsignturas==0; else elseTemplate">
+  <div class="alert alert-danger" role="alert">
+    No hay asignaturas
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <div class="row">
 
-  <div *ngFor="let item of asignaturasFiltradas" class="col">
-    <div class="card" style="width: 18rem">
-      <img [src]="item.imagen" class="card-img-top" alt="..." />
-      <div class="card-body">
-        <h5 class="card-title">{{item.nombre}}</h5>
-        <p class="card-text">
-          {{item.siglas}} {{item.profesor}} {{item.horas}}
-        </p>
-        <div>
-          <ul>
-            <li *ngFor="let conocimiento of item.conocimientos">{{conocimiento}}</li>
-          </ul>
+    <div *ngFor="let item of asignaturasFiltradas" class="col">
+      <div class="card" style="width: 18rem">
+        <img [src]="item.imagen" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{item.nombre}}</h5>
+          <p class="card-text">
+            {{item.siglas}} {{item.profesor}} {{item.horas}}
+          </p>
+          <div>
+            <ul>
+              <li *ngFor="let conocimiento of item.conocimientos">{{conocimiento}}</li>
+            </ul>
+          </div>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
   </div>
+</ng-template>
 
 
 
-</div>
