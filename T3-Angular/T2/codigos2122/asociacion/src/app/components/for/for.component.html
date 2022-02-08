@@ -18,7 +18,8 @@
 </ul> -->
 
 <input type="text" class="form-control m-4" placeholder="Introduce curso a mostar" #inputFiltro>
-<button class="btn btn-primary" (click)="metodoFiltrar(inputFiltro.value)">Filtrar</button>
+<input type="number" class="form-control m-4" placeholder="Introduce numero horas" #inputHoras>
+<button class="btn btn-primary" (click)="metodoFiltrar(inputFiltro.value, inputHoras.value)">Filtrar</button>
 
 <ng-container *ngIf="numeroAsignturas==0; else elseTemplate">
   <div class="alert alert-danger" role="alert">
@@ -27,6 +28,10 @@
 </ng-container>
 <ng-template #elseTemplate>
   <div class="row">
+
+    <div class="alert alert-success" role="alert">
+      El numero de asignturas es {{numeroAsignturas}}
+    </div>
 
     <div *ngFor="let item of asignaturasFiltradas" class="col">
       <div class="card" style="width: 18rem">

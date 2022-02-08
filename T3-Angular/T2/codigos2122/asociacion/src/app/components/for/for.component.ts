@@ -98,7 +98,7 @@ export class ForComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  metodoFiltrar(curso: string) {
+  metodoFiltrar(curso: string, numero: string) {
 
 
     //curso.toLowerCase() == item.toLowerCase();
