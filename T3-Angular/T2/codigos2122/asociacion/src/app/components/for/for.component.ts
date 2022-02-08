@@ -1,3 +1,4 @@
+import { isNgTemplate } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -94,6 +95,9 @@ export class ForComponent implements OnInit {
 
   metodoFiltrar(curso: string) {
     console.log(curso);
+
+    //curso.toLowerCase() == item.toLowerCase();
+    this.asignaturasFiltradas = this.arrayCurso(curso)
   }
 
   arrayCurso(curso: string): any[] {

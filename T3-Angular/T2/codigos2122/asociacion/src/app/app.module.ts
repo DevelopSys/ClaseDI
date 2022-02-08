@@ -14,8 +14,7 @@ import { SwitchComponent } from './components/switch/switch.component';
     BindComponent,
     IfComponent,
     SwitchComponent,
-    ForComponent
-  ],
+    ForComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule
