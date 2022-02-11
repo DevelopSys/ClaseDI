@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand">Rutas</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" [routerLink]="['/home']" routerLinkActive="router-link-active" >Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/informacion']" routerLinkActive="router-link-active"  routerLinkActive="router-link-active"  routerLinkActive="router-link-active" >Información</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Cursos
+          </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" [routerLink]="['/cursos','dam']" routerLinkActive="router-link-active">DAM</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/cursos','daw']" routerLinkActive="router-link-active">DAW</a></li>
+            <li><a class="dropdown-item" (click)="navegar('cursos','bd')">BigData+</a></li>
+          </ul>
+          </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+<!-- En este componente apareceran o desaparecen las rutas declaradas -->
+<!-- <button class="btn btn-primary" (click)="navegar('informacion')">Informacion</button>
+<button class="btn btn-primary" (click)="navegar('cursos')">Cursos</button> -->
+<router-outlet></router-outlet>
+<h1>Fil del outlet</h1>
