@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { asignatura } from 'src/app/utils/asignatura';
 
 @Component({
   selector: 'rutas-cursos',
@@ -7,7 +8,10 @@ import { ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./cursos.component.css'],
 })
 export class CursosComponent implements OnInit {
-  asignaturas = [
+
+  curso: string = ""
+
+  asignaturas: asignatura[] = [
     { nombre: 'PMDM', profesor: 'BMH', hora: 5, curso: 'dam' },
     { nombre: 'DI', profesor: 'BMH', hora: 5, curso: 'dam' },
     { nombre: 'SI', profesor: 'IS', hora: 5, curso: 'dam|daw' },
@@ -26,16 +30,16 @@ export class CursosComponent implements OnInit {
     { nombre: 'AWS', profesor: 'CA', hora: 5, curso: 'bd' },
   ];
 
-  filtadas = [{ nombre: 'PMDM', profesor: 'BMH', hora: 5, curso: 'dam' }];
+  filtadas: asignatura[] = [{ nombre: 'PMDM', profesor: 'BMH', hora: 5, curso: 'dam' }];
 
   constructor(private gestorRutas: ActivatedRoute) {}
 
   ngOnInit(): void {
     //console.log(this.gestorRutas.snapshot.params['ciclo'])
     this.gestorRutas.params.subscribe((elementos: Params) => {
-      let curso = elementos['ciclo'];
+      this.curso = elementos['ciclo'];
       this.filtadas = this.asignaturas.filter((e) => {
-        return e.curso.includes(curso);
+        return e.curso.toLowerCase().includes(this.curso.toLowerCase());
       });
     });
   }
