@@ -1,4 +1,13 @@
 <div class="m4">
+  <input type="number" placeholder="introduce numeros" #inputNumero />
+  <select #selectGenero>
+    <option value="&gender=male">Masculino</option>
+    <option value="&gender=female">Femenino</option>
+  </select>
+  <button (click)="pulsacionBotonNumero(inputNumero.value, selectGenero.value)">
+    Pulsar para ver
+  </button>
+
   <div class="row">
     <div class="col" *ngFor="let item of profesores">
       <div class="card" style="width: 18rem">

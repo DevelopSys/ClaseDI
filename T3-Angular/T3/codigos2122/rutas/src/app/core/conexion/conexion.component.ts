@@ -12,10 +12,26 @@ export class ConexionComponent implements OnInit {
   constructor(private servicioProfesores: ProfesoresService) {}
 
   ngOnInit(): void {
-    this.servicioProfesores.getProfesoresResults(10).subscribe((d) => {
+    this.servicioProfesores.getAllProfesores().subscribe((d) => {
       //console.log(d.results);
       this.profesores = d.results;
       //console.log(this.profesores);
     });
+  }
+
+  pulsacionBotonNumero(numero: string, genero: string) {
+    if (!isNaN(Number(numero))) {
+      /* this.servicioProfesores
+        .getProfesoresResults(Number(numero))
+        .subscribe((d) => {
+          this.profesores = d.results;
+        }); */
+
+      this.servicioProfesores
+        .getProfesoresFiltro(Number(numero), genero)
+        .subscribe((d) => {
+          this.profesores = d.results;
+        });
+    }
   }
 }

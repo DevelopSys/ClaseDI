@@ -18,4 +18,7 @@ export class ProfesoresService {
   getProfesoresResults(numero: number): Observable<any> {
     return this.servicioHttp.get(`${this.urlBase}` + numero);
   }
+  getProfesoresFiltro(numero: number, genero: string): Observable<any> {
+    return this.servicioHttp.get(`${this.urlBase}${numero}${genero}`);
+  }
 }
