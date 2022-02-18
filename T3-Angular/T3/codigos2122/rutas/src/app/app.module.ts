@@ -7,6 +7,8 @@ import { InformacionComponent } from './core/informacion/informacion.component';
 import { CursosComponent } from './core/cursos/cursos.component';
 import { HomeComponent } from './core/home/home.component';
 import { ImagenPipe } from './pipe/imagen.pipe';
+import { ConexionComponent } from './core/conexion/conexion.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,13 @@ import { ImagenPipe } from './pipe/imagen.pipe';
     InformacionComponent,
     CursosComponent,
     HomeComponent,
-    ImagenPipe
+    ImagenPipe,
+    ConexionComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
