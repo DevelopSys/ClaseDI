@@ -11,8 +11,11 @@ export class ProfesoresService {
 
   constructor(private servicioHttp: HttpClient) {}
 
-  getAllProfesores() {
-    this.servicioHttp.get(`${this.urlBase}` + 50);
+  getAllProfesores(): Observable<any> {
+    return this.servicioHttp.get(`${this.urlBase}` + 500);
+  }
 
+  getProfesoresResults(numero: number): Observable<any> {
+    return this.servicioHttp.get(`${this.urlBase}` + numero);
   }
 }

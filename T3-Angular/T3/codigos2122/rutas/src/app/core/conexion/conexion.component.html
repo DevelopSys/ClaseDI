@@ -1,1 +1,21 @@
-<p>conexion works!</p>
+<div class="m4">
+  <div class="row">
+    <div class="col" *ngFor="let item of profesores">
+      <div class="card" style="width: 18rem">
+        <img
+          [src]="item.picture.large"
+          class="card-img-top"
+          [alt]="item.email"
+        />
+        <div class="card-body">
+          <h5 class="card-title">
+            {{ item.name.title }} {{ item.name.first }} {{ item.name.last }}
+          </h5>
+          <p class="card-text">
+            {{ item.email }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
