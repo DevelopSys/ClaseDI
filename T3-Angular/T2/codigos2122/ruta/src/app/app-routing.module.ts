@@ -6,7 +6,7 @@ import { InformacionComponent } from './components/informacion/informacion.compo
 
 const routes: Routes = [
   { path: 'info', component: InformacionComponent },
-  { path: 'cursos', component: CursosComponent },
+  { path: 'cursos/:curso', component: CursosComponent },
   { path: 'home', component: HomeComponent },
   { path: '**', redirectTo: 'home' },
 ];
