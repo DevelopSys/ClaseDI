@@ -1,15 +1,23 @@
 <div class="container m4">
   <h2>Informacion sobre el curso: {{ curso }}</h2>
+  <div>
+    <input type="number" class="form-control" #inputAnio />
+    <button class="btn btn-primary" (click)="fitrarAnio(inputAnio.value)">
+      Filtrar
+    </button>
+  </div>
+
   <div class="row">
     <div class="col" *ngFor="let item of asignaturasFiltro">
       <div class="card" style="width: 18rem">
-        <img src="..." class="card-img-top" alt="..." />
+        <img [src]="item.imagen | imagen" class="card-img-top" alt="..." />
         <div class="card-body">
-          <h5 class="card-title">{{ item.asignatura }}e</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
+          <h5 class="card-title">{{ item.asignatura | uppercase }}</h5>
+          <ul>
+            <li *ngFor="let conocimiento of item.conocimientos">
+              {{ conocimiento | lowercase }}
+            </li>
+          </ul>
           <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>
