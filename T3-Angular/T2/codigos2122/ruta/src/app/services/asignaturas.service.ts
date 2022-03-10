@@ -78,9 +78,13 @@ export class AsignaturasService {
   fitrarAsignaturas(curso: string): asignatura[] {
     // obtengo un [] de las asignaturas que cumplen la condicion
     return this.asignaturas.filter((e) => {
-      return e.ciclo.toLowerCase().includes(curso.toLowerCase()) && true;
+      return e.ciclo.toLowerCase().includes(curso.toLowerCase());
     });
   }
 
-  filtrarCompleto(curso: string, ciclo: string) {}
+  filtrarCompleto(curso: string, ciclo: string): asignatura[] {
+    return this.asignaturas.filter((e) => {
+      return e.ciclo.toLowerCase().includes(curso) && e.curso == Number(ciclo);
+    });
+  }
 }

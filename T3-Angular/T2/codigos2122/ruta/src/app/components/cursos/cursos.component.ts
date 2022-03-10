@@ -23,8 +23,6 @@ export class CursosComponent implements OnInit {
     //console.log(this.rutaActiva.snapshot.params['curso']);
     this.rutaActiva.params.subscribe((params: Params) => {
       this.curso = params['curso'];
-      //this.asignaturasFiltro = this.asignaturaServicio.asignaturas;
-      //this.filtrarAsignaturas(this.curso);
       this.asignaturasFiltro = this.asignaturaServicio.fitrarAsignaturas(
         this.curso
       );
@@ -32,10 +30,12 @@ export class CursosComponent implements OnInit {
   }
 
   fitrarAnio(anio: string) {
-    anio;
-    this.curso;
-    this.asignaturaServicio.filtrarCompleto(this.curso, anio);
-    Number(anio);
+    //this.curso;
+    //anio;
+    this.asignaturasFiltro = this.asignaturaServicio.filtrarCompleto(
+      this.curso,
+      anio
+    );
   }
 
   filtrarAsignaturas(curso: string) {
