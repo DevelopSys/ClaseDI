@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <!-- sitio de los componentes llamados por las rutas -->
+  <router-outlet></router-outlet>
+</div>
+
+<!-- Dos clases:
+
+  - Asigntura: Nombre: string, profesor: string, conocimientos: [{nombre:"string",imagen:"ruta"}, curso: number ] 
+  - Ciclo: nombre: string, curso: number, asignturas: Asignatura[]
+
+  pmdm: Asignatura = {nombre: "Programacion Multimedia",profesor:"Borja Martin",conocimientos: [{nombre:"Java",imagen:"./asdasd"},{nombre:"xml",imagen:"./assets/asdasd"}]} 
+  di: Asignatura = {nombre: "Programacion Multimedia",profesor:"Borja Martin",conocimientos: [{nombre:"Java",imagen:"./asdasd"},{nombre:"xml",imagen:"./assets/asdasd"}]} 
+  ad: Asignatura = {nombre: "Programacion Multimedia",profesor:"Borja Martin",conocimientos: [{nombre:"Java",imagen:"./asdasd"},{nombre:"xml",imagen:"./assets/asdasd"}]} 
+
+  ciclo: Ciclo = { nombre: "DAM", curso: 2, asignaturas: [pmdm,di,ad] }
+
+-->
+
+<!-- Dos Servicios 
+
+- Servicio asginaturas: todas las asignaturas de DAM, DAW, ASIR
+
+getAsignturasDAM(): Asignaturas[]{
+  return 
+}
+
+- Servicio ciclos: todos los ciclos: ASIR, DAM, DAW
+
+getCicloDAM(): Ciclo{
+
+
+}
+
+-->

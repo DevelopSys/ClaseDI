@@ -1,4 +1,0 @@
-class AlumnoEspecial extends Alumno{
-
-}
-

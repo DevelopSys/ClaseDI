@@ -1,0 +1,24 @@
+<div class="card-deck">
+    <div class="card" *ngFor="let liga of ligas">
+        <img [src]="liga.logo" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{liga.nombre}}</h5>
+            <button class="btn btn-primary btn-block">Ver detalle</button>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">{{liga.pais}}</small>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="card col-md-3 mx-auto my-5" *ngFor="let liga of ligasServicio">
+        <img [src]="liga | imagen" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{liga.strLeague}}</h5>
+            <button class="btn btn-primary btn-block">Ver detalle</button>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">{{liga.strSport}}</small>
+        </div>
+    </div>
+</div>
