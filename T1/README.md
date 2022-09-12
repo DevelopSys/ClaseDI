@@ -69,6 +69,15 @@ f.	Tratamiento de ficheros
 	- Vaciar: dejará el array vacío
 	- Salir: terminará la ejecución del programa
 
+- Crea una aplicación que muestre por consola las tablas de multiplicar de los números entre el 1 y el 10. Esta salida deberá estar formateada de forma correcta.
+
+- Crea una aplicación que permita las siguientes acciones:
+
+    - Pedir por consola la longitud de un array de enteros.
+    - Rellenar dicho array con números aleatorios entre el 0 y el 50
+    - Indicar cuantos números pares e impares hay
+    - Mostrar por consola el número más grande, número más pequeño, suma de todos los números y número medio.
+
 - Crear un juego de adivinación de números. Para ello, nada mas empezar el programa se generará un número aleatorio entre 1 y 100. El programa pedirá al usuario que introduzca números enteros hasta encontrar el correcto. Al finalizar indicará el número de intentos alcanzado. (Opcional: hacerlo iterativo, de forma que al terminar una adivinación pregunte si se quiere volver a intentar. Cada vez que se termina se indica el número de intentos medio, el número mínimo de intentos necesitados y si se ha superado el record)
 
 - **(PARA ENTREGAR)** Desarrollar un programa que gestione temperaturas máximas y mínimas, y el programa calcule los extremos. Para ello hay que utilizar una coleccion de tipo ArrayList Algunas consideraciones a tener en cuenta son:
