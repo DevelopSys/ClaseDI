@@ -69,6 +69,12 @@ f.	Tratamiento de ficheros
 	- Vaciar: dejará el array vacío
 	- Salir: terminará la ejecución del programa
 
+* Modifica el ejercicio anterior para agregar al menú las siguientes opciones:
+     - Buscar un elemento: pedir al usuairo un elemento a buscar y mostrar la posición en la que se enciuentra (el primero que se encuentre)
+     - Sustituir elemento: pedirá el elemento que quieres sustituir y por el número que quieres sustituir (todos)
+     - Calcular max y min
+     - Quitar errores de array no relleno
+
 - Crea una aplicación que muestre por consola las tablas de multiplicar de los números entre el 1 y el 10. Esta salida deberá estar formateada de forma correcta.
 
 - Crea una aplicación que permita las siguientes acciones:

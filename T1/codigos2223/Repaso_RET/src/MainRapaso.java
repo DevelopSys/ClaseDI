@@ -1,3 +1,4 @@
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class MainRapaso {
@@ -93,13 +94,23 @@ public class MainRapaso {
 
         // for
         // 0 1 2 3 4 5 6 7 8 9 10
+        //int[] numeros = {1,2,3,4,5,6,7,8,9,10};
         for (int i = 10; i > -1; i--) {
             // ejecucion
+            //System.out.println(numeros[i]);
         }
 
-        for ( : ) {
-
+        // recorridos completos
+        int[] numeros = {1,2,3,4,5,6,7,8,9,10};
+        for (int item: numeros) {
+            System.out.println(item);
+            if (item != 9)break;
         }
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.get(Calendar.DAY_OF_MONTH);
+
+        new Scanner(System.in).nextInt();
 
 
 
