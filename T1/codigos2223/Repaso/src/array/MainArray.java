@@ -9,7 +9,7 @@ public class MainArray {
     * Agregar al menú las siguientes opciones:
     * - Buscar un elemento: pedir al usuairo un elemento a buscar
     *  y mostrar la posición en la que se enciuentra (el primero que se encuentre)
-    * - Sustituir elemento: pedira el elemento que quieres sustituir y por el numero que
+    * - Sustituir elemento: pedirá el elemento que quieres sustituir y por el número que
     *   quieres sustituir (todos)
     * - Calcular max y min
     * - Quitar errores de array no relleno
