@@ -86,7 +86,7 @@ f.	Tratamiento de ficheros
 
 - Crear un juego de adivinación de números. Para ello, nada mas empezar el programa se generará un número aleatorio entre 1 y 100. El programa pedirá al usuario que introduzca números enteros hasta encontrar el correcto. Al finalizar indicará el número de intentos alcanzado. (Opcional: hacerlo iterativo, de forma que al terminar una adivinación pregunte si se quiere volver a intentar. Cada vez que se termina se indica el número de intentos medio, el número mínimo de intentos necesitados y si se ha superado el record)
 
-- **(PARA ENTREGAR)** Desarrollar un programa que gestione temperaturas máximas y mínimas, y el programa calcule los extremos. Para ello hay que utilizar una coleccion de tipo ArrayList Algunas consideraciones a tener en cuenta son:
+- Desarrollar un programa que gestione temperaturas máximas y mínimas, y el programa calcule los extremos. Para ello hay que utilizar una coleccion de tipo ArrayList Algunas consideraciones a tener en cuenta son:
 a. Para introducir temperaturas el programa me pedirá un dato doublé
 
 b. Cuando me devuelva los extremos y la media, el programa me devolverá un dato double
@@ -102,7 +102,29 @@ El menú mediante el cual se introducen los datos es el siguiente:
 5. Mostrar medias
 6. Salir
 
-- **(PARA ENTREGAR)** Crear una apliación que permita la gestion de usuarios de tipo Alumno. Para ello hay que tener en cuenta que debe existir un Alumno que tenga nombre (string), apellido (string), dni (string) y matrícula (int). Mediante un menú se podrán realizar las siguientes operaciones:
+
+
+- (**Para entregar**) Realiza un programa que simule el funcionamiento de un juego de cartas. Para ello la lógica será la siguiente:
+    
+    - Cada jugador se le repartes 10 cartas al azar la baraja española (10 objetos de la clase Carta donde cada uno tiene valor y palo que previamente tienen que estar barajadas). 
+
+    - Una vez los jugadores tienen todas las cartas se dan dos turnos de juego y cada jugador puede
+        - Descartase de entre 1 y 3 cartas: selecciona el número de cartas (y cuales) y se le reparten cartas aleatorias
+        - Robar al rival entre 1 y tres cartas
+        - Pasar
+
+    - Cuando se pasan los turnos se decidirá cual es el ganador:
+        - Ganará aquel jugador que tenga más cartas del mismo palo ordenadas
+
+
+Para el ejercicio tendrás que: 
+   
+   - Crear un arraylist y rellenarlo automáticamente
+   - Montar un menú para que pueda is dandose la mecánica del juego
+   - Ves mostrando las cartas de cada jugador, reparticiones, etc ... en todo momento
+
+
+- Crear una apliación que permita la gestion de usuarios de tipo Alumno. Para ello hay que tener en cuenta que debe existir un Alumno que tenga nombre (string), apellido (string), dni (string) y matrícula (int). Mediante un menú se podrán realizar las siguientes operaciones:
 
 1. Agregar alumno
 2. Buscar alumno
