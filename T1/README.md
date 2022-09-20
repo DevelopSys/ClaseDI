@@ -44,6 +44,8 @@ f.	Tratamiento de ficheros
 
 **Ejercicios clase**
 
+Ejercicio 1
+
 - Mostrar por consola la fecha y hora, personalizando el saludo dependiendo de la hora del día. El mensaje se repetirá hasta que se indique que no se quiere volver a consultar la hora. Para ello se deberá pedir el nombre al usuario nada más arrancar el programa y una vez pulsado Enter se mostrar el mensaje: 
 
 "Por favor introduce tu nombre: "
@@ -75,6 +77,9 @@ f.	Tratamiento de ficheros
      - Calcular max y min
      - Quitar errores de array no relleno
 
+
+Ejercicio 2
+
 - Crea una aplicación que muestre por consola las tablas de multiplicar de los números entre el 1 y el 10. Esta salida deberá estar formateada de forma correcta.
 
 - Crea una aplicación que permita las siguientes acciones:
@@ -84,7 +89,11 @@ f.	Tratamiento de ficheros
     - Indicar cuantos números pares e impares hay
     - Mostrar por consola el número más grande, número más pequeño, suma de todos los números y número medio.
 
+Ejercicio 3
+
 - Crear un juego de adivinación de números. Para ello, nada mas empezar el programa se generará un número aleatorio entre 1 y 100. El programa pedirá al usuario que introduzca números enteros hasta encontrar el correcto. Al finalizar indicará el número de intentos alcanzado. (Opcional: hacerlo iterativo, de forma que al terminar una adivinación pregunte si se quiere volver a intentar. Cada vez que se termina se indica el número de intentos medio, el número mínimo de intentos necesitados y si se ha superado el record)
+
+Ejercicio 4
 
 - Desarrollar un programa que gestione temperaturas máximas y mínimas, y el programa calcule los extremos. Para ello hay que utilizar una coleccion de tipo ArrayList Algunas consideraciones a tener en cuenta son:
 a. Para introducir temperaturas el programa me pedirá un dato doublé
@@ -103,8 +112,9 @@ El menú mediante el cual se introducen los datos es el siguiente:
 6. Salir
 
 
+Ejercicio 5
 
-- (**Para entregar**) Realiza un programa que simule el funcionamiento de un juego de cartas. Para ello la lógica será la siguiente:
+(**Para entregar**) Realiza un programa que simule el funcionamiento de un juego de cartas. Para ello la lógica será la siguiente:
     
     - Cada jugador se le repartes 10 cartas al azar la baraja española (10 objetos de la clase Carta donde cada uno tiene valor y palo que previamente tienen que estar barajadas). 
 
@@ -124,6 +134,86 @@ Para el ejercicio tendrás que:
    - Ves mostrando las cartas de cada jugador, reparticiones, etc ... en todo momento
 
 
+Ejercicio 6
+
+**Para entregar**(Gasolinera) Crear una clase Surtidor que tenga los siguientes elementos:
+
+- Atributo int (capacidadTotal) que represente los litros máximos de gasolina que admite
+- Atributo int (capacidadActual) que represente los litros que tiene de gasolina cargados
+- Atributo string que represente el tipo de gasolina que tiene
+- Atributo boleado que represente si está o no funcionando el surtidor
+- Constructor que pida por parámetros la capacidadTotal y el tipo de gasolina e inicialice los atributos.El atributo funcionamiento se iniciará funcionando a true y el atributo capacidadActual será igual que la capacidadTotal.
+- Constructor que pida por parámetros el tipo de gasolina (y lo inicialice) y el resto de elementos los inicie por defeco.
+- Un método arreglar que no pida parámetros, no retorne nada y modifique el valor de atributo funcionamiento a true
+- Un método que rellenar que no devuelva nada y que admita por parámetros un int. El método agregará a la capacidadActual lo pasado por parámetros
+- Un método quitarGasolina que reciba por parámetros un int. El método quitará del atributo capacidadTotal lo pasado por parámetros
+- Los getter y setter correpondientes
+
+Crear una clase Gasolinera que tenga los siguientes elementos:
+
+- Un atributo de tipo string (nombre)
+- Un atributo de tipo ArrayLista donde se guardarán los surtidores (lista)
+- Un atributo de tipo int (ganancias)
+- Un constructor que pida por parámetros un nombre y lo inicialice. El resto de atributos los inicializará por defecto.
+- Un método que sea obtenerGanancias que no reciba nada y que devuelva un int. El método retornará la variable ganancias
+- Los getter y setter
+
+Crear una clase Coche que tenga los siguientes elementos:
+
+- Un atributo de tipo string (tipo de gasolina)
+- Un atributo de tipo int (litrosDeposito)
+- Un constructor que admita un argumento de tipo string y lo inicialice. Los litrosDeposito los iniciará a 0
+- Un método que sea ponerGasolina que no devuelva nada y que admita por parámetros un objeto de tipo surtidor y un int con la cantidad de litros a repostar. La funcionalidad será la siguiente:
+- El coche ejecutará el método quitarGasolina del surtidor
+- Si el surtidor está vacío o intentas poner más gasolina de la que tiene el surtidor saltará un aviso
+- Si el surtidor está averiado saltará un aviso
+- Si el tipo de gasolina del coche es diferente al tipo de gasolina del surtidor saltará un aviso
+- Si no se sumará a litrosDeposito lo que se ha reportado, y al surtidor se le restarán los litros
+
+Crear una clase entrada que tenga:
+
+- Crear tres surtidores. Dos con capacidad total y tipo de gasolina y uno con tipo de gasolina
+- Crear una gasolinera.
+- Agregar los tres surtidores a la gasolinera
+- Crear un coche con tipo de gasolina
+- Ejecutar el método ponerGasolina del coche (respotando una cantidad concreta).
+- Prueba todas las combinación para comprobar los posibles fallos del método.
+
+
+Ejercicio 7
+
+**Para entregar** (IMC)
+Crear una clase Persona que tenga las siguientes características:
+
+- Tres atributos de tipo String nombre, DNI, sexo (H hombre, M mujer)
+- Dos atributos de tipo double peso y altura.
+- Un atributo de tipo int edad
+- Un constructor por defecto, que inicialice todos los valores por defecto (aquellos que sean Complejos pondrá "defecto").
+- Un constructor con el nombre, edad y sexo, el resto por defecto.
+- Un constructor con todos los atributos como parámetro.
+- Un método calcularIMC que no pida nada por parámetros y que devuelva un int. La funcionalidad del método será la siguiente
+calculará si la persona esta en su peso ideal (peso/(altura^2))
+- si esta fórmula devuelve un valor menor que 20, la función devuelve un -1
+- si devuelve un número entre 20 y 25 (incluidos), significa que esta por debajo de su peso ideal la función devuelve un 0
+- si devuelve un valor mayor que 25 significa que tiene sobrepeso, la función devuelve un 1.
+- Un método esMayorDeEdad que no admita parámetros y retorne un booleano. Si la persona es mayor igual que 18 retornará true, sino false
+toString: devuelve toda la información del objeto forrajeada en json
+- getter y setter correpondientes
+
+Crear una clase Entrada que tenga las siguientes características
+
+- Pide por teclado el nombre, la edad, sexo, peso y altura.
+- Crea 3 objetos de tipo persona
+- el primer objeto obtendrá las anteriores variables pedidas por teclado
+- el segundo objeto obtendrá todos los anteriores menos el peso y la altura
+- el último por defecto, para este último utiliza los métodos set para darle a los atributos un valor.
+- Para cada objeto, comprobar el imc mostrando un aviso para cada caso
+- Estas en peso ideal, estas en sobrepeso o estás por debajo de peso
+
+Por último, mostrar la información de cada objeto.
+
+Ejercicio 8
+
 - Crear una apliación que permita la gestion de usuarios de tipo Alumno. Para ello hay que tener en cuenta que debe existir un Alumno que tenga nombre (string), apellido (string), dni (string) y matrícula (int). Mediante un menú se podrán realizar las siguientes operaciones:
 
 1. Agregar alumno
@@ -137,6 +227,8 @@ En cada una de las opciones se pedirán los datos asociados a la opción. Hay qu
 
 En todos los casos deben existir mensajes de confirmación tanto si la operación se ha llevado a cabo como si se ha producido algún fallo. Para la realización del problema utilizar una colección de tipo HashTable
 
+
+Ejercicio 9
 
 - Realizar una aplicación para la gestión de trabajadores. La aplicación podrá registrar trabajadores (asalariados y/o autónomos. Cada uno de los anteriores tiene las siguientes características:
 
@@ -165,7 +257,10 @@ Si es autónomo
 
 Utilizar la herencia y el polimorfismo para juntar el máximo de propiedades y métodos .
 
-- **(PARA ENTREGAR)** Crear una aplicación que sea capaz de gestionar elementos multimedia (Agregar, eliminar y listar elementos). Para ello se deben crear los siguientes tipos:
+
+Ejercicio 10
+
+- Crear una aplicación que sea capaz de gestionar elementos multimedia (Agregar, eliminar y listar elementos). Para ello se deben crear los siguientes tipos:
 
 1. Libros: con las características título, autor, año, código, edición, soporte digital y número de páginas
 2. Múscia: con las características título, autor, año, código, tipo formato, directo, duración
