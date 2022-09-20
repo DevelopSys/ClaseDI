@@ -16,6 +16,7 @@ public class Coche {
     public Coche(String marca, String modelo) {
         this.marca = marca;
         this.modelo = modelo;
+        
     }
 
     public Coche(String modelo, String marca, int cv, double cc) {
