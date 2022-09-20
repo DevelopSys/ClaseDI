@@ -8,36 +8,60 @@ import java.util.Comparator;
 public class MainCartas {
 
     public static void main(String[] args) {
+
+
+        ArrayList<Carta> baraja = new MainCartas().rellenarBaraja();
+        /*for (Carta carta: baraja) {
+            carta.mostrarDatos();
+        }*/
+        //[]
+        Jugador jugador1 = new Jugador();
+        //[]
+        Jugador jugador2 = new Jugador();
+
+        // repartir a cada jugador
+        for (int i = 0; i < 2; i++) {
+            System.out.println("Repartiendo al J"+(i+1));
+            // repartiendo 10 cartas al j que le toque
+            for (int j = 0; j < 10; j++) {
+                if (i==0){
+                    // J1
+                    jugador1.obtenerCarta(baraja.get(0));
+                } else {
+                    // J2
+                    jugador2.obtenerCarta(baraja.get(0));
+                }
+                baraja.remove(0);
+            }
+        }
+
+        System.out.println("Cartas del j1");
+        jugador1.mostrarCartas();
+
+        System.out.println("Cartas del j2");
+        jugador2.mostrarCartas();
+
+        int descartar = 2;
+        // 1,4
+        int[] posicionesDescarte = new int[]{1,4};
+
+        Carta[] nuevas = new Carta[]{baraja.get(0),baraja.get(1)};
+        jugador1.descartar(posicionesDescarte,nuevas);
+
+    }
+
+    public ArrayList<Carta> rellenarBaraja(){
+        // C , P , T, R
+        // 1-13
         ArrayList<Carta> baraja = new ArrayList<>();
-        baraja.add(new Carta(1,"C"));
-        baraja.add(new Carta(6,"C"));
-        baraja.add(new Carta(9,"T"));
-        baraja.add(new Carta(12,"R"));
-        baraja.add(new Carta(3,"P"));
-
-        System.out.println("Antes de ordenar");
-        for ( Carta carta : baraja ) {
-            carta.mostrarDatos();
+        char[] palos = new char[]{'C' , 'P' , 'T', 'R'};
+        for (int i = 0; i < palos.length; i++) {
+            for (int j = 1; j < 14; j++) {
+                baraja.add(new Carta(j,palos[i]));
+            }
         }
 
-        System.out.println("Despues de ordenar");
-        Collections.sort(baraja, new Comparator<Carta>() {
-            @Override
-            public int compare(Carta o1, Carta o2) {
-                if (o1.getValor()> o2.getValor()) {
-                    if (o1.getPalo().equalsIgnoreCase(o2.getPalo()))
-                    return -1;
-                }
-                else {
-                    return 0;
-                }
-
-                return 0;
-            };
-        });
-        for ( Carta carta : baraja ) {
-            carta.mostrarDatos();
-        }
-
+        Collections.shuffle(baraja);
+        return baraja;
     }
 }

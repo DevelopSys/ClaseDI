@@ -2,23 +2,23 @@ package ejerciciocartas;
 
 public class Carta {
 
-    private String palo;
+    private char palo;
     private int valor;
 
-    public Carta (int valor, String palo){
+    public Carta (int valor, char palo){
         this.valor = valor;
         this.palo = palo;
     }
 
     public void mostrarDatos(){
-        System.out.println(getValor()+getPalo());
+        System.out.print(getValor()+""+getPalo()+", ");
     }
 
-    public String getPalo() {
+    public char getPalo() {
         return palo;
     }
 
-    public void setPalo(String palo) {
+    public void setPalo(char palo) {
         this.palo = palo;
     }
 
