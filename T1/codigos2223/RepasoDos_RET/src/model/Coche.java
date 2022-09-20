@@ -2,6 +2,7 @@ package model;
 
 public class Coche {
 
+    // cambio desde el IDE
     // propiedades --> private (public) "protected"--> ENCAPSULAMIENTO
     private String marca, modelo, bastidor;
     private int cv;
@@ -16,7 +17,6 @@ public class Coche {
     public Coche(String marca, String modelo) {
         this.marca = marca;
         this.modelo = modelo;
-        
     }
 
     public Coche(String modelo, String marca, int cv, double cc) {
