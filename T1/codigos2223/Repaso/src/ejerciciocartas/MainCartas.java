@@ -31,6 +31,8 @@ public class MainCartas {
                 else {
                     return 0;
                 }
+
+                return 0;
             };
         });
         for ( Carta carta : baraja ) {
