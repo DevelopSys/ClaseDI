@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.Connection;
+
 public class Coche {
 
     // cambio desde el IDE
@@ -8,10 +10,14 @@ public class Coche {
     private int cv;
     private double cc;
     private int velocidad, km;
+    private String matricula;
 
     // constructores() -> 1 () --> explicito si hay uno
-
     public Coche() {
+    }
+
+    public Coche(String matricula){
+        this.matricula = matricula;
     }
 
     public Coche(String marca, String modelo) {

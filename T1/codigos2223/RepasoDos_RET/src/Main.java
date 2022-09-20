@@ -9,7 +9,8 @@ public class Main {
         int edad = 0;
         String nombre = "Borja"; // null
         
-        // cambio realizado desde un ordenador externo
+
+
 
         // Coche[marca="M",modelo="C220",cv=0,cc=0.0,bastidor=null,vel=100,km=0]
         Coche coche1 = new Coche("Mercedes","C220");
