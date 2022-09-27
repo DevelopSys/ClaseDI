@@ -161,6 +161,7 @@ Crear una clase Gasolinera que tenga los siguientes elementos:
 - Un atributo de tipo ArrayLista donde se guardarán los surtidores (lista)
 - Un atributo de tipo int (ganancias)
 - Un constructor que pida por parámetros un nombre y lo inicialice. El resto de atributos los inicializará por defecto.
+- Un método que sea agregarSurtidor que admita por parámetros un surtidor y lo agrege a la lista de surtidores de la gasolinera
 - Un método que sea obtenerGanancias que no reciba nada y que devuelva un int. El método retornará la variable ganancias
 - Los getter y setter
 
@@ -202,7 +203,7 @@ Crear una clase Persona que tenga las siguientes características:
 - si devuelve un número entre 20 y 25 (incluidos), significa que esta por debajo de su peso ideal la función devuelve un 0
 - si devuelve un valor mayor que 25 significa que tiene sobrepeso, la función devuelve un 1.
 - Un método esMayorDeEdad que no admita parámetros y retorne un booleano. Si la persona es mayor igual que 18 retornará true, sino false
-  toString: devuelve toda la información del objeto forrajeada en json
+- toString: devuelve toda la información del objeto formateada en json
 - getter y setter correpondientes
 
 Crear una clase Entrada que tenga las siguientes características

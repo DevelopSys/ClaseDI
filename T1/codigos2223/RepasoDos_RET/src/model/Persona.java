@@ -16,7 +16,6 @@ public abstract class Persona {
         System.out.println("DNI: "+dni);
     }
 
-    public abstract void calcularJubilacion();
 
     public String getNombre() {
         return nombre;

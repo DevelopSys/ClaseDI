@@ -1,6 +1,6 @@
 package model;
 
-public final class Jefe extends Trabajador {
+public final class Jefe extends Trabajador implements Votante {
 
     private char nivelResponsabilidad;
 
@@ -41,5 +41,10 @@ public final class Jefe extends Trabajador {
 
     public void setNivelResponsabilidad(char nivelResponsabilidad) {
         this.nivelResponsabilidad = nivelResponsabilidad;
+    }
+
+    @Override
+    public int votar(int voto) {
+        return voto/3;
     }
 }

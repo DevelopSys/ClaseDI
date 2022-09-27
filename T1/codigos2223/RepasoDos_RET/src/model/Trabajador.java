@@ -9,6 +9,8 @@ public abstract class Trabajador extends Persona {
         this.NSS = NSS;
     }
 
+    public abstract void calcularJubilacion();
+
     @Override
     public void mostrarDatos() {
         super.mostrarDatos();
