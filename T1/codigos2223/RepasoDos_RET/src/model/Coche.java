@@ -2,7 +2,7 @@ package model;
 
 import java.sql.Connection;
 
-public class Coche {
+public final class Coche {
 
     // cambio desde el IDE
     // propiedades --> private (public) "protected"--> ENCAPSULAMIENTO
@@ -11,6 +11,9 @@ public class Coche {
     private double cc;
     private int velocidad, km;
     private String matricula;
+
+
+
 
     // constructores() -> 1 () --> explicito si hay uno
     public Coche() {
@@ -39,6 +42,7 @@ public class Coche {
         this.cv = cv;
         this.cc = cc;
     }
+
 
     // métodos -- funcionalidades del objeto
     public void acelerarCoche (int velocidad){
