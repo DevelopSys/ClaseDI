@@ -1,13 +1,14 @@
 package com.pestanias.pestanias;
 
 
+import com.pestanias.pestanias.model.TipoPago;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -28,8 +29,11 @@ public class MainController implements Initializable {
     private Button botonNormal, botonNormalDos;
     @FXML
     private ToggleButton botonToggle;
+    @FXML
+    private RadioButton radio1, radio2, radio3;
 
     private DropShadow sombraExterior;
+    private ToggleGroup grupoRadios;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -37,10 +41,18 @@ public class MainController implements Initializable {
 
 
         instancias();
+        asociarDatos();
         configurarBotones();
         acciones();
 
 
+    }
+
+    private void asociarDatos() {
+
+        radio1.setUserData(new TipoPago("Tarjeta","PAgo con trajeta bancaria",0));
+        radio2.setUserData(new TipoPago("Transferencia","PAgo con transferecia bacanria",10));
+        radio3.setUserData(new TipoPago("PayPal","PAgo con aplicacion paypal",20));
     }
 
     private void configurarBotones() {
@@ -50,16 +62,32 @@ public class MainController implements Initializable {
 
         botonNormalDos.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("power_off.png"))));
         botonNormalDos.setBackground(null);
+
+        botonToggle.setBackground(null);
     }
 
     private void instancias() {
         sombraExterior = new DropShadow();
+        grupoRadios = new ToggleGroup();
+        grupoRadios.getToggles().addAll(radio1,radio2,radio3);
     }
 
     private void acciones() {
         botonNormal.setOnAction(new ManejoPulsaciones());
         botonNormalDos.setOnAction(new ManejoPulsaciones());
-        botonToggle.setOnAction(new ManejoPulsaciones());
+        // radio1.setOnAction(new ManejoPulsaciones());
+        // botonToggle.setOnAction(new ManejoPulsaciones());
+        grupoRadios.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observableValue, Toggle oldValue, Toggle newValue) {
+                RadioButton radioButton = (RadioButton) newValue;
+                TipoPago tipoPago = (TipoPago) radioButton.getUserData();
+                System.out.println(tipoPago.getNombre());
+                System.out.println(tipoPago.getDescripcion());
+                System.out.println(tipoPago.getComision());
+            }
+        });
+
 
         botonNormal.addEventHandler(MouseEvent.MOUSE_ENTERED, new ManejoRaton());
         botonNormal.addEventHandler(MouseEvent.MOUSE_EXITED, new ManejoRaton());
@@ -67,6 +95,14 @@ public class MainController implements Initializable {
         botonNormalDos.addEventHandler(MouseEvent.MOUSE_EXITED, new ManejoRaton());
         botonNormal.addEventHandler(MouseEvent.MOUSE_CLICKED, new ManejoRaton());
         botonNormal.addEventHandler(MouseEvent.MOUSE_PRESSED, new ManejoRaton());
+        botonToggle.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observableValue,
+                                Boolean oldValue, Boolean newValue) {
+                botonNormal.setDisable(newValue);
+                botonNormalDos.setDisable(newValue);
+            }
+        });
 
         //botonNormal.addEventHandler(MouseEvent.MOUSE_RELEASED, new ManejoRaton());
     }
@@ -109,15 +145,14 @@ public class MainController implements Initializable {
         public void handle(ActionEvent actionEvent) {
             //System.out.println("Boton pulsado");
             if (actionEvent.getSource() == botonNormal){
-
-            } else if (actionEvent.getSource() == botonNormalDos){
-
-            } else if (actionEvent.getSource() == botonToggle){
-                System.out.println("toggle pulsado");
-                System.out.println(botonToggle.isSelected());
-                // activar los dos botones si el toggle esta true
-                // desactivar los dos botones si el toggle esta false
+                botonToggle.setSelected(true);
             }
         }
     }
 }
+
+/*
+* 1- CAMBIAR LA IMAGEN DEL TOGGLE PARA QUE PONGA EL ON Y EL OFF
+* 2- AL CAMBIAR LA SELECCIÓN DEL TOGGLE GROUP APARECE LA INFORMACION EN 3 LABEL
+* 3- AL PULSAR EL BOTON DE OFF APARECE POR CONSOLA LA INFORMACION DEL TOGGLE SELECCIONADO
+* */
