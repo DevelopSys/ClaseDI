@@ -1,4 +1,4 @@
-package com.pestanias.pestanias;
+package com.develop.iniciofx_ret;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,9 +10,10 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 640 , 480);
-        stage.setTitle("Proyecto Pestañas");
+        FXMLLoader fxmlLoader =
+                new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
     }
