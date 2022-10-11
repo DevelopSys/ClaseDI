@@ -60,6 +60,11 @@ public class MainController implements Initializable {
         botonNormal.addEventHandler(MouseEvent.MOUSE_EXITED, new ManejoRaton());
         botonNormalDos.addEventHandler(MouseEvent.MOUSE_ENTERED, new ManejoRaton());
         botonNormalDos.addEventHandler(MouseEvent.MOUSE_EXITED, new ManejoRaton());
+        botonNormal.addEventHandler(MouseEvent.MOUSE_CLICKED, new ManejoRaton());
+
+        botonNormal.addEventHandler(MouseEvent.MOUSE_PRESSED, new ManejoRaton());
+
+        //botonNormal.addEventHandler(MouseEvent.MOUSE_RELEASED, new ManejoRaton());
     }
 
     class ManejoRaton implements EventHandler<MouseEvent>{
@@ -67,19 +72,29 @@ public class MainController implements Initializable {
         public void handle(MouseEvent mouseEvent) {
 
             if (mouseEvent.getEventType() == MouseEvent.MOUSE_ENTERED){
-                System.out.println("Evento raton entrante");
                 if (mouseEvent.getSource() == botonNormal){
                     botonNormal.setEffect(sombraExterior);
                 } else if (mouseEvent.getSource() == botonNormalDos){
                     botonNormalDos.setEffect(sombraExterior);
                 }
-            } else if (mouseEvent.getEventType() == MouseEvent.MOUSE_EXITED){
-                System.out.println("Evento raton saliente");
+            }
+            else if (mouseEvent.getEventType() == MouseEvent.MOUSE_EXITED){
                 if (mouseEvent.getSource() == botonNormal){
                     botonNormal.setEffect(null);
                 } else if (mouseEvent.getSource() == botonNormalDos){
                     botonNormalDos.setEffect(null);
                 }
+            }
+            else if (mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED){
+                //System.out.println("Raton pressed");
+                botonNormal.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("power_off.png"))));
+            }
+            else if (mouseEvent.getEventType() == MouseEvent.MOUSE_CLICKED){
+                System.out.println("Raton clicked");
+                botonNormal.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("power_on.png"))));
+            }
+            else if (mouseEvent.getEventType() == MouseEvent.MOUSE_RELEASED){
+                System.out.println("Raton released");
             }
         }
     }
@@ -90,9 +105,9 @@ public class MainController implements Initializable {
         public void handle(ActionEvent actionEvent) {
             //System.out.println("Boton pulsado");
             if (actionEvent.getSource() == botonNormal){
-                System.out.println("El boton que ha pulsado ha sido el uno");
+
             } else if (actionEvent.getSource() == botonNormalDos){
-                System.out.println("El boton que ha pulsado ha sido el dos");
+
 
             }
         }
