@@ -32,6 +32,9 @@ public class MainController implements Initializable {
     @FXML
     private RadioButton radio1, radio2, radio3;
 
+    @FXML
+    private Label labelNombre, labelDesc, labelComision;
+
     private DropShadow sombraExterior;
     private ToggleGroup grupoRadios;
 
@@ -64,6 +67,12 @@ public class MainController implements Initializable {
         botonNormalDos.setBackground(null);
 
         botonToggle.setBackground(null);
+        if (botonToggle.isSelected()){
+            botonToggle.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("switchon.png"))));
+        } else {
+            botonToggle.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("switchoff.png"))));
+        }
+
     }
 
     private void instancias() {
@@ -82,9 +91,9 @@ public class MainController implements Initializable {
             public void changed(ObservableValue<? extends Toggle> observableValue, Toggle oldValue, Toggle newValue) {
                 RadioButton radioButton = (RadioButton) newValue;
                 TipoPago tipoPago = (TipoPago) radioButton.getUserData();
-                System.out.println(tipoPago.getNombre());
-                System.out.println(tipoPago.getDescripcion());
-                System.out.println(tipoPago.getComision());
+                labelNombre.setText(tipoPago.getNombre());
+                labelDesc.setText(tipoPago.getDescripcion());
+                labelComision.setText(String.valueOf(tipoPago.getComision()));
             }
         });
 
@@ -101,6 +110,11 @@ public class MainController implements Initializable {
                                 Boolean oldValue, Boolean newValue) {
                 botonNormal.setDisable(newValue);
                 botonNormalDos.setDisable(newValue);
+                if (newValue){
+                    botonToggle.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("switchon.png"))));
+                }else {
+                    botonToggle.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("switchoff.png"))));
+                }
             }
         });
 
@@ -147,6 +161,13 @@ public class MainController implements Initializable {
             if (actionEvent.getSource() == botonNormal){
                 botonToggle.setSelected(true);
             }
+            else if(actionEvent.getSource() == botonNormalDos){
+                RadioButton radioSeleccionado  = (RadioButton) grupoRadios.getSelectedToggle();
+                TipoPago tipoPago = (TipoPago) radioSeleccionado.getUserData();
+                System.out.println(tipoPago.getComision());
+                System.out.println(tipoPago.getNombre());
+                System.out.println(tipoPago.getDescripcion());
+            }
         }
     }
 }
@@ -154,5 +175,6 @@ public class MainController implements Initializable {
 /*
 * 1- CAMBIAR LA IMAGEN DEL TOGGLE PARA QUE PONGA EL ON Y EL OFF
 * 2- AL CAMBIAR LA SELECCIÓN DEL TOGGLE GROUP APARECE LA INFORMACION EN 3 LABEL
-* 3- AL PULSAR EL BOTON DE OFF APARECE POR CONSOLA LA INFORMACION DEL TOGGLE SELECCIONADO
+* 3- AL PULSAR EL BOTON DE OFF APARECE POR CONSOLA LA INFORMACION DEL
+* TOGGLE SELECCIONADO
 * */
