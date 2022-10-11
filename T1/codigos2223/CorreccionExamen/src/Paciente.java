@@ -22,6 +22,10 @@ public class Paciente extends Persona{
         }
     }
 
+    public void registrarCita(int mes, int dia, Medico medico, String comentario){
+        listaCitas.add(new CitaPaciente(dia,mes,comentario,medico));
+    }
+
     public int getNSS() {
         return NSS;
     }

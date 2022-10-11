@@ -9,15 +9,29 @@ public class CentroSalud {
         listaMedicos = new ArrayList<>();
         listaPacientes = new ArrayList<>();
 
+
     }
 
-    private void contratarMedicos() {
+    public void contratarMedicos() {
         listaMedicos.add(new Medico("Nick", "traumatología", "Rivera", "001", 001));
         listaMedicos.add(new Medico("Hannibal", "digestivo", "Lecter", "002", 002));
         listaMedicos.add(new Medico("Sam", "psiquiatría", "Owens", "003", 003));
         listaMedicos.add(new Medico("Martin", "general", "Brenner", "004", 004));
         listaMedicos.add(new Medico("Stephen", "cirugía", "Strange", "005", 005));
 
+    }
+
+    public void registrarCita(int nss, int dia, int mes, int nColegiado, String especialidad, String comentario){
+        // busco paciente
+        Paciente paciente = existePaciente(nss);
+        Medico medico = existeMedico(nColegiado);
+        if (paciente!=null && medico!=null && medico.isDisponible(dia,mes) &&
+                medico.getEspecialidad().equals(especialidad)){
+            medico.regitrarCita(dia,mes);
+            paciente.registrarCita(mes,dia,medico,comentario);
+        } else {
+            System.out.println("Problema a la hora de registrar la cita");
+        }
     }
 
     public void listarMedicos(){
@@ -56,6 +70,20 @@ public class CentroSalud {
         }
 
         return pacienteExiste;
+    }
+
+    private Medico existeMedico(int nColegiado){
+
+        Medico medicoExiste = null;
+
+        for (Medico item :listaMedicos) {
+            if (item.getnColegiado() == nColegiado){
+                medicoExiste = item;
+                return medicoExiste;
+            }
+        }
+
+        return medicoExiste;
     }
 
 }

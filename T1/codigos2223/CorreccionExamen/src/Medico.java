@@ -13,6 +13,7 @@ public class Medico extends Persona{
         super(dni, nombre, apellido);
         this.nColegiado = nColegiado;
         this.especialidad = especialidad;
+        listaCitas = new ArrayList<>();
     }
 
     public int getnColegiado() {
@@ -37,6 +38,19 @@ public class Medico extends Persona{
             }
 
         }
+    }
+
+    public boolean isDisponible(int dia, int mes){
+
+        String citaNombre = dia+"/"+mes;
+
+        for (String cita : listaCitas) {
+            if (cita == citaNombre ){
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public void setnColegiado(int nColegiado) {
