@@ -10,7 +10,6 @@ module com.pestanias.pestanias {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
-
     opens com.pestanias.pestanias to javafx.fxml;
     exports com.pestanias.pestanias;
 }

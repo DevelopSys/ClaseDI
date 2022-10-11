@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.image.ImageView?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
             prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.pestanias.pestanias.MainController">
@@ -34,11 +35,13 @@
                             </rowConstraints>
                             <children>
                                 <Label text="Pestaña destinada al uso de botones y textos" GridPane.columnSpan="3"
-                                       GridPane.halignment="CENTER"/>
-                                <Button fx:id="botonNormal" mnemonicParsing="false" text="Pulsar"
+                                       GridPane.halignment="CENTER">
+                                </Label>
+                                <Button fx:id="botonNormal" mnemonicParsing="false"
                                         GridPane.rowIndex="1"/>
-                                <Button fx:id="botonNormalDos" mnemonicParsing="false" text="Pulsar"
+                                <Button fx:id="botonNormalDos" mnemonicParsing="false"
                                         GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
                             </children>
                             <padding>
                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
