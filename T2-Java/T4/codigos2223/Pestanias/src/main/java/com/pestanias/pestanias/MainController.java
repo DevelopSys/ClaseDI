@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -25,6 +26,8 @@ public class MainController implements Initializable {
     private TabPane panelPestanias;
     @FXML
     private Button botonNormal, botonNormalDos;
+    @FXML
+    private ToggleButton botonToggle;
 
     private DropShadow sombraExterior;
 
@@ -56,12 +59,13 @@ public class MainController implements Initializable {
     private void acciones() {
         botonNormal.setOnAction(new ManejoPulsaciones());
         botonNormalDos.setOnAction(new ManejoPulsaciones());
+        botonToggle.setOnAction(new ManejoPulsaciones());
+
         botonNormal.addEventHandler(MouseEvent.MOUSE_ENTERED, new ManejoRaton());
         botonNormal.addEventHandler(MouseEvent.MOUSE_EXITED, new ManejoRaton());
         botonNormalDos.addEventHandler(MouseEvent.MOUSE_ENTERED, new ManejoRaton());
         botonNormalDos.addEventHandler(MouseEvent.MOUSE_EXITED, new ManejoRaton());
         botonNormal.addEventHandler(MouseEvent.MOUSE_CLICKED, new ManejoRaton());
-
         botonNormal.addEventHandler(MouseEvent.MOUSE_PRESSED, new ManejoRaton());
 
         //botonNormal.addEventHandler(MouseEvent.MOUSE_RELEASED, new ManejoRaton());
@@ -108,7 +112,11 @@ public class MainController implements Initializable {
 
             } else if (actionEvent.getSource() == botonNormalDos){
 
-
+            } else if (actionEvent.getSource() == botonToggle){
+                System.out.println("toggle pulsado");
+                System.out.println(botonToggle.isSelected());
+                // activar los dos botones si el toggle esta true
+                // desactivar los dos botones si el toggle esta false
             }
         }
     }

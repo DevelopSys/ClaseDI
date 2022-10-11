@@ -5,11 +5,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.image.ImageView?>
+
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
             prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.pestanias.pestanias.MainController">
@@ -37,10 +38,11 @@
                                 <Label text="Pestaña destinada al uso de botones y textos" GridPane.columnSpan="3"
                                        GridPane.halignment="CENTER">
                                 </Label>
-                                <Button fx:id="botonNormal" mnemonicParsing="false"
+                                <Button fx:id="botonNormal" mnemonicParsing="false" GridPane.rowIndex="1"/>
+                                <Button fx:id="botonNormalDos" mnemonicParsing="false" GridPane.columnIndex="1"
                                         GridPane.rowIndex="1"/>
-                                <Button fx:id="botonNormalDos" mnemonicParsing="false"
-                                        GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                                <ToggleButton fx:id="botonToggle" mnemonicParsing="false" text="ToggleButton"
+                                              GridPane.columnIndex="2" GridPane.rowIndex="1"/>
 
                             </children>
                             <padding>
