@@ -31,9 +31,10 @@ public class MainController implements Initializable {
     private ToggleButton botonToggle;
     @FXML
     private RadioButton radio1, radio2, radio3;
-
     @FXML
     private Label labelNombre, labelDesc, labelComision;
+    @FXML
+    TextField textField;
 
     private DropShadow sombraExterior;
     private ToggleGroup grupoRadios;
@@ -117,6 +118,13 @@ public class MainController implements Initializable {
                 }
             }
         });
+        textField.setOnKeyTyped(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                char letraPulsada = keyEvent.getCharacter().charAt(0);
+                System.out.println(Character.isDigit(letraPulsada));
+            }
+        });
 
         //botonNormal.addEventHandler(MouseEvent.MOUSE_RELEASED, new ManejoRaton());
     }
@@ -160,6 +168,7 @@ public class MainController implements Initializable {
             //System.out.println("Boton pulsado");
             if (actionEvent.getSource() == botonNormal){
                 botonToggle.setSelected(true);
+                System.out.println(textField.getText());
             }
             else if(actionEvent.getSource() == botonNormalDos){
                 RadioButton radioSeleccionado  = (RadioButton) grupoRadios.getSelectedToggle();
