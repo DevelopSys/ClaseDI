@@ -9,6 +9,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
@@ -28,7 +30,23 @@ public class MainController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         instancias();
+        personalizarBotones();
         acciones();
+    }
+
+    private void personalizarBotones() {
+        botonNormal.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("power_on.png"))));
+        botonNormal.setBackground(null);
+        botonNormalDos.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("power_off.png"))));
+        botonNormalDos.setBackground(null);
+        toggle.setBackground(null);
+        if (toggle.isSelected()){
+            toggle.setGraphic(new ImageView(new Image(getClass()
+                    .getResourceAsStream("switchoff.png"))));
+        }else {
+            toggle.setGraphic(new ImageView(new Image(getClass()
+                    .getResourceAsStream("switchon.png"))));
+        }
     }
 
     private void acciones() {
@@ -46,6 +64,15 @@ public class MainController implements Initializable {
                                 Boolean oldValue, Boolean newValue) {
                 botonNormal.setDisable(toggle.isSelected());
                 botonNormalDos.setDisable(toggle.isSelected());
+
+                if (newValue){
+                    toggle.setGraphic(new ImageView(new Image(getClass()
+                            .getResourceAsStream("switchoff.png"))));
+                }else {
+                    toggle.setGraphic(new ImageView(new Image(getClass()
+                            .getResourceAsStream("switchon.png"))));
+                }
+
             }
         });
 

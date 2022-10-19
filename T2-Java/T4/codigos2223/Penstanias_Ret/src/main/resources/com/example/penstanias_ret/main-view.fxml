@@ -29,9 +29,9 @@
                     </rowConstraints>
                      <children>
                         <Label text="Pestaña dedicada a la explicacion de botones y textos" wrapText="true" GridPane.columnSpan="3" GridPane.halignment="CENTER" />
-                        <Button fx:id="botonNormal" mnemonicParsing="false" text="Button" GridPane.rowIndex="1" />
-                        <Button fx:id="botonNormalDos" mnemonicParsing="false" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <ToggleButton fx:id="toggle" mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Button fx:id="botonNormal" mnemonicParsing="false"  GridPane.rowIndex="1" />
+                        <Button fx:id="botonNormalDos" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                        <ToggleButton selected="true" fx:id="toggle" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                </content>
