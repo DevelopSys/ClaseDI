@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.Tab?>
@@ -146,6 +147,17 @@
                                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                     </GridPane.margin>
                                 </Spinner>
+                        <ComboBox fx:id="comboUsuarios" prefWidth="150.0" promptText="Selecciona usuarios" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </GridPane.margin>
+                        </ComboBox>
+                                <ListView fx:id="list" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1"
+                                          GridPane.rowIndex="2">
+                                    <GridPane.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                    </GridPane.margin>
+                                </ListView>
                             </children>
                         </GridPane>
                     </content>

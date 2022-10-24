@@ -2,6 +2,7 @@ package com.pestanias.pestanias;
 
 
 import com.pestanias.pestanias.model.TipoPago;
+import com.pestanias.pestanias.model.Usuario;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -20,8 +21,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import org.controlsfx.glyphfont.FontAwesome;
-import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -56,11 +55,19 @@ public class MainController implements Initializable {
     private ComboBox<String> combo;
 
     @FXML
+    private ComboBox<Usuario> comboUsuarios;
+
+    @FXML
     private Spinner<String> spinner;
+
+    @FXML
+    private ListView<String> list;
 
     // ArrayList
 
-    private ObservableList<String> listaCombo, listaChoice, listaSpinner;
+    private ObservableList<String> listaCombo, listaChoice, listaSpinner, listaListView;
+
+    private ObservableList<Usuario> listaUsuarios;
 
 
     private int tipoOperacion = -1;
@@ -84,7 +91,9 @@ public class MainController implements Initializable {
 
         combo.setItems(listaCombo);
         choice.setItems(listaChoice);
-
+        comboUsuarios.setItems(listaUsuarios);
+        spinner.setValueFactory(new SpinnerValueFactory.ListSpinnerValueFactory<String>(listaSpinner));
+        list.setItems(listaListView);
 
     }
 
@@ -117,6 +126,16 @@ public class MainController implements Initializable {
 
         listaSpinner = FXCollections.observableArrayList();
         listaSpinner.addAll("OpcionSP 1","OpcionSP 2", "OpcionSP 3", "OpcionSP 4", "OpcionSP 5");
+
+        listaUsuarios = FXCollections.observableArrayList();
+        listaUsuarios.addAll(new Usuario(1,"usuario1","apellido1","correo1"),
+                new Usuario(2,"usuario2","apellido2","correo2"),
+                new Usuario(3,"usuario3","apellido3","correo3"),
+                new Usuario(4,"usuario4","apellido4","correo4"));
+
+        listaListView = FXCollections.observableArrayList();
+        listaListView.addAll("Opcion 1","Opcion 2","Opcion 3","Opcion 4","Opcion 5","Opcion 6","Opcion 7","Opcion 8");
+
     }
 
     private void acciones() {
@@ -149,8 +168,6 @@ public class MainController implements Initializable {
                 labelComision.setText(String.valueOf(tipoPago.getComision()));
             }
         });
-
-
         botonNormal.addEventHandler(MouseEvent.MOUSE_ENTERED, new ManejoRaton());
         botonNormal.addEventHandler(MouseEvent.MOUSE_EXITED, new ManejoRaton());
         botonNormalDos.addEventHandler(MouseEvent.MOUSE_ENTERED, new ManejoRaton());
@@ -177,7 +194,34 @@ public class MainController implements Initializable {
                 System.out.println(Character.isDigit(letraPulsada));
             }
         });
+        combo.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                System.out.println("El valor cambiado del combo es "+t1);
+            }
+        });
+        choice.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                System.out.println("La seleccion del choice es "+t1);
+            }
+        });
 
+        comboUsuarios.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Usuario>() {
+            @Override
+            public void changed(ObservableValue<? extends Usuario> observableValue, Usuario usuario, Usuario t1) {
+                System.out.println("Datos del usuario");
+                System.out.println("\t nombre: "+t1.getNombre());
+                System.out.println("\t nombre: "+t1.getApellido());
+                System.out.println("\t nombre: "+t1.getCorreo());
+            }
+        });
+        list.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                System.out.println("Cambio en la lista, valor nuevo "+t1);
+            }
+        });
         //botonNormal.addEventHandler(MouseEvent.MOUSE_RELEASED, new ManejoRaton());
     }
 
@@ -273,11 +317,16 @@ public class MainController implements Initializable {
             else if (actionEvent.getSource() == botonComprobar) {
                 // seleccion de una lista
 
+                String seleccionLista = list.getSelectionModel().getSelectedItem();
                 String seleccionCombo = combo.getSelectionModel().getSelectedItem();
                 String seleccionChoice = choice.getSelectionModel().getSelectedItem();
+                System.out.println(choice.getSelectionModel().getSelectedIndex());
+                System.out.println(seleccionLista);
+                String seleccionSpinner = spinner.getValue();
 
                 System.out.println(combo.getSelectionModel().getSelectedIndex());
-                System.out.println(choice.getSelectionModel().getSelectedIndex());
+
+                System.out.println(seleccionSpinner);
 
                 //combo.getSelectionModel().selectNext();
                 //choice.getSelectionModel().selectNext();
@@ -285,12 +334,25 @@ public class MainController implements Initializable {
                 if (combo.getSelectionModel().getSelectedIndex() >-1 && choice.getSelectionModel().getSelectedIndex()>-1){
                     System.out.printf("Seleccion de combo %s%n",seleccionCombo);
                     System.out.printf("Seleccion de choice %s%n",seleccionChoice);
+
                 } else {
                     System.out.println("Uno de los dos elementos no tiene seleccion");
                 }
 
                 // APAREZCA POR CONSOLA EL ELEMENTO SELECCIONADO EN EL MOMENTO EN EL QUE
                 // HAY UN CAMBIO
+
+
+                // CREAR UNA CLASE USUARIO CON NOMBRE, APELLIDO, ID, CORREO
+                // EN EL COMBO METER 5 USUARIOS CON LOS DATOS QUE QUERAIS
+                // EN EL COMBO APARECERÁ EL NOMBRE DEL USUARIO
+                // CUANDO SE DETECTE UN CAMBIO DE SELECCION APARECERA EN CONSOLA
+                    // Nombre: XXXX
+                    // Apelllido: XXXX
+                    // Correo: XXXX
+                    // Id: XXXX
+
+
 
             }
         }
