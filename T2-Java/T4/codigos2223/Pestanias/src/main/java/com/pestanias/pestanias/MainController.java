@@ -4,6 +4,8 @@ package com.pestanias.pestanias;
 import com.pestanias.pestanias.model.TipoPago;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -40,31 +42,38 @@ public class MainController implements Initializable {
     @FXML
     private TextField textFiledUno, textFiledDos;
     @FXML
-    private Button botonSuma, botonResta, botonDiv, botonMulti, botonIgual, botonMostrar, botonOcultar;
-
+    private Button botonSuma, botonResta, botonDiv, botonMulti, botonIgual, botonMostrar, botonOcultar, botonComprobar;
     @FXML
     private GridPane gridBotones;
     @FXML
     private VBox panelMostrar;
-
     @FXML
     private BorderPane panelGeneral;
+    @FXML
+    private ChoiceBox<String> choice;
 
-    private int tipoOperacion =-1;
+    @FXML
+    private ComboBox<String> combo;
+
+    @FXML
+    private Spinner<String> spinner;
+
+    // ArrayList
+
+    private ObservableList<String> listaCombo, listaChoice, listaSpinner;
+
+
+    private int tipoOperacion = -1;
     private DropShadow sombraExterior;
     private ToggleGroup grupoRadios;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // se ejecuca cuando se asocia la parte grafica y la logica --> setContentView
-
-
         instancias();
         asociarDatos();
         configurarBotones();
         acciones();
-
-
     }
 
     private void asociarDatos() {
@@ -72,6 +81,11 @@ public class MainController implements Initializable {
         radio1.setUserData(new TipoPago("Tarjeta", "PAgo con trajeta bancaria", 0));
         radio2.setUserData(new TipoPago("Transferencia", "PAgo con transferecia bacanria", 10));
         radio3.setUserData(new TipoPago("PayPal", "PAgo con aplicacion paypal", 20));
+
+        combo.setItems(listaCombo);
+        choice.setItems(listaChoice);
+
+
     }
 
     private void configurarBotones() {
@@ -95,16 +109,25 @@ public class MainController implements Initializable {
         sombraExterior = new DropShadow();
         grupoRadios = new ToggleGroup();
         grupoRadios.getToggles().addAll(radio1, radio2, radio3);
+
+        listaChoice = FXCollections.observableArrayList();
+        listaChoice.addAll("OpcionCH 1","OpcionCH 2", "OpcionCH 3", "OpcionCH 4", "OpcionCH 5");
+        listaCombo = FXCollections.observableArrayList();
+        listaCombo.addAll("OpcionCB 1","OpcionCB 2", "OpcionCB 3", "OpcionCB 4", "OpcionCB 5");
+
+        listaSpinner = FXCollections.observableArrayList();
+        listaSpinner.addAll("OpcionSP 1","OpcionSP 2", "OpcionSP 3", "OpcionSP 4", "OpcionSP 5");
     }
 
     private void acciones() {
+        botonComprobar.setOnAction(new ManejoPulsaciones());
         botonNormal.setOnAction(new ManejoPulsaciones());
         botonNormalDos.setOnAction(new ManejoPulsaciones());
         botonMostrar.setOnAction(new ManejoPulsaciones());
         botonOcultar.setOnAction(new ManejoPulsaciones());
         for (Node child : gridBotones.getChildren()) {
-            if (child instanceof Button){
-                ((Button)child).setOnAction(new ManejoPulsaciones());
+            if (child instanceof Button) {
+                ((Button) child).setOnAction(new ManejoPulsaciones());
             }
         }
 
@@ -189,22 +212,19 @@ public class MainController implements Initializable {
     class ManejoPulsaciones implements EventHandler<ActionEvent> {
 
 
-
         @Override
         public void handle(ActionEvent actionEvent) {
             //System.out.println("Boton pulsado");
             if (actionEvent.getSource() == botonNormal) {
                 botonToggle.setSelected(true);
                 System.out.println(textFiledUno.getText());
-            }
-            else if (actionEvent.getSource() == botonNormalDos) {
+            } else if (actionEvent.getSource() == botonNormalDos) {
                 RadioButton radioSeleccionado = (RadioButton) grupoRadios.getSelectedToggle();
                 TipoPago tipoPago = (TipoPago) radioSeleccionado.getUserData();
                 System.out.println(tipoPago.getComision());
                 System.out.println(tipoPago.getNombre());
                 System.out.println(tipoPago.getDescripcion());
-            }
-            else if (actionEvent.getSource() == botonSuma){
+            } else if (actionEvent.getSource() == botonSuma) {
                 tipoOperacion = 0;
                 /*if (Character.isDigit(textFiledUno.getText().charAt(0)) && Character.isDigit(textFiledDos.getText().charAt(0))){
                     int suma = Integer.parseInt(String.valueOf(textFiledUno.getText().charAt(0))) + Integer.parseInt(String.valueOf(textFiledDos.getText().charAt(0)));
@@ -213,44 +233,65 @@ public class MainController implements Initializable {
                     System.out.println("Alguno de los elementos no es numero");
                 }*/
 
-            }
-            else if (actionEvent.getSource() == botonResta){
+            } else if (actionEvent.getSource() == botonResta) {
                 tipoOperacion = 1;
-            }
-            else if (actionEvent.getSource() == botonMulti){
+            } else if (actionEvent.getSource() == botonMulti) {
                 tipoOperacion = 2;
-            }
-            else if (actionEvent.getSource() == botonDiv){
+            } else if (actionEvent.getSource() == botonDiv) {
                 tipoOperacion = 3;
             }
-            else if (actionEvent.getSource() == botonIgual){
+            else if (actionEvent.getSource() == botonIgual) {
                 int op1 = Integer.parseInt(String.valueOf(textFiledUno.getText().charAt(0)));
                 int op2 = Integer.parseInt(String.valueOf(textFiledDos.getText().charAt(0)));
                 double resultado = 0.0;
-                switch (tipoOperacion){
+                switch (tipoOperacion) {
                     case 0:
-                        resultado = op1+op2;
+                        resultado = op1 + op2;
                         break;
                     case 1:
-                        resultado = op1-op2;
+                        resultado = op1 - op2;
                         break;
                     case 2:
-                        resultado = op1*op2;
+                        resultado = op1 * op2;
                         break;
                     case 3:
-                        resultado = (double) op1/ op2;
+                        resultado = (double) op1 / op2;
                         break;
                 }
-                System.out.printf("El resutaldo de la operacion es %.2f",resultado);
+                System.out.printf("El resutaldo de la operacion es %.2f", resultado);
             }
-            else if (actionEvent.getSource() == botonMostrar){
+            else if (actionEvent.getSource() == botonMostrar) {
 
                 //panelMostrar.setVisible(true);
                 panelGeneral.setRight(panelMostrar);
-            } else if(actionEvent.getSource() == botonOcultar){
+            }
+            else if (actionEvent.getSource() == botonOcultar) {
                 // VBOX --
                 //panelMostrar.setVisible(false);
                 panelGeneral.getChildren().remove(panelMostrar);
+            }
+            else if (actionEvent.getSource() == botonComprobar) {
+                // seleccion de una lista
+
+                String seleccionCombo = combo.getSelectionModel().getSelectedItem();
+                String seleccionChoice = choice.getSelectionModel().getSelectedItem();
+
+                System.out.println(combo.getSelectionModel().getSelectedIndex());
+                System.out.println(choice.getSelectionModel().getSelectedIndex());
+
+                //combo.getSelectionModel().selectNext();
+                //choice.getSelectionModel().selectNext();
+
+                if (combo.getSelectionModel().getSelectedIndex() >-1 && choice.getSelectionModel().getSelectedIndex()>-1){
+                    System.out.printf("Seleccion de combo %s%n",seleccionCombo);
+                    System.out.printf("Seleccion de choice %s%n",seleccionChoice);
+                } else {
+                    System.out.println("Uno de los dos elementos no tiene seleccion");
+                }
+
+                // APAREZCA POR CONSOLA EL ELEMENTO SELECCIONADO EN EL MOMENTO EN EL QUE
+                // HAY UN CAMBIO
+
             }
         }
     }

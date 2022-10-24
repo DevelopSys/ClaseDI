@@ -3,8 +3,11 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
@@ -32,76 +35,77 @@
                             <rowConstraints>
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
                                 <Label text="Pestaña destinada al uso de botones y textos" GridPane.columnSpan="3" GridPane.halignment="CENTER">
                                 </Label>
                                 <Button fx:id="botonNormal" mnemonicParsing="false" GridPane.rowIndex="1" />
                                 <Button fx:id="botonNormalDos" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <ToggleButton fx:id="botonToggle" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <FlowPane alignment="CENTER" hgap="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
-                           <children>
-                              <RadioButton fx:id="radio1" mnemonicParsing="false" text="Op1" />
-                              <RadioButton fx:id="radio2" mnemonicParsing="false" text="Op2" />
-                              <RadioButton fx:id="radio3" mnemonicParsing="false" text="Op3" />
-                           </children>
-                        </FlowPane>
-                        <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
-                          <columnConstraints>
-                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <Label fx:id="labelNombre" text="Label" />
-                              <Label fx:id="labelDesc" text="Label" GridPane.rowIndex="2" />
-                              <Label fx:id="labelComision" text="Label" GridPane.rowIndex="1" />
-                           </children>
-                        </GridPane>
-                        <CheckBox mnemonicParsing="false" text="CheckBox" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <TextField fx:id="textFiledUno" promptText="Introduce opernado uno" GridPane.rowIndex="3">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin></TextField>
-                        <TextField fx:id="textFiledDos" layoutX="30.0" layoutY="306.0" promptText="Introduce opernado dos" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </TextField>
-                        <GridPane fx:id="gridBotones" hgap="20.0" vgap="20.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
-                          <columnConstraints>
-                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <Button fx:id="botonSuma" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="+" />
-                              <Button fx:id="botonIgual" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="=" GridPane.columnSpan="2" GridPane.rowIndex="2" />
-                              <Button fx:id="botonDiv" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="/" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Button fx:id="botonMulti" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="*" GridPane.rowIndex="1" />
-                              <Button fx:id="botonResta" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="-" GridPane.columnIndex="1" />
-                           </children>
-                        </GridPane>
-                        <Label fx:id="textoResultado" GridPane.columnSpan="3" GridPane.rowIndex="4" />
-                        <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="4">
-                           <children>
-                              <Button fx:id="botonMostrar" mnemonicParsing="false" text="Mostrar" />
-                              <Button fx:id="botonOcultar" mnemonicParsing="false" text="Ocultar" />
-                           </children>
-                        </FlowPane>
+                                <ToggleButton fx:id="botonToggle" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <FlowPane alignment="CENTER" hgap="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+                                    <children>
+                                        <RadioButton fx:id="radio1" mnemonicParsing="false" text="Op1" />
+                                        <RadioButton fx:id="radio2" mnemonicParsing="false" text="Op2" />
+                                        <RadioButton fx:id="radio3" mnemonicParsing="false" text="Op3" />
+                                    </children>
+                                </FlowPane>
+                                <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <columnConstraints>
+                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <Label fx:id="labelNombre" text="Label" />
+                                        <Label fx:id="labelDesc" text="Label" GridPane.rowIndex="2" />
+                                        <Label fx:id="labelComision" text="Label" GridPane.rowIndex="1" />
+                                    </children>
+                                </GridPane>
+                                <CheckBox mnemonicParsing="false" text="CheckBox" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                <TextField fx:id="textFiledUno" promptText="Introduce opernado uno" GridPane.rowIndex="3">
+                                    <opaqueInsets>
+                                        <Insets />
+                                    </opaqueInsets>
+                                    <GridPane.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </GridPane.margin>
+                                </TextField>
+                                <TextField fx:id="textFiledDos" layoutX="30.0" layoutY="306.0" promptText="Introduce opernado dos" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                    <GridPane.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </GridPane.margin>
+                                </TextField>
+                                <GridPane fx:id="gridBotones" hgap="20.0" vgap="20.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                    <columnConstraints>
+                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <Button fx:id="botonSuma" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="+" />
+                                        <Button fx:id="botonIgual" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="=" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                                        <Button fx:id="botonDiv" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="/" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                        <Button fx:id="botonMulti" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="*" GridPane.rowIndex="1" />
+                                        <Button fx:id="botonResta" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="-" GridPane.columnIndex="1" />
+                                    </children>
+                                </GridPane>
+                                <Label fx:id="textoResultado" GridPane.columnSpan="3" GridPane.rowIndex="4" />
+                                <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                                    <children>
+                                        <Button fx:id="botonMostrar" mnemonicParsing="false" text="Mostrar" />
+                                        <Button fx:id="botonOcultar" mnemonicParsing="false" text="Ocultar" />
+                                    </children>
+                                </FlowPane>
 
                             </children>
                             <padding>
@@ -110,14 +114,50 @@
                         </GridPane>
                     </content>
                 </Tab>
+                <Tab text="Listas y desplegables">
+                    <content>
+                        <GridPane>
+                            <columnConstraints>
+                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <Label text="Pestaña dedicada al uso de las listas u los deplegables" GridPane.columnSpan="3" GridPane.halignment="CENTER" />
+                                <Button fx:id="botonComprobar" mnemonicParsing="false" text="Comprobar" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                                <ComboBox fx:id="combo" prefWidth="150.0" promptText="Selecciona opcion" GridPane.rowIndex="1">
+                                    <GridPane.margin>
+                                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                    </GridPane.margin>
+                                </ComboBox>
+                                <ChoiceBox fx:id="choice" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <GridPane.margin>
+                                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                    </GridPane.margin>
+                                </ChoiceBox>
+                                <Spinner fx:id="spinner" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                    <GridPane.margin>
+                                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                    </GridPane.margin>
+                                </Spinner>
+                            </children>
+                        </GridPane>
+                    </content>
+                </Tab>
             </tabs>
         </TabPane>
     </center>
-   <left>
-      <VBox fx:id="panelMostrar" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label text="Label" />
-         </children>
-      </VBox>
-   </left>
+    <left>
+        <VBox fx:id="panelMostrar" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label text="Label" />
+            </children>
+        </VBox>
+    </left>
 </BorderPane>
