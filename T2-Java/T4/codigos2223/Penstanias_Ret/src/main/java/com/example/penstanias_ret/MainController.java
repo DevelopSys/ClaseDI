@@ -1,5 +1,6 @@
 package com.example.penstanias_ret;
 
+import com.example.penstanias_ret.model.CambioBase;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -11,6 +12,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import org.w3c.dom.Text;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,6 +27,8 @@ public class MainController implements Initializable {
 
     @FXML private RadioButton radioUno, radioDos, radioTres;
 
+    @FXML private TextField textoOperar;
+
     private ToggleGroup grupoRadios;
 
     private DropShadow sombreExterior;
@@ -35,7 +39,15 @@ public class MainController implements Initializable {
 
         instancias();
         personalizarBotones();
+        asociarDatos();
         acciones();
+
+    }
+
+    private void asociarDatos() {
+        radioUno.setUserData(new CambioBase(0,2));
+        radioDos.setUserData(new CambioBase(0,8));
+        radioTres.setUserData(new CambioBase(0,16));
     }
 
     private void personalizarBotones() {
@@ -127,10 +139,23 @@ public class MainController implements Initializable {
             } else if (actionEvent.getSource() == botonNormalDos) {
                 toggle.setSelected(false);
             } else if (actionEvent.getSource() == botonCalcular){
+                // comprobar que hay radio y hay cosas en el texto
                 RadioButton radioSeleccionado = (RadioButton) grupoRadios.getSelectedToggle();
-                System.out.println(radioSeleccionado.getText());
+                CambioBase cambioBase = (CambioBase) radioSeleccionado.getUserData();
+                cambioBase.setNumeroDecimal(Integer.valueOf(textoOperar.getText()));
+                // realizo el cambio de base
+                cambioBase.operacionCambioBase();
+                System.out.println(cambioBase.getNumeroConv());
+                // base = 2 numeroCambio = 10000101 numeroDecimal = 59
+                // base = 8 numeroCambio numeroDecimal = 0
+                // base = 16 numeroCambio numeroDecimal = 0
+
+                System.out.println("operandos: "+textoOperar.getText());
+                System.out.println("Objeto seleccionado de base "+cambioBase.getBase());
+
             }
 
         }
+
     }
 }
