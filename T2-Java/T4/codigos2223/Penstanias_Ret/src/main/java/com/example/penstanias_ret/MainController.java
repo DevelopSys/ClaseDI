@@ -6,8 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -19,12 +18,17 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
 
     @FXML
-    private Button botonNormal, botonNormalDos;
+    private Button botonNormal, botonNormalDos, botonCalcular;
 
     @FXML
     private ToggleButton toggle;
 
+    @FXML private RadioButton radioUno, radioDos, radioTres;
+
+    private ToggleGroup grupoRadios;
+
     private DropShadow sombreExterior;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -53,11 +57,18 @@ public class MainController implements Initializable {
         // acciones
         // directa setOnEvento setOnAction --> EventHander<ActionEvent>
 
+        botonCalcular.setOnAction(new ManejoPulsaciones());
         botonNormal.setOnAction(new ManejoPulsaciones());
         botonNormalDos.setOnAction(new ManejoPulsaciones());
-
         toggle.setOnAction(new ManejoPulsaciones());
-
+        grupoRadios.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observableValue,
+                                Toggle toggle, Toggle t1) {
+                RadioButton radioSeleccionado = (RadioButton) t1;
+                System.out.println(radioSeleccionado.getText());
+            }
+        });
         toggle.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue,
@@ -75,10 +86,8 @@ public class MainController implements Initializable {
 
             }
         });
-
         botonNormal.addEventHandler(MouseEvent.MOUSE_ENTERED, new ManejoRaton());
         botonNormal.addEventHandler(MouseEvent.MOUSE_EXITED, new ManejoRaton());
-
         botonNormalDos.addEventHandler(MouseEvent.MOUSE_ENTERED, new ManejoRaton());
         botonNormalDos.addEventHandler(MouseEvent.MOUSE_EXITED, new ManejoRaton());
 
@@ -87,6 +96,9 @@ public class MainController implements Initializable {
 
     private void instancias() {
         sombreExterior = new DropShadow();
+        grupoRadios = new ToggleGroup();
+        grupoRadios.getToggles().addAll(radioUno,radioDos,radioTres);
+
     }
 
 
@@ -114,6 +126,9 @@ public class MainController implements Initializable {
                 toggle.setSelected(true);
             } else if (actionEvent.getSource() == botonNormalDos) {
                 toggle.setSelected(false);
+            } else if (actionEvent.getSource() == botonCalcular){
+                RadioButton radioSeleccionado = (RadioButton) grupoRadios.getSelectedToggle();
+                System.out.println(radioSeleccionado.getText());
             }
 
         }
