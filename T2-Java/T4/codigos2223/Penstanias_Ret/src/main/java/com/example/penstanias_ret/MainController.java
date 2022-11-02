@@ -1,6 +1,7 @@
 package com.example.penstanias_ret;
 
 import com.example.penstanias_ret.model.CambioBase;
+import com.example.penstanias_ret.model.Usuario;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -39,11 +40,15 @@ public class MainController implements Initializable {
     @FXML
     private BorderPane panelGeneral;
 
-    @FXML private ChoiceBox<String> choice;
+    @FXML private ChoiceBox<Usuario> choice;
     @FXML private ComboBox<String> combo;
-    @FXML private Spinner spinner;
+    @FXML private Spinner<Integer> spinner;
 
     private ObservableList<String> listaCombo, listaChoice;
+
+    private ObservableList<Integer> listaSpinner;
+
+    private ObservableList<Usuario> listaUsuarios;
 
     private ToggleGroup grupoRadios;
 
@@ -71,7 +76,13 @@ public class MainController implements Initializable {
         radioTres.setUserData(new CambioBase(0,16));
 
         combo.setItems(listaCombo);
-        choice.setItems(listaChoice);
+        //choice.setItems(listaChoice);
+        choice.setItems(listaUsuarios);
+
+        //spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,50));
+        //spinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0,5.0));
+        //spinner.setValueFactory(new SpinnerValueFactory.ListSpinnerValueFactory<Integer>(listaSpinner));
+        spinner.setValueFactory(new SpinnerValueFactory.ListSpinnerValueFactory<Integer>(listaSpinner));
     }
 
     private void personalizarBotones() {
@@ -101,6 +112,19 @@ public class MainController implements Initializable {
         botonNormalDos.setOnAction(new ManejoPulsaciones());
         toggle.setOnAction(new ManejoPulsaciones());
 
+        choice.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Usuario>() {
+            @Override
+            public void changed(ObservableValue<? extends Usuario> observableValue, Usuario usuario, Usuario t1) {
+                t1.mostrarDatos();
+            }
+        });
+        combo.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue,
+                                String oldValue, String newValue) {
+                System.out.println(newValue);
+            }
+        });
         grupoRadios.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> observableValue,
@@ -126,6 +150,13 @@ public class MainController implements Initializable {
 
             }
         });
+        spinner.getValueFactory().valueProperty().addListener(new ChangeListener<Integer>() {
+            @Override
+            public void changed(ObservableValue<? extends Integer> observableValue,
+                                Integer integer, Integer t1) {
+                System.out.println(t1);
+            }
+        });
         botonNormal.addEventHandler(MouseEvent.MOUSE_ENTERED, new ManejoRaton());
         botonNormal.addEventHandler(MouseEvent.MOUSE_EXITED, new ManejoRaton());
         botonNormalDos.addEventHandler(MouseEvent.MOUSE_ENTERED, new ManejoRaton());
@@ -145,6 +176,17 @@ public class MainController implements Initializable {
         listaCombo = FXCollections.observableArrayList();
         listaCombo.addAll("OpcionCb1","OpcionCb2",
                 "OpcionCb3","OpcionCb4");
+
+        listaSpinner = FXCollections.observableArrayList();
+        listaSpinner.addAll(1,2,3,4,5,6,7,8,9,10);
+
+        listaUsuarios = FXCollections.observableArrayList();
+        listaUsuarios.addAll(
+                new Usuario("nombre1","apellido1","correo@correo.com",1),
+                new Usuario("nombre2","apellido2","correo@correo.com",2),
+                new Usuario("nombre3","apellido3","correo@correo.com",3),
+                new Usuario("nombre4","apellido4","correo@correo.com",4)
+        );
 
     }
 
@@ -203,11 +245,10 @@ public class MainController implements Initializable {
                 if (combo.getSelectionModel().getSelectedIndex()>-1
                         && choice.getSelectionModel().getSelectedIndex()>-1){
                     System.out.println(combo.getSelectionModel().getSelectedItem());
-                    System.out.println(choice.getSelectionModel().getSelectedItem());
+                    choice.getSelectionModel().getSelectedItem().mostrarDatos();
+                    System.out.println(spinner.getValueFactory().getValue());
                 }
             }
-
         }
-
     }
 }
