@@ -3,6 +3,8 @@ package com.example.penstanias_ret;
 import com.example.penstanias_ret.model.CambioBase;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -22,7 +24,7 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
 
     @FXML
-    private Button botonNormal, botonNormalDos, botonCalcular, botonMostrar, botonOcultar;
+    private Button botonNormal, botonNormalDos, botonCalcular, botonMostrar, botonOcultar, botonListas;
 
     @FXML
     private ToggleButton toggle;
@@ -36,6 +38,12 @@ public class MainController implements Initializable {
 
     @FXML
     private BorderPane panelGeneral;
+
+    @FXML private ChoiceBox<String> choice;
+    @FXML private ComboBox<String> combo;
+    @FXML private Spinner spinner;
+
+    private ObservableList<String> listaCombo, listaChoice;
 
     private ToggleGroup grupoRadios;
 
@@ -61,6 +69,9 @@ public class MainController implements Initializable {
         radioUno.setUserData(new CambioBase(0,2));
         radioDos.setUserData(new CambioBase(0,8));
         radioTres.setUserData(new CambioBase(0,16));
+
+        combo.setItems(listaCombo);
+        choice.setItems(listaChoice);
     }
 
     private void personalizarBotones() {
@@ -82,12 +93,14 @@ public class MainController implements Initializable {
         // acciones
         // directa setOnEvento setOnAction --> EventHander<ActionEvent>
 
+        botonListas.setOnAction(new ManejoPulsaciones());
         botonMostrar.setOnAction(new ManejoPulsaciones());
         botonOcultar.setOnAction(new ManejoPulsaciones());
         botonCalcular.setOnAction(new ManejoPulsaciones());
         botonNormal.setOnAction(new ManejoPulsaciones());
         botonNormalDos.setOnAction(new ManejoPulsaciones());
         toggle.setOnAction(new ManejoPulsaciones());
+
         grupoRadios.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> observableValue,
@@ -125,6 +138,13 @@ public class MainController implements Initializable {
         sombreExterior = new DropShadow();
         grupoRadios = new ToggleGroup();
         grupoRadios.getToggles().addAll(radioUno,radioDos,radioTres);
+
+        listaChoice = FXCollections.observableArrayList();
+        listaChoice.addAll("OpcionCh1","OpcionCh2",
+                "OpcionCh3","OpcionCh4");
+        listaCombo = FXCollections.observableArrayList();
+        listaCombo.addAll("OpcionCb1","OpcionCb2",
+                "OpcionCb3","OpcionCb4");
 
     }
 
@@ -177,6 +197,14 @@ public class MainController implements Initializable {
                 // panelVisible.setVisible(false);
                 panelGeneral.getChildren().remove(panelVisible);
 
+            } else if (actionEvent.getSource() == botonListas){
+                // sacar los elementos seleccionados
+
+                if (combo.getSelectionModel().getSelectedIndex()>-1
+                        && choice.getSelectionModel().getSelectedIndex()>-1){
+                    System.out.println(combo.getSelectionModel().getSelectedItem());
+                    System.out.println(choice.getSelectionModel().getSelectedItem());
+                }
             }
 
         }
