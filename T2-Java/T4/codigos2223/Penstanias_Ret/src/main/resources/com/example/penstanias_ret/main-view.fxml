@@ -60,6 +60,8 @@
                               <Insets left="20.0" right="20.0" />
                            </GridPane.margin>
                         </TextField>
+                        <Button fx:id="botonMostrar" mnemonicParsing="false" text="Mostrar" GridPane.rowIndex="3" />
+                        <Button fx:id="botonOcultar" mnemonicParsing="false" text="Ocultar" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                </content>

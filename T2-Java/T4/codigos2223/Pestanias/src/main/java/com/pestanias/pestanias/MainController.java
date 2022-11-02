@@ -21,7 +21,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -75,12 +82,43 @@ public class MainController implements Initializable {
     private ToggleGroup grupoRadios;
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL url, ResourceBundle resourceBundle)  {
         // se ejecuca cuando se asocia la parte grafica y la logica --> setContentView
         instancias();
         asociarDatos();
         configurarBotones();
+        interpretarJSON();
         acciones();
+    }
+
+    private void interpretarJSON(){
+
+        String urlString = "https://randomuser.me/api/?results=10";
+        try {
+            // 1- URL
+            URL url = new URL(urlString);
+            // 2- Crear la conexion
+            HttpURLConnection conexion = (HttpURLConnection) url.openConnection();
+            // 3- Interpretar los datos --> BufferReader
+            BufferedReader lecturaURL =
+                    new BufferedReader(new InputStreamReader(conexion.getInputStream()));
+
+            String linea = null;
+            String lecturaCompleta = "";
+
+            while ((linea = lecturaURL.readLine())!= null){
+                lecturaCompleta+=linea;
+            }
+            // System.out.println(lecturaCompleta);
+
+            // 4- Pasar el string a JSON
+            JSONObject objetoCompleto = new JSONObject(lecturaCompleta);
+            JSONArray objetoInfo = objetoCompleto.getJSONArray("results");
+            System.out.println(objetoInfo.getJSONObject(0).getString("gender"));
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void asociarDatos() {

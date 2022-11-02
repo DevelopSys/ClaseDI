@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
 
     @FXML
-    private Button botonNormal, botonNormalDos, botonCalcular;
+    private Button botonNormal, botonNormalDos, botonCalcular, botonMostrar, botonOcultar;
 
     @FXML
     private ToggleButton toggle;
