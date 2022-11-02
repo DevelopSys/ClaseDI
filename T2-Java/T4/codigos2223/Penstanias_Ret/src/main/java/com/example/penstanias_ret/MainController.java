@@ -12,6 +12,8 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import org.w3c.dom.Text;
 
 import java.net.URL;
@@ -29,6 +31,12 @@ public class MainController implements Initializable {
 
     @FXML private TextField textoOperar;
 
+    @FXML
+    private GridPane panelVisible;
+
+    @FXML
+    private BorderPane panelGeneral;
+
     private ToggleGroup grupoRadios;
 
     private DropShadow sombreExterior;
@@ -38,10 +46,15 @@ public class MainController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         instancias();
+        initGUI();
         personalizarBotones();
         asociarDatos();
         acciones();
 
+    }
+
+    private void initGUI() {
+        panelGeneral.getChildren().remove(panelVisible);
     }
 
     private void asociarDatos() {
@@ -69,6 +82,8 @@ public class MainController implements Initializable {
         // acciones
         // directa setOnEvento setOnAction --> EventHander<ActionEvent>
 
+        botonMostrar.setOnAction(new ManejoPulsaciones());
+        botonOcultar.setOnAction(new ManejoPulsaciones());
         botonCalcular.setOnAction(new ManejoPulsaciones());
         botonNormal.setOnAction(new ManejoPulsaciones());
         botonNormalDos.setOnAction(new ManejoPulsaciones());
@@ -138,7 +153,8 @@ public class MainController implements Initializable {
                 toggle.setSelected(true);
             } else if (actionEvent.getSource() == botonNormalDos) {
                 toggle.setSelected(false);
-            } else if (actionEvent.getSource() == botonCalcular){
+            }
+            else if (actionEvent.getSource() == botonCalcular){
                 // comprobar que hay radio y hay cosas en el texto
                 RadioButton radioSeleccionado = (RadioButton) grupoRadios.getSelectedToggle();
                 CambioBase cambioBase = (CambioBase) radioSeleccionado.getUserData();
@@ -152,6 +168,14 @@ public class MainController implements Initializable {
 
                 System.out.println("operandos: "+textoOperar.getText());
                 System.out.println("Objeto seleccionado de base "+cambioBase.getBase());
+
+            }
+            else if (actionEvent.getSource() == botonMostrar){
+                panelGeneral.setRight(panelVisible);
+            } else if (actionEvent.getSource() == botonOcultar){
+                // quitar visibilidad del panel
+                // panelVisible.setVisible(false);
+                panelGeneral.getChildren().remove(panelVisible);
 
             }
 
