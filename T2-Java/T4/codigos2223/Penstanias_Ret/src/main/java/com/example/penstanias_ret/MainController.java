@@ -30,9 +30,11 @@ public class MainController implements Initializable {
     @FXML
     private ToggleButton toggle;
 
-    @FXML private RadioButton radioUno, radioDos, radioTres;
+    @FXML
+    private RadioButton radioUno, radioDos, radioTres;
 
-    @FXML private TextField textoOperar;
+    @FXML
+    private TextField textoOperar;
 
     @FXML
     private GridPane panelVisible;
@@ -40,13 +42,21 @@ public class MainController implements Initializable {
     @FXML
     private BorderPane panelGeneral;
 
-    @FXML private ChoiceBox<Usuario> choice;
-    @FXML private ComboBox<String> combo;
-    @FXML private Spinner<Integer> spinner;
+    @FXML
+    private ChoiceBox<Usuario> choice;
+    @FXML
+    private ComboBox<String> combo;
+    @FXML
+    private Spinner<Integer> spinner;
+
+    @FXML
+    private ListView<Usuario> lista;
 
     private ObservableList<String> listaCombo, listaChoice;
 
     private ObservableList<Integer> listaSpinner;
+
+    private ObservableList<Usuario> listaListView;
 
     private ObservableList<Usuario> listaUsuarios;
 
@@ -71,13 +81,14 @@ public class MainController implements Initializable {
     }
 
     private void asociarDatos() {
-        radioUno.setUserData(new CambioBase(0,2));
-        radioDos.setUserData(new CambioBase(0,8));
-        radioTres.setUserData(new CambioBase(0,16));
+        radioUno.setUserData(new CambioBase(0, 2));
+        radioDos.setUserData(new CambioBase(0, 8));
+        radioTres.setUserData(new CambioBase(0, 16));
 
         combo.setItems(listaCombo);
         //choice.setItems(listaChoice);
         choice.setItems(listaUsuarios);
+        lista.setItems(listaListView);
 
         //spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,50));
         //spinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0,5.0));
@@ -91,10 +102,10 @@ public class MainController implements Initializable {
         botonNormalDos.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("power_off.png"))));
         botonNormalDos.setBackground(null);
         toggle.setBackground(null);
-        if (toggle.isSelected()){
+        if (toggle.isSelected()) {
             toggle.setGraphic(new ImageView(new Image(getClass()
                     .getResourceAsStream("switchoff.png"))));
-        }else {
+        } else {
             toggle.setGraphic(new ImageView(new Image(getClass()
                     .getResourceAsStream("switchon.png"))));
         }
@@ -140,10 +151,10 @@ public class MainController implements Initializable {
                 botonNormal.setDisable(toggle.isSelected());
                 botonNormalDos.setDisable(toggle.isSelected());
 
-                if (newValue){
+                if (newValue) {
                     toggle.setGraphic(new ImageView(new Image(getClass()
                             .getResourceAsStream("switchoff.png"))));
-                }else {
+                } else {
                     toggle.setGraphic(new ImageView(new Image(getClass()
                             .getResourceAsStream("switchon.png"))));
                 }
@@ -168,25 +179,36 @@ public class MainController implements Initializable {
     private void instancias() {
         sombreExterior = new DropShadow();
         grupoRadios = new ToggleGroup();
-        grupoRadios.getToggles().addAll(radioUno,radioDos,radioTres);
+        grupoRadios.getToggles().addAll(radioUno, radioDos, radioTres);
 
         listaChoice = FXCollections.observableArrayList();
-        listaChoice.addAll("OpcionCh1","OpcionCh2",
-                "OpcionCh3","OpcionCh4");
+        listaChoice.addAll("OpcionCh1", "OpcionCh2",
+                "OpcionCh3", "OpcionCh4");
         listaCombo = FXCollections.observableArrayList();
-        listaCombo.addAll("OpcionCb1","OpcionCb2",
-                "OpcionCb3","OpcionCb4");
+        listaCombo.addAll("OpcionCb1", "OpcionCb2",
+                "OpcionCb3", "OpcionCb4");
 
         listaSpinner = FXCollections.observableArrayList();
-        listaSpinner.addAll(1,2,3,4,5,6,7,8,9,10);
+        listaSpinner.addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
         listaUsuarios = FXCollections.observableArrayList();
         listaUsuarios.addAll(
-                new Usuario("nombre1","apellido1","correo@correo.com",1),
-                new Usuario("nombre2","apellido2","correo@correo.com",2),
-                new Usuario("nombre3","apellido3","correo@correo.com",3),
-                new Usuario("nombre4","apellido4","correo@correo.com",4)
+                new Usuario("nombre1", "apellido1", "correo@correo.com", 1),
+                new Usuario("nombre2", "apellido2", "correo@correo.com", 2),
+                new Usuario("nombre3", "apellido3", "correo@correo.com", 3),
+                new Usuario("nombre4", "apellido4", "correo@correo.com", 4)
         );
+
+        listaListView = FXCollections.observableArrayList();
+        listaListView.addAll(
+                new Usuario("nombre1", "apellido1", "correo@correo.com", 1),
+                new Usuario("nombre2", "apellido2", "correo@correo.com", 2),
+                new Usuario("nombre3", "apellido3", "correo@correo.com", 3),
+                new Usuario("nombre4", "apellido4", "correo@correo4.com", 4),
+                new Usuario("nombre5", "apellido5", "correo@correo.com", 5),
+                new Usuario("nombre6", "apellido6", "correo@correo.com", 6)
+        );
+
 
     }
 
@@ -215,8 +237,7 @@ public class MainController implements Initializable {
                 toggle.setSelected(true);
             } else if (actionEvent.getSource() == botonNormalDos) {
                 toggle.setSelected(false);
-            }
-            else if (actionEvent.getSource() == botonCalcular){
+            } else if (actionEvent.getSource() == botonCalcular) {
                 // comprobar que hay radio y hay cosas en el texto
                 RadioButton radioSeleccionado = (RadioButton) grupoRadios.getSelectedToggle();
                 CambioBase cambioBase = (CambioBase) radioSeleccionado.getUserData();
@@ -228,25 +249,33 @@ public class MainController implements Initializable {
                 // base = 8 numeroCambio numeroDecimal = 0
                 // base = 16 numeroCambio numeroDecimal = 0
 
-                System.out.println("operandos: "+textoOperar.getText());
-                System.out.println("Objeto seleccionado de base "+cambioBase.getBase());
+                System.out.println("operandos: " + textoOperar.getText());
+                System.out.println("Objeto seleccionado de base " + cambioBase.getBase());
 
-            }
-            else if (actionEvent.getSource() == botonMostrar){
+            } else if (actionEvent.getSource() == botonMostrar) {
                 panelGeneral.setRight(panelVisible);
-            } else if (actionEvent.getSource() == botonOcultar){
+            } else if (actionEvent.getSource() == botonOcultar) {
                 // quitar visibilidad del panel
                 // panelVisible.setVisible(false);
                 panelGeneral.getChildren().remove(panelVisible);
 
-            } else if (actionEvent.getSource() == botonListas){
+            } else if (actionEvent.getSource() == botonListas) {
                 // sacar los elementos seleccionados
 
-                if (combo.getSelectionModel().getSelectedIndex()>-1
-                        && choice.getSelectionModel().getSelectedIndex()>-1){
-                    System.out.println(combo.getSelectionModel().getSelectedItem());
-                    choice.getSelectionModel().getSelectedItem().mostrarDatos();
-                    System.out.println(spinner.getValueFactory().getValue());
+                if (combo.getSelectionModel().getSelectedIndex() > -1
+                        && choice.getSelectionModel().getSelectedIndex() > -1
+                        && lista.getSelectionModel().getSelectedIndex() > -1) {
+                    //System.out.println(combo.getSelectionModel().getSelectedItem());
+                    //choice.getSelectionModel().getSelectedItem().mostrarDatos();
+                    //System.out.println(spinner.getValueFactory().getValue());
+                    //lista.getSelectionModel().getSelectedItem().mostrarDatos();
+                    //listaListView.add(new Usuario("Nuevo","Nuevo","correo@nuevo",7));
+                    //listaListView.remove(0);
+                    for (int i = 0; i < listaListView.size(); i++) {
+                        if (listaListView.get(i).getCorreo().equals("correo@correo4.com")) {
+                            listaListView.remove(i);
+                        }
+                    }
                 }
             }
         }

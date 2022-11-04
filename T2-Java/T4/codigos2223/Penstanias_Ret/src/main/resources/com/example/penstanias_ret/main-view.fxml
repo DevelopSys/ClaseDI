@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.Tab?>
@@ -89,6 +90,7 @@
                         <ChoiceBox fx:id="choice" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Spinner fx:id="spinner" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <Button fx:id="botonListas" mnemonicParsing="false" text="Comprobar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                        <ListView fx:id="lista" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
                </content>
