@@ -49,7 +49,7 @@ public class MainController implements Initializable {
     @FXML
     private TextField textFiledUno, textFiledDos;
     @FXML
-    private Button botonSuma, botonResta, botonDiv, botonMulti, botonIgual, botonMostrar, botonOcultar, botonComprobar;
+    private Button botonFiltrar, botonSuma, botonResta, botonDiv, botonMulti, botonIgual, botonMostrar, botonOcultar, botonComprobar;
     @FXML
     private GridPane gridBotones;
     @FXML
@@ -73,6 +73,10 @@ public class MainController implements Initializable {
 
     @FXML private ListView<UsuarioJSON> listUsuarios;
 
+    @FXML private Spinner<Integer> spinnerResults;
+
+    @FXML private RadioButton radioMale, radioFemale, radioAll;
+
     // ArrayList
 
     // la lista tendrá que contentes usuarios
@@ -82,29 +86,37 @@ public class MainController implements Initializable {
     // todos sus datos
     private ObservableList<UsuarioJSON> listaUsuariosJSON;
     private ObservableList<String> listaCombo, listaChoice, listaSpinner, listaListView;
-
     private ObservableList<Usuario> listaUsuarios;
+    private ObservableList<Integer> listaResultados;
 
 
     private int tipoOperacion = -1;
     private DropShadow sombraExterior;
-    private ToggleGroup grupoRadios;
+    private ToggleGroup grupoRadios, grupoGenero;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)  {
         // se ejecuca cuando se asocia la parte grafica y la logica --> setContentView
 
+
+
+
+
         instancias();
         asociarDatos();
         configurarBotones();
-        interpretarJSON();
+        //interpretarJSON();
         acciones();
 
     }
 
-    private void interpretarJSON(){
+    private void interpretarJSON(int resultados, String genero){
 
-        String urlString = "https://randomuser.me/api/?results=20&gender=male";
+        listaUsuariosJSON.clear();
+        String urlStringPatron = "https://randomuser.me/api/?results=%d&gender=%s";
+        //String urlString = "https://randomuser.me/api/?results=20&gender=male";
+        String urlString = String.format(urlStringPatron,resultados,genero.toLowerCase());
         try {
             // 1- URL
             URL url = new URL(urlString);
@@ -159,6 +171,9 @@ public class MainController implements Initializable {
         list.setItems(listaListView);
         listUsuarios.setItems(listaUsuariosJSON);
 
+        //spinnerResults.setValueFactory(new SpinnerValueFactory.ListSpinnerValueFactory<Integer>(listaResultados));
+        spinnerResults.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1,100,5,5));
+
     }
 
     private void configurarBotones() {
@@ -202,9 +217,19 @@ public class MainController implements Initializable {
 
         listaUsuariosJSON = FXCollections.observableArrayList();
 
+        listaResultados = FXCollections.observableArrayList(); // 1-100
+        for (int i = 1; i <101 ; i++) {
+            listaResultados.add(i);
+        }
+
+        grupoGenero = new ToggleGroup();
+        grupoGenero.getToggles().addAll(radioAll,radioFemale,radioMale);
+
     }
 
     private void acciones() {
+
+        botonFiltrar.setOnAction(new ManejoPulsaciones());
 
         listUsuarios.getSelectionModel().selectedItemProperty()
                         .addListener(new ChangeListener<UsuarioJSON>() {
@@ -434,6 +459,16 @@ public class MainController implements Initializable {
 
 
 
+            }
+            else if (actionEvent.getSource() == botonFiltrar) {
+                // resultados
+                int numeroResultados = spinnerResults.getValue();
+                // genero
+                RadioButton generoRadio = (RadioButton) grupoGenero.getSelectedToggle();
+                String genero = generoRadio.getText();
+                System.out.println(genero);
+                System.out.println(numeroResultados);
+                interpretarJSON(numeroResultados,genero);
             }
         }
     }
