@@ -72,6 +72,12 @@ public class MainController implements Initializable {
 
     // ArrayList
 
+    // la lista tendrá que contentes usuarios
+    // un usuario tiene title first last image-large email phone
+    // en la lista se muestra title first last
+    // cada vez que pulse un usuario de la lista aparecerá en consola
+    // todos sus datos
+    private ObservableList<String> listaUsuariosJSON;
     private ObservableList<String> listaCombo, listaChoice, listaSpinner, listaListView;
 
     private ObservableList<Usuario> listaUsuarios;
@@ -84,6 +90,7 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)  {
         // se ejecuca cuando se asocia la parte grafica y la logica --> setContentView
+
         instancias();
         asociarDatos();
         configurarBotones();
@@ -121,7 +128,8 @@ public class MainController implements Initializable {
                 String first = item.getJSONObject("name").getString("first");
                 String last = item.getJSONObject("name").getString("last");
                 String urlImage = item.getJSONObject("picture").getString("large");
-                System.out.printf("%s %s %s - %s%n",title,first,last,urlImage);
+                //System.out.printf("%s %s %s - %s%n",title,first,last,urlImage);
+                listaUsuariosJSON.add(title+" "+first+" "+last);
             }
 
             //System.out.println(objetoInfo.getJSONObject(0).getString("gender"));
@@ -142,6 +150,7 @@ public class MainController implements Initializable {
         comboUsuarios.setItems(listaUsuarios);
         spinner.setValueFactory(new SpinnerValueFactory.ListSpinnerValueFactory<String>(listaSpinner));
         list.setItems(listaListView);
+        listUsuarios.setItems(listaUsuariosJSON);
 
     }
 
@@ -183,6 +192,8 @@ public class MainController implements Initializable {
 
         listaListView = FXCollections.observableArrayList();
         listaListView.addAll("Opcion 1","Opcion 2","Opcion 3","Opcion 4","Opcion 5","Opcion 6","Opcion 7","Opcion 8");
+
+        listaUsuariosJSON = FXCollections.observableArrayList();
 
     }
 
