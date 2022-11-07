@@ -3,6 +3,7 @@ package com.pestanias.pestanias;
 
 import com.pestanias.pestanias.model.TipoPago;
 import com.pestanias.pestanias.model.Usuario;
+import com.pestanias.pestanias.model.UsuarioJSON;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -68,7 +69,9 @@ public class MainController implements Initializable {
     private Spinner<String> spinner;
 
     @FXML
-    private ListView<String> list, listUsuarios;
+    private ListView<String> list;
+
+    @FXML private ListView<UsuarioJSON> listUsuarios;
 
     // ArrayList
 
@@ -77,7 +80,7 @@ public class MainController implements Initializable {
     // en la lista se muestra title first last
     // cada vez que pulse un usuario de la lista aparecerá en consola
     // todos sus datos
-    private ObservableList<String> listaUsuariosJSON;
+    private ObservableList<UsuarioJSON> listaUsuariosJSON;
     private ObservableList<String> listaCombo, listaChoice, listaSpinner, listaListView;
 
     private ObservableList<Usuario> listaUsuarios;
@@ -96,11 +99,12 @@ public class MainController implements Initializable {
         configurarBotones();
         interpretarJSON();
         acciones();
+
     }
 
     private void interpretarJSON(){
 
-        String urlString = "https://randomuser.me/api/?results=10";
+        String urlString = "https://randomuser.me/api/?results=20&gender=male";
         try {
             // 1- URL
             URL url = new URL(urlString);
@@ -128,8 +132,11 @@ public class MainController implements Initializable {
                 String first = item.getJSONObject("name").getString("first");
                 String last = item.getJSONObject("name").getString("last");
                 String urlImage = item.getJSONObject("picture").getString("large");
+                String phone = item.getString("phone");
+                String email = item.getString("email");
                 //System.out.printf("%s %s %s - %s%n",title,first,last,urlImage);
-                listaUsuariosJSON.add(title+" "+first+" "+last);
+                //listaUsuariosJSON.add(title+" "+first+" "+last);
+                listaUsuariosJSON.add(new UsuarioJSON(title,first,last,urlImage,email,phone));
             }
 
             //System.out.println(objetoInfo.getJSONObject(0).getString("gender"));
@@ -198,6 +205,20 @@ public class MainController implements Initializable {
     }
 
     private void acciones() {
+
+        listUsuarios.getSelectionModel().selectedItemProperty()
+                        .addListener(new ChangeListener<UsuarioJSON>() {
+                            @Override
+                            public void changed(ObservableValue<? extends UsuarioJSON> observableValue
+                                    , UsuarioJSON oldUser, UsuarioJSON newUser) {
+                                if (oldUser!= null){
+                                    System.out.printf("Antiguo");
+                                    oldUser.mostrarDatos();
+                                }
+                                System.out.printf("Nuevo");
+                                newUser.mostrarDatos();
+                            }
+                        });
         botonComprobar.setOnAction(new ManejoPulsaciones());
         botonNormal.setOnAction(new ManejoPulsaciones());
         botonNormalDos.setOnAction(new ManejoPulsaciones());
