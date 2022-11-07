@@ -68,7 +68,7 @@ public class MainController implements Initializable {
     private Spinner<String> spinner;
 
     @FXML
-    private ListView<String> list;
+    private ListView<String> list, listUsuarios;
 
     // ArrayList
 
@@ -113,8 +113,18 @@ public class MainController implements Initializable {
 
             // 4- Pasar el string a JSON
             JSONObject objetoCompleto = new JSONObject(lecturaCompleta);
-            JSONArray objetoInfo = objetoCompleto.getJSONArray("results");
-            System.out.println(objetoInfo.getJSONObject(0).getString("gender"));
+            JSONArray arrayResults = objetoCompleto.getJSONArray("results");
+            for (int i = 0; i < arrayResults.length(); i++) {
+                JSONObject item = arrayResults.getJSONObject(i);
+                // name-title name-firt name-last image-large
+                String title = item.getJSONObject("name").getString("title");
+                String first = item.getJSONObject("name").getString("first");
+                String last = item.getJSONObject("name").getString("last");
+                String urlImage = item.getJSONObject("picture").getString("large");
+                System.out.printf("%s %s %s - %s%n",title,first,last,urlImage);
+            }
+
+            //System.out.println(objetoInfo.getJSONObject(0).getString("gender"));
 
         } catch (IOException e) {
             throw new RuntimeException(e);
