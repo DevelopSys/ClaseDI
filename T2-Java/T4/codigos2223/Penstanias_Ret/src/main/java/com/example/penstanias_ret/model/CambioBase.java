@@ -9,12 +9,13 @@ public class CambioBase {
     public CambioBase(int numeroDecimal, int base) {
         this.numeroDecimal = numeroDecimal;
         this.base = base;
+        numeroConv = "";
     }
 
     public void operacionCambioBase(){
         // TODO
         // método que pasa de base 10 a la base declarada
-        numeroConv = "";
+
         numeroConv += 1;
         numeroConv += 1;
         numeroConv += 1;

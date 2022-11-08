@@ -3,6 +3,8 @@ package com.example.repaso_ret;
 import com.example.repaso_ret.model.Equipo;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -26,12 +28,25 @@ public class RepasoController implements Initializable {
     @FXML
     private RadioButton radioRayo, radioAtleti, radioMadrid;
 
-    @FXML private BorderPane borderGeneral;
-    @FXML private GridPane gridLateral;
+    @FXML
+    private BorderPane borderGeneral;
+    @FXML
+    private GridPane gridLateral;
 
-    @FXML private ToggleButton toggleMostar;
+    // parte gráfica
+    @FXML
+    ListView<Equipo> listaRepaso;
+
+    @FXML
+    private ToggleButton toggleMostar;
+
+    @FXML
+    private Label labelCampo;
 
     private ToggleGroup grupoEquipos;
+
+    // parte lógica
+    private ObservableList<Equipo> lista;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -51,28 +66,39 @@ public class RepasoController implements Initializable {
 
     private void acciones() {
 
-
         toggleMostar.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
-                if (t1){
+                if (t1) {
                     borderGeneral.setLeft(gridLateral);
-                } else  {
-                    borderGeneral.getChildren().remove(gridLateral);
+                    //lista.remove(lista.size()-1);
+                } else {
+                    //borderGeneral.getChildren().remove(gridLateral);
+                    //lista.add(new Equipo("ejemplo","",""));
+                    lista.remove(listaRepaso.getSelectionModel().getSelectedIndex());
                 }
             }
         });
         grupoEquipos.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> observableValue, Toggle toggle, Toggle t1) {
-                Equipo seleccionado = (Equipo) ((RadioButton)t1).getUserData();
+                Equipo seleccionado = (Equipo) ((RadioButton) t1).getUserData();
                 imagen.setImage(new Image(seleccionado.getImage()));
                 //etiquetaEquipo.setText(seleccionado.getCampo());
-                if (seleccionado.getNombre().equalsIgnoreCase("real madrid")){
+                if (seleccionado.getNombre().equalsIgnoreCase("real madrid")) {
                     toggleMostar.setSelected(true);
                 } else {
                     toggleMostar.setSelected(false);
                 }
+            }
+        });
+
+        listaRepaso.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Equipo>() {
+            @Override
+            public void changed(ObservableValue<? extends Equipo> observableValue,
+                                Equipo equipo, Equipo t1) {
+                //System.out.println(t1.getCampo());
+                labelCampo.setText(t1.getCampo());
             }
         });
     }
@@ -87,10 +113,17 @@ public class RepasoController implements Initializable {
         radioAtleti.setUserData(new Equipo("Atletico de Madrid",
                 "https://i.pinimg.com/736x/34/d8/55/34d855a5e063ea145a4804b2d1c24e7d--madrid-soccer.jpg",
                 "Metropolitano"));
+
+        listaRepaso.setItems(lista);
     }
 
     private void instancias() {
         grupoEquipos = new ToggleGroup();
-        grupoEquipos.getToggles().addAll(radioRayo,radioMadrid,radioAtleti);
+        grupoEquipos.getToggles().addAll(radioRayo, radioMadrid, radioAtleti);
+        lista = FXCollections.observableArrayList();
+        lista.addAll(new Equipo("R.Madrid", "", "Bernabeu")
+                , new Equipo("Rayo", "", "Vallecas")
+                , new Equipo("Atleti", "", "Metropilitano")
+        );
     }
 }

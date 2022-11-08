@@ -33,4 +33,9 @@ public class Equipo {
     public void setCampo(String campo) {
         this.campo = campo;
     }
+
+    @Override
+    public String toString() {
+        return getNombre();
+    }
 }

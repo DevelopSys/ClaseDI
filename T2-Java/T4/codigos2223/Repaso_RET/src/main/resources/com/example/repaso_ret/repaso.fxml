@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
@@ -31,7 +34,12 @@
       </GridPane>
    </top>
    <bottom>
-      <ToggleButton fx:id="toggleMostar" mnemonicParsing="false" text="Mostrar/Ocultar" BorderPane.alignment="CENTER" />
+      <FlowPane BorderPane.alignment="CENTER">
+         <children>
+            <ToggleButton fx:id="toggleMostar" mnemonicParsing="false" text="Mostrar/Ocultar" />
+            <Label fx:id="labelCampo" />
+         </children>
+      </FlowPane>
    </bottom>
    <left>
       <GridPane fx:id="gridLateral" BorderPane.alignment="CENTER">
@@ -48,4 +56,7 @@
          </children>
       </GridPane>
    </left>
+   <right>
+      <ListView fx:id="listaRepaso" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </right>
 </BorderPane>
