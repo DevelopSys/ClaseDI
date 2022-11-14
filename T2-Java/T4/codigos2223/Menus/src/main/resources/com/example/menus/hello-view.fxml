@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" fx:controller="com.example.menus.HelloController" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+         <menus>
+            <Menu mnemonicParsing="true" text="Acciones generales">
+              <items>
+                <MenuItem fx:id="menuSalir" mnemonicParsing="false" text="Salir">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Acciones ventana">
+               <items>
+                  <Menu mnemonicParsing="false" text="Comunicar">
+                    <items>
+                      <MenuItem fx:id="menuComunicaDefecto" mnemonicParsing="false" text="Comunicar por defecto" />
+                        <MenuItem fx:id="menuComunicarEspecifico" mnemonicParsing="false" text="Comunicar especifico" />
+                    </items>
+                  </Menu>
+                  <MenuItem fx:id="menuEscena" mnemonicParsing="false" text="Escena" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
