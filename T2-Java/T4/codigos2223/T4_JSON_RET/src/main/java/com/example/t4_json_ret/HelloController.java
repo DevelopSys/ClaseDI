@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -23,8 +25,12 @@ public class HelloController implements Initializable {
 
     @FXML private Button botonJSON;
 
+    @FXML private Spinner spinner;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        spinner
+                .setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1,100));
 
         acciones();
 
@@ -55,8 +61,18 @@ public class HelloController implements Initializable {
 
                     JSONObject jsonGeneral = new JSONObject(lectura.toString());
                     JSONArray arrayResultados = jsonGeneral.getJSONArray("results");
-                    JSONObject resultadoUno = arrayResultados.getJSONObject(0);
-                    //System.out.println(resultadoUno);
+                    for (int i = 0; i < arrayResultados.length(); i++) {
+                        JSONObject resultadoUno = arrayResultados.getJSONObject(i);
+                        resultadoUno.getJSONObject("name").getString("title");
+                        resultadoUno.getJSONObject("name").getString("first");
+                        resultadoUno.getJSONObject("name").getString("last");
+                        JSONObject jsonNombre = resultadoUno.getJSONObject("name");
+                        String title = jsonNombre.getString("title");
+                        String first = jsonNombre.getString("first");
+                        String last = jsonNombre.getString("last");
+                        System.out.printf("%s %s %s%n", title,first,last);
+                    }
+
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
