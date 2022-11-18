@@ -28,6 +28,7 @@ public class HelloController implements Initializable {
     @FXML
     private RadioMenuItem menuActivado, menuDesactivado;
     @FXML private GridPane gridCentral;
+    @FXML private Label labelRecepcion;
     private ToggleGroup grupoMenus;
     private ContextMenu menuContextual;
 
@@ -73,13 +74,19 @@ public class HelloController implements Initializable {
         });
         gridCentral.setOnMouseClicked(new ManejoRaton());
     }
+
+    public void setTexto(String texto){
+        //System.out.println("Texto recepcionado con valor: "+texto);
+        labelRecepcion.setText(texto);
+    }
     class ManejoPulsaciones implements EventHandler<ActionEvent> {
 
         @Override
         public void handle(ActionEvent actionEvent) {
             if (actionEvent.getSource() == menuSalir){
                 System.exit(0);
-            } else if (actionEvent.getSource() == menuComunicaDefecto){
+            }
+            else if (actionEvent.getSource() == menuComunicaDefecto){
                 System.out.println("Comunicando por defecto......");
                 // 1- Tener una ventana
                 Stage ventana = new Stage();
@@ -93,9 +100,27 @@ public class HelloController implements Initializable {
                     ventana.setScene(escena);
                     SecondController controller = fxmlLoader.getController();
                     controller.recepcionarTexto("Texto pasar por defecto");
+                    controller.setController(HelloController.this);
                     // 5- Hacer visible la ventana
                     ventana.setTitle("Ventana secundaria");
                     ventana.show();
+
+
+
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            } else if (actionEvent.getSource() == menuEscena) {
+                // 1. tener una ventana sobre la que cambiar
+                Stage ventana = (Stage) labelRecepcion.getScene().getWindow();
+                // 2. Cargar la parte grafica
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("second-scene.fxml"));
+                // 3. Tener una scene
+                try {
+                    Parent root = fxmlLoader.load();
+                    Scene escena = new Scene(root,ventana.getWidth(),ventana.getHeight());
+                    SceneController sceneController = fxmlLoader.getController();
+                    ventana.setScene(escena);
 
                 } catch (IOException e) {
                     throw new RuntimeException(e);
@@ -108,7 +133,8 @@ public class HelloController implements Initializable {
         public void handle(MouseEvent mouseEvent) {
             //System.out.println("Evento ratón detectado");
             if (mouseEvent.getButton() == MouseButton.SECONDARY){
-                menuContextual.show(gridCentral,mouseEvent.getX(), mouseEvent.getY());
+                menuContextual.show(gridCentral,mouseEvent.getX(),
+                        mouseEvent.getY());
             }
 
         }
