@@ -81,8 +81,8 @@ public class HelloController implements Initializable {
 
     private void instancias() {
         listaTabla = FXCollections.observableArrayList();
-        listaTabla.add(new Alumno(contador,"Alumno1","Apellido1","correo1",1234));
-        contador++;
+        //listaTabla.add(new Alumno(contador,"Alumno1","Apellido1","correo1",1234));
+        //contador++;
     }
 
     public void agregarElementos(Alumno alumno){
