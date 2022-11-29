@@ -76,6 +76,10 @@ public class MainController implements Initializable {
         grupoOpciones = new ToggleGroup();
     }
 
+    public void recuperarTexto(String texto){
+        labelScene1.setText(texto);
+    }
+
     private void acciones() {
 
         menuEscena.setOnAction(new ManejoPulsaciones());
@@ -111,6 +115,9 @@ public class MainController implements Initializable {
                     // En el stage poner la scene
                     Stage stage = (Stage) botonScene.getScene().getWindow();
                     stage.setScene(scene);
+                    SceneController controller = loader.getController();
+                    controller.comunicarTexto(textFieldScene1.getText());
+
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
