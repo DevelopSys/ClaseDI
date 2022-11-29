@@ -82,8 +82,14 @@ public class MainController implements Initializable {
 
     private void acciones() {
 
+        menuUnidireccional.setOnAction(new ManejoPulsaciones());
+        botonStage.setOnAction(new ManejoPulsaciones());
+
+        menuBidireccional.setOnAction(new ManejoPulsaciones());
+
         menuEscena.setOnAction(new ManejoPulsaciones());
         botonScene.setOnAction(new ManejoPulsaciones());
+
         grupoOpciones.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> observableValue,
@@ -97,6 +103,10 @@ public class MainController implements Initializable {
                 System.exit(0);
             }
         });
+    }
+
+    public void recepcionRespuesta(String texto){
+        labelScene1.setText(texto);
     }
 
     class ManejoPulsaciones implements EventHandler<ActionEvent>{
@@ -118,6 +128,50 @@ public class MainController implements Initializable {
                     SceneController controller = loader.getController();
                     controller.comunicarTexto(textFieldScene1.getText());
 
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            else if (actionEvent.getSource() == botonStage
+                    || actionEvent.getSource() == menuUnidireccional){
+                // cargar fxml
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("second-view.fxml"));
+
+                try {
+                    // crear scene
+                    Parent root = loader.load();
+                    Scene scene = new Scene(root,400,400);
+                    // crear stage
+                    Stage stage = new Stage();
+                    // poner scene en stage
+                    stage.setScene(scene);
+                    SecondController controller = loader.getController();
+                    controller.comunicarDatos(textFieldScene1.getText());
+                    stage.setTitle("Ventana secundaria");
+                    // hacer visible stage
+                    stage.show();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+            }
+            else if (actionEvent.getSource() == menuBidireccional){
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("second-view.fxml"));
+
+                try {
+                    // crear scene
+                    Parent root = loader.load();
+                    Scene scene = new Scene(root,400,400);
+                    // crear stage
+                    Stage stage = new Stage();
+                    // poner scene en stage
+                    stage.setScene(scene);
+                    SecondController controller = loader.getController();
+                    controller.comunicarDatos(textFieldScene1.getText());
+                    controller.setControladora(MainController.this);
+                    stage.setTitle("Ventana secundaria");
+                    // hacer visible stage
+                    stage.show();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
