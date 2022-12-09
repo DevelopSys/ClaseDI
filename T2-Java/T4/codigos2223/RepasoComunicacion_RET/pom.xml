@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>T4_Comunicaciones</artifactId>
+    <artifactId>RepasoComunicacion_RET</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>T4_Comunicaciones</name>
+    <name>RepasoComunicacion_RET</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -128,7 +128,8 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.example.t4_comunicaciones/com.example.t4_comunicaciones.HelloApplication
+                            <mainClass>
+                                com.example.repasocomunicacion_ret/com.example.repasocomunicacion_ret.HelloApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

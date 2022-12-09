@@ -1,4 +1,4 @@
-module com.example.t4_comunicaciones {
+module com.example.repasocomunicacion_ret {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -11,6 +11,6 @@ module com.example.t4_comunicaciones {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
-    opens com.example.t4_comunicaciones to javafx.fxml;
-    exports com.example.t4_comunicaciones;
+    opens com.example.repasocomunicacion_ret to javafx.fxml;
+    exports com.example.repasocomunicacion_ret;
 }

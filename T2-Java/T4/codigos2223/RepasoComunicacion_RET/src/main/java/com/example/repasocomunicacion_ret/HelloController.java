@@ -1,4 +1,4 @@
-package com.example.t4_comunicaciones;
+package com.example.repasocomunicacion_ret;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
