@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="cb8fb8be-ec64-42d6-ae4d-61250a5074de" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ejercicio 6.1/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ejercicio 6.1/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ejercicio 6.1/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ejercicio 6.1/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ejercicio 6.1/Ejercicio 6.1.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ejercicio 6.1/src/clases/Coche.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ejercicio 6.1/src/clases/Gasolinera.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ejercicio 6.1/src/clases/Surtidor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ejercicio 6.1/src/enums/TipoGasolina.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ejercicio 6.1/src/main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ejercicio 6.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Andres_Martinez_DI.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/clases/Cita.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/clases/Medico.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/clases/Paciente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/clases/Persona.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/.idea/kotlinc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/.idea/libraries/KotlinJavaRuntime.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/Gasolinera.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/src/clases/Coche.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/src/clases/Gasolinera.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/src/clases/Surtidor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Repaso/src/clases/Accionista.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Repaso/src/clases/Asalariado.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Repaso/src/clases/Autonomo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Repaso/src/clases/Directivo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Repaso/src/clases/Empresa.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Repaso/src/clases/Jefe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Repaso/src/clases/Persona.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Repaso/src/clases/Trabajador.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Repaso/src/interfaces/Votante.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Repaso/src/mainTrabajadores.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Repaso_RET/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Repaso_RET/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Repaso_RET/src/MainCoche.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Repaso_RET/src/Model/Coche.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Repaso_RET/src/Model/CocheEjercicio.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Repaso_RET/src/Model/Repaso2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Repaso_RET/out/production/Repaso_RET/MainRapaso.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../Repaso_RET/out/production/Repaso_RET/MainRapaso.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Repaso_RET/src/MainRapaso.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Repaso_RET/src/MainRapaso.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2FUSRBCMLSTzNDvDpW3KPNm1Ywo" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Andres_Martinez_DI" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Andres_Martinez_DI" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cb8fb8be-ec64-42d6-ae4d-61250a5074de" name="Changes" comment="" />
+      <created>1664545158599</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1664545158599</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: eu.hansolo:toolboxfx:17.0.28">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/eu/hansolo/toolboxfx/17.0.28/toolboxfx-17.0.28.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/eu/hansolo/toolboxfx/17.0.28/toolboxfx-17.0.28-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/eu/hansolo/toolboxfx/17.0.28/toolboxfx-17.0.28-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

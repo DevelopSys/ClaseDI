@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="558.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tema4_json.HelloController">
+  <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="352.79998779296875" minWidth="10.0" prefWidth="342.4000244140625" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="254.40001220703124" minWidth="10.0" prefWidth="215.39997558593745" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="195.60001220703126" minHeight="10.0" prefHeight="59.80000610351563" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="366.7999900817871" minHeight="10.0" prefHeight="339.79999389648435" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <ComboBox fx:id="comboGenero" prefWidth="240.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+      </ComboBox>
+      <ListView fx:id="listaPersonas" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </GridPane.margin>
+      </ListView>
+      <GridPane GridPane.columnIndex="1">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Spinner fx:id="spinnerResultados" prefHeight="26.0" prefWidth="146.0" GridPane.halignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="7.0" right="7.0" top="5.0" />
+               </GridPane.margin>
+            </Spinner>
+            <Button fx:id="botonJSON" mnemonicParsing="false" text="Cargar Datos" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="7.0" right="7.0" top="5.0" />
+               </GridPane.margin></Button>
+         </children>
+      </GridPane>
+      <Accordion />
+      <GridPane prefHeight="302.0" prefWidth="254.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="189.60001220703126" minHeight="10.0" prefHeight="180.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="64.80003356933594" minHeight="0.0" prefHeight="35.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="53.59998168945313" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="63.60002136230466" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="66.99997558593748" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <GridPane.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </GridPane.margin>
+         <children>
+            <ImageView fx:id="imagenPersona" fitHeight="152.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </ImageView>
+            <Label fx:id="textoNombre" text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <Label fx:id="textoMail" text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <Label fx:id="textoTelefono" text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+            <Label fx:id="textoDireccion" text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+         </children>
+      </GridPane>
+   </children>
+</GridPane>
