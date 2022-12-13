@@ -102,6 +102,7 @@ public class MainRapaso {
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         // recorridos completos
         int[] numeros = {1,2,3,4,5,6,7,8,9,10};
         for (int item: numeros) {
@@ -110,6 +111,10 @@ public class MainRapaso {
 =======
 =======
 >>>>>>> Stashed changes
+        //for ( : ) {
+
+>>>>>>> Stashed changes
+=======
         //for ( : ) {
 
 >>>>>>> Stashed changes
