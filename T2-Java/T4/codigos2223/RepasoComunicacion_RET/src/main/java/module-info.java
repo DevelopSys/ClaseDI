@@ -10,6 +10,7 @@ module com.example.repasocomunicacion_ret {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires org.json;
 
     opens com.example.repasocomunicacion_ret to javafx.fxml;
     exports com.example.repasocomunicacion_ret;

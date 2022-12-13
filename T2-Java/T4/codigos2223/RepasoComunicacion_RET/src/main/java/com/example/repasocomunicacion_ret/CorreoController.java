@@ -11,31 +11,29 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class NombreController implements Initializable {
+public class CorreoController implements Initializable {
 
     @FXML
-    private Button boton_nombre;
+    private TextField edit_correo;
 
     @FXML
-    private TextField edit_nombre;
+    private Button boton_correo;
 
     private GeneralController controller;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        boton_nombre.setOnAction(new EventHandler<ActionEvent>() {
+        boton_correo.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                // darle los datos a la controladora uno
-                controller.setNombre(edit_nombre.getText());
-                // cerrar ventana
-                ((Stage)boton_nombre.getScene().getWindow()).close();
+                controller.setCorreo(edit_correo.getText());
+                ((Stage)boton_correo.getScene().getWindow()).close();
             }
         });
     }
 
-    public void setController(GeneralController controller) {
+    public void setController (GeneralController controller){
         this.controller = controller;
     }
 }
