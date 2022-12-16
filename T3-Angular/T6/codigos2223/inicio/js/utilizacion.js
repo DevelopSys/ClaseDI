@@ -15,9 +15,10 @@ muestre todas las tareas completas de la nota
   
   */
 
-// realizar practica de di
-// practica di
-// 22/12/2022 --> DATE
-// false
-// realizacion de una clase js para hacer una app de notas
-// [ ("hacer una clase",boolean), ("hacer unos metodos",boolean)]
+// nota: realizar practica de di
+// titulo: practica di
+// fecha: 22/12/2022 --> DATE
+let fecha = new Date(2002, 12, 22);
+// completada: false
+// descripcion: realizacion de una clase js para hacer una app de notas
+// tareas: [ ("hacer una clase",boolean), ("hacer unos metodos",boolean)]
