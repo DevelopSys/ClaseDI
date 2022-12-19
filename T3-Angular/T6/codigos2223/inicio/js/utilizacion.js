@@ -51,7 +51,25 @@ class Nota {
   }
 
   agregarTarea(tarea) {
-    this.tareas.push(tarea);
+    // [t1,t2,t3,t4] --> [t1,t4]
+    // la lista de tareas que tienen el titulo igual que la tarea que intento agregar
+    /*this.tareas.filter((item) => item.titulo == tarea.titulo).length > 0
+      ? console.log("No se puede añadir, ya existe")
+      : this.tareas.push(tarea);*/
+
+    this.tareas.some((item) => item.titulo == tarea.titulo)
+      ? console.log("No se puede añadir, ya existe")
+      : this.tareas.push(tarea);
+
+    /*
+    if (this.tareas.some((item) => item.titulo == tarea.titulo)) {
+      console.log("No se puede añadir, ya existe");
+    } else {
+      this.tareas.push(tarea);
+    }
+    */
+
+    // cuando no exista (el titulo) dentro de la lista
   }
 
   tareasPendientes() {
@@ -110,6 +128,8 @@ notaUno.agregarTarea(new Tarea("Tarea 2"));
 notaUno.agregarTarea(new Tarea("Tarea 3"));
 notaUno.agregarTarea(new Tarea("Tarea 4"));
 notaUno.agregarTarea(new Tarea("Tarea 4"));
+notaUno.agregarTarea(new Tarea("Tarea 1"));
+// no se puede agregar
 
 // poner la restriccion para que no puedan existir tareas con el mismo nombre
 
