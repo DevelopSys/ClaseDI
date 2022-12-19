@@ -101,6 +101,7 @@ class Nota {
       }
     });*/
     this.tareas.find((item) => item.titulo == titulo).completa = true;
+    completarNota();
   }
 
   tareasPendientes() {
