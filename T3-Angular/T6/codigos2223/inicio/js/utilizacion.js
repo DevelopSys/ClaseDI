@@ -72,6 +72,26 @@ class Nota {
     // cuando no exista (el titulo) dentro de la lista
   }
 
+  completarNota() {
+    // cuando todas las tareas están completas
+    /* let completas = 0;
+    this.tareas.forEach((item) => {
+      if (item.completa) {
+        completas++;
+      }
+    });
+    if (completas == this.tareas.length) {
+      this.completa = true;
+    } */
+    /* if (this.tareas.filter(item => { return item.completa }).length == this.tareas.length) {
+      this.completa = true
+    } */
+
+    this.tareas.some((item) => !item.completa)
+      ? console.log("No se pude completar")
+      : (this.completa = true);
+  }
+
   completarTarea(titulo) {
     // buscar la tarea que cumple la condicion
     // foreach - for
@@ -145,7 +165,7 @@ notaUno.agregarTarea(new Tarea("Tarea 4"));
 
 notaUno.completarTarea("Tarea 1");
 
-notaUno.completarTarea("Tarea 3");
+//notaUno.completarTarea("Tarea 3");
 
 // poner la restriccion para que no puedan existir tareas con el mismo nombre
 // crear un método en la nota para poder completar la tarea que le pase por
@@ -154,5 +174,5 @@ notaUno.completarTarea("Tarea 3");
 // marcarCompleta() --> marcara como completa una nota si todas las tareas
 // estan completas
 
-//notaUno.listarTareas();
-notaUno.tareasCompletas();
+notaUno.listarTareas();
+//notaUno.tareasCompletas();
