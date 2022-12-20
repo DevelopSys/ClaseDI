@@ -144,6 +144,8 @@ class Nota {
   }
 
   listarTareas() {
+    console.log(`Titulo ${this.titulo}`);
+    console.log(`Completa ${this.completa}`);
     this.tareas.forEach((item) => {
       item.mostrarDatos();
     });
