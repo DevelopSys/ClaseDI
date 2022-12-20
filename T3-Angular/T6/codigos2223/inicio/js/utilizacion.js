@@ -1,6 +1,9 @@
-let ejemploObjeto = new ClaseEjemplo("p1", "p2", ["p3"]);
-ejemploObjeto.mostrarDatos();
+//let ejemploObjeto = new ClaseEjemplo("p1", "p2", ["p3"]);
+//ejemploObjeto.mostrarDatos();
 
+// titulo completa
+// tareas de texto --> descripcion --> agregarDefinicion()
+// tareas multimedia --> fichero --> agregarFichero()
 class Tarea {
   titulo;
   completa;
@@ -9,15 +12,54 @@ class Tarea {
     this.completa = false;
   }
 
+  mostrarDatos() {
+    console.log(`Titulo ${this.titulo}`);
+    console.log(`Completa ${this.completa}`);
+  }
+
   set setCompleta(completa) {
     this.completa = completa;
+  }
+}
+
+class TareaMultimedia extends Tarea {
+  fichero;
+  constructor(titulo, fichero) {
+    super(titulo);
+    this.fichero = fichero;
+  }
+
+  mostrarDatos() {
+    super.mostrarDatos();
+    console.log(`Fichero: ${this.fichero}`);
+  }
+
+  set setFichero(fichero) {
+    this.fichero = fichero;
+  }
+}
+
+class TareaTexto extends Tarea {
+  descripcion;
+  constructor(titulo, descripcion) {
+    super(titulo);
+    this.descripcion = descripcion;
+  }
+
+  mostrarDatos() {
+    super.mostrarDatos();
+    console.log(`Descripcion: ${this.descripcion}`);
+  }
+
+  set setDescripcion(descripcion) {
+    this.descripcion = descripcion;
   }
 }
 
 class Nota {
   titulo;
   descripcion;
-  tareas;
+  tareas = [];
   fecha;
   completa;
 
@@ -80,7 +122,7 @@ class Nota {
       }
     });*/
     this.tareas.find((item) => item.titulo == titulo).completa = true;
-    completarNota();
+    this.completarNota();
   }
 
   tareasPendientes() {
@@ -103,8 +145,7 @@ class Nota {
 
   listarTareas() {
     this.tareas.forEach((item) => {
-      console.log(item.titulo);
-      console.log(item.completa);
+      item.mostrarDatos();
     });
   }
 
@@ -128,7 +169,7 @@ class Nota {
     this.descripcion = descripcion;
   }
 }
-
+/*
 let notaUno = new Nota(
   "Nota ejemplo",
   "Esta nota es un ejemplo para hacer el ejercicio",
@@ -142,8 +183,18 @@ notaUno.agregarTarea(new Tarea("Tarea 1"));
 notaUno.agregarTarea(new Tarea("Tarea 2"));
 notaUno.agregarTarea(new Tarea("Tarea 3"));
 notaUno.agregarTarea(new Tarea("Tarea 4"));
+notaUno.agregarTarea(
+  new TareaMultimedia("Tarea multimedia", "./images/fichero.png")
+);
 
-notaUno.completarTarea("Tarea 1");
+notaUno.agregarTarea(
+  new TareaTexto(
+    "Tarea tarea texto",
+    "Esto es un ejemplo de tarea de texto utilizando extension"
+  )
+);
+
+//notaUno.completarTarea("Tarea 1");
 
 //notaUno.completarTarea("Tarea 3");
 
@@ -154,5 +205,7 @@ notaUno.completarTarea("Tarea 1");
 // marcarCompleta() --> marcara como completa una nota si todas las tareas
 // estan completas
 
+// sacar todos los datos de las tareas que estan en la lista,
+// sean del tipo que sean
 notaUno.listarTareas();
-//notaUno.tareasCompletas();
+//notaUno.tareasCompletas();*/
