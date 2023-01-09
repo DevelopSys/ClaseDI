@@ -50,8 +50,15 @@ elementoLista.innerHTML = listaHTML; */
 let nodoLIBuscado = document.querySelector(".elemento3");
 elementoLista.removeChild(nodoLIBuscado); */
 
+let seleccion = document.querySelector("select");
+
 let elementoLista = document.querySelector("ul.clase2");
+
 document.querySelector("#boton_add").addEventListener("click", () => {
+  console.log(seleccion.value);
+
+  // if
+
   let listaHTML =
     elementoLista.innerHTML +
     `<li class="list-group-item elemento1">Elemento Nuevo</li>`;
