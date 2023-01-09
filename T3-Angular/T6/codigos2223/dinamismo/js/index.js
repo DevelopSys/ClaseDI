@@ -20,5 +20,41 @@ console.log(elementoPorClass); */
 //document.querySelectorAll();
 //let elementosQuery = document.querySelectorAll("#lista1 li");
 //let elementosQuery = document.querySelectorAll("ul.clase1");
-//let elementosQuery = document.querySelectorAll("#lista1.clase1");
-//console.log(elementosQuery[0]);
+/* let elementosQuery = document.querySelectorAll("ul.clase2 li");
+elementosQuery.forEach((element) => {
+  console.log(element.classList.contains("elemento1"));
+}); */
+
+// agregar
+/* let elementoLista = document.querySelector("ul.clase2");
+// 1 - crear un li
+let nodoLI = document.createElement("li");
+// 2 - personalizar li (agregar las clases y poner el contenido - tipo texto)
+// nodoLI.className = "list-group-item";
+//nodoLI.className = "elemento1";
+nodoLI.classList.add("list-group-item");
+nodoLI.classList.add("elemento1");
+nodoLI.innerText = "Elemento 66";
+// 3 - agregar el li al ul (encontrado!)
+elementoLista.append(nodoLI); */
+
+/* let elementoLista = document.querySelector("ul.clase2");
+let listaHTML =
+  elementoLista.innerHTML +
+  `<li class="list-group-item elemento1">Elemento 66</li>`;
+
+elementoLista.innerHTML = listaHTML; */
+
+// borrar
+/* let elementoLista = document.querySelector("ul.clase2");
+let nodoLIBuscado = document.querySelector(".elemento3");
+elementoLista.removeChild(nodoLIBuscado); */
+
+let elementoLista = document.querySelector("ul.clase2");
+document.querySelector("#boton_add").addEventListener("click", () => {
+  let listaHTML =
+    elementoLista.innerHTML +
+    `<li class="list-group-item elemento1">Elemento Nuevo</li>`;
+
+  elementoLista.innerHTML = listaHTML;
+});
