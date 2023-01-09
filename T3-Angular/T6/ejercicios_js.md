@@ -10,12 +10,14 @@
 		- listarEquipo: obtiene por parámetro un equipo y muestra sus datos
 		- listarPlantilla: obtiene por parámetro un equipo y muestra los datos de todos sus jugadores 
 	- Utiliza las funciones creadas en los puntos anteriores
-3. Coge el link de classroom y guarda todo el contenido del json en una variable llamada temporada1920 y realiza las siguientes acciones:
+3. Coge el siguiente link (https://www.thesportsdb.com/api/v1/json/2/eventsseason.php?id=4328&s=2019-2020
+) y guarda todo el contenido del json en una variable llamada temporada1920 y realiza las siguientes acciones:
 	- Crea una función que admita por parámetros el nombre de un equipo y muestre todos los partidos de la temporada de dicho equipo con el siguiente formato: Equipo1 X - Equipo2 X
 	- Crea una función que admita por parámetros el nombre del equipo y muestre las alineaciones utilizadas en cada uno de los partidos con el siguiente formato: 
 		- Partido 1 Equipo1 vs Equipo2 
-		- Alineación Local : Jugador1 Jugador2 Jugador3 Jugador4 Equipo1 vs Equipo2 
-		- Alineación Local : Jugador1 Jugador2 Jugador3 Jugador4
+		
+
+
 4. Modificar el ejercicio anterior para que todos los datos sean cargados desde el link de classroom directamente, es decir ejecutando una función fetch
 5. Modifica el ejercicio anterior para que:
 	- Se cree un objeto de tipo partido con los siguientes datos
