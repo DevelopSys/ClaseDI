@@ -51,17 +51,36 @@ let nodoLIBuscado = document.querySelector(".elemento3");
 elementoLista.removeChild(nodoLIBuscado); */
 
 let seleccion = document.querySelector("select");
-
-let elementoLista = document.querySelector("ul.clase2");
+let lista1 = document.querySelector("ul.clase1");
+let lista2 = document.querySelector("ul.clase2");
+let input = document.querySelector("input");
 
 document.querySelector("#boton_add").addEventListener("click", () => {
-  console.log(seleccion.value);
+  let listaSeleccionada = seleccion.value;
+  let valorInput = input.value;
 
+  if (
+    listaSeleccionada == 1 ||
+    listaSeleccionada == 2 ||
+    valorInput.length > 0
+  ) {
+    listaSeleccionada == 1
+      ? agregarLI(lista1, valorInput)
+      : agregarLI(lista2, valorInput);
+  } else {
+    alert("Alguno de los campos no cumple con la condición");
+  }
+  //console.log(seleccion.value);
   // if
-
-  let listaHTML =
+  /*let listaHTML =
     elementoLista.innerHTML +
     `<li class="list-group-item elemento1">Elemento Nuevo</li>`;
 
-  elementoLista.innerHTML = listaHTML;
+  elementoLista.innerHTML = listaHTML;*/
 });
+
+function agregarLI(lista, texto) {
+  let listaHTML =
+    lista.innerHTML + `<li class="list-group-item elemento1">${texto}</li>`;
+  lista.innerHTML = listaHTML;
+}
