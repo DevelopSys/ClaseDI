@@ -6,7 +6,9 @@ let urlString = "https://dummyjson.com/products";
 fetch(urlString)
   .then((res) => res.json())
   .then((res1) => {
-    console.log(res1);
+    res1.products.forEach((item) => {
+      console.log(`${item.title} ${item.price}`);
+    });
   })
   .catch((err) => {
     console.log("fetch resuelta sin exito");
