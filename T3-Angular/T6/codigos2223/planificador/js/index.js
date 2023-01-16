@@ -29,18 +29,40 @@ let planificador = {
   cantidad: 4,
 };
 
+let fila = document.querySelector(".row");
+let variableExtexion = "Ejemplo de cambio de comillas";
+
 //console.log(planificador);
 
 // sacar el titulo, descr y fecha de todas las notas
 planificador.notas.forEach((item) => {
-  console.log(item.titulo);
+  fila.innerHTML += `<div class=col>
+  <div class=card style=width: 18rem>
+  <div class=card-body>
+  <h5 class=card-title>${item.titulo}</h5>
+  <h6 class=card-subtitle>${item.fecha}</h6>
+  <p>${item.descripcion}</p>
+  <ul class=card-text >
+  </ul>
+  </div>
+  </div>
+  </div>`;
+
+  let lista = document.querySelectorAll("ul");
+  console.log();
+
+  item.tareas.forEach((element) => {
+    lista[lista.length - 1].innerHTML += `<li>${element.titulo}</li>`;
+  });
+
+  /* console.log(item.titulo);
   console.log(item.descripcion);
   console.log(item.fecha);
   // sacar todas las tareas de la nota
   item.tareas.length > 0 && console.log("La lista de tareas es: ");
   item.tareas.forEach((element) => {
     console.log(element.titulo);
-  });
+  }); */
 });
 
 // recorrer las notas y crear tantas cartas como notas tenga el objeto
