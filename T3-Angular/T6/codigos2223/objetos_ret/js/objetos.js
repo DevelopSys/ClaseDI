@@ -35,7 +35,6 @@ class Persona {
     this.apellido = apellido;
   }
 }
-
 class Trabajador extends Persona {
   salario;
   pagas;
@@ -58,15 +57,3 @@ class Trabajador extends Persona {
     console.log(netoMes);
   }
 }
-
-let personaUno = new Persona("borja", "martin", "correo@correo.es", 23);
-let trabajadorUno = new Trabajador(
-  "trabajador",
-  "apellido",
-  "correo",
-  29,
-  40000,
-  14
-);
-trabajadorUno.mostrarDatos();
-trabajadorUno.calcularNetoMes(0.2);
