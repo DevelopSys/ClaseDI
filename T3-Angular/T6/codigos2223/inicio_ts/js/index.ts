@@ -18,6 +18,14 @@ let profesor2 = {
   ],
 };
 
+function mostrarAsignaturas(asignaturas: Array<any>) {
+  asignaturas.forEach((element) => {
+    console.log(element.nombre);
+  });
+}
+
+mostrarAsignaturas(profesor2.asignaturas);
+
 /* let nombre: String = "Borja";
 let edad: Number = 38;
 let asignaturas: Array<String> = [
@@ -30,5 +38,3 @@ asignaturas.forEach((element) => {
   console.log(element);
 });
 */
-
-console.log("Ejemplo de profesores");
