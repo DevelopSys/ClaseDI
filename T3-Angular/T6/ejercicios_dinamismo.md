@@ -11,5 +11,4 @@
 
 4. Un conversor de pesos, medidas y/o temperaturas. Se debería poder ingresar valor en un input (por ejemplo dólar) y que se actualicen los demás inputs (por ejemplo peso)
 
-5. Realizar una página donde se puedan visualizar chistes del API (https://api.chucknorris.io/jokes/random). Al pulsar un botón. También debe existir la posibilidad de seleccionar desde un select el tipo de chiste que se quiere ver (https://api.chucknorris.io/jokes/random?category={category}). Las categorías del select deberán ser cargadas automáticamente (https://api.chucknorris.io/jokes/categories)
 
