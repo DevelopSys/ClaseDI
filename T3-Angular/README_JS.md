@@ -563,7 +563,7 @@ También se cuanta con la posibilidad de aplicar un forIn y un forOf que se ver�
 
 Para poder crear un array se puede realizar dándole un conjunto vacío de elementos, como un conjunto de elementos ya declarados o como un objeto compleja donde se le indica la longitud que tendrá
 
-````
+````javascript
        var coleccion= [];
        var coleccionConDatos = [1,2,3,4,5,6,7,8,9];
        var coleccionCompleja = new Array(10);
@@ -571,7 +571,7 @@ Para poder crear un array se puede realizar dándole un conjunto vacío de eleme
 
 Dentro de un array se puede guardar cualquier tipo de dato, incluso mezclando los tipos. Como en JS el tipado es dinámico no es necesario identificar el tipo del array.
 
-````
+````javascript
 	var arrayNumeros = [1, 2, 3, 4];
 	var arrayPalabras = ["Hola", "que", "tal", "estas"]
 	var arrayCosas = [1, "hola", 2, "que", false];
@@ -579,14 +579,14 @@ Dentro de un array se puede guardar cualquier tipo de dato, incluso mezclando lo
 
 Para poder acceder a las posiciones de un array se utiliza el índice, teniendo en cuenta que siempre se empieza por 0
 
-````
+````javascript
         arrayNumeros = [1, 2, 3, 4];
         console.log(arrayNumeros[0]); // retornará el valor 1
         console.log(arrayNumeros[2]); // retornará el valor 2
 ````
 
 Para poder modificar el valor de las posiciones se utiliza el indice y el operador de igualdad
-````
+````javascript
         arrayNumeros = [1, 2, 3, 4];
         arrayNumeros[0] = 5; // cambia el valor de 1 por el 5
         arrayNumeros[2] = 6; // cambia el valor de 3 por el 4
@@ -596,14 +596,14 @@ Dentro de las propiedades del array nos encontramos con una clave que nos servir
 
 - .length(): indica la cantidad de elementos que tiene el array
 
-````
+````javascript
         arrayNumeros = [1, 2, 3, 4];
         console.log(`El array tiene ${arrayNumeros.length}`);
 ````
 
 Con esta longitud se puede recorrer el array de forma completa con un bucle for, iterando en cada una de las posiciones
 
-````
+````javascript
         console.log("Recorrer con un for");
         for (let index = 0; index < arrayNumeros.length; index++) {
             const element = arrayNumeros[index];
@@ -614,7 +614,7 @@ Con esta longitud se puede recorrer el array de forma completa con un bucle for,
 
 Adicionalmente existe una forma más sencilla de recorrer mediante un foreach. Esta estructura aplica una función de flecha
 
-````
+````javascript
         console.log("Recorrer con un foreach");
         arrayNumeros.forEach(element => {
             console.log(element);
@@ -625,7 +625,7 @@ Dentro del foreach, cada vez que se hace una iteración el elemento llamado elem
 
 Del mismo modo se podría buscar un elemento dentro de un array, tanto con el for como con el foreach
 
-````
+````javascript
         arrayNombres = ["Borja", "Luis", "Jesus", "Roberto", "Manuel", "Victor"];
         for (let index = 0; index < arrayNombres.length; index++) {
             const element = arrayNombres[index];
@@ -647,7 +647,7 @@ Del mismo modo se podría buscar un elemento dentro de un array, tanto con el fo
 Los métodos que se pueden aplicar a un array son:
 
 - .sort(): ordena alfabéticamente o numéricamente el contenido del array
-````
+````javascript
         arrayNombres = ["Borja", "Luis", "Jesus", "Roberto", "Manuel", "Victor"];
         console.log("Array sin ordenar");
         arrayNombres.forEach(element => {
@@ -664,7 +664,7 @@ Los métodos que se pueden aplicar a un array son:
 ````
 
 - .reverse(): invierte el orden del array
-````
+````javascript
         arrayNombres = ["Borja", "Luis", "Jesus", "Roberto", "Manuel", "Victor"];
         console.log("Array normal");
         arrayNombres.forEach(element => {
@@ -683,7 +683,7 @@ Los métodos que se pueden aplicar a un array son:
 - .join(): junta todos los elementos del array en una sola cadena 
 - .concat(): retorna dos arrays juntos
 
-````
+````javascript
         arrayUno = [1, 2, 3, 4];
         arrayDos = [5, 6, 7, 8];
         arrayJuntar = arrayUno.concat(arrayDos);
@@ -692,7 +692,7 @@ Los métodos que se pueden aplicar a un array son:
 
 - .indexOf(): indica la posición de un elemento dado
 
-````
+````javascript
         arrayUno = [1, 2, 3, 4];
         posicionNumero = arrayUno.indexOf(1);
         if (arrayUno.indexOf(1) >= 0) {
@@ -708,7 +708,7 @@ Los métodos que se pueden aplicar a un array son:
 - .pop(): elimina el último elemento
 - .shift() elimina el primer elemento
 
-````
+````javascript
         arrayElementos = [1, 2, 3];
         console.log('El array tienen una longitud de %d', arrayElementos.length);
         arrayElementos.push(4, 4, 5);
@@ -731,7 +731,7 @@ Las funciones son todos aquellos métodos que se quieren ejecutar en determinada
 
 La estructura básica de una función es la siguiente: 
 
-````
+````javascript
         function name(params) {
             
         }
@@ -739,7 +739,7 @@ La estructura básica de una función es la siguiente:
 
 Del mismo modo una función también se puede asociar a una variable de la siguiente forma.
 
-````
+````javascript
 	    var miFuncion = function name(params) {
             
         }
@@ -747,7 +747,7 @@ Del mismo modo una función también se puede asociar a una variable de la sigui
 
 Así cuando la variable sea llamada se ejecutaría en contenido de la función. Para poder ejecutar una función de cualquiera de las maneras basta con llamarla, bien a la función directamente o a la variable
 
-````
+````javascript
         function funcionInicial() {
             console.log('Llamada la funcion inicial');
         }
@@ -765,7 +765,7 @@ Como en todo lenguaje de programación, las funciones van acompañadas tanto de 
 
 - Uso normal
 
-````
+````javascript
         function suma(operando1, operando2) {
             var suma = operando1 + operando2;
             console.log(`La suma de los dos parámetos pasados a la función es de: ${suma}`);
@@ -776,7 +776,7 @@ Como en todo lenguaje de programación, las funciones van acompañadas tanto de 
 
 Se pueden pasar tantos parámetros como sean necesarios. En el caso de pasar más valores por argumento que los declarados en la función no da error
 
-````
+````javascript
         function suma(operando1, operando2) {
             var suma = operando1 + operando2;
             console.log(`La suma de los dos parámetos pasados a la función es de: ${suma}`);
@@ -787,7 +787,7 @@ Se pueden pasar tantos parámetros como sean necesarios. En el caso de pasar má
 
 En el caso de pasar menos de los indicados pasa exactamente lo mismo, dando valores undefined a aquellos parámetros que no sean pasados, obteniendo como valor NaN (Not - a - Number)
 
-````
+````javascript
         function suma(operando1, operando2) {
             var suma = operando1 + operando2;
             console.log(`La suma de los dos parámetos pasados a la función es de: ${suma}`);
@@ -803,7 +803,7 @@ En el caso de pasar menos de los indicados pasa exactamente lo mismo, dando valo
 Se puede indicar a las funciones que algunos parámetros de la función (en concreto los últimos) sea opcionales. Para ellos se pueden utilizar dos formas:
 
 A) Utilizando el operador OR || 
-````
+````javascript
         function parametorsOpcionales(parametroUno, parametroDos) {
             parametroDos = parametroDos || "valor por defecto";
             console.log(`Los parámetos pasados por funcion son ${parametroUno} y ${parametroDos}`);
@@ -815,7 +815,7 @@ A) Utilizando el operador OR ||
 
 B) Utilizando un if
 
-````
+````javascript
         function sumaOptativa(a, b) {
             if (typeof b === 'undefined') {
                 b = 0;
@@ -829,7 +829,7 @@ B) Utilizando un if
 
 C) De forma directa
 
-````
+````javascript
 function funcionDefecto(obligatorio, defecto = "defecto") {
   console.log(`${obligatorio} ${defecto}`);
 }
@@ -840,7 +840,7 @@ function funcionDefecto(obligatorio, defecto = "defecto") {
 
 En muchas ocasiones no es necesario pasar argumentos por una función, o no saber cuantos son necesarios. Para ello JS ofrece la posibilidad de utilizar el array arguments, ya incluido en todas las funciones. Con este array se puede acceder a los argumentos "adicionales" pasados en la llamada a la función. 
 
-````
+````javascript
         function argumentosInvisibles() {
             console.log('La función ha sido llamada con ' + arguments.length + 'y son los siguientes');
             for (let index = 0; index < arguments.length; index++) {
@@ -854,16 +854,11 @@ En muchas ocasiones no es necesario pasar argumentos por una función, o no sabe
 
 Este uso solo funciona para funciones con construcción normal. En el caso de querer utilizar lo mismo con una función de flecha se trendrían que utilizar el parámetro de array
 
-````
-
-````
-
-
 - Valores de retorno
 
 Cuando el llamamiento de una función requiere ademas de ejecutar todo su contenido, la devolución de algún valor se utiliza la palabra reservada return:
 
-````
+````javascript
         function argumentosInvisibles() {
             console.log('La función ha sido llamada con ' + arguments.length + 'y son los siguientes');
             for (let index = 0; index < arguments.length; index++) {
@@ -883,7 +878,7 @@ Cuidado porque los valores de retorno no solo tienen por que ser números, letra
 
 En JS no es necesario declarar nombre a la funcione, ya que se pueden declarar directamente, o bien retornarlas en otra función. 
 
-````
+````javascript
         var funcionAnonima = function(parametro) {
             console.log(`El parámetro de la función anónima es ${parametro}`);
         }
@@ -893,7 +888,7 @@ En JS no es necesario declarar nombre a la funcione, ya que se pueden declarar d
 
 Ó 
 
-````
+````javascript
         function retornaFuncion() {
             return function () {
                 console.log('Rotoranada una función anónima');
@@ -906,7 +901,7 @@ En JS no es necesario declarar nombre a la funcione, ya que se pueden declarar d
 
 Un callback no es un elemento propio del lenguaje, sino que se trata de una técnica de programación que permite la animación de funciones una vez estas han terminado de realizar una tarea. Imaginad el elemento de un proceso que tiene dos subprocesos, donde el segundo solo se puede ejecutar una vez haya terminado el primero. En programación esto se consigue utilizando la palabra return junto con la llamada a una función
 
-````
+````javascript
         function primeraFuncion() {
             console.log("Este es el primer subproceso");
             return segundaFuncion();
@@ -970,25 +965,25 @@ Como se puede ver, el segundo then es el que muestra el json de la url y para el
 
 Al igual que en cualquier lenguaje de programación orientado a objetos, se pueden crear dichos objetos para poder "almacenar dentro" una serie de características y acciones asociadas al mismo. Para ello existen dos formas de crear objetos. La primera es mediante el uso de la palabra reservada new
 
-````
+````javascript
 var palabra = new String("ejemplo de objeto");
 ````
 
 Pero también existe la posibilidad de declararlo en una notación json (javascript object notation). Esta notación no es más que una relación par clave - valor, donde se pueden identificar tantas características como se quiera. Para poder declarar un objeto con esta notación se utiliza los caracteres {} donde en su interior se definen los elementos:
 
-````
+````javascript
 var nombre = {nombrePropiedad: "valor",nombreOtraPropiedad: "valor"}
 ````
 
 Un ejemplo sería
 
-````
+````javascript
 var objetoCreado = {nombre:"Borja",apellido:"Martín", edad: 18, carnet: true };
 ````
 
 En este caso se crea un objeto que tiene las propiedades nombre, apellido, edad y carnet, donde cada una de las propiedades tiene un tipo de dato asociado. Una vez creado el objeto para poder acceder a sus propiedades se llama al nombre de la propiedad
 
-````
+````javascript
 <script type="text/javascript">
         var objetoCreado = {
             nombre: "Borja",
@@ -1002,7 +997,7 @@ En este caso se crea un objeto que tiene las propiedades nombre, apellido, edad 
 
 Del mismo modo se pueden declarar métodos para darle funcionalidad al objeto utilizando la palabra reservada function. Se realiza de la misma forma:
 
-````
+````javascript
     <script type="text/javascript">
         var objetoCreado = {
             nombre: "Borja",
@@ -1022,13 +1017,13 @@ En este ejemplo se crea una función llamada mostrarDatos que imprime por consol
 
 Adicionalmente se pude utiliza el acceso por posición para ver el contenido de la propiedad. La forma de realizarlo sería de la siguiente forma
 
-````
+````javascript
 console.log(objetoCreado['nombre']);
 ````
 
 Al igual que se ha creado el objeto con una cantidad determinada de propiedades y métodos, también es posible crear o eliminar la propiedad de forma dinámica. Para crear la propiedad basta con llamarla e igualarla un valor 
 
-````
+````javascript
 let objeto = {
   nombre: "Borja",
   apellido: "Martin",
@@ -1043,7 +1038,7 @@ objeto.nuevaEdad = 20;
 
 Para poder eliminarla no basta con igualar la propiedad a null, ya que eso eliminaría el contenido de la propiedad. Para poder eliminar una propiedad hay que utilizar la palabra reservada delete
 
-````
+````javascript
 let objeto = {
   nombre: "Borja",
   apellido: "Martin",
@@ -1061,7 +1056,7 @@ console.log(objeto);
 
 Otra de las posibilidades que existen a la hora de trabajar con un objeto es la conversión del objeto a formato Array, guardando todos los datos en clave-valor. Para poder hacer esto se ejecuta el método object.entries
 
-````
+````javascript
 console.log(Object.entries(objeto));
 let parClaveValor = Object.entries(objeto);
 parClaveValor.forEach((element) => {
@@ -1077,7 +1072,7 @@ Como ya se ha visto antes en la parte de la declaración de funciones, estas pue
 
 Cuando se quiere crear un objeto desde una función lo primero que se nos puede ocurrir es el siguiente código:
 
-````
+````javascript
 function crearObjeto(param1, param2) {
   return { nombre: param1, apellido: param2 };
 }
@@ -1089,7 +1084,7 @@ console.log(objeto);
 
 Sin embargo esto no es del todo necesario siempre que se indique un parámetro que sea el nombre de la propiedad
 
-````
+````javascript
 "use strict";
 
 function crearObjeto(nombre, apellido) {
@@ -1102,7 +1097,7 @@ console.log(objeto);
 
 Otra de las funciones que se permiten en la relación objeto - funciones es la de desectructurar un objetos. En el siguiente ejemplo se crea un método que saca determinadas propiedades
 
-````
+````javascript
 function sacarPropiedades({ nombre, fundacion, estadio }) {
   console.log(nombre);
   console.log(fundacion);
@@ -1112,21 +1107,21 @@ function sacarPropiedades({ nombre, fundacion, estadio }) {
 
 Es importante darse cuenta que los parámetros que se le pasan no son normales, sino que son en formato objeto (por los {}). A continuación, si se quiere llamar al método, solo tendremos que pasarle un objeto que tenga las propiedades indicadas como parámetros
 
-````
+````javascript
 let equipo = { nombre: "Barcelona", fundacion: 1890, estadio: "CampNou" };
 sacarPropiedades(equipo);
 ````
 
 En el caso de intentar llamarlo normal y corriente:
 
-````
+````javascript
 sacarPropiedades("Barcelona", 123, "Camp Nou");
 
 ````
 
 Daría un error de tipo undefined
 
-````
+````javascript
 undefined
 undefined
 undefined
@@ -1146,7 +1141,7 @@ Como se ha dicho cuando hablamos de DOM, estamos hablando de todos los elementos
 
 
 Imaginad el body de una página con la siguiente estructura
-````
+````html
 <body>
 
     <h1>Titulo de JS impartido por Borja Martín</h1>
@@ -1159,7 +1154,7 @@ Imaginad el body de una página con la siguiente estructura
 
 En este caso se renderizaría un título y un párrafo, quedando un div vacío. Este div vacío cuenta con un id, mediante la cual puede ser accedido el elemento desde el código js, de forma que se pueda poner cualquier cosa en su interior mediante programación. Si en el script asociado se utiliza el método getElementById() se puede acceder al elemento HTML con dicho id
 
-````
+````html
     <script>
         'use strict'
         let elementoDiv = document.getElementById('mi_div');
@@ -1171,7 +1166,7 @@ La salida por consola sería la propia etiqueta. Una vez capturada se puede por 
 
 Al igual que se puede modificar y/o acceder al contenido de la etiqueta encontrada, también se pueden hacer accesos y modificaciones de estilos, atributos, etc...Por ejemplo si se quiere cambiar el style de la etiqueta a uno que se haya creado en CSS sería tan sencillo como crear el estilo en css y aplicárselo a la etiqueta encontrada
 
-````
+````javascript
 .estilo_js {
     background-color: burlywood;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -1181,7 +1176,7 @@ Al igual que se puede modificar y/o acceder al contenido de la etiqueta encontra
 
 Y el código HTML 
 
-````
+````html
     </div>
     <script>
         "use strict";
@@ -1195,7 +1190,7 @@ Y el código HTML
 
 De igual forma se puede hacer más dinámico aun si nos creamos por ejemplo una función que pueda ser llamada desde cualquier elemento mediante un evento (que se verán más adelante) o simplemente desde la consola. Para ello en el código js se crea una función que reciba como parámetro un color y lo aplique en los estilos
 
-````
+````html
     <script>
         "use strict";
 
@@ -1210,7 +1205,7 @@ De igual forma se puede hacer más dinámico aun si nos creamos por ejemplo una 
 
 Esta función puede ser llamada desde la consola o desde la pulsación de un elemento por ejemplo. 
 
-````
+````html
     <script>
         'use strict'
         let elementoDiv = document.getElementById('mi_div');
@@ -1224,7 +1219,7 @@ En el ejemplo que se acaba de ver, se ha accedido al elemento mediante una ID, p
 
 Imaginad una web con la siguiente estructura
 
-````
+````html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -1234,12 +1229,9 @@ Imaginad una web con la siguiente estructura
   </head>
 
   <body>
-    <h1 id="titulo">Titulo propio impartido en el CES Juan Pablo II</h1>
+    <h1 id="titulo">Titulo JacaScript</h1>
     <p id="parrafo_general">
-      Este título propio será impartido para los alumnos del ciclo de Desarrollo
-      de Aplicaciones Multiplataforma de CES JuanPablo II. La finalidad de este
-      curso es sentar las bases del lenguaje de programación web JavaScrip de
-      forma que se puedan hacer Aplicaciones web dinámicas
+      La finalidad de este curso es sentar las bases del lenguaje de programación web JavaScrip de forma que se puedan hacer Aplicaciones web dinámicas
     </p>
 
     <p>El contenido del curso será</p>
@@ -1259,7 +1251,7 @@ Imaginad una web con la siguiente estructura
 
 Como se puede ver, algunos nodos del DOM de la página cuentan con el atributo id. Este atributo (al igual que otros como el class o el tag) permiten a js acceder a su contenido mediante los métodos getElementById, getElementByClassName, getElementByTagName
 
-````
+````html
     <script>
         var listaPorId = document.getElementById('lista_contenido');
         var listaPorTag = document.getElementsByTagName('ul');
@@ -1271,7 +1263,7 @@ Como se puede ver, algunos nodos del DOM de la página cuentan con el atributo i
     </script>
 ````
 
-````
+````javascript
 <ul id="lista_contenido" class="class_lista">..</ul>
 HTMLCollection [ul#lista_contenido.class_lista, lista_contenido: ul#lista_contenido.class_lista]
 HTMLCollection [ul#lista_contenido.class_lista, lista_contenido: ul#lista_contenido.class_lista]
@@ -1281,7 +1273,7 @@ La diferencia reside en que el primer método (por Id devuelve el contenido ínt
 
 Imaginad que me interesa sacar llevar a js todos los elementos de una lista ul
 
-````
+````html
     <script>
         var lista = document.getElementsByTagName('ul')[0].children;
         for (let index = 0; index < lista.length; index++) {
@@ -1302,7 +1294,7 @@ Adicionalmente se pueden utilizar una serie de métodos que son interesantes, ya
 - links: todas las etiquetas -a- del documento con el atributo href
 - scripts: todas las etiquetas script del documento
 
-````
+````html
     <ul>
         <li><a href="https://github.com/DevelopSys/CursoJS">Repositorio DevSys</a></li>
         <li><a href="https://classroom.google.com/">Classroom</a></li>
@@ -1325,7 +1317,7 @@ Adicionalmente js nos permite utilizar selectores especiales que permiten realiz
 
 - querySelector(): permite pasar un parámetro indicando tanto id como class o etiqueta en el mismo método, incluso anidando elementos. El método devuelve el primer elemento que cumpla con los parámetros pasados, aunque exista más de uno
 
-````
+````html
     <script>
         "use strict"
         let elementoPorClass = document.querySelector('.mi_parrafo');
@@ -1338,7 +1330,7 @@ Adicionalmente js nos permite utilizar selectores especiales que permiten realiz
 
 Mediante esta función se puede encontrar cualquier elemento, incluso si están anidados;
 
-````
+````html
 <body>
     <h1>Titulo de JS impartido por Borja Martín</h1>
     <p class="mi_parrafo">
@@ -1359,20 +1351,20 @@ Mediante esta función se puede encontrar cualquier elemento, incluso si están 
 ````
 
 La salida del método document.querySelector('#mi_div div') devería devolver todos los elementos con la etiqueta div que estén dentro de una etiqueta cuyo id es mi_div. En el caso de la función querySelector solo devolvería el primero, por lo que el resultado sería:        
-````
+````html
 <div class="elemento_interno"></div>
 ````
 
 Adicionalmente se puede realizar una query preguntando por todos aquellos elementos que tengan la clase elemento_interno_dos y que estén dentro de una etiqueta cuyo id sea mi_div:
 
-````
+````javascript
         let elementoAnidadoConcreto = document.querySelector('#mi_div .elemento_interno_dos');
         console.log(elementoAnidadoConcreto);
 ````
 
 En este caso solo existe una coincidencia, pero en el caso de haber varias tan solo se devolvería la primera. Al igual que en casos anteriores se puede ejecutar una función que reciba por parámetros el elemento y modifique alguno de sus elementos
 
-````
+````javascript
         function modificarContenido(elemento) {
             elemento.innerHTML = 'modificaion'
         }
@@ -1382,8 +1374,7 @@ En este caso solo existe una coincidencia, pero en el caso de haber varias tan s
 
 Con el mismo body del ejemplo anterior
 
-````
-
+````html
 <body>
     <h1>Titulo de JS impartido por Borja Martín</h1>
     <p class="mi_parrafo">
@@ -1407,20 +1398,20 @@ Con el mismo body del ejemplo anterior
 
 El método document.querySelectorAll("#mi_div div") devuelve todos los elementos con la etiqueta div y que están dentro de un elemento con el id mi_div. En este caso devolvería dos nodos
 
-````
+````html
         <div class="elemento_interno"></div>
         <div class="elemento_interno_dos"></div>
 ````
 
 Sobre los cuales se podría actuar. Hay que tener en cuenta que esta devolución es mediante una HTMLCollection, por lo que se realiza mediante las operaciones vistas con arrays
 
-````
+````javascript
         console.log(elementosComunes[0]);
         elementosComunes[0].innerHTML = 'Texto modificado del primero'
 ````
 
 Si se quiere acceder a todos los elementos mediante una función:
-````
+````javascript
         function modificarTodosPorSelector(query) {
 
             let elementos = document.querySelectorAll(query);
@@ -1432,7 +1423,7 @@ Si se quiere acceder a todos los elementos mediante una función:
 
 Imaginad ahora que se quiere agregar algún elemento a todos los divs que se ha devuelvo en la consulta del selector. Para ello, en cada uno de los elementos de la colección se crea un nuevo nodo y se agrega al existente
 
-````
+````javascript
         function modificarTodosPorSelector(query) {
 
             let elementos = document.querySelectorAll(query);
@@ -1455,7 +1446,7 @@ Como se acaba de ver, una de las principales capacidades de JS es la capacidad d
 
 Imaginamos un formulario normal y corriente en HTML
 
-````
+````html
     <form id='formulario'>
         <input type="text" inputmode="latin">
         <button type="button">Pulsar para enviar</button>
@@ -1464,7 +1455,7 @@ Imaginamos un formulario normal y corriente en HTML
 
 En el caso de querer controlar la pulsación del botón directamente, js nos ofrece la posibilidad de asociar una acción a un evento concreto del elemento. Para ello se le pone como atributo al button un onclick, el cual permite asociar una ejecución al elemento que lleva dicho atributo
 
-````
+````html
 <body>
     <h1>Formulario de introducción de datos</h1>
 
@@ -1487,7 +1478,7 @@ Como se puede ver, al botón se le asocia un evento onclick el cual está iguala
 
 El ejemplo anterior se puede modificar de forma que la función pueda admitir por parámetros tantos elementos como sea necesario. Por ejemplo se puede pasar por parámetro el contenido del campo de texto del formulario
 
-````
+````html
 <body>
     <h1>Formulario de introducción de datos</h1>
 
@@ -1507,7 +1498,7 @@ El ejemplo anterior se puede modificar de forma que la función pueda admitir po
 
 Se pueden pasar tantos elementos como sean necesarios. En el siguiente ejemplo se capturan y pasan por parámetros tres elementos, necesitando convertir uno de ellos a fecha
 
-````
+````html
 <body>
     <h1>Formulario de introducción de datos</h1>
 
@@ -1548,7 +1539,7 @@ Los eventos más comunes en js son los siguientes:
 
 Hay que tener en cuenta que muchas veces los parámetros capturados e introducidos es necesario castearlos a los tipos concretos ya que si no daría fallo. En este ejemplo se simula el funcionamiento de una calculadora de dos operandos
 
-````
+````html
 <body>
   
     <h1>Formulario de calculo</h1>
@@ -1599,7 +1590,7 @@ Hay que tener en cuenta que muchas veces los parámetros capturados e introducid
 
 En este caso sacará por consola el resultado de la operación del valor introducido en el campo op1 y en el op2, dependiendo de cuál sea la operación. Hay que tener especial cuidado porque los elementos los recoge como texto, por lo que el resultado de sumar 1 y 5 sería 15 ya que los concatena (recordad el tipado dinámico). El resto de operaciones las haría sin problema ya que no puede asignar operaciones sobre cadenas de * / y -. Para solucionar esto basta con forzar a que los parámetros sean números, modificando la función de la siguiente forma
 
-````
+````html
 <script>
     function realizarCalculo(op1, op2) {
         operacion = document.querySelector('input[name="operacion"]:checked').value;
@@ -1631,7 +1622,7 @@ En este caso sacará por consola el resultado de la operación del valor introdu
 
 Aunque esto se verá más adelante con detalle, js permite no solo seleccionar los elementos del DOM de una página, sino también modificar su contenido. Por ejemplo mediante métodos como getElementById() se puede utilizar un elemento HTML para mostrar la salida de una función js
 
-````
+````html
 <body>
     <h1>Formulario de introducción de datos</h1>
 
@@ -1689,7 +1680,7 @@ Aunque esto se verá más adelante con detalle, js permite no solo seleccionar l
 
 Como se ha visto en el código HTML se asigna directamente el evento asociado. Esta técnica se llama en linea y en muchas ocasiones puede resultar algo tedioso ya que hay que ir dando elemento a elemento la funcionalidad. Existe otra posibilidad que es la de asociar un escuchador al elemento desde código. Para ello se utilizan los listener
 
-````
+````html
 <body>
 
     <p id="parrafo_destino"></p>
@@ -1700,7 +1691,7 @@ Como se ha visto en el código HTML se asigna directamente el evento asociado. E
 
 Imaginad el HTML anterior donde existe un párrafo con un id determinado y un botón con otro id asociado. Mediante estos elementos se puede encontrar el elemento desde el código js
 
-````
+````html
 <script>
     let elemento = document.querySelector('#botonListener');
     console.log(elemento);
@@ -1714,7 +1705,7 @@ elemento.addEventListener(evento_escucha, nombre_funcion_asociada,valor_defecto)
 
 Con esa sintaxis el elemento concreto se podría a escuchar de forma automática. En el ejemplo del HTML anterior sería de la siguiente forma:
 
-````
+````javascript
     let elemento = document.querySelector('#botonListener');
     console.log(elemento);
     elemento.addEventListener('click', pulsarBoton);
@@ -1728,14 +1719,14 @@ Con esa sintaxis el elemento concreto se podría a escuchar de forma automática
 
 Es importante tener en cuenta que del mismo modo que se pueden añadir escuchadores a los elementos , también se pueden eliminar escuchadores indicando el tipo de evento que se quiere borrar y la función que tiene asociada
 
-````
+````javascript
     let elemento = document.querySelector('#botonListener');
     elemento.removeEventListener('click', cambiarColor);
 ````
 
 Al igual que se ha definido en el ejemplo un evento de tipo click, se pueden asociar tantos como sean necesarios. De la misma forma, no es necesario declarar una función y ponerla en el listener, sino que se puede hacer directamente
 
-````
+````javascript
     elemento.style.fontSize = '10px';
     elemento.addEventListener('mouseover', function() {
         console.log('El ratón está por encima del elemento');
@@ -1752,7 +1743,7 @@ Al igual que se ha definido en el ejemplo un evento de tipo click, se pueden aso
 
 Una cosa importante cuando se trabaja con eventos es que las funciones que se ejecutan pueden recibir tántos parámetros como sean necesarios tal y como se vió cuando creamos las funciones, pero a la hora de trabajar con eventos lo normal es que reciban un parámetro de tipo event  donde se puede encontrar toda la información del evento asociado. Suponer que se tiene un botón al que se le quiere dar una funcionalidad concreta;
 
-````
+````javascript
     let boton = document
         .querySelector("#boton_evento_funcion")
         .addEventListener("click", function(event) {
@@ -1764,18 +1755,18 @@ En este caso la función de callback recibe como parámetro un objeto que repres
 
 Esta técnica se puede realiza con cualquier elemento. Por ejemplo si se quiere sacar la tecla pulsada en un input se puede utilizar la funcionalidad basada en un evento de tipo keyup
 
-``
+```javascript
     let input = document
         .querySelector("#input_funcion")
         .addEventListener("keyup", function(event) {
                 console.log(event);
                 console.log(String.fromCharCode(event.KeyCode));}
-``
+```
 
 
 Cuando se trabaja con js el orden de carga es muy importante. Esto quiere decir que si nosotros ejecutamos un script antes de los elementos HTML (en el head por ejemplo) puede que muchos de los elementos que intervienen en el código no se encuentran al no haberse cargado
 
-````
+````html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -1800,7 +1791,7 @@ Cuando se trabaja con js el orden de carga es muy importante. Esto quiere decir 
 
 En este ejemplo se busca un elemento cuya etiqueta es div y su id es container. Evidentemente este elemento existe dentro del código HTML pero como el script se está ejecutando antes que los elementos HTML el resultado es nulo. Sin embargo si se cambia el orden, la salida si será correcta
 
-````
+````html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -1826,7 +1817,7 @@ En este ejemplo se busca un elemento cuya etiqueta es div y su id es container. 
 
 Otra posibilidad es utilizar los listen para indica que cuando el navegador termine de realizar la carga del HTML ejecute los elementos que se quieran
 
-````
+````html
 <!DOCTYPE html>
 <html lang="en">
 
