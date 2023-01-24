@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <select
+        class="form-select"
+        aria-label="Default select example"
+        id="select_lista"
+      >
+        <option selected>Open this select menu</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+      <button type="button" class="btn btn-primary" id="boton_agregar">
+        Agregar
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary elemento"
+        id="boton_borrar"
+      >
+        Borrar
+      </button>
+      <ul class="list-group" id="lista_uno">
+        <li class="list-group-item">1.An item</li>
+        <li class="list-group-item">1.A second item</li>
+        <li class="list-group-item">1.A third item</li>
+        <li class="list-group-item">1.A fourth item</li>
+        <li class="list-group-item">1.And a fifth one</li>
+      </ul>
+      <ul class="list-group" id="lista_dos">
+        <li class="list-group-item">2.An item</li>
+        <li class="list-group-item">2.A second item</li>
+        <li class="list-group-item">2.A third item</li>
+        <li class="list-group-item">2.A fourth item</li>
+        <li class="list-group-item">2.And a fifth one</li>
+      </ul>
+    </div>
+  </body>
+  <script src="./js/index.js"></script>
+</html>
