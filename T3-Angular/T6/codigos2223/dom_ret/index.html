@@ -24,11 +24,21 @@
         aria-label="Default select example"
         id="select_lista"
       >
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+        <option value="1">Lista uno</option>
+        <option value="2">Lista dos</option>
       </select>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Usuario</span>
+        <input
+          id="input_agregar"
+          type="text"
+          class="form-control"
+          aria-label="Username"
+          aria-describedby="basic-addon1"
+        />
+      </div>
+
       <button type="button" class="btn btn-primary" id="boton_agregar">
         Agregar
       </button>
@@ -39,20 +49,8 @@
       >
         Borrar
       </button>
-      <ul class="list-group" id="lista_uno">
-        <li class="list-group-item">1.An item</li>
-        <li class="list-group-item">1.A second item</li>
-        <li class="list-group-item">1.A third item</li>
-        <li class="list-group-item">1.A fourth item</li>
-        <li class="list-group-item">1.And a fifth one</li>
-      </ul>
-      <ul class="list-group" id="lista_dos">
-        <li class="list-group-item">2.An item</li>
-        <li class="list-group-item">2.A second item</li>
-        <li class="list-group-item">2.A third item</li>
-        <li class="list-group-item">2.A fourth item</li>
-        <li class="list-group-item">2.And a fifth one</li>
-      </ul>
+      <ul class="list-group" id="lista_uno"></ul>
+      <ul class="list-group" id="lista_dos"></ul>
     </div>
   </body>
   <script src="./js/index.js"></script>
