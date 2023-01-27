@@ -20,6 +20,14 @@ let select = document.querySelector("#select_lista");
 let elementosLi = document.querySelectorAll("ul.elemento li");
 let inputAgregar = document.querySelector("#input_agregar");
 let listaSeleccionada = -1;
+let profosores = [
+  {
+    nombre: "",
+    apellido: "",
+    correo: "",
+    asignaturas: [{ nombre: "", horas: 4, siglas: "", ciclo: "", curso: "" }],
+  },
+];
 
 select.addEventListener("change", (e) => {
   //console.log(select.value);
