@@ -1,10 +1,15 @@
 <p>Componente realizado por {{ alumno.nombre }} {{ alumno.apellido }}</p>
 <img style="width: 30%" [src]="urlImagen" />
-<div>
-  <!-- string "pueba" int 20 -->
+<div class="m-4">
+  <input
+    class="form-control"
+    placeholder="Introduce nombre"
+    type="text"
+    #inputNombre
+  />
   <button
     class="btn btn-primary"
-    (click)="pulsacionBotonIncial('JuanCarlos', 23)"
+    (click)="pulsacionBotonIncial(inputNombre.value)"
   >
     Pulsar
   </button>

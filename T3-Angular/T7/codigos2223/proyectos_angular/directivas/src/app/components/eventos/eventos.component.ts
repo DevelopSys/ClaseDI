@@ -15,8 +15,9 @@ export class EventosComponent {
   urlImagen =
     'https://digital55.com/wp-content/uploads/2022/01/Renderizado_en_servidor_con_angular_universal.png';
 
-  pulsacionBotonIncial(nombre: string, edad: Number) {
+  pulsacionBotonIncial(nombre: string) {
     //console.log(`Nombre pasado: ${nombre}, edad pasada ${edad}`);
     this.alumno.nombre = nombre;
+    console.log(nombre);
   }
 }
