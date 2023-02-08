@@ -1,6 +1,13 @@
 <p>Componente realizado por {{ alumno.nombre }} {{ alumno.apellido }}</p>
 <img style="width: 30%" [src]="urlImagen" />
 <div class="m-4">
+  <label>FP</label>
+  <input type="radio" name="estudio" value="fp" />
+  <label>Universidad</label>
+  <input type="radio" name="estudio" value="universidad" />
+  <label>Bachillerato</label>
+  <input type="radio" name="estudio" value="bachillerato" />
+
   <input
     class="form-control"
     placeholder="Introduce nombre"
