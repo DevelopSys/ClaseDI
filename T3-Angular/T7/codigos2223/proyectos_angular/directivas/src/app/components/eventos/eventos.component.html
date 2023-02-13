@@ -23,7 +23,7 @@
           id="radio_bachillerato"
           value="Bachillerato"
           #radioBachillerato
-          (change)="capturaCambioRadio(radioBachillerato.value)"
+          (change)="capturaEvento($event)"
         />
         <label class="form-check-label" for="radio_bachillerato"
           >Bachillerato</label
@@ -37,7 +37,7 @@
           id="radio_universidad"
           value="Universidad"
           #radioUniversidad
-          (change)="capturaCambioRadio(radioUniversidad.value)"
+          (change)="capturaEvento($event)"
         />
         <label class="form-check-label" for="radio_universidad"
           >Universidad</label
@@ -66,9 +66,9 @@
         <input
           class="form-check-input"
           type="checkbox"
-          value=""
           id="check_experiencia"
-          #checkExperiencias
+          #checkExperiencia
+          (change)="cambioEstadoCheck(checkExperiencia.checked)"
         />
         <label class="form-check-label" for="check_experiencia">
           Experiencia

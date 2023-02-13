@@ -10,11 +10,12 @@ export class EventosComponent {
     nombre: '',
     apellido: '',
     ciclo: '',
-    experiencia: '',
+    experiencia: true,
     estudios: '',
   };
 
   estudios = '';
+  estado = false;
 
   urlImagen =
     'https://digital55.com/wp-content/uploads/2022/01/Renderizado_en_servidor_con_angular_universal.png';
@@ -28,12 +29,28 @@ export class EventosComponent {
   capturaCambioRadio(estudios: string) {
     // console.log(`Radio cambiado con valor ${estudios}}`);
     this.estudios = estudios;
+    // HACER COSAS DIFERENTES DEPENDIENDO DE QUIEN ME PULSA
+    // si selecciono el radio fp --> superior o medio
+    // si selecciono el radio de universidad --> ing o lice
+  }
+
+  capturaEvento(evento: any) {
+    console.log(evento.target.value);
   }
 
   capturaValores(nombre: string, apellido: string, ciclo: string) {
-    this.alumno.nombre = nombre;
-    this.alumno.apellido = apellido;
-    this.alumno.ciclo = ciclo;
-    this.alumno.estudios = this.estudios;
+    if (nombre && apellido && ciclo && this.estudios) {
+      this.alumno.nombre = nombre;
+      this.alumno.apellido = apellido;
+      this.alumno.ciclo = ciclo;
+      this.alumno.estudios = this.estudios;
+      this.alumno.experiencia = this.estado;
+    } else {
+      alert('Hay algún dato que no cuadra');
+    }
+  }
+
+  cambioEstadoCheck(estado: boolean) {
+    this.estado = estado;
   }
 }
