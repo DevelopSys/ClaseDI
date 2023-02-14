@@ -1,0 +1,13 @@
+<p>
+  Esta directiva se utiliza para poder decidir sobre una condición el mostrar o
+  no un elemento
+</p>
+
+<ng-container *ngIf="mostrarElemento; then thenTemplate; else elseTemplate">
+</ng-container>
+<ng-template #thenTemplate>
+  <div class="alert alert-primary" role="alert">La variable está en true</div>
+</ng-template>
+<ng-template #elseTemplate>
+  <div class="alert alert-warning" role="alert">La variable está en false</div>
+</ng-template>
