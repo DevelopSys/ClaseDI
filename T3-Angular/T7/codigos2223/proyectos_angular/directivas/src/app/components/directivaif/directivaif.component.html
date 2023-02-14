@@ -3,6 +3,15 @@
   no un elemento
 </p>
 
+<p>El valor de la variable actualmente es: {{ mostrarElemento }}</p>
+
+<div>
+  <button class="btn btn-primary" (click)="comprobarEstado(inputNombre.value)">
+    Cambiar
+  </button>
+  <input type="text" #inputNombre class="form-control" />
+</div>
+
 <ng-container *ngIf="mostrarElemento; then thenTemplate; else elseTemplate">
 </ng-container>
 <ng-template #thenTemplate>

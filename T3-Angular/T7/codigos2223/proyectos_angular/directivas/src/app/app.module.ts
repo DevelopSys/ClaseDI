@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EventosComponent } from './components/eventos/eventos.component';
 import { DirectivaifComponent } from './components/directivaif/directivaif.component';
+import { DirectivaswitchComponent } from './components/directivaswitch/directivaswitch.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EventosComponent,
-    DirectivaifComponent
+    DirectivaifComponent,
+    DirectivaswitchComponent
   ],
   imports: [
     BrowserModule,
