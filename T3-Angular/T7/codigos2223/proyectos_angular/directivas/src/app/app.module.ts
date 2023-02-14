@@ -12,13 +12,10 @@ import { DirectivaswitchComponent } from './components/directivaswitch/directiva
     AppComponent,
     EventosComponent,
     DirectivaifComponent,
-    DirectivaswitchComponent
+    DirectivaswitchComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
