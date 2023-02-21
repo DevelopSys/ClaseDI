@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Asignatura } from 'src/app/model/asignatura';
+import { AsignaturasService } from 'src/app/services/asignaturas.service';
 
 @Component({
   selector: 'directivas-directivafor',
@@ -8,18 +10,11 @@ import { Component } from '@angular/core';
 export class DirectivaforComponent {
   elementos: string[] = ['Elemento1', 'Elemento2', 'Elemento3'];
 
-  asignaturas: any[] = [
-    {
-      nombre: 'Programacion multimedia',
-      siglas: 'PMDM',
-      curso: 2,
-      ciclo: 'DAM',
-      imagen:
-        'https://www.adslzone.net/app/uploads-adslzone.net/2019/12/android-malware-apps.jpg?x=480&y=375&quality=40',
-      profesor: 'Borja Martin',
-      conocimientos: ['Kotlin', 'xml', 'java'],
-    },
-  ];
+  asignaturas: Asignatura[];
+
+  constructor(private servicioAsignaturas: AsignaturasService) {
+    this.asignaturas = servicioAsignaturas.getAllAsignaturas();
+  }
 
   anadirElemento(dato: string) {
     this.elementos.push(dato);

@@ -2,13 +2,32 @@
 <button (click)="anadirElemento(inputElemento.value)">Pulsar</button>
 
 <div class="row">
-  <div class="col" *ngFor="let item of elementos; let i = index">
+  <div class="col" *ngFor="let item of asignaturas">
+    <div class="card" style="width: 18rem">
+      <img [src]="item.imagen" class="card-img-top" [alt]="item.siglas" />
+      <div class="card-body">
+        <h5 class="card-title">{{ item.nombre }}</h5>
+        <p class="card-text">
+          {{ item.nombre }}<br />
+          {{ item.siglas }}<br />
+          {{ item.ciclo }} {{ item.curso }}<br />
+        </p>
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let conoc of item.conocimientos">
+            {{ conoc }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="col" *ngFor="let item of elementos; let i = index">
     <span [ngSwitch]="i">
       <p *ngSwitchCase="0">valor 1</p>
       <p *ngSwitchCase="1">valor 2</p>
       <p *ngSwitchCase="2">valor 3</p>
-    </span>
-    <!-- <ng-container *ngIf="i % 2 != 0; then thenTemplate"></ng-container>
+    </span> -->
+  <!-- <ng-container *ngIf="i % 2 != 0; then thenTemplate"></ng-container>
     <ng-template #thenTemplate>
       <div class="card" style="width: 18rem">
         <img src="..." class="card-img-top" alt="..." />
@@ -21,7 +40,6 @@
         </div>
       </div>
     </ng-template> -->
-  </div>
 </div>
 
 <ul>
