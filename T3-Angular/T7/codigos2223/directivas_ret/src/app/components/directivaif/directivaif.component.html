@@ -1,0 +1,17 @@
+<h1>Directiva if</h1>
+<p>Esto es un ejemplo de como funciona la directiva if</p>
+<p>El valor actual de la variable es: {{ mostrar }}</p>
+<button (click)="mostrar = !mostrar">Cambiar valor</button>
+
+<ng-container
+  *ngIf="mostrar; then thenTemplate; else elseTemplate"
+></ng-container>
+
+ngif
+
+<ng-template #thenTemplate>
+  <p>La variable se ha validado correctamente, su valor es true</p>
+</ng-template>
+<ng-template #elseTemplate>
+  <p>La variable se ha validado vale false</p>
+</ng-template>

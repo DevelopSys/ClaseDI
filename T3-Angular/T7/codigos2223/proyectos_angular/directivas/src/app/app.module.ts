@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { EventosComponent } from './components/eventos/eventos.component';
 import { DirectivaifComponent } from './components/directivaif/directivaif.component';
 import { DirectivaswitchComponent } from './components/directivaswitch/directivaswitch.component';
+import { DirectivaforComponent } from './components/directivafor/directivafor.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { DirectivaswitchComponent } from './components/directivaswitch/directiva
     EventosComponent,
     DirectivaifComponent,
     DirectivaswitchComponent,
+    DirectivaforComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
