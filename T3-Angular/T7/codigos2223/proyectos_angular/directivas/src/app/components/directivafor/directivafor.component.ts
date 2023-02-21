@@ -19,4 +19,9 @@ export class DirectivaforComponent {
   anadirElemento(dato: string) {
     this.elementos.push(dato);
   }
+
+  evaluarCambio(evento: any) {
+    let curso = Number(evento.target.value);
+    this.asignaturas = this.servicioAsignaturas.getAsignaturasFiltradas(curso);
+  }
 }
