@@ -12,6 +12,6 @@ export class AppComponent {
   constructor(private gestorRutas: Router) {}
 
   navegarComponente(dato: string) {
-    this.gestorRutas.navigate(['comunicar', dato]);
+    this.gestorRutas.navigate(['comunicar', Number(dato)]);
   }
 }

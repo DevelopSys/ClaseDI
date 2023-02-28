@@ -34,14 +34,16 @@
           </a>
           <ul class="dropdown-menu">
             <li>
-              <a class="dropdown-item" (click)="navegarComponente('ejemplo')"
+              <a
+                class="dropdown-item"
+                (click)="navegarComponente(valorPasar.value)"
                 >Comunicar 1</a
               >
             </li>
             <li>
               <a
                 class="dropdown-item"
-                (click)="navegarComponente('comunicar_cosa')"
+                (click)="navegarComponente(valorPasar.value)"
                 >Comunicar 2</a
               >
             </li>
@@ -54,6 +56,7 @@
 <div class="container">
   <h1>Navegación entre componentes</h1>
   <!-- NAVEGAR ENTRE COMPONENTES -->
+  <input #valorPasar placeholder="Introduce el valor a pasar" />
   <router-outlet>
     <!-- Aparen las rutas cuando se utiliza un router link -->
   </router-outlet>
