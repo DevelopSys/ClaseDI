@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand">HOME</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="uno"
+            >Componente uno</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="dos">Componente dos</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Comunicacion
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" (click)="navegarComponente('ejemplo')"
+                >Comunicar 1</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                (click)="navegarComponente('comunicar_cosa')"
+                >Comunicar 2</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <h1>Navegación entre componentes</h1>
+  <!-- NAVEGAR ENTRE COMPONENTES -->
+  <router-outlet>
+    <!-- Aparen las rutas cuando se utiliza un router link -->
+  </router-outlet>
+</div>
