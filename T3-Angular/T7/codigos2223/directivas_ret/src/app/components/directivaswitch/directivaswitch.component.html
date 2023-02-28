@@ -1,0 +1,10 @@
+<h1>Directiva switch</h1>
+<p>La directiva switch evalua un caso concreto para pintar una etiqueta</p>
+
+<div [ngSwitch]="seleccion">
+  <directivas-directivaif *ngSwitchCase="1"></directivas-directivaif>
+  <div *ngSwitchCase="2">output2</div>
+  <div *ngSwitchCase="3">output2</div>
+  <div *ngSwitchCase="4">output2</div>
+  <div *ngSwitchDefault>Salida por defecto</div>
+</div>
