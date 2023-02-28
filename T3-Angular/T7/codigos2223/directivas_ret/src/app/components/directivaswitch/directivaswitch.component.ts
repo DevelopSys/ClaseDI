@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./directivaswitch.component.css'],
 })
 export class DirectivaswitchComponent {
-  seleccion = 1;
+  seleccion = -1;
+
+  cambioRadio(evento: any) {
+    this.seleccion = Number(evento.target.value);
+  }
 }

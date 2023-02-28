@@ -1,10 +1,43 @@
 <h1>Directiva switch</h1>
 <p>La directiva switch evalua un caso concreto para pintar una etiqueta</p>
 
+<div class="form-check form-check-inline">
+  <input
+    class="form-check-input"
+    type="radio"
+    name="inlineRadioOptions"
+    value="1"
+    (change)="cambioRadio($event)"
+  />
+  <label class="form-check-label" for="inlineRadio1">Componente 1</label>
+</div>
+<div class="form-check form-check-inline">
+  <input
+    class="form-check-input"
+    type="radio"
+    name="inlineRadioOptions"
+    value="2"
+    (change)="cambioRadio($event)"
+  />
+  <label class="form-check-label" for="inlineRadio2">Componente 2</label>
+</div>
+<div class="form-check form-check-inline">
+  <input
+    class="form-check-input"
+    type="radio"
+    name="inlineRadioOptions"
+    value="3"
+    #radio1
+    (change)="cambioRadio($event)"
+  />
+  <label class="form-check-label" for="inlineRadio3">Componente 3</label>
+</div>
+
 <div [ngSwitch]="seleccion">
-  <directivas-directivaif *ngSwitchCase="1"></directivas-directivaif>
-  <div *ngSwitchCase="2">output2</div>
-  <div *ngSwitchCase="3">output2</div>
-  <div *ngSwitchCase="4">output2</div>
-  <div *ngSwitchDefault>Salida por defecto</div>
+  <directivas-uno *ngSwitchCase="1"></directivas-uno>
+  <directivas-dos *ngSwitchCase="2"></directivas-dos>
+  <directivas-tres *ngSwitchCase="3"></directivas-tres>
+  <div *ngSwitchDefault class="alert alert-primary" role="alert">
+    Por favor selecciona radio
+  </div>
 </div>
