@@ -1,12 +1,18 @@
 <a name="tema1"></a>
-- [Introducción a Angular y TypeScript:](#tema1)
-	- ¿Que es Ángular?
-	- ¿Qué es TypeScript?
-	- Instalaciones necesarias
-	- Base TypeScript
+- [¿Qué es Angular?](#qué-es-angular)
+- [¿Qué es TypeScript?](#qué-es-typescript)
+- [Instalaciones necesarias](#instalaciones-necesarias)
+  - [Base TypeScript](#base-typescript)
+    - [Declaración de variables](#declaración-de-variables)
+    - [Tipos de datos\*\*](#tipos-de-datos)
+    - [Bloques](#bloques)
+    - [Funciones](#funciones)
+    - [Clases](#clases)
+    - [Interfaces](#interfaces)
+    - [Promesas](#promesas)
 
 
-#### ¿Qué es Angular?
+# ¿Qué es Angular?
 
 Angular es un framework de desarrollo para JavaScript creado por Google. La finalidad de Angular es facilitarnos el desarrollo de aplicaciones web SPA (Simple Page Application) y además darnos herramientas para trabajar con los elementos de una web de una manera más sencilla y optima.
 
@@ -30,9 +36,9 @@ El paso de la versión 1 a la versión 2 sufrió un gran cambio, donde se incorp
 
 Como se verá, el desarrollo en Angular está basado en el desarrollo de componentes, los cuales tienen una parte gráfica escrita en HTML y una parte lógica escrita en TypeScript (en nuestro caso). Al mismo tiempo se pueden desarrollar clases, interfaces, servicios, json, etc... que sirvan como elementos de interaccion con los diferentes componentes desarrollados.
 
-#### [Volver al índice](#tema1)
 
-#### ¿Qué es TypeScript?
+
+# ¿Qué es TypeScript?
 
 Se trata de un lenguaje de programación orientado a objetos fuertemente tipado desarrollado y mantendido por Microsoft que se traduce a JavaScript de forma automática por parte del compilados. Lo bueno que tiene TypeScript es que además de incluir características que no posee JavaScript (por lo que es un superconjuntto de js), escribir código es muhco más sencillo y el compilador se encarga de traducir todo el código js de forma automática. Esta traducción se conoce como transpilación. 
 
@@ -42,7 +48,7 @@ Como se puede ver en la siguiente imagen, ts engloba todas las características 
 
 La razón de incorporar el soporte para ts en Angular surge de la mejora en el rendimiento y productividad comparado con js
 
-#### Instalaciones necesarias
+# Instalaciones necesarias
 
 Para poder trabajar con TypeScript el único requisito es tener instalado <a href="https://nodejs.org/es/download/" target="_blank">nodejs</a> y su gestor de paquetes npm. Este último viene incluido en las versiones de nodejs. Una vez está instalado se ejecuta el siguiente comando para instalar <a href="https://www.typescriptlang.org" target="_blank">TypeScript</a>
 ````
@@ -63,9 +69,9 @@ npm install -g @angular/cli
 
 Por último para poder empezar a trabajar es necesario instalar un editor de código. Por su facilidad de uso y por su integracion con ts es recomendable utilizar <a href="https://code.visualstudio.com" target="_blank">Visual Studio Code</a>Visual Studio Code, aunque existen multitud de posibilidades
 
-#### [Volver al índice](#tema1)
+[Volver al índice](#tema1)
 
-#### Base TypeScript
+## Base TypeScript
 
 **Hola Mundo**
 
@@ -192,7 +198,7 @@ El siguiente punto sería crear el archivo HTML al cual se asociará el archivo 
 
 En este caso si se abre el archivo index.hmtl en chrome, aparecerá dentro de las herramientas de desarrollador el mensaje por consola que se indicó
 
-**Declaración de variables**
+### Declaración de variables
 
 Para poder declarar una variable se utilizan las palabras reservadas let, var y cons. 
 
@@ -235,7 +241,7 @@ let patron2 = `Hola ${mostrarNombre(nombre)} ${apellido} tienes ${edad} años`;
 ````
 
 
-**Tipos de datos**
+### Tipos de datos**
 
 ````
 // boolean
@@ -262,7 +268,7 @@ enum Animals {obj1, obj2, obj3, obj4, obj5}
 
 ````
 
-**Bloques**
+### Bloques
 
 - If
 ````
@@ -354,7 +360,7 @@ for (let value of lenguajes) {
 ````
 
 
-**Funciones**
+### Funciones
 
 Las funciones en TypeScript definen ejecución de instrucciones con la posibilidad de pasar parámetros. Para poder crear una función, la estructura es la siguiente:
 
@@ -460,7 +466,7 @@ console.log(ejemplo1.destino());
 En este caso la salida sería TypeScript
 
 
-**Clases**
+### Clases
 Como en todo lenguaje de POO, las clases representan los moldes que se utilizan para implementar objetos. Una clase está creada por atributos y métodos, de los cuales debe haber como mínimo un constructor que será el utilizado para implementar objetos
 
 ````
@@ -525,7 +531,7 @@ objeto.propiedad = 27;
 console.log(myObject.atributo);
 ````
 
-**Interfaces**
+### Interfaces
 
 Las interfaces sirven como un nexo de unión de objetos, de forma que sea más sencillo utilizarlos en funciones. Cada lenguaje de programación utiliza las interfaces para un cometido diferente. Como en otros lenguajes de programación, las interfaces sirven para paliar la falta de herencia múltiple, utilizando la palabra reservada implements, la cual hará que todos los métodos  (con obligación de escribirse) y objetos pasen a la clase.
 
@@ -613,7 +619,7 @@ let trabajador = {id:1,nombre:"TrabajadorNombre",antiguedad:false};
 mostrarDatos(trabajador);
 ````
 
-**Promesas**
+### Promesas
 
 Las promesas son ejecuciones que obtienen una respuesta mediante los métodos resolve y reject. Una vez declarada la promesa, dentro se pone lo que se quiere ejecutar de forma asíncrona y el  método que se ejecutará después. Es importante tener en cuenta que solo funciona para una compilación ES6 adelante
 
