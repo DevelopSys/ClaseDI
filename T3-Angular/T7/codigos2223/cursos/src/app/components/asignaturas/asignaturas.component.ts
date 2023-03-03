@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AsignaturaInterfaz } from 'src/app/model/asignatura_interfaz';
 
 @Component({
   selector: 'app-asignaturas',
@@ -6,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./asignaturas.component.css'],
 })
 export class AsignaturasComponent {
-  asignturas: any[] = [
+  asignturas: AsignaturaInterfaz[] = [
     {
       nombre: 'Progmacion Multimedia',
       siglas: 'PMDM',
