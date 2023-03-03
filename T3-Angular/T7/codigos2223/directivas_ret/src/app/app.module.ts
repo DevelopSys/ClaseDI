@@ -9,9 +9,10 @@ import { DirectivaswitchComponent } from './components/directivaswitch/directiva
 import { UnoComponent } from './components/uno/uno.component';
 import { DosComponent } from './components/dos/dos.component';
 import { TresComponent } from './components/tres/tres.component';
+import { DirectivaforComponent } from './components/directivafor/directivafor.component';
 
 @NgModule({
-  declarations: [AppComponent, DirectivaifComponent, DirectivaswitchComponent, UnoComponent, DosComponent, TresComponent],
+  declarations: [AppComponent, DirectivaifComponent, DirectivaswitchComponent, UnoComponent, DosComponent, TresComponent, DirectivaforComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
