@@ -30,10 +30,12 @@
             Cursos
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">DAM</a></li>
-            <li><a class="dropdown-item" href="#">DAW</a></li>
-            <li><a class="dropdown-item" href="#">ASIR</a></li>
-            <li><a class="dropdown-item" (click)="navegar()">TODOS</a></li>
+            <li><a class="dropdown-item" (click)="navegar('DAM')">DAM</a></li>
+            <li><a class="dropdown-item" (click)="navegar('DAW')">DAW</a></li>
+            <li><a class="dropdown-item" (click)="navegar('ASIR')">ASIR</a></li>
+            <li>
+              <a class="dropdown-item" (click)="navegar('TODOS')">TODOS</a>
+            </li>
           </ul>
         </li>
       </ul>

@@ -11,8 +11,8 @@ export class AppComponent {
 
   constructor(private navegador: Router) {}
 
-  navegar() {
+  navegar(ciclo: string) {
     // Router
-    this.navegador.navigate(['cursos', 'todos']);
+    this.navegador.navigate(['cursos', ciclo.toLowerCase()]);
   }
 }
