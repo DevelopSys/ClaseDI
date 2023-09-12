@@ -6,16 +6,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-
+@Getter
+@Setter
 public class Tarea {
-
-    @Getter
-    @Setter
-
     // variables
     private int id;
     private String titulo;
-    private String prioridad;
+    private Prioridad prioridad;
     private String fecha;
     private String descripcion;
 
@@ -23,23 +20,20 @@ public class Tarea {
 
     public Tarea(){
         this.fecha = "01/01/20";
+        this.prioridad = Prioridad.Baja;
     }
     public Tarea(int id, String titulo) {
         this.id = id;
         this.titulo = titulo;
         this.fecha = "01/01/20";
+        this.prioridad = Prioridad.Baja;
     }
-
-    public Tarea(int id, String titulo, String prioridad, String descripcion) {
+    public Tarea(int id, String titulo, Prioridad prioridad, String descripcion) {
         this.id = id;
         this.titulo = titulo;
         this.prioridad = prioridad;
         this.descripcion = descripcion;
         this.fecha = "01/01/20";
-    }
-
-    public static void metodoTarea(){
-        System.out.println("Ejemplo de método para una tarea");
     }
 
     @Override
