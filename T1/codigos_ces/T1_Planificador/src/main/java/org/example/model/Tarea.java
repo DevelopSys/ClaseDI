@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Tarea {
+public abstract class Tarea {
     // variables
     private int id;
     private String titulo;
@@ -35,6 +35,8 @@ public class Tarea {
         this.descripcion = descripcion;
         this.fecha = "01/01/20";
     }
+
+    public abstract void mostrarDatos();
 
     @Override
     public String toString() {

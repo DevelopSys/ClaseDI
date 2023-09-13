@@ -5,6 +5,13 @@ import org.example.model.*;
 
 public class Main {
     public static void main(String[] args) {
+        // Crear un menu para poder agregar tareas al planificador
+            // 1. Agregar tarea: no se  pueden agregar tareas que
+                // tenga id que ya esten en la lista
+                // 1. Ocio -> datos
+                // 2. Trabajo -> datos
+            // 2. Listar tareas
+            // 3. Modificar tarea: id -> nueva descripcion nueva prioridad
         Tarea tareaInicial1 = new Tarea(1, "tarea1");
         Tarea tareaInicial2 = new Tarea(2, "tarea1");
         ;
@@ -16,8 +23,7 @@ public class Main {
         Tarea tareaSecundaria4 = new Tarea(7, "TArea secundaria4", Prioridad.Alta, "2/10/21");
         Tarea tareaSecundaria5 = new Tarea(8, "TArea secundaria5", Prioridad.Alta, "2/10/21");
         Tarea tareaSecundaria6 = new Tarea(9, "TArea secundaria6", Prioridad.Alta, "2/10/21");
-        TareaTrabajo tareaTrabajo = new TareaTrabajo();
-        System.out.println(tareaTrabajo);
+        //System.out.println(tareaTrabajo);
 
 
 
