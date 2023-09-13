@@ -36,7 +36,13 @@ public abstract class Tarea {
         this.fecha = "01/01/20";
     }
 
-    public abstract void mostrarDatos();
+    public void mostrarDatos(){
+        System.out.println("id: "+id);
+        System.out.println("titulo: "+titulo);
+        System.out.println("desc: "+descripcion);
+        System.out.println("prior: "+prioridad);
+        System.out.println("fecha: "+fecha);
+    }
 
     @Override
     public String toString() {

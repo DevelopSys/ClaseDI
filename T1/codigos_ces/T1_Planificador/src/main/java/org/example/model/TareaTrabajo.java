@@ -5,16 +5,17 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class TareaTrabajo extends Tarea{
+public class TareaTrabajo extends Tarea {
     public String proyecto;
 
-    public TareaTrabajo(){
+    public TareaTrabajo() {
         super();
     }
 
     @Override
     public void mostrarDatos() {
-
+        super.mostrarDatos();
+        System.out.println("proy: "+proyecto);
     }
 
     public TareaTrabajo(int id, String titulo, Prioridad prioridad, String descripcion, String proyecto) {
@@ -24,7 +25,7 @@ public class TareaTrabajo extends Tarea{
 
     @Override
     public String toString() {
-        return super.toString() + " proyecto "+proyecto;
+        return super.toString() + " proyecto " + proyecto;
 
     }
 }

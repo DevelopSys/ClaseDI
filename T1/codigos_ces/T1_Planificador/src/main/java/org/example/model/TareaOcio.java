@@ -15,7 +15,9 @@ public class TareaOcio extends Tarea{
 
     @Override
     public void mostrarDatos() {
-
+        super.mostrarDatos();
+        System.out.println("presupuesto: "+presupuesto);
+        System.out.println("ubicacion: "+ubicacion);
     }
 
     public TareaOcio(int id, String titulo, Prioridad prioridad, String descripcion, int presupuesto, String ubicacion) {
