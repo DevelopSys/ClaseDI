@@ -9,7 +9,7 @@ import java.util.ArrayList;
 @Setter
 public class Planificador {
 
-    private ArrayList<Tarea> listaTareas;
+    private ArrayList<Gestionable> listaTareas;
 
     public Planificador() {
         listaTareas = new ArrayList<>();
@@ -20,7 +20,7 @@ public class Planificador {
         if (listaTareas.size() == 0) {
             return false;
         } else {
-            for (Tarea item : listaTareas) {
+            for (Gestionable item : listaTareas) {
                 if (item.getId() == id) {
                     return true;
                 }
@@ -31,8 +31,12 @@ public class Planificador {
 
     }
 
-    public boolean addTarea(Tarea tarea) {
+    public boolean addGestionable(Gestionable tarea) {
         return listaTareas.add(tarea);
+    }
+
+    public boolean addLista(Lista lista) {
+        return listaTareas.add(lista);
     }
 
     public void listarTareas() {

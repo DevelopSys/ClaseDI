@@ -11,6 +11,7 @@ public class TareaOcio extends Tarea{
     private String ubicacion;
 
     public TareaOcio() {
+
     }
 
     @Override
@@ -19,6 +20,7 @@ public class TareaOcio extends Tarea{
         System.out.println("presupuesto: "+presupuesto);
         System.out.println("ubicacion: "+ubicacion);
     }
+
 
     public TareaOcio(int id, String titulo, Prioridad prioridad, String descripcion, int presupuesto, String ubicacion) {
         super(id, titulo, prioridad, descripcion);

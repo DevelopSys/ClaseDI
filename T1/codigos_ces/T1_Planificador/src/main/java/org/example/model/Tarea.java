@@ -5,28 +5,34 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 
 @Getter
 @Setter
-public abstract class Tarea {
+public abstract class Tarea implements Gestionable{
     // variables
     private int id;
     private String titulo;
     private Prioridad prioridad;
     private String fecha;
     private String descripcion;
+    private ArrayList<Tarea> listaTareas;
 
     // constructores
 
     public Tarea(){
         this.fecha = "01/01/20";
         this.prioridad = Prioridad.Baja;
+        listaTareas = new ArrayList<>();
     }
     public Tarea(int id, String titulo) {
         this.id = id;
         this.titulo = titulo;
         this.fecha = "01/01/20";
         this.prioridad = Prioridad.Baja;
+        listaTareas = new ArrayList<>();
     }
     public Tarea(int id, String titulo, Prioridad prioridad, String descripcion) {
         this.id = id;
@@ -34,6 +40,12 @@ public abstract class Tarea {
         this.prioridad = prioridad;
         this.descripcion = descripcion;
         this.fecha = "01/01/20";
+        listaTareas = new ArrayList<>();
+    }
+
+    @Override
+    public void verDetalle() {
+
     }
 
     public void mostrarDatos(){
