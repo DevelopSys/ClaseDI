@@ -16,7 +16,7 @@ public class Usuario {
 
     // propiedades - attr
     private int id;
-    private String nombre, apellido, correo, pass;
+    private String nombre, apellido;
     private int telefono;
     private String dni;
 
@@ -27,6 +27,8 @@ public class Usuario {
         this.nombre = nombre;
         this.apellido = apellido;
     }
+
+
 
     public void mostrarDatos(){
         System.out.println("Los datos del usuario son");
