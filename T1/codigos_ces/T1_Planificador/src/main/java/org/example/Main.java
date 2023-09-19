@@ -22,7 +22,7 @@ public class Main {
         }
 
 
-        Scanner lecturaTeclado = new Scanner(System.in);
+        /*Scanner lecturaTeclado = new Scanner(System.in);
         int opcion, opcion2, presupuesto, id;
         String titulo, descripcion, fecha, ubicacion, proyecto;
         Prioridad prioridad = null;
@@ -88,6 +88,6 @@ public class Main {
             }
 
         } while (opcion != 4);
-
+*/
     }
 }
