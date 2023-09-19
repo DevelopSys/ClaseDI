@@ -6,20 +6,40 @@ import org.example.model.*;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
-        Gestionable gestionable = new TareaOcio();
+        Planificador planificador = new Planificador();
+        planificador.addGestionableSQL(new TareaOcio("TOcio","FOcio","DOcio",true));
+
+        /*Gestionable gestionable = new TareaOcio();
         gestionable.getId();
         GestionDB gestionDB = new GestionDB();
         Connection connection = gestionDB.getConnection();
+
         try {
             System.out.println(connection.getCatalog());
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
+
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeq
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }*/
+
+
 
 
         /*Scanner lecturaTeclado = new Scanner(System.in);

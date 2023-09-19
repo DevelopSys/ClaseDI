@@ -18,6 +18,7 @@ public abstract class Tarea implements Gestionable{
     private Prioridad prioridad;
     private String fecha;
     private String descripcion;
+    private boolean completada;
     private ArrayList<Tarea> listaTareas;
 
     // constructores
@@ -34,6 +35,14 @@ public abstract class Tarea implements Gestionable{
         this.prioridad = Prioridad.Baja;
         listaTareas = new ArrayList<>();
     }
+
+    public Tarea(String titulo, String fecha, String descripcion, boolean completada) {
+        this.titulo = titulo;
+        this.fecha = fecha;
+        this.descripcion = descripcion;
+        this.completada = completada;
+    }
+
     public Tarea(int id, String titulo, Prioridad prioridad, String descripcion) {
         this.id = id;
         this.titulo = titulo;

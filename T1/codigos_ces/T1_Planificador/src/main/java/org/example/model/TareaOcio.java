@@ -14,6 +14,10 @@ public class TareaOcio extends Tarea{
 
     }
 
+    public TareaOcio(String titulo, String fecha, String descripcion, boolean completada) {
+        super(titulo, fecha, descripcion, completada);
+    }
+
     @Override
     public void mostrarDatos() {
         super.mostrarDatos();
