@@ -20,13 +20,17 @@ public class Planificador {
         if (listaTareas.size() == 0) {
             return false;
         } else {
+
             for (Gestionable item : listaTareas) {
+
                 if (item.getId() == id) {
                     return true;
                 }
             }
             return false;
         }
+
+
 
 
     }
@@ -40,9 +44,9 @@ public class Planificador {
     }
 
     public void listarTareas() {
-        for (Tarea item : listaTareas) {
+        /*for (Tarea item : listaTareas) {
             item.mostrarDatos();
-        }
+        }*/
     }
 
     // hacer un método que permita filtrar tareas por un tipo de prioridad

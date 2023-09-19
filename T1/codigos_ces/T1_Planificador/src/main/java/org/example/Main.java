@@ -8,6 +8,11 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+        Gestionable gestionable = new TareaOcio();
+        gestionable.getId();
+
+
+
         Scanner lecturaTeclado = new Scanner(System.in);
         int opcion, opcion2, presupuesto, id;
         String titulo, descripcion, fecha, ubicacion, proyecto;
