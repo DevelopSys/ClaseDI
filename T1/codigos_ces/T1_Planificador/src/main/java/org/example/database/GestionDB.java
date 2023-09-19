@@ -1,25 +1,30 @@
 package org.example.database;
 
+import lombok.Getter;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+@Getter
 public class GestionDB {
 
 
     private Connection connection;
+
+    public GestionDB(){
+        realizarConexion();
+    }
     private void realizarConexion(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            String user="programacion";
-            String pass="cesjpsegundo";
-            String host="192.168.64.2:3306";
-            String dbName= "inicial";
-            String url= "jdbc:mariadb://"+host+"/"+dbName;
+            String user="root";
+            String pass="";
+            String host="127.0.0.1:3306";
+            String dbName= "TareasApp";
+            String url= "jdbc:mysql://"+host+"/"+dbName;
             connection = DriverManager.getConnection(url,user,pass);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
     }

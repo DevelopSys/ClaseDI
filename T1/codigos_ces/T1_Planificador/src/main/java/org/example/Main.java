@@ -1,8 +1,11 @@
 package org.example;
 
 
+import org.example.database.GestionDB;
 import org.example.model.*;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
@@ -10,7 +13,13 @@ public class Main {
 
         Gestionable gestionable = new TareaOcio();
         gestionable.getId();
-
+        GestionDB gestionDB = new GestionDB();
+        Connection connection = gestionDB.getConnection();
+        try {
+            System.out.println(connection.getCatalog());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
 
         Scanner lecturaTeclado = new Scanner(System.in);
@@ -61,7 +70,7 @@ public class Main {
                                         break;
                                 }
                                 TareaOcio tareaOcio = new TareaOcio(id, titulo, prioridad, descripcion, presupuesto, ubicacion);
-                                planificador.addTarea(tareaOcio);
+                                //planificador.addTarea(tareaOcio);
                             } else {
                                 System.out.println("El id ya existe");
                             }

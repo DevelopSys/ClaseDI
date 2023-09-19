@@ -51,10 +51,10 @@ public class Planificador {
 
     // hacer un método que permita filtrar tareas por un tipo de prioridad
     public void filtrarTareas(Prioridad prioridad) {
-        for (Tarea tarea : listaTareas) {
+        /*for (Tarea tarea : listaTareas) {
             if (tarea.getPrioridad() == prioridad) {
                 System.out.println(tarea);
             }
-        }
+        }*/
     }
 }
