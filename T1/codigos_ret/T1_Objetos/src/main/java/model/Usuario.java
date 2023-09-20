@@ -31,14 +31,12 @@ public class Usuario {
         this.apellido = apellido;
     }
 
-
-
     public void mostrarDatos(){
         System.out.println("Los datos del usuario son");
-        System.out.println("Nombre: "+getNombre());
-        System.out.println("Apellido: "+getApellido());
-        System.out.println("DNI: "+getDni());
-        System.out.println("Telefono: "+getTelefono());
+        System.out.println("\tNombre: "+getNombre());
+        System.out.println("\tApellido: "+getApellido());
+        System.out.println("\tDNI: "+getDni());
+        System.out.println("\tTelefono: "+getTelefono());
     }
 
     @Override

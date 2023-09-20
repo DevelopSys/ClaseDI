@@ -13,6 +13,7 @@ public class Entrada {
         //ArrayList<Usuario> listaUsuarios = new ArrayList<>();
         // menu con las opciones
 
+        int id=0;
         int opcion = 0;
         Scanner scanner = new Scanner(System.in);
         Agenda agenda = new Agenda();
@@ -32,7 +33,7 @@ public class Entrada {
                 case 1:
                     System.out.println("Agregando usuarios...");
                     System.out.println("Por favor introduce id");
-                    int id  = scanner.nextInt();
+                    id  = scanner.nextInt();
                     System.out.println("Por favor introduce nombre");
                     String nombre  = scanner.next();
                     System.out.println("Por favor introduce apellido");
@@ -51,6 +52,11 @@ public class Entrada {
                     break;
                 case 2:
                     System.out.println("Buscando usuarios...");
+                    System.out.println("Por favor introduce id");
+                    id  = scanner.nextInt();
+                    if (!agenda.verDetalleUsuario(id)){
+                        System.out.println("El id no existe en la agenda");
+                    }
                     // pide un id, y mustra sus detalles
                     break;
                 case 3:
@@ -61,6 +67,9 @@ public class Entrada {
                     break;
                 case 5:
                     System.out.println("Listando usuarios...");
+                    if (!agenda.listarUsuarios()){
+                        System.out.println("No hay usuarios dentro de la lista");
+                    }
                     break;
             }
 
