@@ -9,12 +9,12 @@ public class Entrada {
     public static void main(String[] args) {
 
 
-
         //ArrayList<Usuario> listaUsuarios = new ArrayList<>();
         // menu con las opciones
 
-        int id=0;
+        int id = 0;
         int opcion = 0;
+        String nombre;
         Scanner scanner = new Scanner(System.in);
         Agenda agenda = new Agenda();
 
@@ -29,23 +29,23 @@ public class Entrada {
             System.out.println("6. Salir");
             System.out.println("Selecciona una opcion");
             opcion = scanner.nextInt();
-            switch (opcion){
+            switch (opcion) {
                 case 1:
                     System.out.println("Agregando usuarios...");
                     System.out.println("Por favor introduce id");
-                    id  = scanner.nextInt();
+                    id = scanner.nextInt();
                     System.out.println("Por favor introduce nombre");
-                    String nombre  = scanner.next();
+                    nombre = scanner.next();
                     System.out.println("Por favor introduce apellido");
                     String apellido = scanner.next();
                     System.out.println("Por favor introduce telefono");
                     int telefono = scanner.nextInt();
                     System.out.println("Por favor introduce dni");
                     String dni = scanner.next();
-                    Usuario usuario = new Usuario(id,nombre,apellido,telefono,dni);
-                    if (agenda.agregarUsuario(usuario)){
+                    Usuario usuario = new Usuario(id, nombre, apellido, telefono, dni);
+                    if (agenda.agregarUsuario(usuario)) {
                         System.out.println("Usuario agregado con existo");
-                    }else {
+                    } else {
                         System.out.println("Fallo al agregar");
                     }
                     // he agregado el usuario?
@@ -53,21 +53,61 @@ public class Entrada {
                 case 2:
                     System.out.println("Buscando usuarios...");
                     System.out.println("Por favor introduce id");
-                    id  = scanner.nextInt();
-                    if (!agenda.verDetalleUsuario(id)){
+                    id = scanner.nextInt();
+                    if (!agenda.verDetalleUsuario(id)) {
                         System.out.println("El id no existe en la agenda");
                     }
                     // pide un id, y mustra sus detalles
                     break;
                 case 3:
                     System.out.println("Modificando usuarios...");
+                    System.out.println("Por favor introduce id");
+                    id = scanner.nextInt();
+                    System.out.println("Indica que quieres modificar");
+                    System.out.println("1. Nombre");
+                    System.out.println("2. Apellido");
+                    System.out.println("3. DNI");
+                    System.out.println("4. Telefono");
+                    System.out.println("Indica que quieres modificar");
+                    int opcionSubmenu = scanner.nextInt();
+                    switch (opcionSubmenu) {
+                        case 1:
+                            System.out.println("Por favor introduce nombre nuevo");
+                            nombre = scanner.next();
+                            agenda.modificarUsuario(id, "nombre", nombre);
+                            break;
+                        case 2:
+                            System.out.println("Por favor introduce apellido nuevo");
+                            apellido = scanner.next();
+                            agenda.modificarUsuario(id, "apellido", apellido);
+                            break;
+                        case 3:
+                            System.out.println("Por favor introduce dni nuevo");
+                            dni = scanner.next();
+                            agenda.modificarUsuario(id, "dni", dni);
+                            break;
+                        case 4:
+                            System.out.println("Por favor introduce telefono nuevo");
+                            telefono = scanner.nextInt();
+                            agenda.modificarUsuario(id, "telefono", telefono);
+
+                            break;
+                    }
+
                     break;
                 case 4:
                     System.out.println("Borrando usuarios...");
+                    System.out.println("Por favor introduce id");
+                    id = scanner.nextInt();
+                    if (agenda.borrarUsuario(id)) {
+                        System.out.println("Borrado correctamente");
+                    } else {
+                        System.out.println("Fallo al borrar");
+                    }
                     break;
                 case 5:
                     System.out.println("Listando usuarios...");
-                    if (!agenda.listarUsuarios()){
+                    if (!agenda.listarUsuarios()) {
                         System.out.println("No hay usuarios dentro de la lista");
                     }
                     break;

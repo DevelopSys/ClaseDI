@@ -18,13 +18,18 @@ public class Agenda {
         //listaUsuarios.add(usuario);
         // solo puedo agregar usuarios que no esten ya en la lista
         // no pueden existir usuarios con el mismo id -> en un método
-        if (existeUsuario(usuario.getId()) == null) {
-            // el usuario no existe, por lo tanto agrego
+        if (listaUsuarios.size()==0){
             return listaUsuarios.add(usuario);
-
         } else {
-            return false;
+            if (existeUsuario(usuario.getId()) == null) {
+                // el usuario no existe, por lo tanto agrego
+                return listaUsuarios.add(usuario);
+
+            } else {
+                return false;
+            }
         }
+
         // en el caso de tener un usuario con el mismo id -> mensaje desde el main
         // en el caso de agregar al usuario -> mensaje desde el main
     }
@@ -46,6 +51,35 @@ public class Agenda {
                 item.mostrarDatos();
             }
             return true;
+        }
+
+    }
+
+    public boolean borrarUsuario(int id){
+        if (existeUsuario(id)!=null){
+            listaUsuarios.remove(existeUsuario(id));
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void modificarUsuario(int id, String modificar, Object dato){
+        if (existeUsuario(id)!=null){
+            switch (modificar){
+                case "nombre":
+                    existeUsuario(id).setNombre(dato.toString());
+                    break;
+                case "apellido":
+                    existeUsuario(id).setApellido(dato.toString());
+                    break;
+                case "telefono":
+                    existeUsuario(id).setTelefono(Integer.valueOf(dato.toString()));
+                    break;
+                case "dni":
+                    existeUsuario(id).setDni(dato.toString());
+                    break;
+            }
         }
 
     }
