@@ -1,3 +1,4 @@
+import model.Agenda;
 import model.Usuario;
 
 import java.util.ArrayList;
@@ -7,7 +8,66 @@ public class Entrada {
 
     public static void main(String[] args) {
 
-        ArrayList<Usuario> listaUsuarios = new ArrayList<>();
+
+
+        //ArrayList<Usuario> listaUsuarios = new ArrayList<>();
+        // menu con las opciones
+
+        int opcion = 0;
+        Scanner scanner = new Scanner(System.in);
+        Agenda agenda = new Agenda();
+
+
+        do {
+
+            System.out.println("1. Agregar usuario");
+            System.out.println("2. Buscar usuario");
+            System.out.println("3. Modificar usuario");
+            System.out.println("4. Borrar usuario");
+            System.out.println("5. Listar usuario");
+            System.out.println("6. Salir");
+            System.out.println("Selecciona una opcion");
+            opcion = scanner.nextInt();
+            switch (opcion){
+                case 1:
+                    System.out.println("Agregando usuarios...");
+                    System.out.println("Por favor introduce id");
+                    int id  = scanner.nextInt();
+                    System.out.println("Por favor introduce nombre");
+                    String nombre  = scanner.next();
+                    System.out.println("Por favor introduce apellido");
+                    String apellido = scanner.next();
+                    System.out.println("Por favor introduce telefono");
+                    int telefono = scanner.nextInt();
+                    System.out.println("Por favor introduce dni");
+                    String dni = scanner.next();
+                    Usuario usuario = new Usuario(id,nombre,apellido,telefono,dni);
+                    if (agenda.agregarUsuario(usuario)){
+                        System.out.println("Usuario agregado con existo");
+                    }else {
+                        System.out.println("Fallo al agregar");
+                    }
+                    // he agregado el usuario?
+                    break;
+                case 2:
+                    System.out.println("Buscando usuarios...");
+                    // pide un id, y mustra sus detalles
+                    break;
+                case 3:
+                    System.out.println("Modificando usuarios...");
+                    break;
+                case 4:
+                    System.out.println("Borrando usuarios...");
+                    break;
+                case 5:
+                    System.out.println("Listando usuarios...");
+                    break;
+            }
+
+
+        } while (opcion != 6);
+
+        /*
 
         // TODO agregar 5 usuarios -> ok
         Scanner scanner = new Scanner(System.in);
@@ -60,15 +120,12 @@ public class Entrada {
         listaUsuarios.add(new Usuario(2,"Borja2","Martin2",123,"123A"));
         listaUsuarios.add(new Usuario(3,"Borja3","Martin3",123,"123A"));
         listaUsuarios.add(new Usuario(4,"Borja4","Martin4",123,"123A"));*/
-
         // agregar de forma iterativa 5 usuarios
         // para ello se piden los datos por teclado: id, nom, ape
         // telf, dni
         // * si intento add un usuario que ya existe (id)
         // salta un error y no agregar el usuario
         // una vez agregados todos, mostrar por consola todos sus datos
-
-
         /*Scanner scanner = new Scanner(System.in);
         System.out.println("Por favor introduce nombre");
         String nombre  = scanner.next();

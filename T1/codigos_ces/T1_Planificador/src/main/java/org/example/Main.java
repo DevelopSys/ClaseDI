@@ -13,7 +13,8 @@ public class Main {
     public static void main(String[] args) {
 
         Planificador planificador = new Planificador();
-        planificador.addGestionableSQL(new TareaOcio("TOcio","FOcio","DOcio",true));
+        //planificador.addGestionableSQLPS(new TareaOcio("TOcio","FOcio","DOcio",true));
+        planificador.getAllTareas();
 
         /*Gestionable gestionable = new TareaOcio();
         gestionable.getId();

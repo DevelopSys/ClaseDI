@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
 public class Usuario {
 
@@ -21,6 +20,10 @@ public class Usuario {
     private String dni;
 
     // metodos - constructores
+
+
+    public Usuario() {
+    }
 
     public Usuario(int id, String nombre, String apellido) {
         this.id = id;
