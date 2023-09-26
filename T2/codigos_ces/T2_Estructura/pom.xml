@@ -128,7 +128,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.example.t2_estructura/com.example.t2_estructura.HelloApplication</mainClass>
+                            <mainClass>com.example.t2_estructura/com.example.t2_estructura.MainApplication</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
