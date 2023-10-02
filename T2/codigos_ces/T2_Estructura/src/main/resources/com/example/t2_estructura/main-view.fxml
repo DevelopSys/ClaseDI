@@ -5,52 +5,59 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.t2_estructura.controller.MainController">
-   <top>
-      <Label alignment="BOTTOM_LEFT" contentDisplay="CENTER" lineSpacing="10.0" text="Primer programa en JavaFX" textAlignment="CENTER" BorderPane.alignment="CENTER">
-         <font>
-            <Font size="20.0" />
-         </font>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-         <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-         </padding>
-      </Label>
-   </top>
-   <center>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
-            <TextField fx:id="textoNombre" promptText="introduce tu nombre">
-               <VBox.margin>
-                  <Insets bottom="20.0" />
-               </VBox.margin>
-            </TextField>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="100.0" spacing="20.0">
-               <children>
-                  <Button fx:id="botonPulsar" mnemonicParsing="false" text="Add" />
-                  <Button fx:id="botonObtener" mnemonicParsing="false" text="Obtain" />
-               </children>
-            </HBox>
-         </children>
-         <padding>
-            <Insets left="50.0" right="50.0" />
-         </padding>
-      </VBox>
-   </center>
-   <bottom>
-      <Label fx:id="textoSalida" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-         <padding>
-            <Insets bottom="20.0" />
-         </padding>
-      </Label>
-   </bottom>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.t2_estructura.controller.MainController">
+    <top>
+        <Label alignment="BOTTOM_LEFT" contentDisplay="CENTER" lineSpacing="10.0" text="Primer programa en JavaFX"
+               textAlignment="CENTER" BorderPane.alignment="CENTER">
+            <font>
+                <Font size="20.0"/>
+            </font>
+            <BorderPane.margin>
+                <Insets/>
+            </BorderPane.margin>
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+            </padding>
+        </Label>
+    </top>
+    <center>
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <TextField fx:id="textoNombre" promptText="introduce tu nombre">
+                    <VBox.margin>
+                        <Insets bottom="20.0"/>
+                    </VBox.margin>
+                </TextField>
+                <HBox alignment="CENTER" prefHeight="50.0" prefWidth="100.0" spacing="20.0">
+                    <children>
+                        <Button fx:id="botonPulsar" mnemonicParsing="false" text="Add"/>
+                        <Button fx:id="botonObtener" mnemonicParsing="false" text="Obtain"/>
+                    </children>
+                </HBox>
+            </children>
+            <padding>
+                <Insets left="50.0" right="50.0"/>
+            </padding>
+        </VBox>
+    </center>
+    <bottom>
+        <Label fx:id="textoSalida" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets/>
+            </BorderPane.margin>
+            <padding>
+                <Insets bottom="20.0"/>
+            </padding>
+        </Label>
+    </bottom>
+
 </BorderPane>

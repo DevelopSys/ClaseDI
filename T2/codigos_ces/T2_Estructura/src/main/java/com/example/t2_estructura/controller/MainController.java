@@ -7,6 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -26,7 +28,6 @@ public class MainController implements Initializable {
     private ArrayList<String> usuarios;
 
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // se ejecuta - loader.load()
@@ -34,7 +35,7 @@ public class MainController implements Initializable {
         botonPulsar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (textoNombre.getText().length()>0){
+                if (textoNombre.getText().length() > 0) {
                     /*textoSalida.setText(String.format("Perfecto %s has completado tu primera app de JavaFX",
                             textoNombre.getText()));*/
                     usuarios.add(textoNombre.getText());
@@ -48,11 +49,11 @@ public class MainController implements Initializable {
         botonObtener.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (usuarios.size()==0){
+                if (usuarios.size() == 0) {
                     textoSalida.setText("No hay usuarios");
                 } else {
-                    int radom = (int) (Math.random()*usuarios.size());
-                    textoSalida.setText("El usuario seleccionado es: "+ usuarios.get(radom));
+                    int radom = (int) (Math.random() * usuarios.size());
+                    textoSalida.setText("El usuario seleccionado es: " + usuarios.get(radom));
                 }
             }
         });
