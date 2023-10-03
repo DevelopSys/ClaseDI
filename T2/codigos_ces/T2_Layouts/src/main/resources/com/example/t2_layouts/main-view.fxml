@@ -21,7 +21,7 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button fx:id="botonIzquierda" mnemonicParsing="false" text="izquerda" />
+            <Button fx:id="botonIzquierda" mnemonicParsing="false" />
             <Button fx:id="botonCentro" mnemonicParsing="false" text="Centro" GridPane.columnIndex="1" />
             <Button fx:id="botonDerecha" mnemonicParsing="false" text="Derecha" GridPane.columnIndex="2" />
          </children>
