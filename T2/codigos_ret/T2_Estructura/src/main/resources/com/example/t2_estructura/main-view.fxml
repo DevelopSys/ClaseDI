@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.t2_estructura.MainController2">
+   <top>
+      <Label alignment="BASELINE_LEFT" text="Primera app de java fx" BorderPane.alignment="CENTER" />
+   </top>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+   <center>
+      <TextField fx:id="textoNombre" BorderPane.alignment="CENTER" />
+   </center>
+   <bottom>
+      <Button fx:id="botonPulsar" mnemonicParsing="false" text="Pulsar" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>

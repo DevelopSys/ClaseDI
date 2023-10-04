@@ -93,7 +93,7 @@ public class MainController implements Initializable, EventHandler<ActionEvent>{
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        System.out.println("boton pulsado");
+
     }
 
     class ManejoRaton implements EventHandler<MouseEvent>{
