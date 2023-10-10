@@ -82,12 +82,13 @@ public class ControllerMain implements Initializable, EventHandler<ActionEvent> 
         toggle1.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean old, Boolean newValue) {
-                if (newValue){
+                if (newValue) {
                     System.out.println("Elemento seleccionado");
                     //toggle1.setGraphic(new ImageView(new Image()));
                 } else {
                     System.out.println("Elemento deseleccionado");
                     //toggle1.setGraphic(new ImageView(new Image()));
+
                 }
             }
         });
@@ -100,16 +101,15 @@ public class ControllerMain implements Initializable, EventHandler<ActionEvent> 
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        if (actionEvent.getSource() == botonComprobar){
+        if (actionEvent.getSource() == botonComprobar) {
             toggle1.setSelected(true);
-        }
-        else if (actionEvent.getSource() == botonNormal){
+        } else if (actionEvent.getSource() == botonNormal) {
 
-        } else if (actionEvent.getSource() == botonImagen){
+        } else if (actionEvent.getSource() == botonImagen) {
 
-        } else if (actionEvent.getSource() == botonURL){
+        } else if (actionEvent.getSource() == botonURL) {
 
-        } else if (actionEvent.getSource() == botonGeneral){
+        } else if (actionEvent.getSource() == botonGeneral) {
 
         }
     }
