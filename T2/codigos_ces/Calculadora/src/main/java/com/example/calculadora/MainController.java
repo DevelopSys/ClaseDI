@@ -16,6 +16,7 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable, EventHandler<ActionEvent> {
 
 
+    private boolean isOperando = false;
     @FXML
     private GridPane gridBotones;
     @FXML
@@ -64,12 +65,21 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     public void handle(ActionEvent actionEvent) {
         // cuando algo se pulsa, se ejecutqa una parte de este metodo
         if (actionEvent.getSource() == boton1 || actionEvent.getSource() == boton2) {
-            texcoCalculadora.appendText(((Button)actionEvent.getSource()).getText());
+            // cuando no estoy operando
+            if (!isOperando) {
+                texcoCalculadora.appendText(((Button) actionEvent.getSource()).getText());
+            } else {
+                texcoCalculadora.setText(((Button) actionEvent.getSource()).getText());
+                isOperando = false;
+            }
+            // cuando estoy operando (la priemra vez)
+            //
         } else if (actionEvent.getSource() == botonMas) {
             // guardar el contenido en operando1
             operandoUno = Integer.parseInt(texcoCalculadora.getText());
             operacion = 1;
-            texcoCalculadora.setText("");
+            isOperando = true;
+            //texcoCalculadora.setText("");
         } else if (actionEvent.getSource() == botonIgual) {
             operandoDos = Integer.parseInt(texcoCalculadora.getText());
             int resultado = 0;
@@ -88,6 +98,7 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
                     break;
             }
             texcoCalculadora.setText(String.valueOf(resultado));
+            isOperando = true;
         }
     }
 }
