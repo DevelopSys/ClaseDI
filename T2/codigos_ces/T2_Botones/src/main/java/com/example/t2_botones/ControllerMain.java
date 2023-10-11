@@ -1,5 +1,6 @@
 package com.example.t2_botones;
 
+import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -60,15 +61,42 @@ public class ControllerMain implements Initializable, EventHandler<ActionEvent> 
     @FXML
     private ToggleButton toggle3;
 
+    private ToggleGroup grupoToggle;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        instancias();
+        configurarGrupoToggle();
         personalizarBotones();
         acciones();
 
     }
 
+    private void configurarGrupoToggle() {
+        grupoToggle.getToggles().addAll(toggle2,toggle3);
+    }
+
+    private void instancias() {
+        grupoToggle = new ToggleGroup();
+    }
+
     private void personalizarBotones() {
+
+
+        String[] urlToggle = new String[]{"https://upload.wikimedia.org/wikipedia/commons/b/bc/On_button.png",
+                "https://upload.wikimedia.org/wikipedia/commons/2/23/Off_button.png"};
+        toggle1.setBackground(null);
+        toggle1.setBorder(null);
+        toggle1.setText("");
+        ImageView imageToggle = new ImageView();
+        toggle1.setGraphic(imageToggle);
+        imageToggle.imageProperty()
+                .bind(Bindings.when(toggle1.selectedProperty())
+                        .then(new Image(urlToggle[0]))
+                        .otherwise(new Image(urlToggle[1])));
+
+
         botonImagen.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("button.png"))));
         botonImagen.setBackground(null);
         botonImagen.setBorder(null);
@@ -84,10 +112,10 @@ public class ControllerMain implements Initializable, EventHandler<ActionEvent> 
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean old, Boolean newValue) {
                 if (newValue) {
                     System.out.println("Elemento seleccionado");
-                    //toggle1.setGraphic(new ImageView(new Image()));
+                    //toggle1.setGraphic(new ImageView(new Image("https://upload.wikimedia.org/wikipedia/commons/b/bc/On_button.png")));
                 } else {
                     System.out.println("Elemento deseleccionado");
-                    //toggle1.setGraphic(new ImageView(new Image()));
+                    //toggle1.setGraphic(new ImageView(new Image("https://upload.wikimedia.org/wikipedia/commons/2/23/Off_button.png")));
 
                 }
             }
