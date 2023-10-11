@@ -74,7 +74,7 @@ public class ControllerMain implements Initializable, EventHandler<ActionEvent> 
     }
 
     private void configurarGrupoToggle() {
-        grupoToggle.getToggles().addAll(toggle2,toggle3);
+        grupoToggle.getToggles().addAll(toggle2, toggle3);
     }
 
     private void instancias() {
@@ -107,6 +107,15 @@ public class ControllerMain implements Initializable, EventHandler<ActionEvent> 
     }
 
     private void acciones() {
+        grupoToggle.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observableValue,
+                                Toggle toggle, Toggle t1) {
+                if (t1 != null) {
+                    System.out.println(((ToggleButton) t1).getText());
+                }
+            }
+        });
         toggle1.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean old, Boolean newValue) {
@@ -131,6 +140,12 @@ public class ControllerMain implements Initializable, EventHandler<ActionEvent> 
     public void handle(ActionEvent actionEvent) {
         if (actionEvent.getSource() == botonComprobar) {
             toggle1.setSelected(true);
+            if (grupoToggle.getSelectedToggle() != null) {
+
+                System.out.println(((ToggleButton) grupoToggle.getSelectedToggle()).getText());
+            } else {
+                System.out.println("No hay seleccion en el grupo");
+            }
         } else if (actionEvent.getSource() == botonNormal) {
 
         } else if (actionEvent.getSource() == botonImagen) {
