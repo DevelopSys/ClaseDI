@@ -11,60 +11,84 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.t2_botones.ControllerMain">
-   <center>
-      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
-         <tabs>
-            <Tab fx:id="botonesNormales" text="Normales">
-               <content>
-                  <GridPane>
-                    <columnConstraints>
-                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Button fx:id="botonNormal" mnemonicParsing="false" text="Normal" />
-                        <Button fx:id="botonImagen" mnemonicParsing="false" text="Imagen" GridPane.columnIndex="1" />
-                        <Button fx:id="botonURL" mnemonicParsing="false" text="URL" GridPane.columnIndex="2" />
-                        <Button fx:id="botonGeneral" mnemonicParsing="false" text="Pulsar" GridPane.columnSpan="3" GridPane.rowIndex="1" />
-                     </children>
-                  </GridPane>
-               </content>
-            </Tab>
-            <Tab fx:id="botonesCompuestos" text="Compuestos">
-               <content>
-                  <GridPane>
-                    <columnConstraints>
-                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <ToggleButton fx:id="toggle1" mnemonicParsing="false" text="Toggle 1" />
-                        <ToggleButton fx:id="toggle2" mnemonicParsing="false" text="Toggle 2" GridPane.columnIndex="1" />
-                        <ToggleButton fx:id="toggle3" mnemonicParsing="false" text="Toggle 3" GridPane.columnIndex="2" />
-                        <CheckBox fx:id="check1" mnemonicParsing="false" text="CheckBox 1" GridPane.rowIndex="1" />
-                        <CheckBox fx:id="check2" mnemonicParsing="false" text="CheckBox 2" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <CheckBox fx:id="check3" mnemonicParsing="false" text="CheckBox 3" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <RadioButton fx:id="radio1" mnemonicParsing="false" text="RadioButton 1" GridPane.rowIndex="2" />
-                        <RadioButton fx:id="radio2" mnemonicParsing="false" text="RadioButton 2" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <RadioButton fx:id="radio3" mnemonicParsing="false" text="RadioButton 3" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <Button fx:id="botonComprobar" mnemonicParsing="false" text="Comprobar" GridPane.columnSpan="3" GridPane.rowIndex="3" />
-                     </children>
-                  </GridPane>
-               </content></Tab>
-         </tabs>
-      </TabPane>
-   </center>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.t2_botones.ControllerMain">
+    <center>
+        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <tabs>
+                <Tab fx:id="botonesNormales" text="Normales">
+                    <content>
+                        <GridPane>
+                            <columnConstraints>
+                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0"
+                                                   prefWidth="100.0"/>
+                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0"
+                                                   prefWidth="100.0"/>
+                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0"
+                                                   prefWidth="100.0"/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER"
+                                                vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                            </rowConstraints>
+                            <children>
+                                <Button fx:id="botonNormal" mnemonicParsing="false" text="Normal"/>
+                                <Button fx:id="botonImagen" mnemonicParsing="false" text="Imagen"
+                                        GridPane.columnIndex="1"/>
+                                <Button fx:id="botonURL" mnemonicParsing="false" text="URL" GridPane.columnIndex="2"/>
+                                <Button fx:id="botonGeneral" mnemonicParsing="false" text="Pulsar"
+                                        GridPane.columnSpan="3" GridPane.rowIndex="1"/>
+                            </children>
+                        </GridPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="botonesCompuestos" text="Compuestos">
+                    <content>
+                        <GridPane>
+                            <columnConstraints>
+                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0"
+                                                   prefWidth="100.0"/>
+                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0"
+                                                   prefWidth="100.0"/>
+                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0"
+                                                   prefWidth="100.0"/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                            </rowConstraints>
+                            <children>
+                                <ToggleButton fx:id="toggle1" mnemonicParsing="false" text="Toggle 1"/>
+                                <ToggleButton fx:id="toggle2" mnemonicParsing="false" text="Toggle 2"
+                                              GridPane.columnIndex="1"/>
+                                <ToggleButton fx:id="toggle3" mnemonicParsing="false" text="Toggle 3"
+                                              GridPane.columnIndex="2"/>
+                                <CheckBox fx:id="check1" mnemonicParsing="false" text="CheckBox 1"
+                                          GridPane.rowIndex="1"/>
+                                <CheckBox fx:id="check2" mnemonicParsing="false" text="CheckBox 2"
+                                          GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                <CheckBox fx:id="check3" mnemonicParsing="false" text="CheckBox 3"
+                                          GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                <RadioButton fx:id="radio1" mnemonicParsing="false" text="Tarjeta"
+                                             GridPane.rowIndex="2"/>
+                                <RadioButton fx:id="radio2" mnemonicParsing="false" text="PayPal 2"
+                                             GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                <RadioButton fx:id="radio3" mnemonicParsing="false" text="Transferenca"
+                                             GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                            </children>
+                        </GridPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+    <bottom>
+        <Button fx:id="botonComprobar" mnemonicParsing="false" text="Comprobar" GridPane.columnSpan="3"
+                GridPane.rowIndex="3"/>
+
+    </bottom>
 </BorderPane>

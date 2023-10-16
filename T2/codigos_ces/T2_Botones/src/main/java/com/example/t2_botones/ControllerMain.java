@@ -1,5 +1,6 @@
 package com.example.t2_botones;
 
+import com.example.t2_botones.model.MetodoPago;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -14,7 +15,7 @@ import javafx.scene.image.ImageView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerMain implements Initializable, EventHandler<ActionEvent> {
+public class ControllerMain implements Initializable, EventHandler<ActionEvent>, ChangeListener<Toggle> {
     @FXML
     private Button botonGeneral;
 
@@ -61,7 +62,7 @@ public class ControllerMain implements Initializable, EventHandler<ActionEvent> 
     @FXML
     private ToggleButton toggle3;
 
-    private ToggleGroup grupoToggle;
+    private ToggleGroup grupoToggle, grupoRadios;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -75,10 +76,15 @@ public class ControllerMain implements Initializable, EventHandler<ActionEvent> 
 
     private void configurarGrupoToggle() {
         grupoToggle.getToggles().addAll(toggle2, toggle3);
+        radio1.setUserData(new MetodoPago(1,"Pago con tarjeta","Aceptadas: Visa, Mastercard, TipoTarjeta" ));
+        radio2.setUserData(new MetodoPago(2,"PayPal","Login necesario en la plataforma" ));
+        radio3.setUserData(new MetodoPago(3,"Transferencia","Banco aceptado BBVA" ));
+        grupoRadios.getToggles().addAll(radio1, radio2, radio3);
     }
 
     private void instancias() {
         grupoToggle = new ToggleGroup();
+        grupoRadios = new ToggleGroup();
     }
 
     private void personalizarBotones() {
@@ -107,15 +113,9 @@ public class ControllerMain implements Initializable, EventHandler<ActionEvent> 
     }
 
     private void acciones() {
-        grupoToggle.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-            @Override
-            public void changed(ObservableValue<? extends Toggle> observableValue,
-                                Toggle toggle, Toggle t1) {
-                if (t1 != null) {
-                    System.out.println(((ToggleButton) t1).getText());
-                }
-            }
-        });
+
+        grupoRadios.selectedToggleProperty().addListener(this);
+        grupoToggle.selectedToggleProperty().addListener(this);
         toggle1.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean old, Boolean newValue) {
@@ -140,6 +140,7 @@ public class ControllerMain implements Initializable, EventHandler<ActionEvent> 
     public void handle(ActionEvent actionEvent) {
         if (actionEvent.getSource() == botonComprobar) {
             toggle1.setSelected(true);
+            grupoRadios.selectToggle(null);
             if (grupoToggle.getSelectedToggle() != null) {
 
                 System.out.println(((ToggleButton) grupoToggle.getSelectedToggle()).getText());
@@ -157,4 +158,22 @@ public class ControllerMain implements Initializable, EventHandler<ActionEvent> 
         }
     }
 
+    @Override
+    public void changed(ObservableValue<? extends Toggle> observableValue,
+                        Toggle toggle, Toggle t1) {
+        if (t1 instanceof RadioButton) {
+            //System.out.println("Grupo cambiado radios");
+            //System.out.println(((MetodoPago)t1.getUserData()).getId());
+            switch (((MetodoPago)t1.getUserData()).getId()){
+                case 1:
+                    // acciones para el tipo de paga1
+                    break;
+                case 2:
+                    // acciones para el tipo de paga2
+                    break;
+            }
+        } else if (t1 instanceof ToggleButton) {
+            System.out.println("Grupo cambiado toggle");
+        }
+    }
 }
