@@ -1,5 +1,9 @@
 package com.example.t2_botones;
 
+import javafx.beans.binding.Binding;
+import javafx.beans.binding.Bindings;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -29,6 +33,7 @@ public class MainController implements Initializable {
     }
 
     private void acciones() {
+
         botonComprobar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -40,18 +45,17 @@ public class MainController implements Initializable {
                 }*/
             }
         });
-        toggleActivar.setOnAction(new EventHandler<ActionEvent>() {
+        /*toggleActivar.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
-            public void handle(ActionEvent actionEvent) {
-                if (toggleActivar.isSelected()){
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
+                if (t1) {
                     toggleActivar.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("apagar.png"))));
-
                 } else {
                     toggleActivar.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("encender.png"))));
-
                 }
             }
-        });
+        });*/
+
     }
 
     private void personalizarBotones() {
@@ -62,7 +66,14 @@ public class MainController implements Initializable {
         toggleActivar.setText(null);
         toggleActivar.setBorder(null);
         botonComprobar.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("start.png"))));
-        toggleActivar.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("encender.png"))));
+        ImageView imageView = new ImageView();
+        toggleActivar.setGraphic(imageView);
+        imageView.imageProperty().bind(Bindings.when(toggleActivar.selectedProperty())
+                .then(new Image(getClass().getResourceAsStream("encender.png")))
+                .otherwise(new Image(getClass().getResourceAsStream("apagar.png"))));
+        /*toggleActivar.selectedProperty().bind(Bindings.when(imageView.imageProperty()).then(getClass()
+                .getResourceAsStream("encender.png")).otherwise(getClass().getResourceAsStream("apagar.ong")));*/
+        //imageView.imageProperty().bind(Bindings.);
         //botonComprobar.setGraphic(new ImageView(new Image("https://cdn-icons-png.flaticon.com/256/5331/5331494.png")));
     }
 }
