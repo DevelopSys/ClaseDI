@@ -77,6 +77,12 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
             }
         });
         menuSalir.setOnAction(this);
+        menuSimple.setOnAction(this);
+        menuAlerta.setOnAction(this);
+        menuWarn.setOnAction(this);
+        menuSeleccion.setOnAction(this);
+        menuPregunta.setOnAction(this);
+        menuTexto.setOnAction(this);
     }
 
     private void instancias() {
@@ -88,6 +94,25 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     public void handle(ActionEvent actionEvent) {
         if (actionEvent.getSource() == menuSalir){
             System.exit(0);
+        } else if (actionEvent.getSource() == menuSimple){
+            Alert alertSimple = new Alert(Alert.AlertType.INFORMATION);
+            alertSimple.setTitle("Cuandro de alerta");
+            alertSimple.setHeaderText("Cabecera del diálogo de confirmación");
+            alertSimple.setContentText("Contenido del cuandro de diálogo de confirmacién simple");
+            alertSimple.show();
+        } else if (actionEvent.getSource() == menuWarn){
+            Alert alertSimple = new Alert(Alert.AlertType.WARNING);
+            alertSimple.setTitle("Cuandro de alerta");
+            alertSimple.setHeaderText("Cabecera del diálogo de confirmación");
+            alertSimple.setContentText("Contenido del cuandro de diálogo de warning");
+            alertSimple.show();
+        } else if (actionEvent.getSource() == menuAlerta){
+            Alert alertSimple = new Alert(Alert.AlertType.ERROR);
+            alertSimple.setTitle("Cuandro de alerta");
+            alertSimple.setHeaderText("Cabecera del diálogo de confirmación");
+            alertSimple.setContentText("Contenido del cuandro de diálogo de error");
+            alertSimple.show();
         }
+
     }
 }
