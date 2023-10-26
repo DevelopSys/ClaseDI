@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.t3_listas.MainController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
@@ -44,6 +43,16 @@
                   </CheckMenuItem>
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Dialogos">
+              <items>
+                <MenuItem fx:id="menuWarning" mnemonicParsing="false" text="Warning" />
+                  <MenuItem fx:id="manuAlert" mnemonicParsing="false" text="Alert" />
+                  <MenuItem fx:id="menuConfirmacion" mnemonicParsing="false" text="Confirmacion" />
+                  <MenuItem fx:id="menuInput" mnemonicParsing="false" text="Input" />
+                  <MenuItem fx:id="menuChoice" mnemonicParsing="false" text="Choice" />
+                  <MenuItem fx:id="menuPerso" mnemonicParsing="false" text="Personalizado" />
+              </items>
+            </Menu>
         </menus>
       </MenuBar>
    </top>

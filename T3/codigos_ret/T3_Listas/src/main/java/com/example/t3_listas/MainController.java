@@ -19,6 +19,18 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable, EventHandler<ActionEvent> {
 
     @FXML
+    private MenuItem menuWarning;
+    @FXML
+    private MenuItem manuAlert;
+    @FXML
+    private MenuItem menuConfirmacion;
+    @FXML
+    private MenuItem menuInput;
+    @FXML
+    private MenuItem menuChoice;
+    @FXML
+    private MenuItem menuPerso;
+    @FXML
     private CheckMenuItem menuActivar;
 
     @FXML
@@ -46,6 +58,10 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     private void acciones() {
 
         menuSalir.setOnAction(this);
+        menuWarning.setOnAction(this);
+        manuAlert.setOnAction(this);
+        menuSalir.setOnAction(this);
+        menuConfirmacion.setOnAction(this);
         grupoHabilitar.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> observableValue, Toggle toggle, Toggle t1) {
@@ -94,7 +110,26 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
                 dialogoInfo.show();
             }
 
-        } else {
+        }
+        else if (actionEvent.getSource() == menuWarning){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.show();
+        }else if (actionEvent.getSource() == manuAlert){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.show();
+        } else if (actionEvent.getSource() == menuConfirmacion){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            ButtonType boton1 = new ButtonType("No me interesa");
+            ButtonType boton2 = new ButtonType("Me interesa");
+            alert.getButtonTypes().setAll(boton2,boton1, ButtonType.CLOSE );
+            Optional<ButtonType> respuesta = alert.showAndWait();
+            if (respuesta.get() == ButtonType.APPLY){
+                System.out.println("Seleccionado apply");
+            } else if (respuesta.get()== boton1){
+                System.out.println("Seleccionado tal vez");
+            }
+        }
+        else {
             System.exit(0);
         }
     }

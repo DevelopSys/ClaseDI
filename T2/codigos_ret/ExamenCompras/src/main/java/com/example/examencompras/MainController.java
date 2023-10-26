@@ -54,6 +54,7 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         instancias();
+        root.setRight(null);
         personalizarBotones();
         acciones();
     }
