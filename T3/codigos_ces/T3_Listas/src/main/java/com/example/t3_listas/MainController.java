@@ -10,6 +10,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -55,6 +56,9 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     private MenuItem menuWarn;
 
     @FXML
+    private MenuItem menuPersonalizado;
+
+    @FXML
     private GridPane parteCentral;
 
     private ToggleGroup grupoHabilitar;
@@ -91,6 +95,7 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
         menuSeleccion.setOnAction(this);
         menuPregunta.setOnAction(this);
         menuTexto.setOnAction(this);
+        menuPersonalizado.setOnAction(this);
     }
 
     private void instancias() {
@@ -169,6 +174,21 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
                 System.out.println("Np hay datos");
             }
 
+        } else if (actionEvent.getSource() == menuPersonalizado) {
+            Dialog dialogoPerso = new Dialog();
+            dialogoPerso.setTitle("Cuadro personalizado");
+            // VBOX
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("dialogo-view.fxml"));
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            dialogoPerso.getDialogPane().setContent(root);
+            dialogoPerso.getDialogPane().getButtonTypes().addAll(ButtonType.APPLY, ButtonType.CLOSE);
+            dialogoPerso.se
+            Optional respuesta =  dialogoPerso.showAndWait();
         }
 
     }
