@@ -8,10 +8,12 @@
 
 <VBox xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            prefHeight="300.0" prefWidth="300.0">
+            prefHeight="300.0" prefWidth="300.0"
+                fx:controller="com.example.t3_listas.DialogoPersoController"
+                >
 
-        <TextField promptText="Introduce tu nombre"/>
-        <TextField promptText="Introduce tu password"/>
-        <CheckBox text="Recordad sesion"/>
+        <TextField fx:id="textFieldNombre" promptText="Introduce tu nombre"/>
+        <TextField fx:id="textFieldPass" promptText="Introduce tu password"/>
+        <CheckBox fx:id="checkRecordar" text="Recordad sesion"/>
 
 </VBox>

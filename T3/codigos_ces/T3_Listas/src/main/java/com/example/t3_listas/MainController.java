@@ -63,6 +63,8 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
 
     private ToggleGroup grupoHabilitar;
 
+    private DialogoPersoController dialogoPersoController;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         instancias();
@@ -175,20 +177,37 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
             }
 
         } else if (actionEvent.getSource() == menuPersonalizado) {
-            Dialog dialogoPerso = new Dialog();
+            Dialog<Pelicula> dialogoPerso = new Dialog();
             dialogoPerso.setTitle("Cuadro personalizado");
             // VBOX
             FXMLLoader loader = new FXMLLoader(getClass().getResource("dialogo-view.fxml"));
+            System.out.println("Antes de cargar");
             Parent root = null;
             try {
                 root = loader.load();
+                dialogoPersoController = loader.getController();
+                System.out.println("Despues de cargar");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
             dialogoPerso.getDialogPane().setContent(root);
             dialogoPerso.getDialogPane().getButtonTypes().addAll(ButtonType.APPLY, ButtonType.CLOSE);
-            dialogoPerso.se
-            Optional respuesta =  dialogoPerso.showAndWait();
+            dialogoPerso.setResultConverter(new Callback<ButtonType, Pelicula>() {
+
+                @Override
+                public Pelicula call(ButtonType buttonType) {
+                    if (buttonType == ButtonType.APPLY){
+                        // necesito un objeto de tipo controladora (DialogoController)
+                        // llamar al metodo getPelicula - isPelicula
+                        if (dialogoPersoController.isPelicula()){
+                            return dialogoPersoController.getPelicula();
+                        }
+                    }
+                    return null;
+                }
+            });
+            Optional<Pelicula> respuesta =  dialogoPerso.showAndWait();
+            System.out.println(respuesta.get().getTitulo());
         }
 
     }
