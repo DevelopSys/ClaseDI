@@ -9,12 +9,16 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.util.Callback;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
@@ -65,6 +69,7 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
         menuInput.setOnAction(this);
         menuChoice.setOnAction(this);
         menuConfirmacion.setOnAction(this);
+        menuPerso.setOnAction(this);
         grupoHabilitar.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> observableValue, Toggle toggle, Toggle t1) {
@@ -148,10 +153,53 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
                     new Usuario("Usuario2", "Pass2", "Correo1@correo2"),
                     new Usuario("Usuario3", "Pass3", "Correo1@correo3"));
 
-            ChoiceDialog<Usuario> dialogoLista = new ChoiceDialog(listaUsuario.get(2),listaUsuario);
-            dialogoLista.showAndWait();
+            ChoiceDialog<Usuario> dialogoLista = new ChoiceDialog(listaUsuario.get(2), listaUsuario);
+            Optional<Usuario> respuesta = dialogoLista.showAndWait();
+
+            if (respuesta.isPresent()) {
+                System.out.println(respuesta.get().getPass());
+            }
 
             // al seleccionar un usuario, aparece por consola su contraseña
+        } else if (actionEvent.getSource() == menuPerso) {
+            Dialog<Usuario> dialog = new Dialog<>();
+            dialog.setTitle("Dialogo login");
+
+            // poner lo grafico
+            // cargar un elemento FXML
+            DialogoController dialogoController;
+            FXMLLoader loader = new FXMLLoader
+                    (getClass().getResource("dialog-view.fxml"));
+            Parent root = null;
+            try {
+                root = loader.load();
+                dialogoController = loader.getController();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            dialog.setResizable(true);
+            dialog.getDialogPane().setContent(root);
+            dialog.getDialogPane().getButtonTypes().addAll(ButtonType.APPLY);
+            dialog.setResultConverter(new Callback<ButtonType, Usuario>() {
+                @Override
+                public Usuario call(ButtonType buttonType) {
+
+                    // DialogController -> getUsuario()
+                    if (dialogoController.isUsuario()) {
+                        return dialogoController.getUsuario();
+                    }
+                    return null;
+                }
+            });
+            Optional<Usuario> respuesta = dialog.showAndWait();
+            if (respuesta.isEmpty()) {
+                Alert alerta = new Alert(Alert.AlertType.ERROR);
+                alerta.setContentText("No estan todos los datos seleccionados");
+                alerta.show();
+            } else {
+                System.out.println(respuesta.get().getCorreo());
+            }
+
         } else {
             System.exit(0);
         }
