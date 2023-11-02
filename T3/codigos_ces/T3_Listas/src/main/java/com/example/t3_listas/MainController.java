@@ -17,16 +17,39 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable, EventHandler<ActionEvent> {
+
+    @FXML
+    private ChoiceBox<Pelicula> choice;
+
+    @FXML
+    private ComboBox<String> combo;
+
+    private ObservableList<String> listaCombo;
+
+    private ObservableList<Pelicula> listaChoice;
+
+    @FXML
+    private ListView<?> listView;
+
+    @FXML
+    private BorderPane parteCentral;
+
+    @FXML
+    private Spinner<Integer> spinner;
+
+    private SpinnerValueFactory<Integer> listaSpinner;
+
+    @FXML
+    private Button botonFiltrar;
 
     @FXML
     private RadioMenuItem manuDeshabilitar;
@@ -58,12 +81,10 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     @FXML
     private MenuItem menuPersonalizado;
 
-    @FXML
-    private GridPane parteCentral;
-
     private ToggleGroup grupoHabilitar;
 
     private DialogoPersoController dialogoPersoController;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -98,9 +119,26 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
         menuPregunta.setOnAction(this);
         menuTexto.setOnAction(this);
         menuPersonalizado.setOnAction(this);
+        botonFiltrar.setOnAction(this);
     }
 
     private void instancias() {
+        listaCombo = FXCollections.observableArrayList();
+        listaCombo.addAll("Terror", "Comedia", "Intriga", "Infantil");
+        combo.setItems(listaCombo);
+        listaChoice = FXCollections.observableArrayList();
+        listaChoice.addAll(new Pelicula("Pelicula1", "terror", 1987)
+                , new Pelicula("Pelicula2", "comedia", 2010)
+                , new Pelicula("Pelicula3", "infantil", 2000)
+                , new Pelicula("Pelicula4", "terror", 1995));
+        choice.setItems(listaChoice);
+
+        listaSpinner = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, 5,5);
+        /*ObservableList listaOpciones = FXCollections.observableArrayList();
+        listaOpciones.addAll("Opcion 1","Opcion 2", "Opcion 3");
+        listaSpinner = new SpinnerValueFactory.ListSpinnerValueFactory<>(listaOpciones);*/
+        spinner.setValueFactory(listaSpinner);
+
         grupoHabilitar = new ToggleGroup();
         grupoHabilitar.getToggles().addAll(menuHabilitar, manuDeshabilitar);
     }
@@ -166,8 +204,8 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
         } else if (actionEvent.getSource() == menuTexto) {
             TextInputDialog dialogoTexto = new TextInputDialog("Por favor introduce dato");
             Optional<String> respuesta = dialogoTexto.showAndWait();
-            if (respuesta.isPresent()){
-                if (!respuesta.get().isEmpty()){
+            if (respuesta.isPresent()) {
+                if (!respuesta.get().isEmpty()) {
                     System.out.println(respuesta.get());
                 } else {
                     System.out.println("Introducidos datos vacios");
@@ -196,18 +234,33 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
 
                 @Override
                 public Pelicula call(ButtonType buttonType) {
-                    if (buttonType == ButtonType.APPLY){
+                    if (buttonType == ButtonType.APPLY) {
                         // necesito un objeto de tipo controladora (DialogoController)
                         // llamar al metodo getPelicula - isPelicula
-                        if (dialogoPersoController.isPelicula()){
+                        if (dialogoPersoController.isPelicula()) {
                             return dialogoPersoController.getPelicula();
                         }
                     }
                     return null;
                 }
             });
-            Optional<Pelicula> respuesta =  dialogoPerso.showAndWait();
+            Optional<Pelicula> respuesta = dialogoPerso.showAndWait();
             System.out.println(respuesta.get().getTitulo());
+        } else if (actionEvent.getSource() == botonFiltrar) {
+
+            //combo.getItems().get(1);
+            if (combo.getSelectionModel().getSelectedIndex()!=-1
+                    && choice.getSelectionModel().getSelectedIndex()!=-1){
+                //combo.getItems().get();
+                System.out.println(combo.getSelectionModel().getSelectedItem());
+                System.out.println(choice.getSelectionModel().getSelectedItem().getGenero());
+                System.out.println(spinner.getValue());
+
+            } else {
+                System.out.println("No hay nada seleccionado");
+            }
+
+
         }
 
     }
