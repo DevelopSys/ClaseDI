@@ -68,6 +68,9 @@
          </BorderPane.margin>
       </ListView>
    </right>
+    <left>
+        <Button text="Cambiar" fx:id="botonCambiar"></Button>
+    </left>
    <bottom>
       <Button fx:id="botonFiltrar" mnemonicParsing="false" text="Filtrar" BorderPane.alignment="CENTER" />
    </bottom>

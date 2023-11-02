@@ -66,6 +66,8 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     @FXML
     private MenuItem menuSalir;
 
+    @FXML private Button botonCambiar;
+
     @FXML
     private MenuItem menuSeleccion;
 
@@ -120,6 +122,26 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
         menuTexto.setOnAction(this);
         menuPersonalizado.setOnAction(this);
         botonFiltrar.setOnAction(this);
+        botonCambiar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                combo.getSelectionModel().select(2);
+            }
+        });
+        combo.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue,
+                                String s, String t1) {
+                System.out.println(t1);
+            }
+        });
+        spinner.valueProperty().addListener(new ChangeListener<Integer>() {
+            @Override
+            public void changed(ObservableValue<? extends Integer> observableValue,
+                                Integer integer, Integer t1) {
+                System.out.println(t1);
+            }
+        });
     }
 
     private void instancias() {
