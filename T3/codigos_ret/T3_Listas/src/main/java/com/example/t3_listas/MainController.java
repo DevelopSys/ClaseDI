@@ -1,5 +1,6 @@
 package com.example.t3_listas;
 
+import com.example.t3_listas.model.Pelicula;
 import com.example.t3_listas.model.Usuario;
 import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
@@ -57,7 +58,8 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     private Button botonComprobar;
 
     @FXML
-    private ChoiceBox<?> choice;
+    private ChoiceBox<Pelicula> choice;
+    private ObservableList<Pelicula> listaPeliculas;
 
     @FXML
     private ComboBox<String> combo;
@@ -68,7 +70,9 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     private ListView<?> lisview;
 
     @FXML
-    private Spinner<?> spinner;
+    //private Spinner<Integer> spinner;
+    private Spinner<String> spinner;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -80,6 +84,7 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
 
     private void acciones() {
 
+        botonComprobar.setOnAction(this);
         menuSalir.setOnAction(this);
         menuWarning.setOnAction(this);
         manuAlert.setOnAction(this);
@@ -87,6 +92,18 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
         menuChoice.setOnAction(this);
         menuConfirmacion.setOnAction(this);
         menuPerso.setOnAction(this);
+        combo.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                System.out.println(t1);
+            }
+        });
+        menuActivar.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
+                combo.getSelectionModel().select((int) (Math.random()*listaGeneros.size()));
+            }
+        });
         grupoHabilitar.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> observableValue, Toggle toggle, Toggle t1) {
@@ -113,6 +130,21 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
         listaGeneros = FXCollections.observableArrayList();
         listaGeneros.addAll("Terror","Comedia","Musical","Infantil");
         combo.setItems(listaGeneros);
+
+        listaPeliculas = FXCollections.observableArrayList();
+        listaPeliculas.add(new Pelicula("Titulo 1","Terror",4.5,1990));
+        listaPeliculas.add(new Pelicula("Titulo 2","Comedia",4.1,2015));
+        listaPeliculas.add(new Pelicula("Titulo 3","Infantil",4.2,2017));
+        listaPeliculas.add(new Pelicula("Titulo 4","Musical",4,2019));
+        choice.setItems(listaPeliculas);
+
+        //spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1,100,50,5));
+        ObservableList<String> opciones = FXCollections.observableArrayList();
+        opciones.add("Opcion 1");
+        opciones.add("Opcion 2");
+        opciones.add("Opcion 3");
+        opciones.add("Opcion 4");
+        spinner.setValueFactory(new SpinnerValueFactory.ListSpinnerValueFactory<String>(opciones));
     }
 
     private void personalizarMenu() {
@@ -125,6 +157,8 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     @Override
     public void handle(ActionEvent actionEvent) {
         if (menuActivar.isSelected()) {
+
+
             // Construidos - Alert
             // ALERTA - WARN - INFO - CONF - INPUT - CHOICE
             Alert dialogoConfirmacion = new Alert(Alert.AlertType.CONFIRMATION);
@@ -223,6 +257,27 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
                 System.out.println(respuesta.get().getCorreo());
             }
 
+        } else if (actionEvent.getSource() == botonComprobar) {
+            // combo -> elementoSeleccionado
+            // combo -> adapter -> elementoEnPosicion
+
+            if (combo.getSelectionModel().getSelectedIndex()>-1
+            && choice.getSelectionModel().getSelectedIndex()>-1){
+                System.out.println("El elemento seleccionado del combo es: "+
+                        combo.getSelectionModel().getSelectedItem());
+                System.out.println("El elemento seleccionado del choice es: "+
+                        choice.getSelectionModel().getSelectedItem().getAnio());
+                System.out.println("El elemento seleccionado del spinner es: "+
+                        spinner.valueProperty().get());
+            } else {
+                Alert alerta = new Alert(Alert.AlertType.WARNING);
+                alerta.setTitle("Elementos");
+                alerta.setHeaderText("No hay elementos seleccionados");
+                alerta.show();
+            }
+
+            //System.out.println("El elemento seleccionado es: "+
+            // combo.getItems().get(combo.getSelectionModel().getSelectedIndex()));
         } else {
             System.exit(0);
         }
