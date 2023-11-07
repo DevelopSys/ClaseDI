@@ -53,6 +53,23 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
 
     private ToggleGroup grupoHabilitar;
 
+    @FXML
+    private Button botonComprobar;
+
+    @FXML
+    private ChoiceBox<?> choice;
+
+    @FXML
+    private ComboBox<String> combo;
+
+    private ObservableList<String> listaGeneros;
+
+    @FXML
+    private ListView<?> lisview;
+
+    @FXML
+    private Spinner<?> spinner;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -88,8 +105,14 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     }
 
     private void instancias() {
+
+        // pelicula - titulo - genero - calificacion - año
+        // mostrar el titulo
         grupoHabilitar = new ToggleGroup();
         grupoHabilitar.getToggles().addAll(menuHabilitar, menuDeshabilitar);
+        listaGeneros = FXCollections.observableArrayList();
+        listaGeneros.addAll("Terror","Comedia","Musical","Infantil");
+        combo.setItems(listaGeneros);
     }
 
     private void personalizarMenu() {
