@@ -1,6 +1,7 @@
 package com.example.t3_listas;
 
 import com.example.t3_listas.model.Pelicula;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -20,7 +21,11 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
 
+import javax.net.ssl.HttpsURLConnection;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -36,9 +41,10 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     private ObservableList<String> listaCombo;
 
     private ObservableList<Pelicula> listaChoice;
+    private ObservableList<Pelicula> listaListView;
 
     @FXML
-    private ListView<?> listView;
+    private ListView<Pelicula> listView;
 
     @FXML
     private BorderPane parteCentral;
@@ -65,8 +71,11 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
 
     @FXML
     private MenuItem menuSalir;
+    @FXML
+    private MenuItem menuAgregar;
 
-    @FXML private Button botonCambiar;
+    @FXML
+    private MenuItem menuEliminar;
 
     @FXML
     private MenuItem menuSeleccion;
@@ -90,6 +99,7 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         instancias();
         personalizarMenu();
         acciones();
@@ -122,12 +132,6 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
         menuTexto.setOnAction(this);
         menuPersonalizado.setOnAction(this);
         botonFiltrar.setOnAction(this);
-        botonCambiar.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                combo.getSelectionModel().select(2);
-            }
-        });
         combo.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue,
@@ -142,6 +146,13 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
                 System.out.println(t1);
             }
         });
+
+        listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Pelicula>() {
+            @Override
+            public void changed(ObservableValue<? extends Pelicula> observableValue, Pelicula pelicula, Pelicula t1) {
+                System.out.println(pelicula.getTitulo());
+            }
+        });
     }
 
     private void instancias() {
@@ -151,9 +162,13 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
         listaChoice = FXCollections.observableArrayList();
         listaChoice.addAll(new Pelicula("Pelicula1", "terror", 1987)
                 , new Pelicula("Pelicula2", "comedia", 2010)
-                , new Pelicula("Pelicula3", "infantil", 2000)
-                , new Pelicula("Pelicula4", "terror", 1995));
+                , new Pelicula("Pelicula3", "infantil", 2000));
         choice.setItems(listaChoice);
+
+        listaListView = FXCollections.observableArrayList();
+        listaListView.addAll(new Pelicula("T1","genero1",2000),
+                new Pelicula("T1","genero1",2000));
+        listView.setItems(listaListView);
 
         listaSpinner = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, 5,5);
         /*ObservableList listaOpciones = FXCollections.observableArrayList();
@@ -272,10 +287,13 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
 
             //combo.getItems().get(1);
             if (combo.getSelectionModel().getSelectedIndex()!=-1
-                    && choice.getSelectionModel().getSelectedIndex()!=-1){
+                    && choice.getSelectionModel().getSelectedIndex()!=-1
+                    && listView.getSelectionModel().getSelectedIndex()!=-1
+            ){
                 //combo.getItems().get();
                 System.out.println(combo.getSelectionModel().getSelectedItem());
                 System.out.println(choice.getSelectionModel().getSelectedItem().getGenero());
+                System.out.println(listView.getSelectionModel().getSelectedItem().getTitulo());
                 System.out.println(spinner.getValue());
 
             } else {
