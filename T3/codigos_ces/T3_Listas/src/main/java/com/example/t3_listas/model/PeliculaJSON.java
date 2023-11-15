@@ -15,7 +15,7 @@ public class PeliculaJSON {
     private String title;
     private boolean video;
     private double vote_average;
-    private long voteCount;
+    private long vote_count;
 
     public PeliculaJSON(boolean adult, String backdrop_path, long[] genre_ids, long id, String original_language, String original_title, String overview, double popularity, String posterPath, String title, boolean video, double vote_average, long voteCount) {
         this.adult = adult;
@@ -30,7 +30,7 @@ public class PeliculaJSON {
         this.title = title;
         this.video = video;
         this.vote_average = vote_average;
-        this.voteCount = voteCount;
+        this.vote_count = voteCount;
     }
 
     public PeliculaJSON() {
@@ -133,11 +133,11 @@ public class PeliculaJSON {
     }
 
     public long getVoteCount() {
-        return voteCount;
+        return vote_count;
     }
 
     public void setVoteCount(long voteCount) {
-        this.voteCount = voteCount;
+        this.vote_count = voteCount;
     }
 
     @Override
