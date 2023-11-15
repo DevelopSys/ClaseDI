@@ -133,7 +133,7 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
                 //PeliculaJSON peliculaJSON = new PeliculaJSON();
                 Gson gson = new Gson();
                 PeliculaJSON peliculaJSON = gson.fromJson(pelicula.toString(), PeliculaJSON.class);
-                //System.out.println(peliculaJSON.getTitle());
+                System.out.println(peliculaJSON.getBackdrop_path());
                 listaListView.add(peliculaJSON);
             }
         } catch (IOException e) {

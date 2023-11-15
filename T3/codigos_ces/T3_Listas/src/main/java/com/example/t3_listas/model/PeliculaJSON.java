@@ -4,76 +4,141 @@ import java.util.Arrays;
 
 public class PeliculaJSON {
     private boolean adult;
-    private String backdropPath;
-    private long[] genreIDS;
+    private String backdrop_path;
+    private long[] genre_ids;
     private long id;
-    private String originalLanguage;
-    private String originalTitle;
+    private String original_language;
+    private String original_title;
     private String overview;
     private double popularity;
     private String posterPath;
     private String title;
     private boolean video;
-    private double voteAverage;
+    private double vote_average;
     private long voteCount;
 
-    public PeliculaJSON(boolean adult, String backdropPath, long[] genreIDS, long id, String originalLanguage, String originalTitle, String overview, double popularity, String posterPath, String title, boolean video, double voteAverage, long voteCount) {
+    public PeliculaJSON(boolean adult, String backdrop_path, long[] genre_ids, long id, String original_language, String original_title, String overview, double popularity, String posterPath, String title, boolean video, double vote_average, long voteCount) {
         this.adult = adult;
-        this.backdropPath = backdropPath;
-        this.genreIDS = genreIDS;
+        this.backdrop_path = "https://image.tmdb.org/t/p/w500/"+backdrop_path;
+        this.genre_ids = genre_ids;
         this.id = id;
-        this.originalLanguage = originalLanguage;
-        this.originalTitle = originalTitle;
+        this.original_language = original_language;
+        this.original_title = original_title;
         this.overview = overview;
         this.popularity = popularity;
         this.posterPath = posterPath;
         this.title = title;
         this.video = video;
-        this.voteAverage = voteAverage;
+        this.vote_average = vote_average;
         this.voteCount = voteCount;
     }
 
     public PeliculaJSON() {
     }
 
-    public boolean getAdult() { return adult; }
-    public void setAdult(boolean value) { this.adult = value; }
+    public boolean isAdult() {
+        return adult;
+    }
 
-    public String getBackdropPath() { return backdropPath; }
-    public void setBackdropPath(String value) { this.backdropPath = value; }
+    public void setAdult(boolean adult) {
+        this.adult = adult;
+    }
 
-    public long[] getGenreIDS() { return genreIDS; }
-    public void setGenreIDS(long[] value) { this.genreIDS = value; }
+    public String getBackdrop_path() {
+        return "https://image.tmdb.org/t/p/w500/"+backdrop_path;
+    }
 
-    public long getID() { return id; }
-    public void setID(long value) { this.id = value; }
+    public void setBackdrop_path(String backdrop_path) {
+        this.backdrop_path = backdrop_path;
+    }
 
-    public String getOriginalLanguage() { return originalLanguage; }
-    public void setOriginalLanguage(String value) { this.originalLanguage = value; }
+    public long[] getGenre_ids() {
+        return genre_ids;
+    }
 
-    public String getOriginalTitle() { return originalTitle; }
-    public void setOriginalTitle(String value) { this.originalTitle = value; }
+    public void setGenre_ids(long[] genre_ids) {
+        this.genre_ids = genre_ids;
+    }
 
-    public String getOverview() { return overview; }
-    public void setOverview(String value) { this.overview = value; }
+    public long getId() {
+        return id;
+    }
 
-    public double getPopularity() { return popularity; }
-    public void setPopularity(double value) { this.popularity = value; }
+    public void setId(long id) {
+        this.id = id;
+    }
 
-    public String getPosterPath() { return posterPath; }
-    public void setPosterPath(String value) { this.posterPath = value; }
+    public String getOriginal_language() {
+        return original_language;
+    }
 
-    public String getTitle() { return title; }
-    public void setTitle(String value) { this.title = value; }
+    public void setOriginal_language(String original_language) {
+        this.original_language = original_language;
+    }
 
-    public boolean getVideo() { return video; }
-    public void setVideo(boolean value) { this.video = value; }
+    public String getOriginal_title() {
+        return original_title;
+    }
 
-    public double getVoteAverage() { return voteAverage; }
-    public void setVoteAverage(double value) { this.voteAverage = value; }
+    public void setOriginal_title(String original_title) {
+        this.original_title = original_title;
+    }
 
-    public long getVoteCount() { return voteCount; }
-    public void setVoteCount(long value) { this.voteCount = value; }
+    public String getOverview() {
+        return overview;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
+
+    public double getPopularity() {
+        return popularity;
+    }
+
+    public void setPopularity(double popularity) {
+        this.popularity = popularity;
+    }
+
+    public String getPosterPath() {
+        return posterPath;
+    }
+
+    public void setPosterPath(String posterPath) {
+        this.posterPath = posterPath;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public boolean isVideo() {
+        return video;
+    }
+
+    public void setVideo(boolean video) {
+        this.video = video;
+    }
+
+    public double getVote_average() {
+        return vote_average;
+    }
+
+    public void setVote_average(double vote_average) {
+        this.vote_average = vote_average;
+    }
+
+    public long getVoteCount() {
+        return voteCount;
+    }
+
+    public void setVoteCount(long voteCount) {
+        this.voteCount = voteCount;
+    }
 
     @Override
     public String toString() {
