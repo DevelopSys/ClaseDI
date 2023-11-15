@@ -77,20 +77,6 @@ public class PeliculaJSON {
 
     @Override
     public String toString() {
-        return "PeliculaJSON{" +
-                "adult=" + adult +
-                ", backdropPath='" + backdropPath + '\'' +
-                ", genreIDS=" + Arrays.toString(genreIDS) +
-                ", id=" + id +
-                ", originalLanguage='" + originalLanguage + '\'' +
-                ", originalTitle='" + originalTitle + '\'' +
-                ", overview='" + overview + '\'' +
-                ", popularity=" + popularity +
-                ", posterPath='" + posterPath + '\'' +
-                ", title='" + title + '\'' +
-                ", video=" + video +
-                ", voteAverage=" + voteAverage +
-                ", voteCount=" + voteCount +
-                '}';
+        return getTitle();
     }
 }
