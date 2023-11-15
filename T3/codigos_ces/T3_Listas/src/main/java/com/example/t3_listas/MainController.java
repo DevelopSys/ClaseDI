@@ -1,7 +1,9 @@
 package com.example.t3_listas;
 
+
 import com.example.t3_listas.model.Pelicula;
-import javafx.application.Platform;
+import com.example.t3_listas.model.PeliculaJSON;
+import com.google.gson.Gson;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -20,15 +22,19 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+
+
 
 public class MainController implements Initializable, EventHandler<ActionEvent> {
 
@@ -101,8 +107,39 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         instancias();
+        obtenerPeliculas();
         personalizarMenu();
         acciones();
+    }
+
+    private void obtenerPeliculas() {
+
+        try {
+            URL url = new URL("https://api.themoviedb.org/3/movie/now_playing?api_key=4ef66e12cddbb8fe9d4fd03ac9632f6e&language=es-ES&page=1");
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            String linea =  null;
+            StringBuffer stringBuffer = new StringBuffer();
+            while ((linea=reader.readLine())!=null){
+                stringBuffer.append(linea);
+            }
+
+            JSONObject jsonObject = new JSONObject(stringBuffer.toString());
+            JSONArray resultadoPeliculas = jsonObject.getJSONArray("results");
+            // Iterable -> sin foreach
+            for (int i = 0; i < resultadoPeliculas.length(); i++) {
+                JSONObject pelicula = resultadoPeliculas.getJSONObject(i);
+                String titulo = pelicula.getString("original_title");
+                // sacar cada uno de los atributos y
+                //PeliculaJSON peliculaJSON = new PeliculaJSON();
+                Gson gson = new Gson();
+                PeliculaJSON peliculaJSON =gson.fromJson(pelicula.toString(), PeliculaJSON.class);
+                System.out.println(peliculaJSON.getTitle());
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     private void personalizarMenu() {
@@ -132,6 +169,8 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
         menuTexto.setOnAction(this);
         menuPersonalizado.setOnAction(this);
         botonFiltrar.setOnAction(this);
+        menuAgregar.setOnAction(this);
+        menuEliminar.setOnAction(this);
         combo.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue,
@@ -166,11 +205,11 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
         choice.setItems(listaChoice);
 
         listaListView = FXCollections.observableArrayList();
-        listaListView.addAll(new Pelicula("T1","genero1",2000),
-                new Pelicula("T1","genero1",2000));
+        listaListView.addAll(new Pelicula("T1", "genero1", 2000),
+                new Pelicula("T1", "genero1", 2000));
         listView.setItems(listaListView);
 
-        listaSpinner = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, 5,5);
+        listaSpinner = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, 5, 5);
         /*ObservableList listaOpciones = FXCollections.observableArrayList();
         listaOpciones.addAll("Opcion 1","Opcion 2", "Opcion 3");
         listaSpinner = new SpinnerValueFactory.ListSpinnerValueFactory<>(listaOpciones);*/
@@ -286,10 +325,10 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
         } else if (actionEvent.getSource() == botonFiltrar) {
 
             //combo.getItems().get(1);
-            if (combo.getSelectionModel().getSelectedIndex()!=-1
-                    && choice.getSelectionModel().getSelectedIndex()!=-1
-                    && listView.getSelectionModel().getSelectedIndex()!=-1
-            ){
+            if (combo.getSelectionModel().getSelectedIndex() != -1
+                    && choice.getSelectionModel().getSelectedIndex() != -1
+                    && listView.getSelectionModel().getSelectedIndex() != -1
+            ) {
                 //combo.getItems().get();
                 System.out.println(combo.getSelectionModel().getSelectedItem());
                 System.out.println(choice.getSelectionModel().getSelectedItem().getGenero());
@@ -298,6 +337,21 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
 
             } else {
                 System.out.println("No hay nada seleccionado");
+            }
+
+
+        } else if (actionEvent.getSource() == menuAgregar) {
+            listaListView.add(new Pelicula("Nueva","GeneroNuevo",2010));
+            listView.refresh();
+        } else if (actionEvent.getSource() == menuEliminar) {
+            if (listView.getSelectionModel().getSelectedIndex()>-1){
+                listaListView.remove(listView.getSelectionModel().getSelectedIndex());
+                listView.refresh();
+                listView.getSelectionModel().select(-1);
+            } else {
+                Alert aviso = new Alert(Alert.AlertType.WARNING);
+                aviso.setHeaderText("No hay elemento seleccionado");
+                aviso.show();
             }
 
 

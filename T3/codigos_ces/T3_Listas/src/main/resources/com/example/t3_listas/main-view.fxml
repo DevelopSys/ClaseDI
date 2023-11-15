@@ -33,13 +33,13 @@
                         <RadioMenuItem fx:id="menuHabilitar" mnemonicParsing="false" text="Habilitar"/>
                         <RadioMenuItem fx:id="manuDeshabilitar" mnemonicParsing="false" text="Deshabilitar"/>
                         <SeparatorMenuItem mnemonicParsing="false"/>
-                        <MenuItem fx:id="menuAgregar" mnemonicParsing="false" text="Deshabilitar">
+                        <MenuItem fx:id="menuAgregar" mnemonicParsing="false" text="Agregar">
                             <accelerator>
                                 <KeyCodeCombination alt="UP" code="A" control="DOWN" meta="UP" shift="UP"
                                                     shortcut="UP"/>
                             </accelerator>
                         </MenuItem>
-                        <MenuItem fx:id="menuEliminar" mnemonicParsing="false" text="Deshabilitar">
+                        <MenuItem fx:id="menuEliminar" mnemonicParsing="false" text="Eliminar">
                             <accelerator>
                                 <KeyCodeCombination alt="UP" code="R" control="DOWN" meta="UP" shift="UP"
                                                     shortcut="UP"/>
