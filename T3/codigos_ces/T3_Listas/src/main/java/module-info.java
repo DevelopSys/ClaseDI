@@ -12,7 +12,7 @@ module com.example.t3_listas {
     requires org.json;
     requires com.google.gson;
 
-    opens com.example.t3_listas to javafx.fxml;
     exports com.example.t3_listas;
     opens com.example.t3_listas.model;
+    opens com.example.t3_listas;
 }

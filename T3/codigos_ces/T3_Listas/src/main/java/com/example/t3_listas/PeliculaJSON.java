@@ -1,4 +1,4 @@
-package com.example.t3_listas.model;
+package com.example.t3_listas;
 import java.time.LocalDate;
 import java.util.Arrays;
 
@@ -15,9 +15,10 @@ public class PeliculaJSON {
     private String title;
     private boolean video;
     private double vote_average;
-    private long vote_count;
+    private int vote_count;
 
-    public PeliculaJSON(boolean adult, String backdrop_path, long[] genre_ids, long id, String original_language, String original_title, String overview, double popularity, String posterPath, String title, boolean video, double vote_average, long voteCount) {
+    public PeliculaJSON(boolean adult, String backdrop_path, long[] genre_ids, int id, String original_language,
+                        String original_title, String overview, double popularity, String posterPath, String title, boolean video, double vote_average, int voteCount) {
         this.adult = adult;
         this.backdrop_path = "https://image.tmdb.org/t/p/w500/"+backdrop_path;
         this.genre_ids = genre_ids;
@@ -136,7 +137,7 @@ public class PeliculaJSON {
         return vote_count;
     }
 
-    public void setVoteCount(long voteCount) {
+    public void setVoteCount(int voteCount) {
         this.vote_count = voteCount;
     }
 

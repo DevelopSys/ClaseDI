@@ -1,7 +1,5 @@
 package com.example.t3_listas;
 
-import com.example.t3_listas.model.Pelicula;
-import com.example.t3_listas.model.PeliculaJSON;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;

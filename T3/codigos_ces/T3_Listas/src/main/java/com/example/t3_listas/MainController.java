@@ -2,13 +2,13 @@ package com.example.t3_listas;
 
 
 import com.example.t3_listas.model.Pelicula;
-import com.example.t3_listas.model.PeliculaJSON;
 import com.google.gson.Gson;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -34,15 +34,20 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 
 public class MainController implements Initializable, EventHandler<ActionEvent> {
 
 
+
+   @FXML private TextField textoFiltrar;
     private ObservableList<String> listaCombo;
 
     private ObservableList<Pelicula> listaChoice;
     private ObservableList<PeliculaJSON> listaListView;
+
+    private FilteredList<PeliculaJSON> listaFiltrada;
 
 
     private SpinnerValueFactory<Integer> listaSpinner;
@@ -56,7 +61,7 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     private Button botonDetalle;
 
     @FXML
-    private Button botonFiltrar;
+    private Button botonFiltrar, botonAdd, botonGet, botonRemove;
 
     @FXML
     private ChoiceBox<?> choice;
@@ -139,7 +144,7 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
         columnaTitulo.setCellValueFactory(new PropertyValueFactory<>("title"));
         columnaAdultos.setCellValueFactory(new PropertyValueFactory<>("adult"));
         columnaMedia.setCellValueFactory(new PropertyValueFactory<>("vote_average"));
-        columnaVotos.setCellValueFactory(new PropertyValueFactory<>("vote_count"));
+        columnaVotos.setCellValueFactory(new PropertyValueFactory<>("id"));
     }
 
     private void obtenerPeliculas() {
@@ -166,10 +171,9 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
                 Gson gson = new Gson();
                 PeliculaJSON peliculaJSON = gson.fromJson(pelicula.toString(), PeliculaJSON.class);
                 System.out.println(peliculaJSON.getBackdrop_path());
-                if (peliculaJSON.getVote_average() > 8) {
 
-                    listaListView.add(peliculaJSON);
-                }
+
+                listaListView.add(peliculaJSON);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -185,6 +189,26 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     }
 
     private void acciones() {
+
+
+        /*tabla.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<PeliculaJSON>() {
+            @Override
+            public void changed(ObservableValue<? extends PeliculaJSON> observableValue, PeliculaJSON peliculaJSON, PeliculaJSON t1) {
+                System.out.println(t1.getTitle());
+            }
+        });*/
+        textoFiltrar.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue,
+                                String s, String t1) {
+                listaFiltrada.setPredicate(new Predicate<PeliculaJSON>() {
+                    @Override
+                    public boolean test(PeliculaJSON peliculaJSON) {
+                        return peliculaJSON.getTitle().contains(t1) && peliculaJSON.getVote_average() > 7;
+                    }
+                });
+            }
+        });
         grupoHabilitar.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> observableValue, Toggle toggle, Toggle t1) {
@@ -196,6 +220,9 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
             }
         });
         botonDetalle.setOnAction(this);
+        botonGet.setOnAction(this);
+        botonRemove.setOnAction(this);
+        botonAdd.setOnAction(this);
         menuSalir.setOnAction(this);
         menuSimple.setOnAction(this);
         menuAlerta.setOnAction(this);
@@ -237,6 +264,8 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
         //choice.setItems(listaChoice);
 
         listaListView = FXCollections.observableArrayList();
+        listaFiltrada = new FilteredList<>(listaListView);
+        tabla.setItems(listaFiltrada);
         //listView.setItems(listaListView);
 
         listaSpinner = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, 5, 5);
@@ -245,7 +274,6 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
         listaSpinner = new SpinnerValueFactory.ListSpinnerValueFactory<>(listaOpciones);*/
         //spinner.setValueFactory(listaSpinner);
 
-        tabla.setItems(listaListView);
         grupoHabilitar = new ToggleGroup();
         grupoHabilitar.getToggles().addAll(menuHabilitar, manuDeshabilitar);
     }
@@ -416,6 +444,20 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
                 // 6- pongo botones y muestro dialogo
                 dialog.getDialogPane().getButtonTypes().setAll(ButtonType.CLOSE);
                 dialog.show();
+
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setContentText("No has seleccionado datos");
+                alert.show();
+            }
+        } else if (actionEvent.getSource() == botonGet) {
+            System.out.println(tabla.getSelectionModel().getSelectedItem().getTitle());
+        } else if (actionEvent.getSource() == botonAdd) {
+            tabla.getItems().add(new PeliculaJSON());
+        } else if (actionEvent.getSource() == botonRemove) {
+            if (tabla.getSelectionModel().getSelectedIndex() > -1) {
+                tabla.getItems().remove(tabla.getSelectionModel().getSelectedIndex());
+                tabla.getSelectionModel().select(null);
 
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
