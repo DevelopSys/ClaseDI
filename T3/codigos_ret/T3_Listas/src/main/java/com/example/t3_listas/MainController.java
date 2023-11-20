@@ -1,5 +1,6 @@
 package com.example.t3_listas;
 
+import com.example.t3_listas.model.Asignatura;
 import com.example.t3_listas.model.Pelicula;
 import com.example.t3_listas.model.Usuario;
 import javafx.beans.Observable;
@@ -18,8 +19,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.util.Callback;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.*;
 
@@ -61,6 +64,8 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     private ChoiceBox<Pelicula> choice;
     private ObservableList<Pelicula> listaPeliculas;
 
+    private ObservableList<Asignatura> listaAsignaturas;
+
     @FXML
     private ComboBox<String> combo;
 
@@ -78,6 +83,42 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        listaAsignaturas =FXCollections.observableArrayList();
+        File file = new File("/Users/borjam/Documents/GitHub/ClaseDI/T3/codigos_ret/T3_Listas/src/main/java/com/example/t3_listas/files/curso.txt");
+        FileReader fileReader = null;
+        BufferedReader bufferedReader = null;
+        try {
+            fileReader = new FileReader(file);
+            bufferedReader = new BufferedReader(fileReader);
+            String linea = null;
+            StringBuffer stringBuffer = new StringBuffer();
+            while ((linea=bufferedReader.readLine())!=null) {
+                stringBuffer.append(linea);
+            }
+            // todo el contenido en una variable
+            JSONObject response = new JSONObject(stringBuffer.toString());
+            JSONArray asignaturas= response.getJSONArray("asignaturas");
+            for (int i = 0; i < asignaturas.length(); i++) {
+                JSONObject asignatura = asignaturas.getJSONObject(i);
+                // crear la asignatura
+                String nombre = asignatura.getString("nombre");
+                String curso = asignatura.getString("curso");
+                int nivel = asignatura.getInt("nivel");
+                JSONArray conocimientos = asignatura.getJSONArray("conocimientos");
+                // profesor
+
+                // añadirla a la lista
+                listaAsignaturas.add(new Asignatura());
+                System.out.println(nombre);
+            }
+
+
+            // los titulo de las asignaturas
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
 
         instancias();
         personalizarMenu();
@@ -103,7 +144,7 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
         menuActivar.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
-                combo.getSelectionModel().select((int) (Math.random()*listaGeneros.size()));
+                combo.getSelectionModel().select((int) (Math.random() * listaGeneros.size()));
             }
         });
         grupoHabilitar.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
@@ -138,23 +179,23 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
         grupoHabilitar = new ToggleGroup();
         grupoHabilitar.getToggles().addAll(menuHabilitar, menuDeshabilitar);
         listaGeneros = FXCollections.observableArrayList();
-        listaGeneros.addAll("Terror","Comedia","Musical","Infantil");
+        listaGeneros.addAll("Terror", "Comedia", "Musical", "Infantil");
         combo.setItems(listaGeneros);
 
         listaPeliculas = FXCollections.observableArrayList();
-        listaPeliculas.add(new Pelicula("Titulo 1","Terror",4.5,1990));
-        listaPeliculas.add(new Pelicula("Titulo 2","Comedia",4.1,2015));
-        listaPeliculas.add(new Pelicula("Titulo 3","Infantil",4.2,2017));
-        listaPeliculas.add(new Pelicula("Titulo 4","Musical",4,2019));
+        listaPeliculas.add(new Pelicula("Titulo 1", "Terror", 4.5, 1990));
+        listaPeliculas.add(new Pelicula("Titulo 2", "Comedia", 4.1, 2015));
+        listaPeliculas.add(new Pelicula("Titulo 3", "Infantil", 4.2, 2017));
+        listaPeliculas.add(new Pelicula("Titulo 4", "Musical", 4, 2019));
         choice.setItems(listaPeliculas);
 
         listaPeliculasListView = FXCollections.observableArrayList();
-        listaPeliculasListView.add(new Pelicula("Titulo 1","Terror",4.5,1990));
-        listaPeliculasListView.add(new Pelicula("Titulo 2","Comedia",4.1,2015));
-        listaPeliculasListView.add(new Pelicula("Titulo 3","Infantil",4.2,2017));
-        listaPeliculasListView.add(new Pelicula("Titulo 4","Musical",4,2019));
-        listaPeliculasListView.add(new Pelicula("Titulo 5","Musical",4,2019));
-        listaPeliculasListView.add(new Pelicula("Titulo 6","Musical",4,2019));
+        listaPeliculasListView.add(new Pelicula("Titulo 1", "Terror", 4.5, 1990));
+        listaPeliculasListView.add(new Pelicula("Titulo 2", "Comedia", 4.1, 2015));
+        listaPeliculasListView.add(new Pelicula("Titulo 3", "Infantil", 4.2, 2017));
+        listaPeliculasListView.add(new Pelicula("Titulo 4", "Musical", 4, 2019));
+        listaPeliculasListView.add(new Pelicula("Titulo 5", "Musical", 4, 2019));
+        listaPeliculasListView.add(new Pelicula("Titulo 6", "Musical", 4, 2019));
 
         lisview.setItems(listaPeliculasListView);
 
@@ -203,8 +244,7 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
         } else if (actionEvent.getSource() == manuAlert) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.show();
-        }
-        else if (actionEvent.getSource() == menuConfirmacion) {
+        } else if (actionEvent.getSource() == menuConfirmacion) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             ButtonType boton1 = new ButtonType("No me interesa");
             ButtonType boton2 = new ButtonType("Me interesa");
@@ -282,16 +322,16 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
             // combo -> elementoSeleccionado
             // combo -> adapter -> elementoEnPosicion
 
-            if (combo.getSelectionModel().getSelectedIndex()>-1
-            && choice.getSelectionModel().getSelectedIndex()>-1
-                    && lisview.getSelectionModel().getSelectedIndex()>-1){
-                System.out.println("El elemento seleccionado del combo es: "+
+            if (combo.getSelectionModel().getSelectedIndex() > -1
+                    && choice.getSelectionModel().getSelectedIndex() > -1
+                    && lisview.getSelectionModel().getSelectedIndex() > -1) {
+                System.out.println("El elemento seleccionado del combo es: " +
                         combo.getSelectionModel().getSelectedItem());
-                System.out.println("El elemento seleccionado del choice es: "+
+                System.out.println("El elemento seleccionado del choice es: " +
                         choice.getSelectionModel().getSelectedItem().getAnio());
-                System.out.println("El elemento seleccionado del spinner es: "+
+                System.out.println("El elemento seleccionado del spinner es: " +
                         spinner.valueProperty().get());
-                System.out.println("El elemento seleccionado de la lista es: "+
+                System.out.println("El elemento seleccionado de la lista es: " +
                         lisview.getSelectionModel().getSelectedItem().getTitulo());
             } else {
                 Alert alerta = new Alert(Alert.AlertType.WARNING);
