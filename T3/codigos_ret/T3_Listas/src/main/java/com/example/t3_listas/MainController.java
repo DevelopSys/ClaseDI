@@ -67,7 +67,9 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     private ObservableList<String> listaGeneros;
 
     @FXML
-    private ListView<?> lisview;
+    private ListView<Pelicula> lisview;
+
+    private ObservableList<Pelicula> listaPeliculasListView;
 
     @FXML
     //private Spinner<Integer> spinner;
@@ -119,6 +121,14 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
 
             }
         });
+        lisview.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Pelicula>() {
+            @Override
+            public void changed(ObservableValue<? extends Pelicula> observableValue, Pelicula pelicula, Pelicula t1) {
+                //System.out.println("La peñicula seleccionada tiene el titulo "+t1.getTitulo());
+                //System.out.println("La peñicula seleccionada tiene el generdo "+t1.getGenero());
+            }
+        });
+
     }
 
     private void instancias() {
@@ -137,6 +147,16 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
         listaPeliculas.add(new Pelicula("Titulo 3","Infantil",4.2,2017));
         listaPeliculas.add(new Pelicula("Titulo 4","Musical",4,2019));
         choice.setItems(listaPeliculas);
+
+        listaPeliculasListView = FXCollections.observableArrayList();
+        listaPeliculasListView.add(new Pelicula("Titulo 1","Terror",4.5,1990));
+        listaPeliculasListView.add(new Pelicula("Titulo 2","Comedia",4.1,2015));
+        listaPeliculasListView.add(new Pelicula("Titulo 3","Infantil",4.2,2017));
+        listaPeliculasListView.add(new Pelicula("Titulo 4","Musical",4,2019));
+        listaPeliculasListView.add(new Pelicula("Titulo 5","Musical",4,2019));
+        listaPeliculasListView.add(new Pelicula("Titulo 6","Musical",4,2019));
+
+        lisview.setItems(listaPeliculasListView);
 
         //spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1,100,50,5));
         ObservableList<String> opciones = FXCollections.observableArrayList();
@@ -183,7 +203,8 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
         } else if (actionEvent.getSource() == manuAlert) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.show();
-        } else if (actionEvent.getSource() == menuConfirmacion) {
+        }
+        else if (actionEvent.getSource() == menuConfirmacion) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             ButtonType boton1 = new ButtonType("No me interesa");
             ButtonType boton2 = new ButtonType("Me interesa");
@@ -262,13 +283,16 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
             // combo -> adapter -> elementoEnPosicion
 
             if (combo.getSelectionModel().getSelectedIndex()>-1
-            && choice.getSelectionModel().getSelectedIndex()>-1){
+            && choice.getSelectionModel().getSelectedIndex()>-1
+                    && lisview.getSelectionModel().getSelectedIndex()>-1){
                 System.out.println("El elemento seleccionado del combo es: "+
                         combo.getSelectionModel().getSelectedItem());
                 System.out.println("El elemento seleccionado del choice es: "+
                         choice.getSelectionModel().getSelectedItem().getAnio());
                 System.out.println("El elemento seleccionado del spinner es: "+
                         spinner.valueProperty().get());
+                System.out.println("El elemento seleccionado de la lista es: "+
+                        lisview.getSelectionModel().getSelectedItem().getTitulo());
             } else {
                 Alert alerta = new Alert(Alert.AlertType.WARNING);
                 alerta.setTitle("Elementos");

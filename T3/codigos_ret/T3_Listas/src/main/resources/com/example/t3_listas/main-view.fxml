@@ -75,19 +75,7 @@
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
-         <center>
-            <TableView fx:id="tabla" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
-              <columns>
-                <TableColumn fx:id="columnaTitulo" prefWidth="75.0" text="Titulo" />
-                <TableColumn fx:id="columnaVotos" prefWidth="75.0" text="Votos" />
-                  <TableColumn fx:id="columnaAdultos" prefWidth="75.0" text="Adultos" />
-                  <TableColumn fx:id="columnaMedia" prefWidth="75.0" text="Media" />
-              </columns>
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
-            </TableView>
-         </center>
+
       </BorderPane>
    </center>
    <bottom>
