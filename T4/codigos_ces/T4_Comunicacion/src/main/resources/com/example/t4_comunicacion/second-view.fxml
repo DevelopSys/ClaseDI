@@ -4,8 +4,12 @@
 <?import javafx.scene.layout.BorderPane?>
 
 
+<?import javafx.scene.control.Button?>
 <BorderPane fx:controller="com.example.t4_comunicacion.SecondController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <Label text="Esta es la segunda escenea" BorderPane.alignment="CENTER" />
+      <Label text="Esta es la segunda escenea" BorderPane.alignment="CENTER" fx:id="nombre"/>
    </center>
+   <bottom>
+      <Button fx:id="botonVolver" text="Volver"/>
+   </bottom>
 </BorderPane>

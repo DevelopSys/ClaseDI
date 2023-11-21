@@ -24,6 +24,8 @@ public class MainController implements Initializable {
     @FXML
     private TextField textoNombre;
 
+    @FXML Label textoRespuesta;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         botonComunicar.setOnAction(new EventHandler<ActionEvent>() {
@@ -36,18 +38,24 @@ public class MainController implements Initializable {
                 // 2 - crear la escena y asociarla al root
                 try {
                     Parent root = loader.load();
-                    Scene scene = new Scene(root,botonComunicar.getScene().getWidth(),botonComunicar.getScene().getHeight());
+                    // TODO Paso 2
+                    // TODO obtengo la controladora del destino y ejecuto el método
+                    SecondController secondController = loader.getController();
+                    secondController.comunicarNombre(textoNombre.getText());
+                    Scene scene = new Scene(root,botonComunicar.getScene().getWidth()
+                            ,botonComunicar.getScene().getHeight());
                     // 3 - poner la escena en la ventana
                     // un elemento grafico
                     Stage ventana = (Stage) botonComunicar.getScene().getWindow();
                     ventana.setScene(scene);
+
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-
-
-
             }
         });
+    }
+    public void setRespuesta(){
+        textoRespuesta.setText("Todo ok");
     }
 }

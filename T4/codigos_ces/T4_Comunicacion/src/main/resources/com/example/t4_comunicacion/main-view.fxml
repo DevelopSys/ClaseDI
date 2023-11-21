@@ -21,4 +21,7 @@
          </BorderPane.margin>
       </VBox>
    </center>
+   <bottom>
+      <Label fx:id="textoRespuesta"/>
+   </bottom>
 </BorderPane>
