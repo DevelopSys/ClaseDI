@@ -1,5 +1,6 @@
 package com.example.t3_listas;
 
+import com.almasb.fxgl.audio.Sound;
 import com.example.t3_listas.model.Asignatura;
 import com.example.t3_listas.model.Pelicula;
 import com.example.t3_listas.model.Usuario;
@@ -121,7 +122,7 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
             throw new RuntimeException(e);
         }*/
 
-        String urlString = "http://www.themoviedb.org";
+        String urlString = "https://api.themoviedb.org/3/movie/now_playing?api_key=4ef66e12cddbb8fe9d4fd03ac9632f6e&language=en-US&page=1";
         try {
             URL urlMovie = new URL(urlString);
             HttpURLConnection connection = (HttpURLConnection) urlMovie.openConnection();
@@ -129,8 +130,23 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
                     (new InputStreamReader(connection.getInputStream()));
 
             // lectura recurrente con el while
-            reader.readLine();
+            String linea = null;
+            StringBuffer stringBuffer = new StringBuffer();
+            while ((linea = reader.readLine())!=null){
+                stringBuffer.append(linea);
+            }
+
             // pasar el string a JSON
+            JSONObject response = new JSONObject(stringBuffer.toString());
+            JSONArray results = response.getJSONArray("results");
+            for (int i = 0; i < results.length(); i++) {
+                JSONObject pelicula = results.getJSONObject(i);
+                String titulo = pelicula.getString("original_title");
+                String poster ="https://image.tmdb.org/t/p/w500/"+pelicula.getString("poster_path");
+                System.out.println(titulo+" "+poster);
+            }
+
+            System.out.println(response);
             // evaluar el JSON
 
         } catch (MalformedURLException e) {
