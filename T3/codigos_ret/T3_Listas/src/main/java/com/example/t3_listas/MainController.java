@@ -3,7 +3,7 @@ package com.example.t3_listas;
 import com.example.t3_listas.model.Asignatura;
 import com.example.t3_listas.model.Pelicula;
 import com.example.t3_listas.model.Usuario;
-import javafx.beans.Observable;
+import com.google.gson.Gson;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -23,6 +23,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
 
@@ -74,6 +76,9 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     @FXML
     private ListView<Pelicula> lisview;
 
+    @FXML
+    private ListView<Asignatura> lisviewAsignaturas;
+
     private ObservableList<Pelicula> listaPeliculasListView;
 
     @FXML
@@ -85,6 +90,9 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         listaAsignaturas =FXCollections.observableArrayList();
+
+        /*
+        LECTURA JSON DE UN FICHERO .TXT
         File file = new File("/Users/borjam/Documents/GitHub/ClaseDI/T3/codigos_ret/T3_Listas/src/main/java/com/example/t3_listas/files/curso.txt");
         FileReader fileReader = null;
         BufferedReader bufferedReader = null;
@@ -102,23 +110,34 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
             for (int i = 0; i < asignaturas.length(); i++) {
                 JSONObject asignatura = asignaturas.getJSONObject(i);
                 // crear la asignatura
-                String nombre = asignatura.getString("nombre");
-                String curso = asignatura.getString("curso");
-                int nivel = asignatura.getInt("nivel");
-                JSONArray conocimientos = asignatura.getJSONArray("conocimientos");
-                // profesor
-
+                Asignatura asign = new Gson().fromJson(asignatura.toString(), Asignatura.class);
                 // añadirla a la lista
-                listaAsignaturas.add(new Asignatura());
-                System.out.println(nombre);
+                listaAsignaturas.add(asign);
             }
 
 
             // los titulo de las asignaturas
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
+        }*/
 
+        String urlString = "http://www.themoviedb.org";
+        try {
+            URL urlMovie = new URL(urlString);
+            HttpURLConnection connection = (HttpURLConnection) urlMovie.openConnection();
+            BufferedReader reader = new BufferedReader
+                    (new InputStreamReader(connection.getInputStream()));
+
+            // lectura recurrente con el while
+            reader.readLine();
+            // pasar el string a JSON
+            // evaluar el JSON
+
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         instancias();
         personalizarMenu();
@@ -198,6 +217,8 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
         listaPeliculasListView.add(new Pelicula("Titulo 6", "Musical", 4, 2019));
 
         lisview.setItems(listaPeliculasListView);
+
+        lisviewAsignaturas.setItems(listaAsignaturas);
 
         //spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1,100,50,5));
         ObservableList<String> opciones = FXCollections.observableArrayList();

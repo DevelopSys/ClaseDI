@@ -92,4 +92,11 @@
          </BorderPane.margin>
       </ListView>
    </right>
+    <left>
+        <ListView fx:id="lisviewAsignaturas" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </BorderPane.margin>
+        </ListView>
+    </left>
 </BorderPane>

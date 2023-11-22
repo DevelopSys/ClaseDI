@@ -2,10 +2,10 @@ package com.example.t3_listas.model;
 
 public class Asignatura {
 
-    private String nombre, curso;
-    private int nivel;
-    private String[] conocimientos;
-    private Profesor profesor;
+    public String nombre, curso;
+    public int nivel;
+    public String[] conocimientos;
+    public Profesor profesor;
 
 
     public Asignatura() {
