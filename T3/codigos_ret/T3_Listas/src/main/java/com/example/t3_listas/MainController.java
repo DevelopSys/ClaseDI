@@ -90,7 +90,7 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        listaAsignaturas =FXCollections.observableArrayList();
+        listaAsignaturas = FXCollections.observableArrayList();
 
         /*
         LECTURA JSON DE UN FICHERO .TXT
@@ -122,38 +122,6 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
             throw new RuntimeException(e);
         }*/
 
-        String urlString = "https://api.themoviedb.org/3/movie/now_playing?api_key=4ef66e12cddbb8fe9d4fd03ac9632f6e&language=en-US&page=1";
-        try {
-            URL urlMovie = new URL(urlString);
-            HttpURLConnection connection = (HttpURLConnection) urlMovie.openConnection();
-            BufferedReader reader = new BufferedReader
-                    (new InputStreamReader(connection.getInputStream()));
-
-            // lectura recurrente con el while
-            String linea = null;
-            StringBuffer stringBuffer = new StringBuffer();
-            while ((linea = reader.readLine())!=null){
-                stringBuffer.append(linea);
-            }
-
-            // pasar el string a JSON
-            JSONObject response = new JSONObject(stringBuffer.toString());
-            JSONArray results = response.getJSONArray("results");
-            for (int i = 0; i < results.length(); i++) {
-                JSONObject pelicula = results.getJSONObject(i);
-                String titulo = pelicula.getString("original_title");
-                String poster ="https://image.tmdb.org/t/p/w500/"+pelicula.getString("poster_path");
-                System.out.println(titulo+" "+poster);
-            }
-
-            System.out.println(response);
-            // evaluar el JSON
-
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
 
         instancias();
         personalizarMenu();
@@ -225,12 +193,47 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
         choice.setItems(listaPeliculas);
 
         listaPeliculasListView = FXCollections.observableArrayList();
-        listaPeliculasListView.add(new Pelicula("Titulo 1", "Terror", 4.5, 1990));
+        String urlString = "https://api.themoviedb.org/3/movie/now_playing?api_key=4ef66e12cddbb8fe9d4fd03ac9632f6e&language=en-US&page=1";
+        try {
+            URL urlMovie = new URL(urlString);
+            HttpURLConnection connection = (HttpURLConnection) urlMovie.openConnection();
+            BufferedReader reader = new BufferedReader
+                    (new InputStreamReader(connection.getInputStream()));
+
+            // lectura recurrente con el while
+            String linea = null;
+            StringBuffer stringBuffer = new StringBuffer();
+            while ((linea = reader.readLine()) != null) {
+                stringBuffer.append(linea);
+            }
+
+            // pasar el string a JSON
+            JSONObject response = new JSONObject(stringBuffer.toString());
+            JSONArray results = response.getJSONArray("results");
+            for (int i = 0; i < results.length(); i++) {
+                JSONObject pelicula = results.getJSONObject(i);
+                String titulo = pelicula.getString("original_title");
+                double puntuacion = pelicula.getDouble("vote_average");
+                int id = pelicula.getInt("id");
+                String poster = "https://image.tmdb.org/t/p/w500/" + pelicula.getString("poster_path");
+                if (puntuacion >= 7) {
+                    Pelicula p = new Pelicula(titulo, "0", puntuacion, id);
+                    listaPeliculasListView.add(p);
+                }
+            }
+            // evaluar el JSON
+
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        /*listaPeliculasListView.add(new Pelicula("Titulo 1", "Terror", 4.5, 1990));
         listaPeliculasListView.add(new Pelicula("Titulo 2", "Comedia", 4.1, 2015));
         listaPeliculasListView.add(new Pelicula("Titulo 3", "Infantil", 4.2, 2017));
         listaPeliculasListView.add(new Pelicula("Titulo 4", "Musical", 4, 2019));
         listaPeliculasListView.add(new Pelicula("Titulo 5", "Musical", 4, 2019));
-        listaPeliculasListView.add(new Pelicula("Titulo 6", "Musical", 4, 2019));
+        listaPeliculasListView.add(new Pelicula("Titulo 6", "Musical", 4, 2019));*/
 
         lisview.setItems(listaPeliculasListView);
 
