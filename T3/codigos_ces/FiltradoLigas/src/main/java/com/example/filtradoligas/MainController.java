@@ -61,6 +61,7 @@ public class MainController implements Initializable {
 
         listaObserverEquipos = FXCollections.observableArrayList();
         listaEquipos.setItems(listaObserverEquipos);
+        
         listaEquipos.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Equipo>() {
             @Override
             public void changed(ObservableValue<? extends Equipo> observableValue, Equipo equipo, Equipo t1) {
