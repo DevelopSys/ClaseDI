@@ -6,8 +6,20 @@
 <?import javafx.scene.layout.BorderPane?>
 
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.t3_tablas.MainController">
-   <center>
+   <top>
+       <MenuBar>
+           <Menu text="Filtrar">
+               <MenuItem text="Por genero" fx:id="menuGenero"/>
+               <MenuItem text="Por numero" fx:id="menuNumero"/>
+           </Menu>
+       </MenuBar>
+   </top>
+    <center>
       <TableView fx:id="tablaUsuarios" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="columnaNombre" prefWidth="75.0" text="Nombre" />
@@ -29,4 +41,7 @@
       </VBox>
 
    </right>
+    <bottom>
+        <TextField promptText="Introduce el nombre del pais a filtrar" fx:id="textoPais"/>
+    </bottom>
 </BorderPane>

@@ -2,13 +2,16 @@ package com.example.t3_tablas;
 
 import com.example.t3_tablas.model.Usuario;
 import com.google.gson.Gson;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.BufferedReader;
@@ -17,11 +20,19 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
+
 import org.json.JSONObject;
 import org.json.JSONArray;
 
-public class MainController implements Initializable {
+public class MainController implements Initializable, EventHandler<ActionEvent> {
+    @FXML
+    private TextField textoPais;
+    @FXML
+    private MenuItem menuGenero, menuNumero;
     @FXML
     private TableColumn<?, ?> columnaApellido;
 
@@ -41,15 +52,18 @@ public class MainController implements Initializable {
     private TableView<Usuario> tablaUsuarios;
     private ObservableList<Usuario> listaObservableUsuarios;
 
+    private FilteredList<Usuario> listaUsuariosFiltrada;
+
     @FXML
-    private Button botonAgregar;
+    private Button botonAgregar, botonBorrar, botonVer;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         listaObservableUsuarios = FXCollections.observableArrayList();
-        tablaUsuarios.setItems(listaObservableUsuarios);
+        listaUsuariosFiltrada = new FilteredList(listaObservableUsuarios);
+        tablaUsuarios.setItems(listaUsuariosFiltrada);
 
         columnaCorreo.setCellValueFactory(new PropertyValueFactory<>("email"));
         columnaNombre.setCellValueFactory(new PropertyValueFactory<>("first"));
@@ -57,14 +71,35 @@ public class MainController implements Initializable {
         columnaApellido.setCellValueFactory(new PropertyValueFactory<>("last"));
         columnaPais.setCellValueFactory(new PropertyValueFactory<>("country"));
 
-        cargarUsuarios();
+        cargarUsuarios("https://randomuser.me/api/?results=50");
+        acciones();
 
     }
 
-    public void cargarUsuarios(){
+    private void acciones() {
+        botonAgregar.setOnAction(this);
+        botonVer.setOnAction(this);
+        botonBorrar.setOnAction(this);
+        menuNumero.setOnAction(this);
+        menuGenero.setOnAction(this);
+        textoPais.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String>
+                                        observableValue, String s, String t1) {
+                listaUsuariosFiltrada.setPredicate(new Predicate<Usuario>() {
+                    @Override
+                    public boolean test(Usuario usuario) {
+                        return usuario.getCountry().contains(t1);
+                    }
+                });
+            }
+        });
+    }
+
+    public void cargarUsuarios(String urlString){
         //
         try {
-            URL url = new URL("https://randomuser.me/api/?results=50");
+            URL url = new URL(urlString);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String lectura = reader.readLine();
@@ -94,6 +129,40 @@ public class MainController implements Initializable {
             throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void handle(ActionEvent actionEvent) {
+        if (actionEvent.getSource() == botonBorrar){
+            int seleccion = tablaUsuarios.getSelectionModel().getFocusedIndex();
+            if (seleccion>-1){
+                listaObservableUsuarios.remove(seleccion);
+                tablaUsuarios.getSelectionModel().select(null);
+            }
+        } else if (actionEvent.getSource() == botonAgregar){
+
+        } else if (actionEvent.getSource() == botonVer){
+            Usuario seleccion = tablaUsuarios.getSelectionModel().getSelectedItem();
+            System.out.println(seleccion.getPhone());
+        } else if (actionEvent.getSource() == menuGenero){
+            String[] generos = new String[]{"Male","Female", "All"};
+            ChoiceDialog<String> dialogGenero = new ChoiceDialog(generos[0],generos);
+            dialogGenero.setContentText("Selecciona un genero");
+            Optional<String> respuesta = dialogGenero.showAndWait();
+            listaObservableUsuarios.clear();
+            cargarUsuarios("https://randomuser.me/api/?results=50&gender="+respuesta.get());
+
+        } else if (actionEvent.getSource() == menuNumero){
+            int[] numeros = new int[100];
+            for (int i = 1; i < 100; i++) {
+                numeros[i] = i;
+            }
+            ChoiceDialog<Integer> dialogGenero = new ChoiceDialog(numeros,numeros[0]);
+            dialogGenero.setContentText("Selecciona un numero");
+            Optional<Integer> respuesta = dialogGenero.showAndWait();
+            listaObservableUsuarios.clear();
+            cargarUsuarios("https://randomuser.me/api/?results="+respuesta.get());
         }
     }
 }
