@@ -11,6 +11,7 @@ module com.example.t3_tablas {
     requires com.almasb.fxgl.all;
     requires org.json;
     requires com.google.gson;
+    requires javafx.media;
 
     opens com.example.t3_tablas to javafx.fxml;
     exports com.example.t3_tablas;

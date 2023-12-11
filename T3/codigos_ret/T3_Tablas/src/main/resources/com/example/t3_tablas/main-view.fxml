@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.BorderPane?>
-
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
+
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.t3_tablas.MainController">
    <top>
        <MenuBar>
            <Menu text="Filtrar">
-               <MenuItem text="Por genero" fx:id="menuGenero"/>
-               <MenuItem text="Por numero" fx:id="menuNumero"/>
+               <MenuItem fx:id="menuGenero" text="Por genero" />
+               <MenuItem fx:id="menuNumero" text="Por numero" />
            </Menu>
        </MenuBar>
    </top>
@@ -36,12 +38,12 @@
    <right>
       <VBox alignment="CENTER">
           <Button fx:id="botonAgregar" mnemonicParsing="false" text="Agregar" BorderPane.alignment="CENTER" />
-          <Button fx:id="botonBorrar"  mnemonicParsing="false" text="Borrar" BorderPane.alignment="CENTER" />
+          <Button fx:id="botonBorrar" mnemonicParsing="false" text="Borrar" BorderPane.alignment="CENTER" />
           <Button fx:id="botonVer" mnemonicParsing="false" text="Ver" BorderPane.alignment="CENTER" />
       </VBox>
 
    </right>
     <bottom>
-        <TextField promptText="Introduce el nombre del pais a filtrar" fx:id="textoPais"/>
+        <TextField fx:id="textoPais" promptText="Introduce el nombre del pais a filtrar" />
     </bottom>
 </BorderPane>

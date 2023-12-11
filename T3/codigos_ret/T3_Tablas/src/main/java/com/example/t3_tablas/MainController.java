@@ -25,10 +25,15 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
 public class MainController implements Initializable, EventHandler<ActionEvent> {
+    @FXML
+    private MediaView media;
     @FXML
     private TextField textoPais;
     @FXML
@@ -73,6 +78,10 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
 
         cargarUsuarios("https://randomuser.me/api/?results=50");
         acciones();
+
+        MediaPlayer player = new MediaPlayer(new Media("https://www.youtube.com/watch?v=Lyqhit860KM"));
+        media.setMediaPlayer(player);
+        player.setAutoPlay(true);
 
     }
 
