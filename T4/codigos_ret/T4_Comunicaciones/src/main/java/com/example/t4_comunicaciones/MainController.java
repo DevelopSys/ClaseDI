@@ -24,6 +24,10 @@ public class MainController implements Initializable {
     @FXML
     private TextField textoNombre;
 
+    @FXML
+    private Label textoObtenido;
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         botonComunicar.setOnAction(new EventHandler<ActionEvent>() {
@@ -37,6 +41,7 @@ public class MainController implements Initializable {
                     Parent root = loader.load();
                     SecondController controller = loader.getController();
                     controller.setNombre(textoNombre.getText());
+                    controller.setMainController(MainController.this);
                     Scene scene = new Scene(root, ventanaActual.getWidth(), ventanaActual.getHeight());
                     Stage ventana = new Stage();
                     ventana.setScene(scene);
@@ -46,5 +51,9 @@ public class MainController implements Initializable {
                 }
             }
         });
+    }
+
+    public void setRespuesta(String respuesta){
+        textoObtenido.setText(textoNombre.getText()+" "+respuesta);
     }
 }
