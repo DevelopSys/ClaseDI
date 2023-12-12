@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
@@ -46,6 +47,22 @@ public class SecondController implements Initializable {
                 // cerrar
                 Stage ventana = (Stage) botonResponder.getScene().getWindow();
                 ventana.close();
+            }
+        });
+
+        menuPaso2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("vista-nueva.fxml"));
+                try {
+                    Parent root = loader.load();
+                    Stage ventanaActual = (Stage) botonResponder.getScene().getWindow();
+                    ventanaActual.setScene(new Scene(root,ventanaActual.getScene().getWidth(),
+                            ventanaActual.getScene().getHeight()));
+                    
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
     }
