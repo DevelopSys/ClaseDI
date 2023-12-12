@@ -59,7 +59,7 @@ public class SecondController implements Initializable {
                     Stage ventanaActual = (Stage) botonResponder.getScene().getWindow();
                     ventanaActual.setScene(new Scene(root,ventanaActual.getScene().getWidth(),
                             ventanaActual.getScene().getHeight()));
-                    
+
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
