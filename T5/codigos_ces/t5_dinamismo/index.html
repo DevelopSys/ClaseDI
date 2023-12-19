@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="./utils/style.css" /> -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <main class="container m-5">
+      <h1 style="text-align: center">Formulario de dinamismo</h1>
+      <div class="row mt-5">
+        <div class="col-7">
+          <h2 style="text-align: center">Introducción datos</h2>
+
+          <div>
+            <input
+              id="input-titulo"
+              type="text"
+              class="form-control mb-3"
+              placeholder="introduce titulo de la tarea"
+            />
+            <input
+              id="input-detalle"
+              type="text"
+              class="form-control mb-3"
+              placeholder="Introduce descpcion de la tarea"
+            />
+
+            <select id="select-prioridad" class="form-select mb-3">
+              <option>Baja</option>
+              <option>Media</option>
+              <option>Alta</option>
+            </select>
+            <input
+              id="input-fecha"
+              class="form-control mb-3"
+              type="date"
+              placeholder="Selecciona fecha de vencimiento"
+            />
+            <div class="mb-3 form-check">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                id="check_priotaria"
+              />
+              <label class="form-check-label" for="check_priotaria"
+                >Prioritaria</label
+              >
+            </div>
+
+            <button class="btn btn-primary">Agregar</button>
+          </div>
+        </div>
+        <div class="col-5">
+          <h2 style="text-align: center">Resultados de introduccion</h2>
+          <ul class="list-group" id="lista-tareas"></ul>
+        </div>
+      </div>
+    </main>
+    <script src="./utils/js/tarea.js"></script>
+    <script src="./utils/js/index.js"></script>
+  </body>
+</html>
