@@ -39,9 +39,9 @@
             />
 
             <select id="select-prioridad" class="form-select mb-3">
-              <option>Baja</option>
-              <option>Media</option>
-              <option>Alta</option>
+              <option value="0">Baja</option>
+              <option value="1">Media</option>
+              <option value="2">Alta</option>
             </select>
             <input
               id="input-fecha"
@@ -65,6 +65,12 @@
         </div>
         <div class="col-5">
           <h2 style="text-align: center">Resultados de introduccion</h2>
+          <select class="form-select mb-3" id="select-filtro">
+            <option value="-1">Todas</option>
+            <option value="2">Alta</option>
+            <option value="1">Media</option>
+            <option value="0">Baja</option>
+          </select>
           <ul class="list-group" id="lista-tareas"></ul>
         </div>
       </div>
