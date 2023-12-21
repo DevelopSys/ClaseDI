@@ -28,7 +28,16 @@ boton.addEventListener("click", (ev) => {
   let nodoLI = document.createElement("li");
   //nodoLI.className = "list-group-item";
   nodoLI.classList.add("list-group-item");
+
+  //nodoLI.classList.add("active");
   nodoLI.textContent = listaTareas[listaTareas.length - 1].titulo;
+  nodoLI.addEventListener("click", (e) => {
+    lista.childNodes.forEach((element) => {
+      element.classList.remove("active");
+    });
+    // se ponga la clase active
+    e.target.classList.add("active");
+  });
 
   lista.appendChild(nodoLI);
 });
