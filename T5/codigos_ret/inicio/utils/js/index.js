@@ -51,25 +51,29 @@ MODIFICACION:
 
 let numero = 1;
 let numero2 = "1";
+let repetir = false;
 
-let numeroUno = Number(prompt("introduce numero 1"));
-// si el numeroUno es un numero
-if (isNaN(numeroUno)) {
-  // no es un numero
-  alert("Por favor introduce numero");
-} else {
-  let numeroDos = Number(prompt("introduce numero 2"));
-  if (isNaN(numeroDos)) {
+do {
+  let numeroUno = Number(prompt("introduce numero 1"));
+  // si el numeroUno es un numero
+  if (isNaN(numeroUno)) {
+    // no es un numero
     alert("Por favor introduce numero");
+    repetir = confirm("Deseas repetir los calculos");
   } else {
-    let suma = numeroUno + numeroDos;
-    let resta = numeroUno - numeroDos;
-    let multi = numeroUno * numeroDos;
-    let div = numeroUno / numeroDos;
-    let mod = numeroUno % numeroDos;
-    alert(
-      `El resultado de las operaciones es: \nsuma: ${suma}\nresta: ${resta}\n multi:${multi}\n div: ${div} \n mod: ${mod}  `
-    );
-    console.log(`La suma es ${suma}`);
+    let numeroDos = Number(prompt("introduce numero 2"));
+    if (isNaN(numeroDos)) {
+      alert("Por favor introduce numero");
+    } else {
+      let suma = numeroUno + numeroDos;
+      let resta = numeroUno - numeroDos;
+      let multi = numeroUno * numeroDos;
+      let div = numeroUno / numeroDos;
+      let mod = numeroUno % numeroDos;
+      alert(
+        `El resultado de las operaciones es: \nsuma: ${suma}\nresta: ${resta}\n multi:${multi}\n div: ${div} \n mod: ${mod}  `
+      );
+    }
+    repetir = confirm("Deseas repetir los calculos");
   }
-}
+} while (repetir);
