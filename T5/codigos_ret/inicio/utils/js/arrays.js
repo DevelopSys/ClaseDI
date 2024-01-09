@@ -33,11 +33,16 @@ for (let i = 0; i < palos.length; i++) {
 
 console.log(barajaCompleta);
 
+let carta = "1C";
+carta.substring(0, 1);
+
 /*
 Preguntar al usuario cuantas cartas quiere sacar: 20
 Barajar la baraja
 
+
 Sacar las cartas que diga el usuario y obtener:
+// 2C 2 C
 - cuantas cartas don de C / R / P / D
 - cuenta de dichas cartas
 
