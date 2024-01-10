@@ -24,23 +24,24 @@
           <div class="row mt-4">
             <select id="select-categorias" class="col form-select m-2">
               <option>All</option>
-              <option>All</option>
-              <option>All</option>
-              <option>All</option>
             </select>
             <input
               class="col form-control m-2"
               type="number"
-              name="input-resultados"
+              id="input-resultados"
               placeholder="number of results"
             />
-            <button class="col btn btn-primary m-2">Buscar</button>
+            <button class="col btn btn-primary m-2" id="boton-busqueda">
+              Buscar
+            </button>
           </div>
+          <div class="row" id="productos-cartas"></div>
         </div>
         <div class="col-4">
           <h1 style="text-align: center">Carrito</h1>
         </div>
       </div>
     </main>
+    <script src="./utils/js/ejercicio.js"></script>
   </body>
 </html>
