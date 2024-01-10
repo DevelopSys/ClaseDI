@@ -1,5 +1,6 @@
 let boton = document.querySelector("button");
 let span = document.querySelector("span");
+let inputResultados = document.querySelector("#input-resultados");
 let listaMasculina = document.querySelector("#lista-masculina");
 let listaFemenina = document.querySelector("#lista-femenina");
 let contador = 0;
@@ -9,10 +10,12 @@ setTimeout(() => {
 }, 5000);
 
 boton.addEventListener("click", (e) => {
-  setInterval(() => {
+  /* setInterval(() => {
     contador++;
     span.innerHTML = contador;
-  }, 1000);
+  }, 1000); */
+  let numeroResultados = inputResultados.value;
+  consultarUsuarios(numeroResultados);
 });
 
 let promesa = new Promise((res, rej) => {
@@ -37,9 +40,12 @@ promesa
     console.log(err);
   });
 
-function consultarUsuarios() {
+function consultarUsuarios(numero) {
   // https://randomuser.me/api/?results=50
-  fetch("https://randomuser.me/api/?results=50")
+  listaFemenina.innerHTML = "";
+  // listaFemenina.removeChild()
+  listaMasculina.innerHTML = "";
+  fetch("https://randomuser.me/api/?results=" + numero)
     .then((res) => {
       if (res.ok) {
         // pasar a json
@@ -49,6 +55,7 @@ function consultarUsuarios() {
     .then((res1) => {
       res1.results.forEach((element, index) => {
         setTimeout(function () {
+          //listaMasculina.innerHTML += `<li class="list-group-item animate__animated animate__bounceInUp">${element.name.first} ${element.name.last}</li>`;
           let nodo = document.createElement("li");
           nodo.textContent = `${element.name.first} ${element.name.last}`;
           nodo.className =
@@ -58,7 +65,7 @@ function consultarUsuarios() {
           } else {
             listaMasculina.appendChild(nodo);
           }
-        }, index * 1000);
+        }, index * 500);
       });
       /* res1.results.forEach((element) => {
         if (element.gender == "female") {
@@ -79,4 +86,4 @@ var sleep = function (ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
-consultarUsuarios();
+//consultarUsuarios();
