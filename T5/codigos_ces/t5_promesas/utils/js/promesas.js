@@ -47,18 +47,36 @@ function consultarUsuarios() {
       }
     })
     .then((res1) => {
-      res1.results.forEach((element) => {
+      res1.results.forEach((element, index) => {
+        setTimeout(function () {
+          let nodo = document.createElement("li");
+          nodo.textContent = `${element.name.first} ${element.name.last}`;
+          nodo.className =
+            "list-group-item animate__animated animate__bounceInUp";
+          if (element.gender == "female") {
+            listaFemenina.appendChild(nodo);
+          } else {
+            listaMasculina.appendChild(nodo);
+          }
+        }, index * 1000);
+      });
+      /* res1.results.forEach((element) => {
         if (element.gender == "female") {
           //console.log(element.name.first + " " + element.name.last);
-          listaFemenina.innerHTML += `<li class='list-group-item'>${element.name.first} ${element.name.last}</li>`;
+
+          listaFemenina.innerHTML += `<li class='list-group-item animate__animated animate__bounceInUp'>${element.name.first} ${element.name.last}</li>`;
         } else {
-          listaMasculina.innerHTML += `<li class='list-group-item'>${element.name.first} ${element.name.last}</li>`;
+          listaMasculina.innerHTML += `<li class='list-group-item animate__animated animate__bounceInUp'>${element.name.first} ${element.name.last}</li>`;
         }
-      });
+      }); */
       // console.log(res1.results);
       // sacar los nombre de todos los usuarios (nombre - apellido)
     })
     .catch((err) => {});
 }
+
+var sleep = function (ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};
 
 consultarUsuarios();
