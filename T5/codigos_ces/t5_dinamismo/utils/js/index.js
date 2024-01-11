@@ -10,6 +10,8 @@ let selectFiltro = document.querySelector("#select-filtro");
 let listaTareas = [];
 let contador = 1;
 
+document.getElementById("select-filtro").disabled = true;
+
 boton.addEventListener("click", (ev) => {
   /* let inputs = document.querySelectorAll("#select-prioridad");
   console.log(inputs); */

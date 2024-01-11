@@ -23,7 +23,7 @@ baraja.forEach((element, index) => {
 // 1R - 13R
 //console.log(baraja);
 const palos = ["C", "D", "P", "R"];
-const barajaCompleta = [];
+let barajaCompleta = [];
 
 for (let i = 0; i < palos.length; i++) {
   for (let j = 1; j < 14; j++) {
@@ -31,6 +31,7 @@ for (let i = 0; i < palos.length; i++) {
   }
 }
 
+barajaCompleta = _.shuffle(barajaCompleta);
 console.log(barajaCompleta);
 
 let carta = "1C";
