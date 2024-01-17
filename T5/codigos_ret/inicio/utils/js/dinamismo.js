@@ -1,9 +1,12 @@
 let botonPedir = document.querySelector("#boton-pedir");
+let botonPasar = document.querySelector("#boton-pasar");
 // class id tag
 let nodoPuntuacionJugador = document.querySelector("#puntuacion-j1");
+let nodoPuntuacionBanca = document.querySelector("#puntuacion-j2");
 let nodoNombreJugador = document.querySelector("#nombre-j1");
 let nodoListaCartasJ1 = document.querySelector("div#cartas-j1");
 let barajaCompleta = [];
+let contador = 1;
 
 function iniciarBajara() {
   const palos = ["C", "D", "P", "T"];
@@ -37,7 +40,17 @@ botonPedir.addEventListener("click", () => {
     Number(nodoPuntuacionJugador.textContent) + Number(valorCarta);
 
   nodoListaCartasJ1.innerHTML += `<img src='./utils/images/${cartaSacada}.png' 
-  class='m-2 animate__animated animate__fadeInRight' style='width: 20%' >`;
+    class='m-2' style='width: 20%' >`;
+
+  setTimeout(() => {
+    if (Number(nodoPuntuacionJugador.textContent) == 21) {
+      // no puedo pedir mas
+      botonPedir.disabled = true;
+    } else if (Number(nodoPuntuacionJugador.textContent) > 21) {
+      alert("Has perdido");
+    }
+  }, 200);
+
   //let nodo = document.createElement("img");
   //nodoLI.className = "list-group-item";
   //nodoLI.textContent = `${cartaSacada}`;
@@ -45,6 +58,16 @@ botonPedir.addEventListener("click", () => {
   //nodoListaCartasJ1.appendChild(nodo);
 });
 
-setTimeout(() => {
-  // ejecuta tras esperar
-}, 100);
+botonPasar.addEventListener("click", () => {
+  // la banca va sacando
+
+  do {
+    setInterval(() => {
+      let cartaSacada = barajaCompleta.pop();
+      let valorCarta = cartaSacada.substring(0, cartaSacada.length - 1);
+      nodoPuntuacionBanca.textContent =
+        Number(nodoPuntuacionBanca.textContent) + Number(valorCarta);
+      console.log(cartaSacada);
+    }, 2000);
+  } while (Number(nodoPuntuacionBanca.textContent) < 17);
+});
