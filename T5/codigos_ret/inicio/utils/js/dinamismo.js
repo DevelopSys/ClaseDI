@@ -62,12 +62,15 @@ botonPasar.addEventListener("click", () => {
   // la banca va sacando
 
   do {
-    setInterval(() => {
+    let intervalo = setInterval(() => {
       let cartaSacada = barajaCompleta.pop();
       let valorCarta = cartaSacada.substring(0, cartaSacada.length - 1);
       nodoPuntuacionBanca.textContent =
         Number(nodoPuntuacionBanca.textContent) + Number(valorCarta);
       console.log(cartaSacada);
+      if (Number(nodoPuntuacionBanca.textContent) >= 17) {
+        clearInterval(intervalo);
+      }
     }, 2000);
   } while (Number(nodoPuntuacionBanca.textContent) < 17);
 });
