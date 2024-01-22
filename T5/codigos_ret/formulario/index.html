@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <input
+        class="form-control m-4"
+        type="text"
+        placeholder="Introduce tu nombre"
+      />
+      <input
+        class="form-control m-4"
+        type="number"
+        placeholder="Introduce tu edad"
+      />
+      <input
+        type="date"
+        placeholder="Introduce tu fecha de nacimiento"
+        class="form-control m-4"
+      />
+      <select class="form-select m-4">
+        <option>Opcion 1</option>
+        <option>Opcion 2</option>
+        <option>Opcion 3</option>
+        <option>Opcion 4</option>
+      </select>
+      <div class="m-4">
+        <label>Masculino</label>
+        <input type="radio" name="genero" style="margin-right: 20px" />
+        <label>Femenino</label>
+        <input type="radio" name="genero" />
+      </div>
+      <button class="btn btn-primary">Enviar</button>
+    </main>
+  </body>
+</html>
+
+<!-- al pulsar enviar se muestra un log con los 
+    datos del formulario -->
+<!-- En el caso de no tener metido nombre y/o 
+    apellido saltar un avisto de 
+falta de datos
+-->
