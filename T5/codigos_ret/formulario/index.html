@@ -19,34 +19,49 @@
   <body>
     <main>
       <input
+        id="input-nombre"
         class="form-control m-4"
         type="text"
         placeholder="Introduce tu nombre"
       />
       <input
+        id="input-edad"
         class="form-control m-4"
         type="number"
         placeholder="Introduce tu edad"
       />
       <input
+        id="input-fecha"
         type="date"
         placeholder="Introduce tu fecha de nacimiento"
         class="form-control m-4"
       />
-      <select class="form-select m-4">
-        <option>Opcion 1</option>
-        <option>Opcion 2</option>
-        <option>Opcion 3</option>
-        <option>Opcion 4</option>
+      <select class="form-select m-4" id="select-opcion">
+        <option value="1">Opcion 1</option>
+        <option value="2">Opcion 2</option>
+        <option value="3">Opcion 3</option>
+        <option value="4">Opcion 4</option>
       </select>
       <div class="m-4">
-        <label>Masculino</label>
-        <input type="radio" name="genero" style="margin-right: 20px" />
-        <label>Femenino</label>
-        <input type="radio" name="genero" />
+        <label for="radio-masculino">Masculino</label>
+        <input
+          type="radio"
+          name="genero"
+          style="margin-right: 20px"
+          id="radio-masculino"
+        />
+        <label for="radio-femenino">Femenino</label>
+        <input
+          type="radio"
+          name="genero"
+          style="margin-right: 20px"
+          id="radio-femenino"
+          checked
+        />
       </div>
-      <button class="btn btn-primary">Enviar</button>
+      <button class="btn btn-primary" id="boton-enviar">Enviar</button>
     </main>
+    <script src="./index.js"></script>
   </body>
 </html>
 
