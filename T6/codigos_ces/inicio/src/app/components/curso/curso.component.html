@@ -25,7 +25,7 @@
 
 <div class="mb-3">
   <label class="form-label">Seleccion del curso</label>
-  <select class="form-select">
+  <select class="form-select" #selectcurso>
     <option>DAM</option>
     <option>DAW</option>
     <option>ASIR</option>
@@ -33,14 +33,26 @@
   </select>
 </div>
 
+<!-- al cambiar el select, deberá aperecer en el 
+  parrafo el elemento que esta seleccionado-->
+
 <div class="mb-3 form-check">
   <input type="checkbox" class="form-check-input" id="exampleCheck1" />
   <label class="form-check-label" for="exampleCheck1">Check me out</label>
 </div>
 <button
-  (click)="metodoPulsacion(inputnombre.value, inputpass.value)"
+  (click)="
+    metodoPulsacion(inputnombre.value, inputpass.value, selectcurso.value)
+  "
   class="btn btn-primary"
 >
   Submit
 </button>
+@if (mostrar) {
 <p>Los datos que se han pasado son: {{ nombre }} y {{ pass }}</p>
+<p>El curso seleccionado es {{ curso }}</p>
+} @else {
+<div class="alert alert-warning" role="alert">
+  No se han seleccionado datos aún
+</div>
+}
