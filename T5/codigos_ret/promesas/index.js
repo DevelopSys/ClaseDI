@@ -43,12 +43,26 @@ async function resolucionPromesa() {
   }); */
 
 // METODO DE CONEXION SEA DIFERENTE A GET y NECESITE PARAMS
+
+let resultadosDiv = document.querySelector("#div-resultados");
 fetch("https://dummyjson.com/users")
   .then((res) => res.json())
   .then((res1) => {
     // nombre y apellido de todos los usuarios
     //console.log(res1.users);
     res1.users.forEach((element) => {
-      console.log(element.firstName + " " + element.lastName);
+      //console.log(element.firstName + " " + element.lastName);
+      resultadosDiv.innerHTML += `<div class="col">
+      <div class="card mb-4" style="width: 18rem">
+        <img src="${element.image}" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">${element.firstName} ${element.lastName}</h5>
+          <p class="card-text">
+          ${element.email}
+          </p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>`;
     });
   });
