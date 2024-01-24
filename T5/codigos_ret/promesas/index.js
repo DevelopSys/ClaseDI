@@ -44,6 +44,7 @@ async function resolucionPromesa() {
 
 // METODO DE CONEXION SEA DIFERENTE A GET y NECESITE PARAMS
 
+window.addEventListener("load", () => {});
 let resultadosDiv = document.querySelector("#div-resultados");
 fetch("https://dummyjson.com/users")
   .then((res) => res.json())
