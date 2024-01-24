@@ -56,3 +56,9 @@
   No se han seleccionado datos aún
 </div>
 }
+
+<ul class="list-group">
+  @for (item of usuarios; track $index) {
+  <li class="list-group-item">{{ item }}</li>
+  }
+</ul>
