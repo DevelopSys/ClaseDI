@@ -3,9 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
     <title>Document</title>
   </head>
   <body>
+    <main class="container m-5">
+      <div class="row">
+        <div class="col text-center">
+          <select class="form-select m-4">
+            <option>Masculino</option>
+            <option>Femenino</option>
+          </select>
+          <select class="form-select m-4">
+            <option>EEUU</option>
+            <option>España</option>
+            <option>Francia</option>
+          </select>
+          <input class="form-control m-4" type="number" />
+          <button class="btn btn-primary">Buscar</button>
+        </div>
+        <div class="col text-center">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/1198/1198293.png"
+            class="img-fluid"
+          />
+          <p class="mt-5">Datos de la persona</p>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <h2 style="text-align: center">Resultados: <span>0</span></h2>
+      </div>
+    </main>
     <script src="./index.js"></script>
   </body>
 </html>

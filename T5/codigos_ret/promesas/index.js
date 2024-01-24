@@ -1,4 +1,4 @@
-let promesa = new Promise((resolve, reject) => {
+/* let promesa = new Promise((resolve, reject) => {
   // el cuerpo de la promesa -> lo que quieres ejecutar y puede salir bien o mal
   // vamos a generar un aleatorio entre 0-10
   // sale bien 5-10
@@ -13,21 +13,21 @@ let promesa = new Promise((resolve, reject) => {
       reject("El numero es demasiado pequeño");
     }
   }, 5000);
-});
+}); */
 
-resolucionPromesa();
+//resolucionPromesa();
 
 // cuando termines, dime que hago
-setInterval(() => {
+/* setInterval(() => {
   console.log("Ejecucion en intervalo");
 }, 1000);
 
 async function resolucionPromesa() {
   let resultado = await promesa;
   let resultadoDuplicado = await resultado;
-  console.log(resultado);
+  console.log(resultadoDuplicado);
 }
-
+ */
 /* promesa
   .then((res) => {
     console.log(`El parametro generado es ${res}`);
@@ -41,3 +41,14 @@ async function resolucionPromesa() {
   .catch((err) => {
     console.log(`El error es: ${err}`);
   }); */
+
+// METODO DE CONEXION SEA DIFERENTE A GET y NECESITE PARAMS
+fetch("https://dummyjson.com/users")
+  .then((res) => res.json())
+  .then((res1) => {
+    // nombre y apellido de todos los usuarios
+    //console.log(res1.users);
+    res1.users.forEach((element) => {
+      console.log(element.firstName + " " + element.lastName);
+    });
+  });
