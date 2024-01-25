@@ -61,9 +61,11 @@ fetch("https://dummyjson.com/users")
           <p class="card-text">
           ${element.email}
           </p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <a href="#" id="" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>
     </div>`;
     });
   });
+
+  document.querySelector("button#id").addEventListener()
