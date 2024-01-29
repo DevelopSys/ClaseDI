@@ -8,6 +8,7 @@ import { Coche, CocheClase } from '../../model/coche';
 })
 export class ConcesionarioComponent {
   listado: CocheClase[] = [];
+  listaCocheBuscado: any[] = [];
 
   agregarCoche(
     marca: string,
@@ -20,5 +21,13 @@ export class ConcesionarioComponent {
     this.listado.push(
       new CocheClase(marca, modelo, Number(cv), Number(cc), matricula, motor)
     );
+  }
+
+  buscarCoche(matricula: string) {
+    let cocheBuscado = this.listado.find((item: CocheClase) => {
+      return item.getMatricula == matricula;
+    });
+
+    this.listaCocheBuscado.push(cocheBuscado);
   }
 }

@@ -56,6 +56,17 @@
     }
   </div>
   <div class="col">
-    <input type="text" />
+    <input type="text" placeholder="buscar por matriculoa" #inputmatricula />
+    <button (click)="buscarCoche(inputmatricula.value)">Buscar</button>
+    @if (listaCocheBuscado.length>0) {
+    <div class="card" style="width: 18rem">
+      <img src="..." class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">
+          {{ listaCocheBuscado[0].getMatricula }}
+        </h5>
+      </div>
+    </div>
+    } @else { }
   </div>
 </main>

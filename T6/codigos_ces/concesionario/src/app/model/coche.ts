@@ -18,4 +18,8 @@ export class CocheClase {
   ) {}
 
   mostrarDatos() {}
+
+  public get getMatricula(): string {
+    return this.matricula;
+  }
 }
