@@ -7,8 +7,11 @@ import { Coche, CocheClase } from '../../model/coche';
   styleUrl: './concesionario.component.css',
 })
 export class ConcesionarioComponent {
+  motorBuscar: string = '';
+  matriculaBuscar: string = '';
   listado: CocheClase[] = [];
   listaCocheBuscado: any[] = [];
+  listadoCochesMotor: CocheClase[] = [];
 
   agregarCoche(
     marca: string,
@@ -24,10 +27,17 @@ export class ConcesionarioComponent {
   }
 
   buscarCoche(matricula: string) {
+    this.listaCocheBuscado = [];
     let cocheBuscado = this.listado.find((item: CocheClase) => {
       return item.getMatricula == matricula;
     });
 
     this.listaCocheBuscado.push(cocheBuscado);
+  }
+
+  buscarTipoMotor(motor: string) {
+    this.listadoCochesMotor = this.listado.filter((item: CocheClase) => {
+      return item.getMotor.toLowerCase() == motor.toLowerCase();
+    });
   }
 }

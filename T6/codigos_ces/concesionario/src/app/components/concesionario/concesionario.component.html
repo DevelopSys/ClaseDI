@@ -56,8 +56,26 @@
     }
   </div>
   <div class="col">
-    <input type="text" placeholder="buscar por matriculoa" #inputmatricula />
-    <button (click)="buscarCoche(inputmatricula.value)">Buscar</button>
+    <input
+      class="form-control"
+      type="text"
+      placeholder="buscar por matriculoa"
+      #inputmatricula
+    />
+    <select class="form-select" #selectmotor>
+      <option>termico</option>
+      <option>electrico</option>
+    </select>
+
+    <button class="btn btn-primary" (click)="buscarCoche(inputmatricula.value)">
+      Buscar por matricula
+    </button>
+    <button
+      class="btn btn-primary"
+      (click)="buscarTipoMotor(selectmotor.value)"
+    >
+      Buscar por motor
+    </button>
     @if (listaCocheBuscado.length>0) {
     <div class="card" style="width: 18rem">
       <img src="..." class="card-img-top" alt="..." />
@@ -67,6 +85,13 @@
         </h5>
       </div>
     </div>
-    } @else { }
+    } @else { } @for (item of listadoCochesMotor; track $index) {
+    <div class="card" style="width: 18rem">
+      <img src="..." class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{ item.getMarca }} {{ item.getModelo }}</h5>
+      </div>
+    </div>
+    }
   </div>
 </main>

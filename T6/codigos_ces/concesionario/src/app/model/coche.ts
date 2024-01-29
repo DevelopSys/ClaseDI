@@ -22,4 +22,16 @@ export class CocheClase {
   public get getMatricula(): string {
     return this.matricula;
   }
+
+  public get getMotor(): string {
+    return this.tipoMotor;
+  }
+
+  public get getMarca(): string {
+    return this.marca;
+  }
+
+  public get getModelo(): string {
+    return this.modelo;
+  }
 }
