@@ -14,6 +14,7 @@ export class CocheClase {
     private cc: number,
     private cv: number,
     private matricula: string,
+    private precio: number,
     private tipoMotor: string
   ) {}
 

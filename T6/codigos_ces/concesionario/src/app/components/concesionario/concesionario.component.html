@@ -1,55 +1,64 @@
 <main class="row">
+  <p>
+    <span>Esto es una app para un {{ concesionario | uppercase }}</span
+    ><br />
+    <span>El numero de ventas es de {{ 200000 | currency : "EUR" : true }}</span
+    ><br />
+    <img
+      style="width: 200px"
+      [src]="imagenConcesionario | imagenes : 'asd' : 'asd' : 'asd'"
+    />
+  </p>
+
   <div class="col">
     <input
+      [(ngModel)]="marca"
       type="text"
       class="form-control mb-4"
       #inputmarca
       placeholder="introduce marca"
     />
     <input
+      [(ngModel)]="modelo"
       type="text"
       class="form-control mb-4"
       #inputmodelo
       placeholder="introduce modelo"
     />
     <input
+      [(ngModel)]="cv"
       type="number"
       class="form-control mb-4"
       #inputcv
       placeholder="introduce cv"
     />
     <input
+      [(ngModel)]="cc"
       type="number"
       class="form-control mb-4"
       #inputcc
       placeholder="introduce cc"
     />
     <input
+      [(ngModel)]="matricula"
       type="text"
       class="form-control mb-4"
       #inputmatricula
       placeholder="introduce matricula"
     />
-    <select class="form-select mb-4" #selectmotor>
+    <input
+      [(ngModel)]="precio"
+      type="number"
+      class="form-control mb-4"
+      #inputmatricula
+      placeholder="introduce precio"
+    />
+    <select class="form-select mb-4" #selectmotor [(ngModel)]="motor">
       <option>Termico</option>
       <option>Electrico</option>
     </select>
 
-    <button
-      (click)="
-        agregarCoche(
-          inputmarca.value,
-          inputmodelo.value,
-          inputmatricula.value,
-          inputcv.value,
-          inputcc.value,
-          selectmotor.value
-        )
-      "
-      class="btn btn-primary"
-    >
-      Agregar
-    </button>
+    <button (click)="agregarCoche()" class="btn btn-primary">Agregar</button>
 
     @if (listado.length>0) {
     <p>El numero de coches es: {{ listado.length }}</p>
