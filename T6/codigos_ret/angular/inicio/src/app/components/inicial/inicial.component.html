@@ -4,28 +4,36 @@
     , estado (pendiente, en proceso, completa) 
     boton para poder agregar la tarea a un array
 -->
-<input class="form-control" placeholder="introduce nombre" #inputnombre />
 <input
   class="form-control"
-  placeholder="introduce descripcion"
-  #inputdescripcion
+  placeholder="introduce nombre"
+  id="inputnombre"
+  [(ngModel)]="nombreValor"
 />
-<select class="form-select" #selectprioriodad (change)="cambiarDatos($event)">
+<input
+  [(ngModel)]="descripcionValor"
+  class="form-control"
+  placeholder="introduce descripcion"
+/>
+<select
+  [(ngModel)]="prioridadValor"
+  class="form-select"
+  (change)="cambiarDatos($event)"
+>
   <option>Alta</option>
   <option>Media</option>
   <option>Baja</option>
 </select>
-<select class="form-select" (change)="cambiarDatos($event)" #selectestado>
+<select
+  [(ngModel)]="estadoValor"
+  class="form-select"
+  (change)="cambiarDatos($event)"
+>
   <option>Pendiente</option>
   <option>En proceso</option>
   <option>Completada</option>
 </select>
-<button
-  class="btn btn-primary"
-  (click)="mostrarDatos(inputnombre.value, inputdescripcion.value)"
->
-  Agregar
-</button>
+<button class="btn btn-primary" (click)="agregarTarea()">Agregar</button>
 
 <!-- Crear un array, donde tras pulsar el boton, 
     se agrege a la lista una tarea con los datos de los inputs -->
