@@ -1,1 +1,35 @@
-<p>cursos works!</p>
+<h1>Informacion sobre las asignaturas</h1>
+
+<!-- <div class="row mt-4">
+  <div class="col" *ngFor="let item of asignaturas">
+    <div class="card" style="width: 18rem">
+      <img [src]="item.imagen" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{ item.nombre }}</h5>
+        <h6 class="card-title">{{ item.siglas }}</h6>
+        <h6 class="card-title">{{ item.profesor }}</h6>
+        <ul class="list-group">
+          <li *ngFor="let item1 of item.imagen" class="list-group-item">
+            {{ item1 }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div> -->
+@for (item of asignaturas; track $index) {
+<div class="col mb-4">
+  <div class="card" style="width: 18rem">
+    <img [src]="item.imagen | imagenes" class="card-img-top" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title">{{ item.nombre }}</h5>
+      <h6 class="card-title">{{ item.siglas }}</h6>
+      <h6 class="card-title">{{ item.profesor }}</h6>
+      <ul class="list-group">
+        @for (item1 of item.conocimientos; track $index) {
+        <li class="list-group-item">{{ item1 }}</li>
+        }
+      </ul>
+    </div>
+  </div>
+</div>
+}
