@@ -81,7 +81,7 @@ export class ConcesionarioComponent {
 
   buscarTipoMotor(motor: string) {
     this.listadoCochesMotor = this.listado.filter((item: CocheClase) => {
-      return item.getMotor.toLowerCase() == motor.toLowerCase();
+      return item.getMotor.toLocaleLowerCase() == motor.toLocaleLowerCase();
     });
   }
 }
