@@ -35,6 +35,12 @@
 </select>
 <button class="btn btn-primary" (click)="agregarTarea()">Agregar</button>
 
+@if (listaTareas.length > 0) {
+<div class="alert alert-primary" role="alert">
+  El numero de tareas es {{ listaTareas.length }}
+</div>
+}
+
 <!-- Crear un array, donde tras pulsar el boton, 
     se agrege a la lista una tarea con los datos de los inputs -->
 

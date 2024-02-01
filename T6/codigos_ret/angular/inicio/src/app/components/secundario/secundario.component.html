@@ -1,1 +1,20 @@
-<p>secundario works!</p>
+<!-- PONER UN BOTON QUE CON SU PULSACION ALTERNE LOS DOS ELEMENTOS
+Boton tiene como texto mostrar elemento 2
+    si lo pulso mostrar elemento 1
+    si lo pulso mostrar elemento 2
+    si lo pulso mostrar elemento 1
+-->
+
+<button (click)="cambiarElemento()" class="btn btn-primary">
+  Mostrar elemento {{ textoElementoMostrado }}
+</button>
+
+@if (mostrar) {
+<div class="alert alert-primary" role="alert">
+  La alerta uno se está mostrando
+</div>
+} @else {
+<div class="alert alert-secondary" role="alert">
+  La alerta dos se está mostrando
+</div>
+}

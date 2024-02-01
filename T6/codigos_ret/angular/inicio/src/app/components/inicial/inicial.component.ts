@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Tarea } from '../../model/tarea';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-inicial',
@@ -34,13 +35,21 @@ export class InicialComponent {
       new Promise((res, rej) => {
         res('elemento agregado correctamente');
       }).then((res) => {
-        alert(res);
+        Swal.fire({
+          icon: 'success',
+          title: 'Añadido ok',
+          text: `${res}`,
+        });
       });
     } else {
       new Promise((res, rej) => {
         res('faltan datos');
       }).then((res) => {
-        alert(res);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al añadir',
+          text: `${res}`,
+        });
       });
     }
 
