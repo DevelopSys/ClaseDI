@@ -29,9 +29,9 @@
   class="form-select"
   (change)="cambiarDatos($event)"
 >
-  <option>Pendiente</option>
-  <option>En proceso</option>
-  <option>Completada</option>
+  <option value="1">Pendiente</option>
+  <option value="2">En proceso</option>
+  <option value="3">Completada</option>
 </select>
 <button class="btn btn-primary" (click)="agregarTarea()">Agregar</button>
 
@@ -39,7 +39,20 @@
 <div class="alert alert-primary" role="alert">
   El numero de tareas es {{ listaTareas.length }}
 </div>
-}
+} @switch (estadoValor) { @case ("1") {
+<div class="alert alert-primary" role="alert">El estado es baja</div>
+} @case ("2") {
+<div class="alert alert-warning" role="alert">El estado es media</div>
+} @case ("3") {
+<div class="alert alert-danger" role="alert">El estado es alta</div>
+} }
+<ul class="list-group">
+  @for (item of listaTareas; track $index) {
+  <li class="list-group-item">
+    {{ item.getNombre }}
+  </li>
+  }
+</ul>
 
 <!-- Crear un array, donde tras pulsar el boton, 
     se agrege a la lista una tarea con los datos de los inputs -->

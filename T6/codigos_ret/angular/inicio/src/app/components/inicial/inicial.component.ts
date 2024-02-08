@@ -15,6 +15,7 @@ export class InicialComponent {
   descripcionValor = '';
   estadoValor = '';
   prioridadValor = '';
+  valorSelect = '';
 
   agregarTarea() {
     if (
@@ -66,6 +67,7 @@ export class InicialComponent {
 
   cambiarDatos(evento: Event) {
     console.log((evento.target as HTMLSelectElement).value);
+    this.estadoValor = (evento.target as HTMLSelectElement).value;
   }
 }
 

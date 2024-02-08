@@ -1,0 +1,48 @@
+<div class="container m-4">
+  <div class="row justify-content-center">
+    <div class="col">
+      <input
+        [(ngModel)]="marca"
+        class="mt-3 form-control"
+        type="text"
+        placeholder="introduce marca"
+      />
+      <input
+        [(ngModel)]="modelo"
+        class="mt-3 form-control"
+        type="text"
+        placeholder="introduce modelo"
+      />
+      <input
+        [(ngModel)]="matricula"
+        class="mt-3 form-control"
+        type="text"
+        placeholder="introduce matricula"
+      />
+      <input
+        [(ngModel)]="precio"
+        class="mt-3 form-control"
+        type="number"
+        placeholder="introduce precio"
+      />
+      <input
+        [(ngModel)]="cv"
+        class="mt-3 form-control"
+        type="number"
+        placeholder="introduce cv"
+      />
+      <input
+        [(ngModel)]="cc"
+        class="mt-3 form-control"
+        type="number"
+        placeholder="introduce cc"
+      />
+      <select class="mt-3 form-select" [(ngModel)]="motor">
+        <option>Eléctrico</option>
+        <option>Termico</option>
+      </select>
+      <button class="btn btn-primary mt-3">Agregar</button>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>
