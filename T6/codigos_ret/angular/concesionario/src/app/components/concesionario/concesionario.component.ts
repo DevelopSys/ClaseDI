@@ -89,3 +89,15 @@ export class ConcesionarioComponent {
     this.motor = '';
   }
 }
+
+
+/* Modificar el comportamiendo del formulario para
+- al añadir un coche, se puede añadir accesorios. Para ello, seleccionar el accesorio
+en un select y darle al boton add accesorio (se indicará el nº de accesorios del coche)
+- En el caso de agregar un accesorio que ya tenga el coche, saltará un aviso
+- En la lista de filtro, aparecerá una carta por cada resultado, donde además de los fatos anteriores
+se agergará una lista con sus accesorios
+- En el caso de tener 5 accesorios su precio se incrementa en 1000€
+- En la carta, el precio aparecerá con un simbolo de € (utilizar el pipe currency)
+
+*/
