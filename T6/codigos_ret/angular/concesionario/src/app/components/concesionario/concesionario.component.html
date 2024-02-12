@@ -52,12 +52,13 @@
       }
     </div>
     <div class="col">
+      <h2> {{titulo | uppercase  }}</h2>
       <div class="row mt-3">
         @for (item of coches; track $index) {
 
         <div class="col">
           <div class="card" style="width: 14rem">
-            <img src="..." class="card-img-top" alt="..." />
+            <img [src]="item.getMarca | imagenesMarca" class="card-img-top" alt="..." />
             <div class="card-body">
               <h5 class="card-title">{{ item.getModelo }}</h5>
               <h5 class="card-title">{{ item.getPrecio }}</h5>

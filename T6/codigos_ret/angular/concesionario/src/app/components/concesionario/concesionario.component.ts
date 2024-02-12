@@ -15,6 +15,8 @@ export class ConcesionarioComponent {
   cc: number = 0;
   precio: number = 0;
   motor: string = '';
+  titulo = "Formulario de búsqueda"
+  imagenDefecto = "https://img.freepik.com/psd-premium/coche-moderno-sobre-fondo-transparente-representacion-3d-ilustracion_494250-31500.jpg"
 
   coches: Coche[] = [];
 
