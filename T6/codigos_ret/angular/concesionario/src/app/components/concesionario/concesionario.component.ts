@@ -8,6 +8,8 @@ import Swal from 'sweetalert2';
   styleUrl: './concesionario.component.css',
 })
 export class ConcesionarioComponent {
+  marcaBuscar: string = ""
+  precioBuscar: string = ""
   marca: string = '';
   modelo: string = '';
   matricula: string = '';
@@ -19,6 +21,25 @@ export class ConcesionarioComponent {
   imagenDefecto = "https://img.freepik.com/psd-premium/coche-moderno-sobre-fondo-transparente-representacion-3d-ilustracion_494250-31500.jpg"
 
   coches: Coche[] = [];
+  cochesFiltrados: Coche[] = [];
+
+  realizarBusqueda(){
+    
+    let filtro: Coche[] = this.coches.filter((element: Coche)=>{
+      return element.getMarca == this.marcaBuscar && element.getPrecio 
+      >= Number(this.precioBuscar)
+   })
+
+   Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: `El numero de resultados obtenidos es de ${filtro.length}`,
+    showConfirmButton: false,
+    timer: 1500,
+  });
+
+    this.cochesFiltrados =  filtro;
+  }
 
   agregarCoche() {
     if (

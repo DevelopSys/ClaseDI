@@ -1,6 +1,7 @@
 <div class="container m-4">
   <div class="row justify-content-center">
     <div class="col">
+      <h2>FORMULARIO DE INTRODUCCION</h2>
       <input
         [(ngModel)]="marca"
         class="mt-3 form-control"
@@ -53,8 +54,11 @@
     </div>
     <div class="col">
       <h2> {{titulo | uppercase  }}</h2>
+      <input [(ngModel)] = "marcaBuscar" type="text" class="form-control" placeholder="introduce marca a buscar">
+      <input [(ngModel)] = "precioBuscar" type="number" class="form-control" placeholder="introduce precio mínimo">
+      <button (click)="realizarBusqueda()" class="btn btn-primary">Buscar</button>
       <div class="row mt-3">
-        @for (item of coches; track $index) {
+        @for (item of cochesFiltrados; track $index) {
 
         <div class="col">
           <div class="card" style="width: 14rem">
