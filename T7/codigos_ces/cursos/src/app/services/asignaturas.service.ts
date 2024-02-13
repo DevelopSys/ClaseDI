@@ -5,7 +5,6 @@ import { asignatura } from '../model/asignatura';
   providedIn: 'root',
 })
 export class AsignaturasService {
-
   private asignaturas: asignatura[] = [
     {
       nombre: 'Programacion',
@@ -15,6 +14,16 @@ export class AsignaturasService {
       curso: 'DAM|DAW',
       nivel: 1,
       conocimientos: ['Java', 'MySQL', 'Algoritmos', 'Ficheros'],
+      imagen: '',
+    },
+    {
+      nombre: 'Desarrollo cliente',
+      siglas: 'DWEC',
+      horas: 6,
+      profesor: 'Borja Martin',
+      curso: 'DAW',
+      nivel: 2,
+      conocimientos: ['React', 'Vue', 'JS'],
       imagen: '',
     },
     {
@@ -60,26 +69,28 @@ export class AsignaturasService {
       imagen:
         'https://img.freepik.com/vector-gratis/fondo-libro-ingles-dibujado-mano_23-2149483338.jpg',
     },
-  ]
+  ];
 
-  constructor(){
+  constructor() {}
 
-  }
-
-  getAllAsignaturas() : asignatura[] {
+  getAllAsignaturas(): asignatura[] {
     return this.asignaturas;
   }
 
-  getProfesorAsignaturas(nombre: string): asignatura[]{
-
+  getProfesorAsignaturas(nombre: string): asignatura[] {
+    
+    return this.asignaturas.filter((item: asignatura) => {
+      return item.profesor == nombre;
+    });
   }
 
-  getConocomientoAsignaturas(conocimiento: string): asignatura[]{
-
+  getConocomientoAsignaturas(conocimiento: string): asignatura[] {
+    return [];
   }
 
-  getCursoAsignaturas(curso: string): asignatura[]{
-
+  getCursoAsignaturas(curso: string): asignatura[] {
+    return this.asignaturas.filter((item: asignatura) => {
+      return item.curso.includes(curso) ;
+    });
   }
- 
 }

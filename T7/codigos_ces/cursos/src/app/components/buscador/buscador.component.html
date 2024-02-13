@@ -1,8 +1,30 @@
-<input [(ngModel)]="nombreBuscar" class="form-control" type="text" placeholder="introduce el nombre del profesor">
+<input #inputnombre  [(ngModel)]="nombreBuscar" class="form-control" type="text" placeholder="introduce el nombre del profesor">
 <input [(ngModel)]="conocimientoBuscar" class="form-control" type="text" placeholder="introduce el conocimiento">
 <select [(ngModel)]="asignaturaBuscar" class="form-select" >
-    <option>DAM</option>
-    <option>DAW</option>
-    <option>Ambos</option>
+    <option value="DAM">DAM</option>
+    <option value="DAW">DAW</option>
+    <option value="AMBOS">Ambos</option>
 </select>
 <button (click)="relizarBusqueda()" class="btn btn-primary" >Buscar</button>
+<div class="row">
+    @for (item of asignaturasFiltro; track $index) {
+
+        <div class="col mb-4">
+            <div class="card" style="width: 18rem">
+              <img [src]="item.imagen | imagenes" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">{{ item.nombre }}</h5>
+                <h6 class="card-title">{{ item.siglas }}</h6>
+                <h6 class="card-title">{{ item.profesor }}</h6>
+                <ul class="list-group">
+                  @for (item1 of item.conocimientos; track $index) {
+                  <li class="list-group-item">{{ item1 }}</li>
+                  }
+                </ul>
+              </div>
+            </div>
+          </div>
+    }
+    
+</div>
+

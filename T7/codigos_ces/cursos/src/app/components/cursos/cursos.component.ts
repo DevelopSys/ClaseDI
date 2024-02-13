@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { asignatura } from '../../model/asignatura';
 import { AsignaturasService } from '../../services/asignaturas.service';
+import { Router } from 'express';
 
 @Component({
   selector: 'app-cursos',

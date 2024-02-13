@@ -6,16 +6,25 @@ import { BuscadorComponent } from './components/buscador/buscador.component';
 
 const routes: Routes = [
   {
-    path: 'informacion',
-    component: InformacionComponent,
-  },
-  {
     path: 'cursos',
     component: CursosComponent,
   },
   {
     path: 'buscador',
     component: BuscadorComponent,
+  },
+  {
+    path: 'buscador/:curso',
+    component: BuscadorComponent,
+  },
+  {
+    path: 'info',
+    component: InformacionComponent,
+  },
+
+  {
+    path: '**',
+    redirectTo: "info",
   },
 ];
 
