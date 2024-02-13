@@ -10,6 +10,8 @@ import { InformacionComponent } from './components/informacion/informacion.compo
 import { CursosComponent } from './components/cursos/cursos.component';
 import { ImagenesPipe } from './pipes/imagenes.pipe';
 import { AsignaturasService } from './services/asignaturas.service';
+import { BuscadorComponent } from './components/buscador/buscador.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,8 +19,9 @@ import { AsignaturasService } from './services/asignaturas.service';
     InformacionComponent,
     CursosComponent,
     ImagenesPipe,
+    BuscadorComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideClientHydration(), AsignaturasService],
   bootstrap: [AppComponent],
 })

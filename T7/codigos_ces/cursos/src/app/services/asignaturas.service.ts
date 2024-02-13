@@ -69,5 +69,17 @@ export class AsignaturasService {
   getAllAsignaturas() : asignatura[] {
     return this.asignaturas;
   }
+
+  getProfesorAsignaturas(nombre: string): asignatura[]{
+
+  }
+
+  getConocomientoAsignaturas(conocimiento: string): asignatura[]{
+
+  }
+
+  getCursoAsignaturas(curso: string): asignatura[]{
+
+  }
  
 }

@@ -1,0 +1,8 @@
+<input [(ngModel)]="nombreBuscar" class="form-control" type="text" placeholder="introduce el nombre del profesor">
+<input [(ngModel)]="conocimientoBuscar" class="form-control" type="text" placeholder="introduce el conocimiento">
+<select [(ngModel)]="asignaturaBuscar" class="form-select" >
+    <option>DAM</option>
+    <option>DAW</option>
+    <option>Ambos</option>
+</select>
+<button (click)="relizarBusqueda()" class="btn btn-primary" >Buscar</button>
