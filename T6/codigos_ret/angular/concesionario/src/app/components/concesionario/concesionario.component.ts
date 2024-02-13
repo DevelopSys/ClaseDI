@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
   styleUrl: './concesionario.component.css',
 })
 export class ConcesionarioComponent {
+
   marcaBuscar: string = ""
   precioBuscar: string = ""
   marca: string = '';
@@ -22,6 +23,11 @@ export class ConcesionarioComponent {
 
   coches: Coche[] = [];
   cochesFiltrados: Coche[] = [];
+
+  cambioAccesiorio(accesorio: string) {
+    console.log(accesorio);
+    
+    }
 
   realizarBusqueda(){
     
@@ -88,6 +94,7 @@ export class ConcesionarioComponent {
     this.precio = 0;
     this.motor = '';
   }
+
 }
 
 

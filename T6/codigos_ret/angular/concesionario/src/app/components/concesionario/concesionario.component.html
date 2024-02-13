@@ -42,6 +42,15 @@
         <option>Eléctrico</option>
         <option>Termico</option>
       </select>
+      <select class="form-select" (change)="cambioAccesiorio(selectaccesorio.value
+      
+      )" #selectaccesorio >
+        <option>Techo</option>
+        <option>Cuero</option>
+        <option>Paquete Sport</option>
+        <option>Remolque</option>
+        <option>Camaras</option>
+      </select>
       <button class="btn btn-primary mt-3" (click)="agregarCoche()">
         Agregar
       </button>

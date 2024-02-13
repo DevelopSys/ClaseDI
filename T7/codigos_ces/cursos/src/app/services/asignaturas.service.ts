@@ -5,6 +5,7 @@ import { asignatura } from '../model/asignatura';
   providedIn: 'root',
 })
 export class AsignaturasService {
+
   private asignaturas: asignatura[] = [
     {
       nombre: 'Programacion',
@@ -59,21 +60,14 @@ export class AsignaturasService {
       imagen:
         'https://img.freepik.com/vector-gratis/fondo-libro-ingles-dibujado-mano_23-2149483338.jpg',
     },
-  ];
+  ]
 
-  constructor() {}
+  constructor(){
 
-  getAllAsignaturas(): asignatura[] {
+  }
+
+  getAllAsignaturas() : asignatura[] {
     return this.asignaturas;
   }
-
-  getAllAsignaturasCurso(curso: String) {
-    return this.asignaturas.filter((item) => {
-      item.curso.includes(curso.toString());
-    });
-  }
-
-  putData(asignatura: asignatura) {
-    this.asignaturas.push(asignatura);
-  }
+ 
 }
