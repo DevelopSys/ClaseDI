@@ -12,7 +12,7 @@ import { ImagenesPipe } from './pipes/imagenes.pipe';
 import { AsignaturasService } from './services/asignaturas.service';
 import { BuscadorComponent } from './components/buscador/buscador.component';
 import { FormsModule } from '@angular/forms';
-
+import { CartaAsignaturaComponent } from './components/carta-asignatura/carta-asignatura.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
     CursosComponent,
     ImagenesPipe,
     BuscadorComponent,
+    CartaAsignaturaComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideClientHydration(), AsignaturasService],
