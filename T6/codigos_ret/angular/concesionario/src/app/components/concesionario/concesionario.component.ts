@@ -8,9 +8,10 @@ import Swal from 'sweetalert2';
   styleUrl: './concesionario.component.css',
 })
 export class ConcesionarioComponent {
-
-  marcaBuscar: string = ""
-  precioBuscar: string = ""
+  accesorios: string[] = [];
+  accesorioSelecciondo: string = '';
+  marcaBuscar: string = '';
+  precioBuscar: string = '';
   marca: string = '';
   modelo: string = '';
   matricula: string = '';
@@ -18,33 +19,52 @@ export class ConcesionarioComponent {
   cc: number = 0;
   precio: number = 0;
   motor: string = '';
-  titulo = "Formulario de búsqueda"
-  imagenDefecto = "https://img.freepik.com/psd-premium/coche-moderno-sobre-fondo-transparente-representacion-3d-ilustracion_494250-31500.jpg"
+  titulo = 'Formulario de búsqueda';
+  imagenDefecto =
+    'https://img.freepik.com/psd-premium/coche-moderno-sobre-fondo-transparente-representacion-3d-ilustracion_494250-31500.jpg';
 
   coches: Coche[] = [];
   cochesFiltrados: Coche[] = [];
 
   cambioAccesiorio(accesorio: string) {
     console.log(accesorio);
-    
-    }
+  }
 
-  realizarBusqueda(){
-    
-    let filtro: Coche[] = this.coches.filter((element: Coche)=>{
-      return element.getMarca == this.marcaBuscar && element.getPrecio 
-      >= Number(this.precioBuscar)
-   })
+  realizarBusqueda() {
+    let filtro: Coche[] = this.coches.filter((element: Coche) => {
+      return (
+        element.getMarca.toLowerCase() == this.marcaBuscar.toLowerCase()
+        //element.getPrecio >= Number(this.precioBuscar)
+      );
+    });
 
-   Swal.fire({
-    position: 'center',
-    icon: 'success',
-    title: `El numero de resultados obtenidos es de ${filtro.length}`,
-    showConfirmButton: false,
-    timer: 1500,
-  });
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: `El numero de resultados obtenidos es de ${filtro.length}`,
+      showConfirmButton: false,
+      timer: 1500,
+    });
 
-    this.cochesFiltrados =  filtro;
+    this.cochesFiltrados = filtro;
+  }
+
+  agregarAccesorio() {
+    let encontrado = this.accesorios.find((item) => {
+      return item == this.accesorioSelecciondo;
+    });
+
+    encontrado != null
+      ? Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: `No se puede añadir, accesorio existente`,
+          showConfirmButton: false,
+          timer: 1500,
+        })
+      : this.accesorios.push(this.accesorioSelecciondo);
+
+    //this.accesorios.push(this.accesorioSelecciondo);
   }
 
   agregarCoche() {
@@ -56,18 +76,6 @@ export class ConcesionarioComponent {
       this.cc > 0 &&
       this.cc > 0
     ) {
-      this.coches.push(
-        new Coche(
-          this.marca,
-          this.modelo,
-          this.matricula,
-          this.cv,
-          this.cc,
-          this.precio,
-          this.motor
-        )
-      );
-
       Swal.fire({
         position: 'center',
         icon: 'success',
@@ -75,6 +83,21 @@ export class ConcesionarioComponent {
         showConfirmButton: false,
         timer: 1500,
       });
+      let coche = new Coche(
+        this.marca,
+        this.modelo,
+        this.matricula,
+        this.cv,
+        this.cc,
+        this.precio,
+        this.modelo,
+        this.accesorios
+      );
+      if (this.accesorios.length == 5) {
+        coche.setPrecio = this.precio + 1000;
+      }
+
+      this.coches.push(coche);
 
       this.limpiarDatos();
     } else {
@@ -92,11 +115,9 @@ export class ConcesionarioComponent {
     this.cc = 0;
     this.cv = 0;
     this.precio = 0;
-    this.motor = '';
+    this.accesorios = [];
   }
-
 }
-
 
 /* Modificar el comportamiendo del formulario para
 - al añadir un coche, se puede añadir accesorios. Para ello, seleccionar el accesorio

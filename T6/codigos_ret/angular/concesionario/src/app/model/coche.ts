@@ -6,8 +6,21 @@ export class Coche {
     private cv: number,
     private cc: number,
     private precio: number,
-    private motor: string
+    private motor: string,
+    private accesorios: string[]
   ) {}
+
+  public set setAccesiorios(v: string[]) {
+    this.accesorios = v;
+  }
+
+  public get getAccesorios(): string[] {
+    return this.accesorios;
+  }
+
+  public set setPrecio(v: number) {
+    this.precio = v;
+  }
 
   public get getMarca(): string {
     return this.marca;

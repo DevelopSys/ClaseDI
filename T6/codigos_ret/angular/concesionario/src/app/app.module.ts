@@ -9,9 +9,11 @@ import { AppComponent } from './app.component';
 import { ConcesionarioComponent } from './components/concesionario/concesionario.component';
 import { FormsModule } from '@angular/forms';
 import { ImagenesMarcaPipe } from './pipes/imagenes-marca.pipe';
+import { MotosComponent } from './components/motos/motos.component';
+import { InformacionComponent } from './components/informacion/informacion.component';
 
 @NgModule({
-  declarations: [AppComponent, ConcesionarioComponent, ImagenesMarcaPipe],
+  declarations: [AppComponent, ConcesionarioComponent, ImagenesMarcaPipe, MotosComponent, InformacionComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
