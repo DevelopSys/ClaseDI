@@ -1,21 +1,58 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" [routerLink]="['/info']">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" [routerLink]="['/coches']" >Coches</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/motos']">Motos</a>
-          </li>
-        </ul>
-      </div>
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="['/info']">Navbar</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            aria-current="page"
+            (click)="navegarLogico('coches')"
+            >Coches</a
+          >
+        </li>
+        <li class="nav-item" routerLink="motos">
+          <a class="nav-link" (click)="navegarLogico('motos')">Motos</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Motos
+          </a>
+          <ul class="dropdown-menu">
+            <!-- si pulso aqui quiero ir a motos - pasando param (competicion) -->
+            <li>
+              <a class="dropdown-item" [routerLink]="['motos', 'competicion']"
+                >Competición</a
+              >
+            </li>
+            <!-- si pulso aqui quiero ir a motos - pasando param (venta) -->
+            <li>
+              <a class="dropdown-item" (click)="navegarParametros()">Venta</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 
 <!-- <select class="form-select" [(ngModel)]="seleccionComponente">
     <option value="0">Coches</option>
@@ -32,6 +69,4 @@
     }
 }
  -->
-<router-outlet>
-    
-</router-outlet>
+<router-outlet> </router-outlet>

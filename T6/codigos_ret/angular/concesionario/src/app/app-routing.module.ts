@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'info', component: InformacionComponent },
   { path: 'coches', component: ConcesionarioComponent },
   { path: 'motos', component: MotosComponent },
+  { path: 'motos/:tipo', component: MotosComponent },
   { path: '**', redirectTo: 'info' },
 ];
 
