@@ -1,4 +1,4 @@
-export class Coche {
+export class Vehiculo {
   constructor(
     private marca: string,
     private model: string,
@@ -7,7 +7,8 @@ export class Coche {
     private cc: number,
     private precio: number,
     private motor: string,
-    private accesorios: string[]
+    private accesorios: string[],
+    private tipo: string = ''
   ) {}
 
   public set setAccesiorios(v: string[]) {
@@ -31,5 +32,9 @@ export class Coche {
 
   public get getPrecio(): number {
     return this.precio;
+  }
+
+  public get getTipo(): string {
+    return this.tipo;
   }
 }

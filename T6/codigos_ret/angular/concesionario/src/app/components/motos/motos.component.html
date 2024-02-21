@@ -1,3 +1,25 @@
 <div class="container m-3">
   <h2>Mostrando motos de {{ tipoMoto }}</h2>
+  <div class="row">
+    @for (item of motosFiltadas; track $index) {
+    <div class="col">
+      <div class="card" style="width: 14rem">
+        <img
+          [src]="item.getMarca | imagenesMarca : 'motos' : 2"
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ item.getModelo }}</h5>
+          <h5 class="card-title">{{ item.getPrecio }}</h5>
+          <ul class="list-group">
+            @for (accesorio of item.getAccesorios; track $index) {
+            <li class="list-group-item">{{ accesorio }}</li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
 </div>

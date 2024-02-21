@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Coche } from '../../model/coche';
+import { Vehiculo } from '../../model/coche';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -23,15 +23,15 @@ export class CochesComponent {
   imagenDefecto =
     'https://img.freepik.com/psd-premium/coche-moderno-sobre-fondo-transparente-representacion-3d-ilustracion_494250-31500.jpg';
 
-  coches: Coche[] = [];
-  cochesFiltrados: Coche[] = [];
+  coches: Vehiculo[] = [];
+  cochesFiltrados: Vehiculo[] = [];
 
   cambioAccesiorio(accesorio: string) {
     console.log(accesorio);
   }
 
   realizarBusqueda() {
-    let filtro: Coche[] = this.coches.filter((element: Coche) => {
+    let filtro: Vehiculo[] = this.coches.filter((element: Vehiculo) => {
       return (
         element.getMarca.toLowerCase() == this.marcaBuscar.toLowerCase()
         //element.getPrecio >= Number(this.precioBuscar)
@@ -83,7 +83,7 @@ export class CochesComponent {
         showConfirmButton: false,
         timer: 1500,
       });
-      let coche = new Coche(
+      let coche = new Vehiculo(
         this.marca,
         this.modelo,
         this.matricula,
