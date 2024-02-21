@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-motos',
@@ -8,8 +8,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MotosComponent {
   /* necesito el modulo ActivatedRoute */
+  tipoMoto: string | undefined;
 
   constructor(private rutaActiva: ActivatedRoute) {
-    console.log(this.rutaActiva.snapshot.params['tipo']);
+    //console.log(this.rutaActiva.snapshot.params['tipo']);
+    rutaActiva.paramMap.subscribe((item: ParamMap) => {
+      this.tipoMoto = item.get('tipo')?.toString();
+    });
   }
 }

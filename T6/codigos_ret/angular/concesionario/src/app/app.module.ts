@@ -6,14 +6,20 @@ import {
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ConcesionarioComponent } from './components/concesionario/concesionario.component';
+import { CochesComponent } from './components/coche/coche.component';
 import { FormsModule } from '@angular/forms';
 import { ImagenesMarcaPipe } from './pipes/imagenes-marca.pipe';
 import { MotosComponent } from './components/motos/motos.component';
 import { InformacionComponent } from './components/informacion/informacion.component';
 
 @NgModule({
-  declarations: [AppComponent, ConcesionarioComponent, ImagenesMarcaPipe, MotosComponent, InformacionComponent],
+  declarations: [
+    AppComponent,
+    CochesComponent,
+    ImagenesMarcaPipe,
+    MotosComponent,
+    InformacionComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],

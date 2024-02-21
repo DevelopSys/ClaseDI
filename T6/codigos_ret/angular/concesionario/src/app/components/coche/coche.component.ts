@@ -3,11 +3,11 @@ import { Coche } from '../../model/coche';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-concesionario',
-  templateUrl: './concesionario.component.html',
-  styleUrl: './concesionario.component.css',
+  selector: 'app-coche',
+  templateUrl: './coche.component.html',
+  styleUrl: './coche.component.css',
 })
-export class ConcesionarioComponent {
+export class CochesComponent {
   accesorios: string[] = [];
   accesorioSelecciondo: string = '';
   marcaBuscar: string = '';
