@@ -1,1 +1,30 @@
-<p>formulario works!</p>
+<!-- Crear un usuario con los datos introducidos en el formulario -->
+<!-- Los datos deberían ir al servicio correspondiente -->
+<!-- Añadir un campo dentdo del formulario (en la part superior) -->
+<!-- que muestre el numero de alumnos actuales por cicle -->
+
+<input
+  type="number"
+  class="form-control"
+  placeholder="introduce nia"
+  [(ngModel)]="nia"
+/>
+<input
+  class="form-control"
+  placeholder="introduce nombre"
+  [(ngModel)]="nombre"
+/>
+<input
+  class="form-control"
+  placeholder="introduce apellido"
+  [(ngModel)]="apellido"
+/>
+<input class="form-control" placeholder="introduce dni" [(ngModel)]="dni" />
+<select class="form-select" [(ngModel)]="ciclo">
+  <option>ASIR</option>
+  <option>DAM</option>
+  <option>DAW</option>
+</select>
+<button class="btn btn-primary" (click)="matricularAlumno()">
+  Dar de alta
+</button>

@@ -94,6 +94,10 @@ export class AcademiaService {
     ];
   }
 
+  putAlumno(alumno: Alumno) {
+    this.alumnos.push(alumno);
+  }
+
   putAsignatura(asignatura: Asignatura) {
     this.asignaturas.push(asignatura);
   }
