@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Asignatura } from '../../model/curso';
 import { AcademiaService } from '../../services/academia.service';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'academia-curso',
@@ -11,21 +12,15 @@ export class CursoComponent {
   /*  quiero acceder a todas las asignaturas */
 
   asignaturas: Asignatura[] = [];
+  curso: any = '';
 
-  constructor(private servicio: AcademiaService) {
+  constructor(private servicio: AcademiaService, private ruta: ActivatedRoute) {
     // agregar una asignatura??????
-    this.servicio.putAsignatura({
-      id: 6,
-      nombre: 'Implantacion de sistemas operativos',
-      siglas: 'ISO',
-      horas: 8,
-      conocimientos: ['Windows', 'Linux', 'Ps', 'Bash'],
-      ciclo: 'ASIR',
-      nivel: 1,
-      profesor: null,
-      imagen:
-        'https://concepto.de/wp-content/uploads/2018/02/sistemas-de-informacion.jpg',
+    // ruta.snapshot.params['curso'];
+    ruta.paramMap.subscribe((it: ParamMap) => {
+      this.curso = it.get('curso')?.toString();
+      console.log(this.curso);
+      this.asignaturas = this.servicio.getAsignaturasCurso(this.curso);
     });
-    this.asignaturas = servicio.getAllAsignaturas();
   }
 }

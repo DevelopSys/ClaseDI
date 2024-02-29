@@ -1,7 +1,17 @@
 <!-- TODAS LAS CARTAS DE TODAS LAS ASIGNATURAS -->
-<ul>
+
+<div class="row">
   @for (item of asignaturas; track $index) {
 
-  <li>{{ item.nombre }}</li>
+  <div class="col">
+    <div class="card" style="width: 18rem">
+      <img [src]="item.imagen" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{ item.nombre }}</h5>
+        <h6>{{ item.profesor?.getNombre() }}</h6>
+        <a href="#" class="btn btn-primary">Ver detalle</a>
+      </div>
+    </div>
+  </div>
   }
-</ul>
+</div>

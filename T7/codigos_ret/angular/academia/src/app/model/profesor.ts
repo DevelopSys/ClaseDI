@@ -6,7 +6,7 @@ export class Profesor {
     private conocimientos: string[]
   ) {}
 
-  public get getNombre(): string {
+  public getNombre(): string {
     return this.nombre;
   }
   public get getApellido(): string {

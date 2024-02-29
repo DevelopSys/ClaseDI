@@ -89,7 +89,7 @@ export class AcademiaService {
         nivel: 2,
         profesor: null,
         imagen:
-          'https://www.google.com/url?sa=i&url=https%3A%2F%2Fbuddy.works%2Fguides%2Fsymfony&psig=AOvVaw0UQhCfsHLg_0qy08LygFLv&ust=1709134167190000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCJjYmYnry4QDFQAAAAAdAAAAABAE',
+          'https://codersfree.nyc3.cdn.digitaloceanspaces.com/posts/que-es-php-en-programacion-descubre-5-ventajas-de-usarlo.jpg',
       },
     ];
   }
@@ -104,5 +104,11 @@ export class AcademiaService {
 
   getAllAsignaturas(): Asignatura[] {
     return this.asignaturas;
+  }
+
+  getAsignaturasCurso(curso: string): Asignatura[] {
+    return this.asignaturas.filter((it: Asignatura) => {
+      return it.ciclo.toLowerCase().includes(curso.toLowerCase());
+    });
   }
 }
