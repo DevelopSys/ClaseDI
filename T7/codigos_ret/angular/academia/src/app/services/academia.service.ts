@@ -107,8 +107,12 @@ export class AcademiaService {
   }
 
   getAsignaturasCurso(curso: string): Asignatura[] {
-    return this.asignaturas.filter((it: Asignatura) => {
-      return it.ciclo.toLowerCase().includes(curso.toLowerCase());
-    });
+    if (curso == 'todas') {
+      return this.asignaturas;
+    } else {
+      return this.asignaturas.filter((it: Asignatura) => {
+        return it.ciclo.toLowerCase().includes(curso.toLowerCase());
+      });
+    }
   }
 }
