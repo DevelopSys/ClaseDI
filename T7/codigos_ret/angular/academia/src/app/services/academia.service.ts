@@ -27,7 +27,7 @@ export class AcademiaService {
         conocimientos: ['Java', 'Algoritmos'],
         ciclo: 'DAM|DAW',
         nivel: 1,
-        profesor: null,
+        profesor: new Profesor('Borja', 'Martin', '1234A', ['progrmacion']),
         imagen: 'https://dungeonofbits.com/images/java-logo.png',
       },
       {
@@ -94,6 +94,12 @@ export class AcademiaService {
     ];
   }
 
+  getAsignaturaNombre(nombre: string): Asignatura | undefined {
+    return this.asignaturas.find((item: Asignatura) => {
+      return item.nombre == nombre;
+    });
+  }
+
   putAlumno(alumno: Alumno) {
     this.alumnos.push(alumno);
   }
@@ -113,6 +119,20 @@ export class AcademiaService {
       return this.asignaturas.filter((it: Asignatura) => {
         return it.ciclo.toLowerCase().includes(curso.toLowerCase());
       });
+    }
+  }
+
+  addProfesor(profesor: Profesor) {
+    this.profesores.push(profesor);
+  }
+
+  actualizarProfesor(nombre: string, profesor: Profesor) {
+    let asignatura = this.asignaturas.find((item: Asignatura) => {
+      return item.nombre == nombre;
+    });
+
+    if (asignatura != undefined) {
+      asignatura.profesor = profesor;
     }
   }
 }

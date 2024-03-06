@@ -23,6 +23,14 @@
           >
         </li>
         <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            [routerLink]="['gestion']"
+            >Gestion</a
+          >
+        </li>
+        <li class="nav-item">
           <a [routerLink]="['matriculacion']" class="nav-link">Matricularse</a>
         </li>
         <li class="nav-item dropdown">
@@ -58,4 +66,6 @@
     </div>
   </div>
 </nav>
-<router-outlet></router-outlet>
+<div class="m-3">
+  <router-outlet></router-outlet>
+</div>

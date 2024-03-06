@@ -12,6 +12,9 @@ import { CursoComponent } from './components/curso/curso.component';
 import { AsignaturaComponent } from './components/asignatura/asignatura.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { FormsModule } from '@angular/forms';
+import { ContratacionComponent } from './components/contratacion/contratacion.component';
+import { AsignacionComponent } from './components/asignacion/asignacion.component';
+import { GestionComponent } from './components/gestion/gestion.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,9 @@ import { FormsModule } from '@angular/forms';
     CursoComponent,
     AsignaturaComponent,
     FormularioComponent,
+    ContratacionComponent,
+    AsignacionComponent,
+    GestionComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideClientHydration()],
