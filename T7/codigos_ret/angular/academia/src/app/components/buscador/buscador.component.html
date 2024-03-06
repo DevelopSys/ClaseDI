@@ -1,0 +1,7 @@
+<input placeholder="nombre" class="form-control" [(ngModel)]="nombre" />
+<button class="btn btn-primary" (click)="buscar()">Buscar</button>
+<div class="row">
+  @for (item of asignaturas; track $index) {
+  <academia-asignatura></academia-asignatura>
+  }
+</div>

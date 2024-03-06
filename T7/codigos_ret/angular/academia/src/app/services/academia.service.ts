@@ -91,12 +91,30 @@ export class AcademiaService {
         imagen:
           'https://codersfree.nyc3.cdn.digitaloceanspaces.com/posts/que-es-php-en-programacion-descubre-5-ventajas-de-usarlo.jpg',
       },
+      {
+        id: 5,
+        nombre: 'Programacion de procesos',
+        siglas: 'DAWC',
+        horas: 6,
+        conocimientos: ['JS', 'React', 'Vue'],
+        ciclo: 'DAW',
+        nivel: 2,
+        profesor: null,
+        imagen:
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROEZkhejt4PkW9qVOY6zzhaFwFh640j90PMw3k7M6Mt5tB-947O7qupI4fBR_AmAoUE30&usqp=CAU',
+      },
     ];
   }
 
   getAsignaturaNombre(nombre: string): Asignatura | undefined {
     return this.asignaturas.find((item: Asignatura) => {
       return item.nombre == nombre;
+    });
+  }
+
+  getAllAsignaturaNombre(nombre: string): Asignatura[] | undefined {
+    return this.asignaturas.filter((item: Asignatura) => {
+      return item.nombre.includes(nombre);
     });
   }
 
@@ -112,6 +130,10 @@ export class AcademiaService {
     return this.asignaturas;
   }
 
+  getAllProfesores(): Profesor[] {
+    return this.profesores;
+  }
+
   getAsignaturasCurso(curso: string): Asignatura[] {
     if (curso == 'todas') {
       return this.asignaturas;
@@ -124,6 +146,12 @@ export class AcademiaService {
 
   addProfesor(profesor: Profesor) {
     this.profesores.push(profesor);
+  }
+
+  getAsignaturaId(id: Number): Asignatura | undefined {
+    return this.asignaturas.find((item: Asignatura) => {
+      return item.id == id;
+    });
   }
 
   actualizarProfesor(nombre: string, profesor: Profesor) {

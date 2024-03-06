@@ -1,1 +1,17 @@
-<p>asignacion works!</p>
+<div class="row">
+  <div class="col">
+    <select class="form-select" [(ngModel)]="asignaturaSeleccinada">
+      @for (item of asignaturas; track $index) {
+      <option>{{ item.nombre }}</option>
+      }
+    </select>
+  </div>
+  <div class="col">
+    <select class="form-select" [(ngModel)]="profesorSeleccionado">
+      @for (item of profesores; track $index) {
+      <option>{{ item.getNombre }}</option>
+      }
+    </select>
+  </div>
+</div>
+<button class="btn btn-primary" (click)="asociarProfesor()">Asociar</button>

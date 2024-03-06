@@ -15,6 +15,8 @@ import { FormsModule } from '@angular/forms';
 import { ContratacionComponent } from './components/contratacion/contratacion.component';
 import { AsignacionComponent } from './components/asignacion/asignacion.component';
 import { GestionComponent } from './components/gestion/gestion.component';
+import { DetalleComponent } from './components/detalle/detalle.component';
+import { BuscadorComponent } from './components/buscador/buscador.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { GestionComponent } from './components/gestion/gestion.component';
     ContratacionComponent,
     AsignacionComponent,
     GestionComponent,
+    DetalleComponent,
+    BuscadorComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideClientHydration()],

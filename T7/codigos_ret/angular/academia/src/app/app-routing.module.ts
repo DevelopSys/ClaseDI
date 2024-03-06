@@ -5,6 +5,8 @@ import { FormularioComponent } from './components/formulario/formulario.componen
 import { CursoComponent } from './components/curso/curso.component';
 import { ErrorComponent } from './components/error/error.component';
 import { GestionComponent } from './components/gestion/gestion.component';
+import { DetalleComponent } from './components/detalle/detalle.component';
+import { BuscadorComponent } from './components/buscador/buscador.component';
 
 const routes: Routes = [
   { path: 'gestion', component: GestionComponent },
@@ -12,6 +14,8 @@ const routes: Routes = [
   { path: 'matriculacion', component: FormularioComponent },
   { path: 'cursos/:curso', component: CursoComponent },
   { path: 'error', component: ErrorComponent },
+  { path: 'buscar', component: BuscadorComponent },
+  { path: 'detalle/:id', component: DetalleComponent },
   { path: '**', redirectTo: 'error' },
 ];
 

@@ -8,10 +8,12 @@
       <img [src]="item.imagen" class="card-img-top" alt="..." />
       <div class="card-body">
         <h5 class="card-title">{{ item.nombre }}</h5>
-        <h6>{{ item.profesor?.getNombre() }}</h6>
-        <a href="#" class="btn btn-primary">Ver detalle</a>
+        <h6>{{ item.profesor?.getNombre }}</h6>
+        <a class="btn btn-primary" (click)="navegar(item.id)">Ver detalle</a>
       </div>
     </div>
   </div>
   }
 </div>
+
+<router-outlet></router-outlet>
