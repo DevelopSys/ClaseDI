@@ -7,11 +7,15 @@ import { LigasService } from '../../services/ligas.service';
   styleUrl: './ligas.component.css',
 })
 export class LigasComponent {
+  pais = 'Italy';
+  listaLigas: any[] = [];
   constructor(private servicioLigas: LigasService) {
-    this.servicioLigas.getAllLigas('France').subscribe((data) => {
-      data.countries.forEach((element: any) => {
-        console.log(element.strLeague);
-      });
+    this.consultaLigas();
+  }
+
+  consultaLigas() {
+    this.servicioLigas.getAllLigas(this.pais).subscribe((data) => {
+      this.listaLigas = data.countries;
     });
   }
 }

@@ -1,13 +1,24 @@
 <h1>Resultados de carga</h1>
+<select (change)="consultaLigas()" class="form-select" [(ngModel)]="pais">
+  <option value="Spain">España</option>
+  <option value="Italy">Italia</option>
+  <option value="Frace">Francia</option>
+  <option value="England">Inglaterra</option>
+  <option value="Portugal">Portugal</option>
+</select>
 
-<div class="card" style="width: 18rem">
-  <img src="..." class="card-img-top" alt="..." />
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+<div class="row">
+  @for (item of listaLigas; track $index) {
+  <div class="col">
+    <div class="card m-3" style="width: 18rem">
+      <img [src]="item.strBadge" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{ item.strLeague }}</h5>
+        <p class="card-text">
+          {{ item.strDescriptionEN | slice : 0 : 200 }}
+        </p>
+      </div>
+    </div>
   </div>
+  }
 </div>

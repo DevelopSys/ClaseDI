@@ -12,7 +12,6 @@ export class LigasService {
   constructor(private http: HttpClient) {}
 
   getAllLigas(pais: string): Observable<any> {
-    this.urlLigas += pais;
-    return this.http.get(this.urlLigas);
+    return this.http.get(`${this.urlLigas}${pais}`);
   }
 }
