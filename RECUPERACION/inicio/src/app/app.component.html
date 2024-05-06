@@ -1,0 +1,10 @@
+<h2>Proyecto angular</h2>
+<p>
+  Nombre : {{ nombre }} <br />
+  Curso: {{ curso }} <br />
+  Asignatura: {{ asignatura }} <br />
+  Contador: {{ contador }}
+</p>
+<input placeholder="Introduce valor" type="number" #input />
+<button (click)="resetearContador(input.value)">Resetear</button>
+<button (click)="incrementarContador(input.value)">Pulsar</button>

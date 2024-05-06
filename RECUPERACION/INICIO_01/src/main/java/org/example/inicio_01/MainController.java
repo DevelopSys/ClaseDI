@@ -1,5 +1,7 @@
 package org.example.inicio_01;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -8,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -24,8 +27,22 @@ public class MainController implements Initializable {
     @FXML
     private Button botonEnviar;
 
+    @FXML
+    private ListView<String> listaDatos;
+
+    private ObservableList<String> listaPalabras;
+    @FXML private Button botonPalabra;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        listaPalabras = FXCollections.observableArrayList();
+        listaPalabras.add("Palabra uno");
+        listaPalabras.add("Palabra dos");
+        listaPalabras.add("Palabra tres");
+        listaPalabras.add("Palabra cuatro");
+
+        listaDatos.setItems(listaPalabras);
 
         botonEnviar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -48,5 +65,12 @@ public class MainController implements Initializable {
             }
         });
 
+        botonPalabra.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println(listaDatos.getSelectionModel().getSelectedItem());
+                listaDatos.getSelectionModel().select(-1);
+            }
+        });
     }
 }
