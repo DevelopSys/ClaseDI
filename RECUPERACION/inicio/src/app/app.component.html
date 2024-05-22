@@ -8,3 +8,32 @@
 <input placeholder="Introduce valor" type="number" #input />
 <button (click)="resetearContador(input.value)">Resetear</button>
 <button (click)="incrementarContador(input.value)">Pulsar</button>
+<!-- Partes del HTML se pongan dependiendeo de cosas -> DIRECTIVA -->
+
+<div>
+  <br />
+  <label>Ver lista</label><input type="checkbox" [(ngModel)]="verIf" />
+</div>
+
+@if (verIf) {
+<h2>Directiva IF</h2>
+<p>
+  Esto es un ejemplo de la directiva if. Este parrafo solo se mostrará si así lo
+  dice el check
+</p>
+<input
+  class="form-control"
+  placeholder="introduce nombre"
+  [(ngModel)]="nombreAnadir"
+/>
+<button class="btn btn-primary" (click)="anadirUsuario()">Añadir</button>
+} @else {
+<p>Esto se mostrará cuando no se quiera ver la directiva if</p>
+}
+
+<ul class="list-group">
+  <!-- tener tantos li como usuarios tenga el array -->
+  @for (item of usuarios; track $index) {
+  <li class="list-group-item">{{ item }}</li>
+  }
+</ul>
