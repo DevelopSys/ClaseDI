@@ -6,12 +6,12 @@ import {
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
-import { MandarComponent } from './components/mandar/mandar.component';
+import { EscribirComponent } from './components/escribir/escribir.component';
 import { ListarComponent } from './components/listar/listar.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, MandarComponent, ListarComponent],
+  declarations: [AppComponent, EscribirComponent, ListarComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],

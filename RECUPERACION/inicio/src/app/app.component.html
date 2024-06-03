@@ -1,39 +1,15 @@
-<h2>Proyecto angular</h2>
-<p>
-  Nombre : {{ nombre }} <br />
-  Curso: {{ curso }} <br />
-  Asignatura: {{ asignatura }} <br />
-  Contador: {{ contador }}
-</p>
-<input placeholder="Introduce valor" type="number" #input />
-<button (click)="resetearContador(input.value)">Resetear</button>
-<button (click)="incrementarContador(input.value)">Pulsar</button>
-<!-- Partes del HTML se pongan dependiendeo de cosas -> DIRECTIVA -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
 
-<div>
-  <br />
-  <label>Ver lista</label><input type="checkbox" [(ngModel)]="verIf" />
-</div>
-
-@if (verIf) {
-<h2>Directiva IF</h2>
-<p>
-  Esto es un ejemplo de la directiva if. Este parrafo solo se mostrará si así lo
-  dice el check
-</p>
-<input
-  class="form-control"
-  placeholder="introduce nombre"
-  [(ngModel)]="nombreAnadir"
-/>
-<button class="btn btn-primary" (click)="anadirUsuario()">Añadir</button>
-} @else {
-<p>Esto se mostrará cuando no se quiera ver la directiva if</p>
-}
-
-<ul class="list-group">
-  <!-- tener tantos li como usuarios tenga el array -->
-  @for (item of usuarios; track $index) {
-  <li class="list-group-item">{{ item }}</li>
-  }
-</ul>
+    <div class="navbar-nav">
+      <a class="nav-link" aria-current="page" routerLink="mandar">Enviar</a>
+      <a class="nav-link" aria-disabled="true" routerLink="listar">Listar</a>
+    </div>
+  </div>
+</nav>
+<main>
+  <section class="row">
+    <router-outlet></router-outlet>
+  </section>
+</main>

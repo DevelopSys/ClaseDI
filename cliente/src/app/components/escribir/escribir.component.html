@@ -1,0 +1,68 @@
+<div class="mb-3">
+  <label class="form-label">Nombre</label>
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Introduce tu nombre"
+    [(ngModel)]="nombre"
+  />
+</div>
+<div class="mb-3">
+  <label class="form-label">Categoria</label>
+  <select class="form-select" [(ngModel)]="categoria">
+    <option>Deportes</option>
+    <option>Politica</option>
+    <option>General</option>
+    <option>Tecnologia</option>
+  </select>
+</div>
+
+<div class="mb-3">
+  <label class="form-label">Tu tweet</label>
+  <input
+    class="form-control"
+    type="text"
+    placeholder="Introduce tu texto"
+    [(ngModel)]="texto"
+  />
+  <label class="form-label">{{ texto.length }}/255</label>
+</div>
+
+<div class="mb-3 form-check">
+  <input
+    type="checkbox"
+    class="form-check-input"
+    id="exampleCheck1"
+    [(ngModel)]="condiciones"
+  />
+  <label class="form-check-label" for="exampleCheck1"
+    >Aceptas terminos de uso</label
+  >
+</div>
+<button type="submit" class="btn btn-primary" (click)="lanzarTweet()">
+  Enviar
+</button>
+
+<div class="mt-3">
+  @for (item of listaTweets; track $index) {
+  <div class="card" style="width: 18rem">
+    <div class="card-body">
+      <h5 class="card-title">{{ item.tipo }}</h5>
+      <p class="card-text">
+        {{ item.contenido }}
+      </p>
+      <span>{{ item.autor }}</span>
+    </div>
+  </div>
+  }
+
+  <!--   <div class="card" style="width: 18rem">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">
+        Some quick example text to build on the card title and make up the bulk
+        of the card's content.
+      </p>
+    </div>
+  </div> -->
+</div>
