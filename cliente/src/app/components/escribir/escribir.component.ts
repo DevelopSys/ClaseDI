@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TweetsService } from '../../services/tweets.service';
 
 @Component({
   selector: 'app-escribir',
@@ -10,7 +11,8 @@ export class EscribirComponent {
   nombre: string = '';
   categoria: string = '';
   condiciones: boolean = false;
-  listaTweets: any[] = [];
+
+  constructor(private servicio: TweetsService) {}
 
   lanzarTweet() {
     if (!this.condiciones) {
@@ -24,7 +26,12 @@ export class EscribirComponent {
     } else {
       /* lanzar el tweet */
       /* Agregar en el [] listaTweets el conjunto de datos que estan en los inputs */
-      this.listaTweets.push({
+      /* this.listaTweets.push({
+        autor: this.nombre,
+        contenido: this.texto,
+        tipo: this.categoria,
+      }); */
+      this.servicio.addTweet({
         autor: this.nombre,
         contenido: this.texto,
         tipo: this.categoria,

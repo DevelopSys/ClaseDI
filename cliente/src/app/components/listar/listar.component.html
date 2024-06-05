@@ -1,1 +1,16 @@
-<p>listar works!</p>
+<div class="row">
+  @for (item of listaTweets; track $index) {
+  <div class="col">
+    <div class="card" style="width: 18rem">
+      <div class="card-body">
+        <h5 class="card-title">{{ item.tipo }}</h5>
+        <p class="card-text">
+          {{ item.contenido }}
+        </p>
+        <span>{{ item.autor }}</span>
+      </div>
+    </div>
+  </div>
+
+  }
+</div>
