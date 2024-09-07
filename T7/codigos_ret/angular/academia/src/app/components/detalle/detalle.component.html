@@ -1,8 +1,0 @@
-<h1>{{ asignatura?.nombre }}</h1>
-<h1>{{ asignatura?.profesor?.getNombre }}</h1>
-<ul>
-  @for (item of asignatura?.profesor?.getConocientos; track $index) {
-
-  <li>{{ item }}</li>
-  }
-</ul>
