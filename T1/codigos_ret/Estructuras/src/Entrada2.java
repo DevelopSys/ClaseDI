@@ -9,6 +9,9 @@ public class Entrada2 {
         System.out.println("Ahora pasame una palabra");
         String palabra = lectura.next();
         System.out.println("La palabra leida es "+palabra);
+        double numeroDecimal = 3.423123123;
+        System.out.printf("El numero leido es %d y la palabra es %s\n" +
+                "El decimal es %.2f",numero,palabra,numeroDecimal);
         // new Entrada2().primerEjercicio();
         // new Entrada2().segundoEjercicio();
         // int aletario = (int)(Math.random()*11); // 0-10
