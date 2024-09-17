@@ -12,6 +12,8 @@ public class Entrada2 {
         double numeroDecimal = 3.423123123;
         System.out.printf("El numero leido es %d y la palabra es %s\n" +
                 "El decimal es %.2f",numero,palabra,numeroDecimal);
+
+
         // new Entrada2().primerEjercicio();
         // new Entrada2().segundoEjercicio();
         // int aletario = (int)(Math.random()*11); // 0-10
