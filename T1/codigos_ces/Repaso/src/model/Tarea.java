@@ -15,13 +15,13 @@ public class Tarea {
         this.titulo = titulo;
         this.descripcion = descripcion;
         switch (prioridad) {
-            case 0:
+            case 1:
                 this.prioridad = Prioridad.baja;
                 break;
-            case 1:
+            case 2:
                 this.prioridad = Prioridad.media;
                 break;
-            case 2:
+            case 3:
                 this.prioridad = Prioridad.alta;
                 break;
             default:
@@ -71,5 +71,16 @@ public class Tarea {
 
     public void setPrioridad(Prioridad prioridad) {
         this.prioridad = prioridad;
+    }
+
+    @Override
+    public String toString() {
+        return "Tarea{" +
+                "id=" + id +
+                ", titulo='" + titulo + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", completada=" + completada +
+                ", prioridad=" + prioridad +
+                '}';
     }
 }
