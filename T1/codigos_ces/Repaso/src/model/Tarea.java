@@ -2,7 +2,7 @@ package model;
 
 import utils.Prioridad;
 
-public class Tarea {
+public abstract class Tarea {
 
     private int id;
     private String titulo;
@@ -11,6 +11,10 @@ public class Tarea {
     private Prioridad prioridad;
 
     public Tarea(){}
+    public Tarea(String titulo){
+        this.titulo = titulo;
+        this.prioridad = Prioridad.baja;
+    }
     public Tarea(String titulo, String descripcion, int prioridad) {
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -33,6 +37,7 @@ public class Tarea {
 
     }
 
+    public abstract void metodoEjecutar();
     public int getId() {
         return id;
     }
@@ -73,14 +78,14 @@ public class Tarea {
         this.prioridad = prioridad;
     }
 
-    @Override
-    public String toString() {
-        return "Tarea{" +
+
+    public void mostrar() {
+        System.out.println("Tarea{" +
                 "id=" + id +
                 ", titulo='" + titulo + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", completada=" + completada +
                 ", prioridad=" + prioridad +
-                '}';
+                '}');
     }
 }

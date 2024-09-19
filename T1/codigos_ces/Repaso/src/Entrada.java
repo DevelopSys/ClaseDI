@@ -1,5 +1,6 @@
 import controller.Gestor;
 import model.Tarea;
+import model.TareaEspecializada;
 import utils.Prioridad;
 
 import java.util.ArrayList;
@@ -31,7 +32,8 @@ public class Entrada {
                     descripcion = scanner.next();
                     System.out.println("Introduce la prioridad (1-baja 2-media 3-alta)");
                     prioridad = scanner.nextInt();
-                    if (gestor.agragarTarea(new Tarea(titulo, descripcion, prioridad))) {
+
+                    if (gestor.agragarTarea(new TareaEspecializada(titulo, descripcion, prioridad,""))) {
                         System.out.println("Tarea agregada correctamente");
                     } else {
                         System.out.println("Error al agregar");
