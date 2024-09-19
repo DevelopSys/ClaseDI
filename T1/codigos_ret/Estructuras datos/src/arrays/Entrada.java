@@ -1,5 +1,6 @@
 package arrays;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -7,7 +8,7 @@ public class Entrada {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        /*Scanner scanner = new Scanner(System.in);
         // pedir al usuario la cantidad de nuemeros que quiereo guardar 20
         System.out.println("Cuantos nº quieres generar");
         int cantidad = scanner.nextInt();
@@ -46,8 +47,13 @@ public class Entrada {
         System.out.println("La suma de los numeros es: "+suma);
         System.out.println("La cantidad de negativos es: "+numNegativos);
         System.out.println("La cantidad de positivos es: "+numPositivos);
-        System.out.println("La media es: "+(double)suma/numeros.length);
+        System.out.println("La media es: "+(double)suma/numeros.length);*/
+        metodoChampion();
 
+
+    }
+
+    public static void metodoChampion(){
         // EL SORTEO DE LA CHAMPION
         // generar el sorteo de champion
         // crear dos arrays de string con los nombre de 8 equipos
@@ -55,12 +61,50 @@ public class Entrada {
         // UN EQUIPO NO PUEDE JUGAR DOS PARTIDOS
         // barcelona - monaco
         // liverpool - barcelona
-
-        String[] bombo1 = {"madrid","barcelona","atleti","milan","city", "borusia"};
-        String[] bombo2 = {"monaco","red bull","inter","manchester","bayern", "psg"};
+        // 0 -> size
+        ArrayList<String> emparejamientos = new ArrayList<>();
+        String[] bombo1 = {"madrid","barcelona","atleti","milan","city", "borusia","e1"};
+        String[] bombo2 = {"monaco","red bull","inter","manchester","bayern", "psg","e7"};
+        String equipoLocal = "", equipoVisitante= "";
         // array adicional
+        for (int i = 0; i < bombo1.length; i++) {
+            int aleatorio = 0;
+            do {
+                aleatorio = (int) (Math.random() * bombo1.length); // 0-6
+                // si el equipo esta duplicado -> generar un aleatorio nuevo
+            } while (equipoDuplicado(bombo1[aleatorio],bombo1));
+            // no esta duplicado, por lo tanto lo emparejo
+            equipoLocal = bombo1[aleatorio];
+            bombo1[aleatorio]=null;
+
+            do {
+                aleatorio = (int) (Math.random() * bombo1.length); // 0-6
+                // si el equipo esta duplicado -> generar un aleatorio nuevo
+            } while (equipoDuplicado(bombo2[aleatorio],bombo2));
+            // no esta duplicado, por lo tanto lo emparejo
+            equipoVisitante = bombo2[aleatorio];
+            bombo2[aleatorio]=null;
+            // System.out.printf("%s vs %s\n", equipoLocal,equipoVisitante);
+            emparejamientos.add(String.format("%s vs %s\n", equipoLocal,equipoVisitante));
+            for (String emparejamiento: emparejamientos) {
+                System.out.print(emparejamiento);
+            }
+        }
+
+
 
         System.out.printf("%s vs %s%n",bombo2[1],bombo1[2]);
-        System.out.printf("%s vs %s%n",bombo2[1],bombo1[2]);
+    }
+
+    private static boolean equipoDuplicado(String equipo, String[] bombo){
+
+        // return false
+        for ( String team : bombo ) {
+            if(equipo!=null && equipo.equalsIgnoreCase(team)){
+                return false;
+            }
+        }
+
+        return true;
     }
 }
