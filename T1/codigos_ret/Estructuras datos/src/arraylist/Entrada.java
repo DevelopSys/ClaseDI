@@ -49,7 +49,7 @@ public class Entrada {
 
     // mostrar los extremos y la temperatura media
 
-    public static void ejercicioTemperaturas(){
+    public static void ejercicioTemperaturas() {
         ArrayList<Double> listadoTemperaturas = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         double temperatura;
@@ -58,12 +58,18 @@ public class Entrada {
             System.out.println("Introduce temperatura");
             temperatura = scanner.nextDouble();
             listadoTemperaturas.add(temperatura);
-            media +=temperatura;
-        } while(temperatura!=0.0);
+            media += temperatura;
+        } while (temperatura != 0.0);
 
         // [4,7,1,-100,200,40]
+        listadoTemperaturas.removeIf(new Predicate<Double>() {
+            @Override
+            public boolean test(Double aDouble) {
+                return aDouble == 12.5;
+            }
+        });
 
-        double max =listadoTemperaturas.getFirst(),  min=listadoTemperaturas.getFirst();
+        double max = listadoTemperaturas.getFirst(), min = listadoTemperaturas.getFirst();
         /*for ( double item : listadoTemperaturas ) {
             if (item>max){
                 max=item;
@@ -73,28 +79,92 @@ public class Entrada {
             }
         }*/
         Collections.sort(listadoTemperaturas);
-        System.out.println("La temp min es "+listadoTemperaturas.getFirst());
-        System.out.println("La temp max es "+listadoTemperaturas.getLast());
-        System.out.println("La temperatura media es "+media/listadoTemperaturas.size());
+        System.out.println("La temp min es " + listadoTemperaturas.getFirst());
+        System.out.println("La temp max es " + listadoTemperaturas.getLast());
+        System.out.println("La temperatura media es " + media / listadoTemperaturas.size());
 
     }
-    public static void ejercicioGaraje(){
+
+    public static void ejercicioGaraje() {
+
+
+        int opcion = 0;
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Object[]> garaje = new ArrayList<>();
+
+
+        do {
+            System.out.println("1- Agregar");
+            System.out.println("2- Eliminar");
+            System.out.println("3- Listar");
+            System.out.println("4- Caja");
+            System.out.println("5- Salir");
+            System.out.println("Que quieres hacer");
+            opcion = scanner.nextInt();
+            switch (opcion) {
+                case 1:
+                    String matricula, marca, modelo;
+                    int cv;
+                    System.out.println("Matricula: ");
+                    matricula = scanner.next();
+                    System.out.println("Marca: ");
+                    marca = scanner.next();
+                    System.out.println("Modelo: ");
+                    modelo = scanner.next();
+                    System.out.println("CV: ");
+                    cv = scanner.nextInt();
+                    boolean encontrado = false;
+                    for (Object[] coche : garaje) {
+                        if (coche[0].toString().equalsIgnoreCase(matricula)) {
+                            System.out.println("El coche ya esta en la lista");
+                            encontrado = true;
+                        }
+                    }
+
+                    // Agregar el coche si no esta
+                    if (!encontrado) {
+                        garaje.add(new Object[]{matricula, marca, modelo, cv, (Math.random() * 401) + 100});
+                    }
+
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    System.out.println("Saliendo.....");
+                    break;
+                default:
+                    System.out.println("Opcion invalida, por favor introduce de nuevo");
+            }
+        } while (opcion != 5);
+
+
         // marca, modelo, cv, precio arreglos
         double arreglos = 0.0;
-        Object[] coche = {"Ford","Focus",130,50.0};
-        Object[] coche1 = {"Ford","Fiesta",100,100.0};
+        Object[] coche = {"Ford", "Focus", 130, 50.0};
+        Object[] coche1 = {"Ford", "Fiesta", 100, 100.0};
 
-        ArrayList<Object[]> garaje = new ArrayList<>();
         garaje.add(coche);
         garaje.add(coche1);
+        garaje.removeIf(new Predicate<Object[]>() {
+            @Override
+            public boolean test(Object[] objects) {
+                return objects[0].toString().equalsIgnoreCase("asd");
+            }
+        });
 
-        for ( Object[] item : garaje ) {
-            System.out.println(item[1]);
+
+        for (Object[] item : garaje) {
+            if (item[0].toString().equalsIgnoreCase("asdasd"))
+                System.out.println(item[1]);
             // if (item[3] instanceof Double){
-                arreglos += (double)item[3];
+            arreglos += (double) item[3];
             // }
         }
-        System.out.println("El valor de todos los arreglos es: "+arreglos);
+        System.out.println("El valor de todos los arreglos es: " + arreglos);
 
         // Crear un programa que permite gestionar un garaje.
         // Para ello el garaje admitira coches: matricula, marca, modelo, cv, coste
@@ -108,6 +178,8 @@ public class Entrada {
         // 3 - Listar coches: se muestra toda la info - MAT - MAR - MOD - CV
         // 4 - Ver caja: se muestra la caja realizada con todos los coches
         // 5 - Salir
+        // [{123,qwe,qwe,123,1.0}]
+        // lista.contains(123)
 
 
     }
