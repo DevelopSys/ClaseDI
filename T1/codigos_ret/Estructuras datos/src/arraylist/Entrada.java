@@ -89,6 +89,7 @@ public class Entrada {
 
 
         int opcion = 0;
+        String matricula;
         Scanner scanner = new Scanner(System.in);
         ArrayList<Object[]> garaje = new ArrayList<>();
 
@@ -103,7 +104,7 @@ public class Entrada {
             opcion = scanner.nextInt();
             switch (opcion) {
                 case 1:
-                    String matricula, marca, modelo;
+                    String marca, modelo;
                     int cv;
                     System.out.println("Matricula: ");
                     matricula = scanner.next();
@@ -128,10 +129,37 @@ public class Entrada {
 
                     break;
                 case 2:
+                    System.out.println("Indica matricula");
+                    matricula = scanner.next();
+                    Object[] cocheBorrar = null;
+                    for (Object[] coche : garaje) {
+                        if (coche[0].toString().equalsIgnoreCase(matricula)) {
+                            cocheBorrar = coche;
+                            garaje.remove(cocheBorrar);
+                            break;
+                        }
+                    }
+
+                    if (cocheBorrar != null) {
+                        garaje.remove(cocheBorrar);
+                    } else {
+                        System.out.println("No se ha encontra el coche que quieres borrar");
+                    }
                     break;
                 case 3:
+                    System.out.println("Listar");
+                    for (Object[] item : garaje) {
+                        System.out.printf("%s %s %s %d %.2f\n", item[0], item[1], item[2], item[3], item[4]);
+                    }
                     break;
                 case 4:
+                    double caja = 0.0;
+                    for ( Object[] item : garaje ) {
+                        // casteo (tipo)variable -> tipos compatibles
+                        // parseo Integer.parseInt(variable) -> tipos forzados
+                        caja+= Double.parseDouble(item[4].toString());
+                    }
+                    System.out.println("La caja total del dia es "+caja);
                     break;
                 case 5:
                     System.out.println("Saliendo.....");
