@@ -8,6 +8,10 @@ abstract public class Multimedia {
 
     public Multimedia() {
     }
+
+    public Multimedia(int id, String titulo){
+
+    }
     public Multimedia(int id, String titulo, String autor, int tamanio, String formato) {
         this.id = id;
         this.titulo = titulo;
