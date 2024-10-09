@@ -11,7 +11,7 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("formulario-view.fxml"));
         Parent root = fxmlLoader.load();
         // acceso a toda la funcionalidad de la escena
         // fxmlLoader.getController();
