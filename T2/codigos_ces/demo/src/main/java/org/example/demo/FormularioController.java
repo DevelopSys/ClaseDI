@@ -38,8 +38,8 @@ public class FormularioController implements Initializable, EventHandler<ActionE
         botonEnviar.setOnAction(this);
         botonBorrar.setOnAction(this);
         botonValidar.setOnAction(this);
-        botonValidar.setOnMouseEntered(this);
-        botonValidar.setOnMouseExited(this);
+        // botonValidar.setOnMouseEntered(this);
+        // botonValidar.setOnMouseExited(this);
     }
 
     @Override
