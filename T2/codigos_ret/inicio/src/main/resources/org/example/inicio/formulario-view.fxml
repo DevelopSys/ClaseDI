@@ -59,9 +59,13 @@
       </GridPane>
    </center>
    <left>
-      <FlowPane fx:id="panelIzq" prefHeight="201.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+       <FlowPane fx:id="panelIzq" prefHeight="201.0" prefWidth="100.0" BorderPane.alignment="CENTER" >
+           <Label text="0" fx:id="labelIntentosOK"></Label>
+       </FlowPane>
    </left>
    <right>
-      <FlowPane fx:id="panelDer" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+       <FlowPane fx:id="panelDer" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+           <Label text="0" fx:id="labelIntentosNoOK"></Label>
+       </FlowPane>
    </right>
 </BorderPane>
