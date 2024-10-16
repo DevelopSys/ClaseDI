@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -25,7 +26,7 @@ public class FormularioController implements Initializable,
         EventHandler<ActionEvent> {
 
     @FXML
-    private Button bEnviar, bLimpiar, bValidar;
+    private Button bEnviar, bLimpiar, bValidar, bSalir;
     @FXML
     private TextField editNombre, editApellido, editTelefono, editCorreo;
     @FXML
@@ -39,20 +40,19 @@ public class FormularioController implements Initializable,
     public void initialize(URL url, ResourceBundle resourceBundle)  {
         // ejecutado cuando fxmlloader.load()
         System.out.println("Ejecutada controladora");
-        panelGeneral.setLeft(null);
-        panelGeneral.setRight(null);
+        // panelGeneral.setLeft(null);
+        // panelGeneral.setRight(null);
         instancias();
         persoGUI();
         acciones();
     }
-
     private void persoGUI() {
     persoBotones(bValidar,"validar.png");
     persoBotones(bEnviar,"enviar.png");
     persoBotones(bLimpiar,"borrarAA.png");
+    persoBotones(bSalir, "exit.png");
 
     }
-
     private void persoBotones(Button boton, String path)
     {
         ImageView imagenEnviar;
@@ -69,7 +69,6 @@ public class FormularioController implements Initializable,
         boton.setBackground(null);
         boton.setGraphic(imagenEnviar);
     }
-
 
     private void instancias() {
         sombra = new DropShadow();
@@ -108,9 +107,25 @@ public class FormularioController implements Initializable,
         if (actionEvent.getSource() == bEnviar){
             System.out.println("Pulsado enviar");
         } else if (actionEvent.getSource() == bLimpiar) {
-            System.out.println("Pulsado limpiar");
+            if (panelGeneral.getLeft()!=null){
+                // quito
+                panelGeneral.setLeft(null);
+            } else {
+                // pongo
+                panelGeneral.setLeft(panelIzq);
+            }
         } else if (actionEvent.getSource() == bValidar) {
-            System.out.println("Pulsado validar");
+            // poner o quitar
+            if (panelGeneral.getRight()!=null){
+                // quito
+                panelGeneral.setRight(null);
+            } else {
+                // pongo
+                panelGeneral.setRight(panelDer);
+            }
+
+        } else if (actionEvent.getSource() == bSalir) {
+            System.out.println("Pulsado salir");
         }
     }
     class MouseHandler implements EventHandler<MouseEvent>{
@@ -120,11 +135,14 @@ public class FormularioController implements Initializable,
             if (mouseEvent.getEventType() == MouseEvent.MOUSE_ENTERED){
                 // PONER SOMBRA -> boton.setEffect(sombre)
                 ((Button)(mouseEvent.getSource())).setEffect(sombra);
+                ((Button)(mouseEvent.getSource())).setCursor(Cursor.HAND);
+
                 // System.out.println("Raton entrando");
             } else if (mouseEvent.getEventType() == MouseEvent.MOUSE_EXITED) {
                 // System.out.println("Raton saliendo");
                 // QUITAR SOMBRA -> boton.setEffect(null)
                 ((Button)(mouseEvent.getSource())).setEffect(null);
+                ((Button)(mouseEvent.getSource())).setCursor(Cursor.CROSSHAIR);
             }
         }
     }

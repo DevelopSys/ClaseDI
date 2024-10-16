@@ -28,6 +28,7 @@
                 <Button fx:id="bLimpiar" mnemonicParsing="false" text="Limpiar">
                 </Button>
                 <Button fx:id="bValidar" mnemonicParsing="false" text="Validar" />
+                <Button fx:id="bSalir" mnemonicParsing="false" text="Salir" />
 
             </children>
         </FlowPane>
