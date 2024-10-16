@@ -19,11 +19,12 @@
       <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
    </padding>
    <bottom>
-      <FlowPane alignment="CENTER" hgap="20.0" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="TOP_LEFT">
+      <FlowPane fx:id="panelBotones" alignment="CENTER" hgap="20.0" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="TOP_LEFT">
          <children>
             <Button fx:id="botonEnviar" mnemonicParsing="false" text="Enviar" />
             <Button fx:id="botonValidar" mnemonicParsing="false" text="Validar" />
             <Button fx:id="botonBorrar" mnemonicParsing="false" text="Borrar" />
+            <Button fx:id="botonSalir" mnemonicParsing="false" text="" />
          </children>
       </FlowPane>
    </bottom>
