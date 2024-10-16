@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -43,17 +44,24 @@ public class FormularioController implements Initializable, EventHandler<ActionE
     }
 
     private void initGUI() {
+        persoBoton(botonSalir,"exit.png");
+        persoBoton(botonEnviar,"send.png");
+        persoBoton(botonValidar,"ok.png");
+        persoBoton(botonBorrar,"clear.png");
+    }
+
+    private void persoBoton(Button button, String path){
         ImageView imageView;
         try {
             imageView =
-                    new ImageView(new Image(FormularioController.class.getResourceAsStream("exitA.png")));
+                    new ImageView(new Image(FormularioController.class.getResourceAsStream(path)));
         } catch (NullPointerException e) {
             imageView =
                     new ImageView(new Image(FormularioController.class.getResourceAsStream("default.png")));
         }
 
-        botonSalir.setGraphic(imageView);
-        botonSalir.setBackground(null);
+        button.setGraphic(imageView);
+        button.setBackground(null);
     }
 
     private void instancias() {
@@ -112,6 +120,8 @@ public class FormularioController implements Initializable, EventHandler<ActionE
                 //if (mouseEvent.getSource() instanceof Button) {
                 //}
                 ((Button) (mouseEvent.getSource())).setEffect(sombra);
+                ((Button) (mouseEvent.getSource())).setCursor(Cursor.HAND);
+
 
             } else if (mouseEvent.getEventType() == MouseEvent.MOUSE_EXITED) {
                 /*if (mouseEvent.getSource() == botonValidar) {
@@ -122,6 +132,7 @@ public class FormularioController implements Initializable, EventHandler<ActionE
                     botonBorrar.setEffect(null);
                 }*/
                 ((Button) (mouseEvent.getSource())).setEffect(null);
+                ((Button) (mouseEvent.getSource())).setCursor(Cursor.CROSSHAIR);
             }
         }
     }
