@@ -54,12 +54,12 @@
         </GridPane>
     </center>
     <left>
-        <FlowPane fx:id="panelIzquierda">
+        <FlowPane fx:id="panelIzquierda" prefWidth="50.0">
             <Label text="Parte izquierda"/>
         </FlowPane>
     </left>
     <right>
-        <FlowPane fx:id="panelDerecha">
+        <FlowPane fx:id="panelDerecha" prefWidth="50.0">
             <Label text="Parte derecha"/>
         </FlowPane>
     </right>

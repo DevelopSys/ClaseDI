@@ -94,7 +94,20 @@ public class FormularioController implements Initializable, EventHandler<ActionE
         if (actionEvent.getSource() instanceof Button) {
             Button button = (Button) actionEvent.getSource();
             System.out.println("Pulsado boton " + button.getText().toLowerCase());
-            layoutGeneral.setLeft(panelIzquierda);
+        }
+
+        if(actionEvent.getSource()==botonValidar){
+            if (layoutGeneral.getLeft()==null){
+                layoutGeneral.setLeft(panelIzquierda);
+            } else {
+                layoutGeneral.setLeft(null);
+            }
+        } else if (actionEvent.getSource()==botonBorrar) {
+            if (layoutGeneral.getRight()==null){
+                layoutGeneral.setRight(panelDerecha);
+            } else {
+                layoutGeneral.setRight(null);
+            }
         }
 
         /*if (actionEvent.getSource() == botonEnviar) {
