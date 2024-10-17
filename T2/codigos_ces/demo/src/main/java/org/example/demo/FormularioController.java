@@ -29,7 +29,7 @@ public class FormularioController implements Initializable, EventHandler<ActionE
     private BorderPane layoutGeneral;
 
     @FXML
-    private FlowPane panelBotones;
+    private FlowPane panelBotones, panelIzquierda, panelDerecha;
 
     private DropShadow sombra;
 
@@ -44,6 +44,8 @@ public class FormularioController implements Initializable, EventHandler<ActionE
     }
 
     private void initGUI() {
+        layoutGeneral.setLeft(null);
+        layoutGeneral.setRight(null);
         persoBoton(botonSalir,"exit.png");
         persoBoton(botonEnviar,"send.png");
         persoBoton(botonValidar,"ok.png");
@@ -92,6 +94,7 @@ public class FormularioController implements Initializable, EventHandler<ActionE
         if (actionEvent.getSource() instanceof Button) {
             Button button = (Button) actionEvent.getSource();
             System.out.println("Pulsado boton " + button.getText().toLowerCase());
+            layoutGeneral.setLeft(panelIzquierda);
         }
 
         /*if (actionEvent.getSource() == botonEnviar) {
