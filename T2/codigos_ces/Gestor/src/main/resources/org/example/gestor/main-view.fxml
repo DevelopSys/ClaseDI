@@ -12,5 +12,6 @@
       prefHeight="800.0" prefWidth="1200.0">
 
     <Label text="Esta es la ventana princial"/>
+    <Button text="Volver" fx:id="btnVolver"/>
 
 </VBox>
