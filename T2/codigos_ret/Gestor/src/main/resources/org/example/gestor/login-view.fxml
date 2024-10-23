@@ -12,5 +12,6 @@
             prefHeight="400.0" prefWidth="600.0">
 
     <Label text="Ventana de Login"/>
+    <Button text="Volver" fx:id="btnVolver"/>
 
 </VBox>

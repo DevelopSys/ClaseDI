@@ -38,10 +38,10 @@ public class WelcomeController implements Initializable {
                     Scene scene = new Scene(root,
                             ventanaActual.getWidth(),
                             ventanaActual.getHeight());
-                    ventaLogin.setScene(scene);
-                    ventaLogin.show();
+                    ventanaActual.setScene(scene);
+                    // ventaLogin.show();
                     // stage -> close
-                    ventanaActual.close();
+                    // ventanaActual.close();
                 } catch (IOException e) {
                     System.out.println("Error en la carga del fichero");
                 }
