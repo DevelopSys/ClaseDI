@@ -1,50 +1,53 @@
 package org.example.gestor;
 
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
-
-import java.io.IOException;
+import javafx.scene.control.ProgressBar;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class WelcomeController implements Initializable {
+
     @FXML
-    private Label welcomeText;
+    private Button btnComenzar;
     @FXML
-    Button botonIniciar;
+    private ProgressBar barraProgreso;
+    @FXML private Label txtCarga;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        botonIniciar.setOnAction(new EventHandler<ActionEvent>() {
+
+        Task<Void> taskProgress = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                // ejecucion en paralelo de la tarea -> llenar la barra
+
+                for (int i = 0; i <= 100; i++) {
+                    updateProgress(i,100);
+                    updateMessage(String.format("Cargando %d %s",i,"%"));
+                    Thread.sleep(100);
+                }
+                return null;
+            }
+        };
+
+        // cuando la barra de progreso llegue
+        // final aparezca una nueva ventaa con la escena del login-view
+
+        barraProgreso.progressProperty().bind(taskProgress.progressProperty());
+        txtCarga.textProperty().bind(taskProgress.messageProperty());
+
+        btnComenzar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                // stage -> scene -> FXML
-                Stage ventaLogin = new Stage();
-                FXMLLoader loader = new FXMLLoader(getClass()
-                        .getResource("login-view.fxml"));
-                Stage ventanaActual = (Stage) botonIniciar.getScene().getWindow();
-
-                Parent root = null;
-                try {
-                    root = loader.load();
-                    Scene scene = new Scene(root,
-                            ventanaActual.getWidth(),
-                            ventanaActual.getHeight());
-                    ventanaActual.setScene(scene);
-                    // ventaLogin.show();
-                    // stage -> close
-                    // ventanaActual.close();
-                } catch (IOException e) {
-                    System.out.println("Error en la carga del fichero");
-                }
+                // comienza a llenarse la barra de progreso
+                Thread thread = new Thread(taskProgress);
+                thread.start();
             }
         });
     }

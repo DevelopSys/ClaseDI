@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.example.gestor.WelcomeController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.BorderPane?>
 
-    <Label fx:id="welcomeText" text="Pantalla bienvenida"/>
-    <Button text="Cambiar!" fx:id="botonIniciar"/>
-</VBox>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gestor.WelcomeController">
+   <center>
+      <Button fx:id="btnComenzar" mnemonicParsing="false" text="Empezar" BorderPane.alignment="CENTER" />
+   </center>
+   <bottom>
+      <ProgressBar fx:id="barraProgreso" maxWidth="1.7976931348623157E308" progress="0.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <padding>
+      <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+   </padding>
+   <top>
+      <Label fx:id="txtCarga" text="Cargando 0%" BorderPane.alignment="CENTER" />
+   </top>
+</BorderPane>

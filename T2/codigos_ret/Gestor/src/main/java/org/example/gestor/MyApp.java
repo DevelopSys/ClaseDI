@@ -11,7 +11,7 @@ public class MyApp extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MyApp.class.getResource("welcome-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        Scene scene = new Scene(fxmlLoader.load(), 400, 300);
         primaryStage.setTitle("Pantalla bienvenida");
         primaryStage.setScene(scene);
         primaryStage.show();
