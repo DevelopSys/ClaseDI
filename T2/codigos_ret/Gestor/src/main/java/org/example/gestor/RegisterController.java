@@ -18,28 +18,50 @@ import java.util.ResourceBundle;
 
 public class RegisterController implements Initializable, EventHandler<ActionEvent> {
 
-    @FXML private TextField editNombre, editApellido, editPass1, editPass2, editCorreo;
-    @FXML private RadioButton radioMasculino, radioFemenino;
-    @FXML Button btnRegistrar, btnVolver;
+    @FXML
+    private TextField editNombre, editApellido, editPass1, editPass2, editCorreo;
+    @FXML
+    private RadioButton radioMasculino, radioFemenino;
+    @FXML
+    Button btnRegistrar, btnVolver;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-            btnVolver.setOnAction(this);
+        btnVolver.setOnAction(this);
+        btnRegistrar.setOnAction(this);
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        Stage actual = (Stage) btnVolver.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login-view.fxml"));
-        try {
-            Parent root = fxmlLoader.load();
-            Scene scene = new Scene(root,400,300);
-            actual.setHeight(root.prefHeight(-1));
-            actual.setWidth(root.prefWidth(-1));
-            actual.setResizable(false);
-            actual.setScene(scene);
-            actual.setTitle("Login");
-        } catch (IOException e) {
-            System.out.println("No encuentro la vista");
+
+        if (actionEvent.getSource() == btnVolver) {
+            Stage actual = (Stage) btnVolver.getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login-view.fxml"));
+            try {
+                Parent root = fxmlLoader.load();
+                Scene scene = new Scene(root, 400, 300);
+                actual.setHeight(root.prefHeight(-1));
+                actual.setWidth(root.prefWidth(-1));
+                actual.setResizable(false);
+                actual.setScene(scene);
+                actual.setTitle("Login");
+            } catch (IOException e) {
+                System.out.println("No encuentro la vista");
+            }
+        } else {
+            if (!editApellido.getText().isEmpty()
+                    && !editCorreo.getText().isEmpty()
+                    && !editNombre.getText().isEmpty()
+                    && !editPass1.getText().isEmpty()
+                    && (editPass1.getText().equalsIgnoreCase(editPass2.getText()))
+            ){
+                new DataBase().agregarUsuario(new Usuario());
+                new DataBase().agregarUsuario(new Usuario());
+                new DataBase().agregarUsuario(new Usuario());
+                new DataBase().agregarUsuario(new Usuario());
+                new DataBase().agregarUsuario(new Usuario());
+                new DataBase().agregarUsuario(new Usuario());
+            }
         }
     }
 }
