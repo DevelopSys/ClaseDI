@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.BorderPane?>
 
 
-<BorderPane fx:controller="org.example.gestor.WelcomeController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:controller="org.example.gestor.WelcomeController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <Button fx:id="boton" mnemonicParsing="false" text="Arrancar" BorderPane.alignment="CENTER" />
    </center>

@@ -30,7 +30,7 @@ public class WelcomeController implements Initializable {
 
                 for (int i = 0; i <= 100 ; i++) {
                     updateProgress(i,100);
-                    Thread.sleep(50);
+                    Thread.sleep(10);
                 }
 
                 System.out.println("Terminado");
