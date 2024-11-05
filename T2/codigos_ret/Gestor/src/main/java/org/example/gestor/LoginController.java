@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
@@ -40,6 +41,9 @@ public class LoginController implements Initializable, EventHandler<ActionEvent>
         instancias();
         initGUI();
         acciones();
+
+        Connection connection1 = new DBConnection().getConnection();
+        
     }
 
     private void initGUI() {
