@@ -39,8 +39,8 @@
       <Button fx:id="btnRegistrar" mnemonicParsing="false" text="Registrar" GridPane.columnIndex="1" GridPane.rowIndex="7" GridPane.rowSpan="2" />
       <FlowPane alignment="CENTER_RIGHT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="6">
          <children>
-            <RadioButton fx:id="radioMasculino" mnemonicParsing="false" text="Masculino" />
-            <RadioButton fx:id="radioFemenino" mnemonicParsing="false" text="Femenino" />
+            <RadioButton fx:id="radioAdmin" mnemonicParsing="false" text="Administrador" />
+            <RadioButton fx:id="radioUsuario" mnemonicParsing="false" text="Usuario" />
          </children>
       </FlowPane>
    </children>

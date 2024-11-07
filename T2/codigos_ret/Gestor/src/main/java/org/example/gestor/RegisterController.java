@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,14 +22,23 @@ public class RegisterController implements Initializable, EventHandler<ActionEve
     @FXML
     private TextField editNombre, editApellido, editPass1, editPass2, editCorreo;
     @FXML
-    private RadioButton radioMasculino, radioFemenino;
+    private RadioButton radioAdmin, radioUsuario;
     @FXML
     Button btnRegistrar, btnVolver;
+    private ToggleGroup grupoPerfiles;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btnVolver.setOnAction(this);
         btnRegistrar.setOnAction(this);
+        grupoPerfiles = new ToggleGroup();
+        initGUI();
+    }
+
+    private void initGUI() {
+        grupoPerfiles.getToggles().addAll(radioAdmin,radioUsuario);
+        radioAdmin.setUserData(1);
+        radioUsuario.setUserData(2);
     }
 
     @Override
@@ -55,12 +65,20 @@ public class RegisterController implements Initializable, EventHandler<ActionEve
                     && !editPass1.getText().isEmpty()
                     && (editPass1.getText().equalsIgnoreCase(editPass2.getText()))
             ){
-                new DataBase().agregarUsuario(new Usuario());
-                new DataBase().agregarUsuario(new Usuario());
-                new DataBase().agregarUsuario(new Usuario());
-                new DataBase().agregarUsuario(new Usuario());
-                new DataBase().agregarUsuario(new Usuario());
-                new DataBase().agregarUsuario(new Usuario());
+                // REGISTRAR EL USUARIO
+                // editNombre -> getText
+                // editApellido -> getText
+                // editCorreo -> getText
+                // editPass -> getText
+                // editTelefono -> Integar.parseInt(getText)
+                // id_perfil ->
+                    // if radioAdmin isSelected -> 1
+                    // if radioUser isSelected -> 2
+                grupoPerfiles.getSelectedToggle().getUserData();
+                // DAO
+                    // insertar(new Usuario())
+
+
             }
         }
     }
