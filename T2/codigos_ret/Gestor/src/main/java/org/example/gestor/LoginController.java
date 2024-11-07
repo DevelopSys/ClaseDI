@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
@@ -33,6 +34,7 @@ public class LoginController implements Initializable, EventHandler<ActionEvent>
     private Scene sceneActual;
 
     private ToggleGroup grupoRadios;
+    private UsuarioDAO usuarioDAO;
 
 
     @Override
@@ -43,7 +45,7 @@ public class LoginController implements Initializable, EventHandler<ActionEvent>
         acciones();
 
         Connection connection1 = new DBConnection().getConnection();
-        
+
     }
 
     private void initGUI() {
@@ -52,6 +54,7 @@ public class LoginController implements Initializable, EventHandler<ActionEvent>
 
     private void instancias() {
         grupoRadios = new ToggleGroup();
+        usuarioDAO = new UsuarioDAO();
     }
 
     private void acciones() {
@@ -65,7 +68,7 @@ public class LoginController implements Initializable, EventHandler<ActionEvent>
                 }
                 System.out.println("Eñ valor que esta seleccionado es " + ((RadioButton) tNew).getText());*/
 
-                if (tNew == radioUsuario){
+                if (tNew == radioUsuario) {
                     editPass.setText("");
                     editCorreo.setText("");
                     editCorreo.setEditable(true);
@@ -97,11 +100,21 @@ public class LoginController implements Initializable, EventHandler<ActionEvent>
                 System.out.println("Vista no encontrada"); // ERROR 404
             }
             // cargo la scene en el stage actual
-        }
-        else if (actionEvent.getSource() == btnAcceso) {
+        } else if (actionEvent.getSource() == btnAcceso) {
             // para poder capturar el elemento seleccionado del togglegroup
-            RadioButton seleccion = (RadioButton) grupoRadios.getSelectedToggle();
-            System.out.println(seleccion.getText());
+            // RadioButton seleccion = (RadioButton) grupoRadios.getSelectedToggle();
+            // System.out.println(seleccion.getText());
+            Usuario usuario = new Usuario("Borja", "Martin",
+                    "borja@correo.es", "1234", 123);
+
+            try {
+                // usuarioDAO.insertarUsuarioST(usuario);
+                usuarioDAO.insertarUsuarioPS(usuario);
+            } catch (SQLException e) {
+
+                System.out.println("Error en la insercion. Queres hacer XXXX");
+            }
+
 
         }
     }

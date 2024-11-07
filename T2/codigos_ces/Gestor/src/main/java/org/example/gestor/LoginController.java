@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
@@ -85,8 +86,16 @@ public class LoginController implements Initializable, EventHandler<ActionEvent>
     @Override
     public void handle(ActionEvent actionEvent) {
         if (actionEvent.getSource() == btnAcceder){
-            String genero = ((RadioButton)(grupoRadios.getSelectedToggle())).getText();
-            System.out.println(genero);
+            // String genero = ((RadioButton)(grupoRadios.getSelectedToggle())).getText();
+            // System.out.println(genero);
+            Connection connection = new DBConnection().getConnection();
+            Connection connection1 = new DBConnection().getConnection();
+            Connection connection2 = new DBConnection().getConnection();
+            Connection connection3 = new DBConnection().getConnection();
+            Connection connection4 = new DBConnection().getConnection();
+            Connection connection5 = new DBConnection().getConnection();
+            Connection connection6 = new DBConnection().getConnection();
+            Connection connection7 = new DBConnection().getConnection();
         } else if (actionEvent.getSource() == btnRegistrar){
 
             // 1 saco la ventana actual

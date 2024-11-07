@@ -3,15 +3,25 @@ package org.example.gestor;
 public class Usuario {
 
     private String nombre, apellido, correo, pass;
+    private int telefono;
 
     public Usuario() {
     }
 
-    public Usuario(String nombre, String apellido, String correo, String pass) {
+    public Usuario(String nombre, String apellido, String correo, String pass, int telefono) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.pass = pass;
+        this.telefono = telefono;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
     }
 
     public String getNombre() {
