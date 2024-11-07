@@ -109,9 +109,10 @@ public class LoginController implements Initializable, EventHandler<ActionEvent>
 
             try {
                 // usuarioDAO.insertarUsuarioST(usuario);
-                // usuarioDAO.insertarUsuarioPS(usuario);
-                System.out.println("El numero de usuarios  borrados es "
-                        + usuarioDAO.borrarUsuarioTelefono(123));
+                //usuarioDAO.insertarUsuarioPS(usuario);
+                usuarioDAO.getUsuarios();
+                /*System.out.println("El numero de usuarios  borrados es "
+                        + usuarioDAO.borrarUsuarioTelefono(123));*/
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Error en la insercion. Queres hacer XXXX");

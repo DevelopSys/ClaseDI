@@ -56,4 +56,29 @@ public class UsuarioDAO {
     }
 
     // SELECT
+
+    public void getUsuarios() throws SQLException {
+        // SELECT * FROM USUARIOS
+        String query = String.format("SELECT * FROM %s",DBSchema.TAB_USER);
+        preparedStatement = connection.prepareStatement(query);
+        resultSet = preparedStatement.executeQuery();
+        //  v (0 a n)
+        //  r r r r r r r r r r r
+        // r [id,nombre,apellido,correo,pass,tel,id_perfil]
+        while (resultSet.next()){
+           String nombre = resultSet.getString(DBSchema.COL_NAME);
+           String apellido = resultSet.getString(DBSchema.COL_SNAME);
+           String correo = resultSet.getString(DBSchema.COL_MAIL);
+           int id_perfil = resultSet.getInt(DBSchema.COL_FK_ID_PROF);
+           int id = resultSet.getInt(DBSchema.COL_ID);
+
+            System.out.println("ID "+id);
+            System.out.println("Nombre "+nombre);
+            System.out.println("Apellido "+apellido);
+            System.out.println("Correo "+correo);
+            System.out.println("id perfil "+id_perfil);
+        }
+
+
+    }
 }
