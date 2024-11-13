@@ -11,6 +11,8 @@ module org.example.gestor {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires java.sql;
+    requires static lombok;
+
 
     opens org.example.gestor to javafx.fxml;
     exports org.example.gestor;
