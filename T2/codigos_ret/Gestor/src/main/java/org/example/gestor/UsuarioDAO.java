@@ -81,4 +81,12 @@ public class UsuarioDAO {
 
 
     }
+    public Usuario getUsuarioLogin(String pass, String mail){
+        // SELECT * FROM usuaris WHERE correo=mail AND password=pass -> Resultset -> recorro -> Usuario
+
+        if(mail.equalsIgnoreCase("coincide")){
+            return new Usuario("Borja","Martin","123123","123123",112,2);
+        }
+        return null;
+    }
 }

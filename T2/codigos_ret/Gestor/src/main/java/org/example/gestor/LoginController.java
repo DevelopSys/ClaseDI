@@ -101,6 +101,7 @@ public class LoginController implements Initializable, EventHandler<ActionEvent>
             }
             // cargo la scene en el stage actual
         } else if (actionEvent.getSource() == btnAcceso) {
+            /*
             // para poder capturar el elemento seleccionado del togglegroup
             // RadioButton seleccion = (RadioButton) grupoRadios.getSelectedToggle();
             // System.out.println(seleccion.getText());
@@ -112,10 +113,50 @@ public class LoginController implements Initializable, EventHandler<ActionEvent>
                 //usuarioDAO.insertarUsuarioPS(usuario);
                 usuarioDAO.getUsuarios();
                 /*System.out.println("El numero de usuarios  borrados es "
-                        + usuarioDAO.borrarUsuarioTelefono(123));*/
+                        + usuarioDAO.borrarUsuarioTelefono(123));
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Error en la insercion. Queres hacer XXXX");
+            }*/
+            if (usuarioDAO.getUsuarioLogin("123", "coincide") != null) {
+
+
+                int idPerfil = usuarioDAO.getUsuarioLogin("123", "coincide").getIdPerfil();
+                // depende del idPerfil la escena sera una u otra
+                FXMLLoader loader;
+                Parent root;
+
+                try {
+                    switch (idPerfil) {
+                        case 1:
+                            loader = new FXMLLoader(getClass().getResource("admin-view.fxml"));
+                            root = loader.load();
+                            break;
+                        case 2:
+                            loader = new FXMLLoader(getClass().getResource("user-view.fxml"));
+                            root = loader.load();
+                            break;
+                        case 3:
+                            loader = new FXMLLoader(getClass().getResource("guest-view.fxml"));
+                            root = loader.load();
+                            break;
+                        default:
+                            loader = new FXMLLoader(getClass().getResource("404-view.fxml"));
+                            root = loader.load();
+                    }
+                    Scene scene = new Scene(root);
+                    Stage ventana = new Stage();
+                    ventana.setScene(scene);
+                    ventana.show();
+
+                    ((Stage) btnAcceso.getScene().getWindow()).close();
+
+
+                } catch (IOException e) {
+                    System.out.println("Error en l carga");
+                }
+            } else {
+                System.out.println("No se puede hacer login");
             }
 
 

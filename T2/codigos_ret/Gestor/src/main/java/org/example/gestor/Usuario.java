@@ -3,17 +3,26 @@ package org.example.gestor;
 public class Usuario {
 
     private String nombre, apellido, correo, pass;
-    private int telefono;
+    private int telefono, idPerfil;
 
     public Usuario() {
     }
 
-    public Usuario(String nombre, String apellido, String correo, String pass, int telefono) {
+    public Usuario(String nombre, String apellido, String correo, String pass, int telefono, int idPerfil) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.pass = pass;
         this.telefono = telefono;
+        this.idPerfil = idPerfil;
+    }
+
+    public int getIdPerfil() {
+        return idPerfil;
+    }
+
+    public void setIdPerfil(int idPerfil) {
+        this.idPerfil = idPerfil;
     }
 
     public int getTelefono() {
