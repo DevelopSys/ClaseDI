@@ -24,4 +24,9 @@ public class Usuario {
         this.pass = pass;
         this.id_perfil = id_perfil;
     }
+
+    @Override
+    public String toString() {
+        return getNombre() +" "+getApellido();
+    }
 }

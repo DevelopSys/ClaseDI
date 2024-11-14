@@ -92,14 +92,43 @@ public class LoginController implements Initializable, EventHandler<ActionEvent>
         if (actionEvent.getSource() == btnAcceder) {
             // String genero = ((RadioButton)(grupoRadios.getSelectedToggle())).getText();
             // System.out.println(genero);
-            Connection connection = new DBConnection().getConnection();
-            Connection connection1 = new DBConnection().getConnection();
-            Connection connection2 = new DBConnection().getConnection();
-            Connection connection3 = new DBConnection().getConnection();
-            Connection connection4 = new DBConnection().getConnection();
-            Connection connection5 = new DBConnection().getConnection();
-            Connection connection6 = new DBConnection().getConnection();
-            Connection connection7 = new DBConnection().getConnection();
+            // saber si los camops estan rellenos
+            // capturarlos y llevarlos a la base de datos -> DAO -> usuario
+            // el usuario el null?
+            // id_perfil -> 1 2 3
+            int idPerfil = 1;
+            String correo = "borja@gmail.com";
+            FXMLLoader loader = null;
+            Parent root = null;
+            try {
+                switch (idPerfil) {
+                    case 1:
+                        loader = new FXMLLoader(getClass().getResource("admin-view.fxml"));
+                        root = loader.load();
+                        AdminController adminController = loader.getController();
+                        adminController.comunicarDatos(correo);
+                        break;
+                    case 2:
+                        loader = new FXMLLoader(getClass().getResource("user-view.fxml"));
+                        root = loader.load();
+                        break;
+                    case 3:
+                        loader = new FXMLLoader(getClass().getResource("guest-view.fxml"));
+                        root = loader.load();
+                        break;
+                }
+                Scene scene = new Scene(root);
+                Stage ventanaNueva = new Stage();
+                ventanaNueva.setScene(scene);
+                ventanaNueva.setTitle("Bienvenido borja");
+                ventanaNueva.show();
+                ((Stage) btnAcceder.getScene().getWindow()).close();
+            } catch (IOException e) {
+                // throw new RuntimeException(e);
+            }
+
+
+
         } else if (actionEvent.getSource() == btnRegistrar) {
 
             try {
