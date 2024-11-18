@@ -13,6 +13,10 @@
       alignment="CENTER">
 
     <Label text="Has iniciado como ADMIN"/>
+
+    <TextField fx:id="campoGenero"/>
+    <TextField fx:id="campoResultados"/>
+
     <Button fx:id="btnConsulta"
             text="Consultar API"
     />

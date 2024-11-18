@@ -13,7 +13,8 @@ module org.example.gestor {
     requires org.json;
     requires com.google.gson;
     requires java.sql;
+    requires static lombok;
 
-    opens org.example.gestor to javafx.fxml;
+    opens org.example.gestor to javafx.fxml, com.google.gson;
     exports org.example.gestor;
 }

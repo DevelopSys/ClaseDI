@@ -1,10 +1,12 @@
 package org.example.gestor;
 
+import com.google.gson.Gson;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -20,6 +22,9 @@ public class AdminController implements Initializable {
     @FXML
     private Button btnConsulta;
 
+    @FXML
+    private TextField campoGenero, campoResultados;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btnConsulta.setOnAction(new EventHandler<ActionEvent>() {
@@ -28,9 +33,9 @@ public class AdminController implements Initializable {
                 // url -> "https://www.miapi/json/peticion"
                 // httpConnection
                 // bufferedReader
-                String urlString = "https://randomuser.me/api/?results=50";
+                String urlString = "https://randomuser.me/api/?results=%s&gender=%s";
                 try {
-                    URL urlConnection = new URL(urlString);
+                    URL urlConnection = new URL(String.format(urlString,campoResultados.getText(), campoGenero.getText()));
                     HttpURLConnection connection = (HttpURLConnection) urlConnection.openConnection();
                     BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
@@ -44,11 +49,19 @@ public class AdminController implements Initializable {
                     JSONObject jsonObject = new JSONObject(stringBuffer.toString());
                     JSONArray jsonArray = jsonObject.getJSONArray("results");
                     for (int i = 0; i < jsonArray.length(); i++) {
+                        Gson gson = new Gson();
                         JSONObject persona = jsonArray.getJSONObject(i);
+                        UsuarioJSON usuarioJSON = gson.fromJson(persona.toString(), UsuarioJSON.class);
+                        System.out.println(usuarioJSON.getEmail() +" "+usuarioJSON.getNat());
+                        /*JSONObject name = persona.getJSONObject("name");
+                        /*String title = name.getString("title");
+                        String first = name.getString("first");
+                        String last = name.getString("last");
                         String genero = persona.getString("gender");
                         String mail = persona.getString("email");
                         String telefono = persona.getString("phone");
-                        System.out.printf("Mail: %s, genero: %s, telefono: %s\n", mail, genero, telefono);
+                        System.out.printf("Title: %s, First: %s, Last: %s\n", title, first, last);
+                        System.out.printf("Mail: %s, genero: %s, telefono: %s\n", mail, genero, telefono);*/
                     }
 
                 } catch (MalformedURLException e) {
