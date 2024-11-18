@@ -121,7 +121,8 @@ public class LoginController implements Initializable, EventHandler<ActionEvent>
             if (usuarioDAO.getUsuarioLogin("123", "coincide") != null) {
 
 
-                int idPerfil = usuarioDAO.getUsuarioLogin("123", "coincide").getIdPerfil();
+                //int idPerfil = usuarioDAO.getUsuarioLogin("123", "coincide").getIdPerfil();
+                int idPerfil = 1;
                 // depende del idPerfil la escena sera una u otra
                 FXMLLoader loader;
                 Parent root;

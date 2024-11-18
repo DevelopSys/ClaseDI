@@ -10,6 +10,8 @@ module org.example.gestor {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires org.json;
+    requires com.google.gson;
     requires java.sql;
 
     opens org.example.gestor to javafx.fxml;
