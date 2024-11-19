@@ -96,7 +96,7 @@ public class LoginController implements Initializable, EventHandler<ActionEvent>
             // capturarlos y llevarlos a la base de datos -> DAO -> usuario
             // el usuario el null?
             // id_perfil -> 1 2 3
-            int idPerfil = 1;
+            int idPerfil = 2;
             String correo = "borja@gmail.com";
             FXMLLoader loader = null;
             Parent root = null;
