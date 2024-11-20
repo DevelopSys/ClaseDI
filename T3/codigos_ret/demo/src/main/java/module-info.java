@@ -10,10 +10,15 @@ module org.example.demo {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires org.json;
+    requires com.google.gson;
+
 
     opens org.example.demo to javafx.fxml;
     exports org.example.demo;
+    opens org.example.demo.model to javafx.fxml,com.google.gson;
     exports org.example.demo.model;
-    opens org.example.demo.model to javafx.fxml;
+    opens org.example.demo.dao to javafx.fxml, org.json, com.google.gson;
+    exports org.example.demo.dao;
 
 }

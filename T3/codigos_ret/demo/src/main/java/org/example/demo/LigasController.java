@@ -11,7 +11,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
+import org.example.demo.dao.LigaDAO;
+import org.example.demo.model.Liga;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -26,11 +29,12 @@ public class LigasController implements Initializable, EventHandler<ActionEvent>
     private ListView<String> listViewClasificacion;
 
     @FXML
-    private ListView<String> listViewLigas;
+    private ListView<Liga> listViewLigas;
 
     @FXML private Button btnAnadir, btnBorrar, btnConsultar;
 
-    private ObservableList<String> listaLigas;
+    private ObservableList<Liga> listaLigas;
+    private LigaDAO ligaDAO;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -39,22 +43,22 @@ public class LigasController implements Initializable, EventHandler<ActionEvent>
     }
 
     private void acciones() {
-        btnAnadir.setOnAction(this);
+        // btnAnadir.setOnAction(this);
         btnBorrar.setOnAction(this);
         btnConsultar.setOnAction(this);
-        listViewLigas.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable,
-                                String oldValue, String newValue) {
-                System.out.println("La liga seleccionada es "+newValue);
-            }
-        });
+
     }
 
     private void instancias() {
-        listaLigas = FXCollections.observableArrayList();
-        listaLigas.addAll("Premier","Bundesliga","SerieA","BBVA La liga");
-        listViewLigas.setItems(listaLigas);
+        ligaDAO = new LigaDAO();
+        try {
+            listaLigas = ligaDAO.getLigas();
+            listViewLigas.setItems(listaLigas);
+        } catch (IOException e) {
+            System.out.println("Error a la hora de hacer la carga");
+        }
+        // listaLigas.addAll("Premier","Bundesliga","SerieA","BBVA La liga");
+
 
         listaTemporadas = FXCollections.observableArrayList("2024-2025","2023-2022");
         comboTemporadas.setItems(listaTemporadas);
@@ -83,8 +87,8 @@ public class LigasController implements Initializable, EventHandler<ActionEvent>
             listaTemporadas.add("2021-2022");
             // listaLigas.add("Liga nueva");
         } else if (event.getSource() == btnConsultar){
-            String seleccionado = listViewLigas.getSelectionModel().getSelectedItem();
-            System.out.println(seleccionado);
+            //String seleccionado = listViewLigas.getSelectionModel().getSelectedItem();
+            //System.out.println(seleccionado);
         }
     }
 }
