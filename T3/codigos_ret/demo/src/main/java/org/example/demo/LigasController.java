@@ -11,7 +11,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
+import org.example.demo.dao.EquipoDAO;
 import org.example.demo.dao.LigaDAO;
+import org.example.demo.model.Equipo;
 import org.example.demo.model.Liga;
 
 import java.io.IOException;
@@ -26,7 +28,9 @@ public class LigasController implements Initializable, EventHandler<ActionEvent>
     private ObservableList<String> listaTemporadas;
 
     @FXML
-    private ListView<String> listViewClasificacion;
+    private ListView<Equipo> listViewClasificacion;
+
+    private ObservableList<Equipo> listaClasificacion;
 
     @FXML
     private ListView<Liga> listViewLigas;
@@ -46,6 +50,32 @@ public class LigasController implements Initializable, EventHandler<ActionEvent>
         // btnAnadir.setOnAction(this);
         btnBorrar.setOnAction(this);
         btnConsultar.setOnAction(this);
+        listViewLigas.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Liga>() {
+            @Override
+            public void changed(ObservableValue<? extends Liga> observable, Liga oldValue, Liga newValue) {
+                ligaDAO = new LigaDAO();
+                try {
+                    listaTemporadas = ligaDAO.getTemporadas(newValue.getIdLeague());
+                    comboTemporadas.setItems(listaTemporadas);
+                    comboTemporadas.getSelectionModel().select(-1);
+                } catch (IOException e) {
+                    System.out.println("No se pueden ver las temporadas porque no hay asociadas");
+                }
+            }
+        });
+        comboTemporadas.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                EquipoDAO equipoDAO = new EquipoDAO();
+                Liga liga = listViewLigas.getSelectionModel().getSelectedItem();
+                try {
+                    listaClasificacion = equipoDAO.getClasificacion(liga.getIdLeague(),newValue);
+                    listViewClasificacion.setItems(listaClasificacion);
+                } catch (IOException e) {
+                    System.out.println("Error en la conexion, quieres ver otra liga");
+                }
+            }
+        });
 
     }
 
@@ -60,8 +90,8 @@ public class LigasController implements Initializable, EventHandler<ActionEvent>
         // listaLigas.addAll("Premier","Bundesliga","SerieA","BBVA La liga");
 
 
-        listaTemporadas = FXCollections.observableArrayList("2024-2025","2023-2022");
-        comboTemporadas.setItems(listaTemporadas);
+        //listaTemporadas = FXCollections.observableArrayList("2024-2025","2023-2022");
+        //comboTemporadas.setItems(listaTemporadas);
     }
 
     @Override

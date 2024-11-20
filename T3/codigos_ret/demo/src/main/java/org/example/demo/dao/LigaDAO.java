@@ -39,11 +39,21 @@ public class LigaDAO {
 
         return listaLigas;
     }
-    public void getTemporadas(String id) throws IOException {
+    public ObservableList<String> getTemporadas(String id) throws IOException {
         url = new URL("https://www.thesportsdb.com/api/v1/json/3/search_all_seasons.php?id="+id);
         connection = (HttpURLConnection) url.openConnection();
+        ObservableList<String> temporadas = FXCollections.observableArrayList();
         BufferedReader bufferedReader = new BufferedReader
                 (new InputStreamReader(connection.getInputStream()));
+        JSONObject jsonObject = new JSONObject(bufferedReader.readLine());
+        JSONArray array = jsonObject.getJSONArray("seasons");
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject temporada= array.getJSONObject(i);
+            String tempoStr = temporada.getString("strSeason");
+            temporadas.add(tempoStr);
+        }
+
+        return temporadas;
     }
 
 }

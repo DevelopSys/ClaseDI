@@ -82,4 +82,9 @@ public class Equipo implements Serializable {
     public void setIntDraw(String intDraw) {
         this.intDraw = intDraw;
     }
+
+    @Override
+    public String toString() {
+        return intRank + " - "+strTeam ;
+    }
 }
