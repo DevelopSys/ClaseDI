@@ -1,16 +1,22 @@
 package org.example.demo;
 
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 import org.example.demo.dao.EquipoDAO;
 import org.example.demo.dao.LigaDAO;
 import org.example.demo.model.Equipo;
@@ -54,13 +60,29 @@ public class LigasController implements Initializable, EventHandler<ActionEvent>
             @Override
             public void changed(ObservableValue<? extends Liga> observable, Liga oldValue, Liga newValue) {
                 ligaDAO = new LigaDAO();
-                try {
-                    listaTemporadas = ligaDAO.getTemporadas(newValue.getIdLeague());
-                    comboTemporadas.setItems(listaTemporadas);
-                    comboTemporadas.getSelectionModel().select(-1);
-                } catch (IOException e) {
-                    System.out.println("No se pueden ver las temporadas porque no hay asociadas");
-                }
+                    Task<Void> task = new Task<Void>() {
+                        @Override
+                        protected Void call() throws Exception {
+                            Platform.runLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        listaTemporadas = ligaDAO.getTemporadas(newValue.getIdLeague());
+                                    } catch (IOException e) {
+                                        throw new RuntimeException(e);
+                                    }
+                                    comboTemporadas.setItems(listaTemporadas);
+                                    comboTemporadas.getSelectionModel().select(-1);
+                                }
+                            });
+                            return null;
+                        }
+                    };
+
+                    Thread thread = new Thread(task);
+                    thread.start();
+
+
             }
         });
         comboTemporadas.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -117,8 +139,29 @@ public class LigasController implements Initializable, EventHandler<ActionEvent>
             listaTemporadas.add("2021-2022");
             // listaLigas.add("Liga nueva");
         } else if (event.getSource() == btnConsultar){
-            //String seleccionado = listViewLigas.getSelectionModel().getSelectedItem();
-            //System.out.println(seleccionado);
+            System.out.println("Consulta");
+            // 1 crear la ventana
+            Stage ventanaDetalle = new Stage();
+            // 3 asociar a la escena el fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("detail-view.fxml"));
+            try {
+                Parent parent = loader.load();
+                DetalleController detalleController = loader.getController();
+                detalleController.getEquipo(listViewClasificacion.getSelectionModel().getSelectedItem());
+                // 2 crear la escena
+                Scene sceneDetalle = new Scene(parent);
+                ventanaDetalle.setScene(sceneDetalle);
+                ventanaDetalle.show();
+                // 4 acceder a la actual
+                Stage actual = (Stage) btnConsultar.getScene().getWindow();
+                // 5 quitar actual
+                actual.close();
+            } catch (IOException e) {
+                System.out.println("Error en la carga");
+                System.out.println(e.getMessage());
+                System.out.println(e.getCause());
+            }
+
         }
     }
 }
