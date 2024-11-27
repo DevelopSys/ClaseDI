@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox fx:controller="org.example.usuarios.controller.LoginController" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField fx:id="textCorreo" />
+      <TextField fx:id="textPass" />
+      <HBox alignment="TOP_RIGHT" spacing="10.0">
+         <children>
+            <RadioButton fx:id="radioAcceder" mnemonicParsing="false" text="acceder" />
+            <RadioButton fx:id="radioRegistrar" mnemonicParsing="false" text="registrar" />
+         </children>
+      </HBox>
+      <Button fx:id="btnAcceder" mnemonicParsing="false" text="acceder" />
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>
