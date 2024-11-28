@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 
 
-<BorderPane fx:controller="org.example.gestor.LoginController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0"
+<BorderPane fx:controller="org.example.gestor.controller.LoginController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0"
             prefWidth="400.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
     <top>
         <Label text="LOGIN" BorderPane.alignment="CENTER"/>

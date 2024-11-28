@@ -1,4 +1,4 @@
-package org.example.gestor;
+package org.example.gestor.controller;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -11,13 +11,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import org.example.gestor.MyApp;
+import org.example.gestor.database.DBConnection;
+import org.example.gestor.dao.UsuarioDAO;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 
 public class LoginController implements Initializable, EventHandler<ActionEvent> {
 
@@ -130,15 +131,15 @@ public class LoginController implements Initializable, EventHandler<ActionEvent>
                 try {
                     switch (idPerfil) {
                         case 1:
-                            loader = new FXMLLoader(getClass().getResource("admin-view.fxml"));
+                            loader = new FXMLLoader(MyApp.class.getResource("admin-table-view.fxml"));
                             root = loader.load();
                             break;
                         case 2:
-                            loader = new FXMLLoader(getClass().getResource("user-view.fxml"));
+                            loader = new FXMLLoader(MyApp.class.getResource("user-view.fxml"));
                             root = loader.load();
                             break;
                         case 3:
-                            loader = new FXMLLoader(getClass().getResource("guest-view.fxml"));
+                            loader = new FXMLLoader(MyApp.class.getResource("guest-view.fxml"));
                             root = loader.load();
                             break;
                         default:

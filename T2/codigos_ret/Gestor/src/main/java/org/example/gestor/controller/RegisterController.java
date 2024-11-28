@@ -1,4 +1,4 @@
-package org.example.gestor;
+package org.example.gestor.controller;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

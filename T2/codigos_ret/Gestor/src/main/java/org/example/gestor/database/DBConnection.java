@@ -1,4 +1,4 @@
-package org.example.gestor;
+package org.example.gestor.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

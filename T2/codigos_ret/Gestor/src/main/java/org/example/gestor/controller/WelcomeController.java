@@ -1,4 +1,4 @@
-package org.example.gestor;
+package org.example.gestor.controller;
 
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.stage.Stage;
+import org.example.gestor.MyApp;
 
 import java.io.IOException;
 import java.net.URL;
@@ -46,7 +47,7 @@ public class WelcomeController implements Initializable {
                     @Override
                     public void run() {
                         // creo una escena - FXML
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("login-view.fxml"));
+                        FXMLLoader loader = new FXMLLoader(MyApp.class.getResource("login-view.fxml"));
                         try {
                             Parent parent = loader.load();
                             Scene registerScene = new Scene(parent, 500,300);

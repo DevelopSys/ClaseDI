@@ -1,6 +1,6 @@
-package org.example.gestor;
+package org.example.gestor.database;
 
-import javafx.scene.chart.PieChart;
+import org.example.gestor.model.Usuario;
 
 import java.util.ArrayList;
 

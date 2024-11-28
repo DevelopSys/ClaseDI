@@ -1,4 +1,8 @@
-package org.example.gestor;
+package org.example.gestor.dao;
+
+import org.example.gestor.database.DBConnection;
+import org.example.gestor.database.DBSchema;
+import org.example.gestor.model.Usuario;
 
 import java.sql.*;
 

@@ -1,4 +1,4 @@
-package org.example.gestor;
+package org.example.gestor.model;
 
 public class Usuario {
 
