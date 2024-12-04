@@ -9,11 +9,11 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import org.example.gestor.MyApp;
 import org.example.gestor.model.Usuario;
 
 import java.net.URL;
@@ -52,13 +52,24 @@ public class AdminTableController implements Initializable, EventHandler<ActionE
     private TextField textoFiltro;
     private FilteredList<Usuario> listaFiltrada;
 
+    @FXML
+    private MenuItem menuInfoMain, menuInfo, menuAdd, menuBorrar, menuUpdate, menuCerrar;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         instancias();
+        initGUI();
         acciones();
     }
 
+    private void initGUI() {
+        menuCerrar.setMnemonicParsing(true);
+        menuCerrar.setGraphic(new ImageView(new Image(MyApp.class.getResourceAsStream("cerrar.png"))));
+    }
+
     private void acciones() {
+        menuCerrar.setOnAction(this);
+        menuAdd.setOnAction(this);
         btnAnadir.setOnAction(this);
         btnDetalle.setOnAction(this);
         btnEliminar.setOnAction(this);
@@ -92,8 +103,10 @@ public class AdminTableController implements Initializable, EventHandler<ActionE
 
     @Override
     public void handle(ActionEvent event) {
-        if (event.getSource() == btnAnadir) {
+        if (event.getSource() == btnAnadir || event.getSource() == menuAdd) {
             listaUsuarios.add(new Usuario("Nuevon", "Nuevoa", "Nuevoc", "1234", 1234, 1));
+        } else if (event.getSource() == menuCerrar) {
+            System.exit(0);
         } else if (event.getSource() == btnDetalle) {
             if (tableUsuarios.getSelectionModel().getSelectedIndex() != -1) {
                 Usuario seleccionado = tableUsuarios.getSelectionModel().getSelectedItem();
