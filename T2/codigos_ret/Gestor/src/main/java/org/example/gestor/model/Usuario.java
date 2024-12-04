@@ -8,6 +8,11 @@ public class Usuario {
     public Usuario() {
     }
 
+    public Usuario(String nombre, String apellido) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+    }
+
     public Usuario(String nombre, String apellido, String correo, String pass, int telefono, int idPerfil) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -63,5 +68,10 @@ public class Usuario {
 
     public void setPass(String pass) {
         this.pass = pass;
+    }
+
+    @Override
+    public String toString() {
+        return nombre;
     }
 }

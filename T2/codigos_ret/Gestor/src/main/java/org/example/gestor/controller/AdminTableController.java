@@ -13,10 +13,14 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import org.example.gestor.MyApp;
 import org.example.gestor.model.Usuario;
 
+import java.lang.reflect.Array;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
@@ -68,6 +72,10 @@ public class AdminTableController implements Initializable, EventHandler<ActionE
     }
 
     private void acciones() {
+        menuInfo.setOnAction(this);
+        menuBorrar.setOnAction(this);
+        menuInfoMain.setOnAction(this);
+        menuUpdate.setOnAction(this);
         menuCerrar.setOnAction(this);
         menuAdd.setOnAction(this);
         btnAnadir.setOnAction(this);
@@ -103,7 +111,7 @@ public class AdminTableController implements Initializable, EventHandler<ActionE
 
     @Override
     public void handle(ActionEvent event) {
-        if (event.getSource() == btnAnadir || event.getSource() == menuAdd) {
+        if (event.getSource() == btnAnadir) {
             listaUsuarios.add(new Usuario("Nuevon", "Nuevoa", "Nuevoc", "1234", 1234, 1));
         } else if (event.getSource() == menuCerrar) {
             System.exit(0);
@@ -124,6 +132,59 @@ public class AdminTableController implements Initializable, EventHandler<ActionE
                 Usuario seleccionado = tableUsuarios.getSelectionModel().getSelectedItem();
                 seleccionado.setNombre("BorjaModificado");
             }
+        }else if (event.getSource() == menuInfoMain) {
+            Alert alertaInfor = new Alert(Alert.AlertType.WARNING);
+            alertaInfor.setTitle("Informacion");
+            alertaInfor.setHeaderText("Informacion del gestor");
+            alertaInfor.setContentText("Este software es de la asignatura de DI");
+            alertaInfor.show();
+        } else if (event.getSource() == menuBorrar) {
+            Alert alertaInfor = new Alert(Alert.AlertType.CONFIRMATION);
+            alertaInfor.setTitle("Confirmacion");
+            alertaInfor.setHeaderText("Proceso de borrado");
+            alertaInfor.setContentText("¿Estas seguro que quieres borrar el elemento?");
+
+            ButtonType b1 = new ButtonType("Creo que si");
+            ButtonType b2 = new ButtonType("Creo que no");
+            alertaInfor.getButtonTypes().setAll(ButtonType.CLOSE,b1,b2);
+            Optional<ButtonType> optional = alertaInfor.showAndWait();
+            if (optional.get() == b1){
+                System.out.println("Has pulsado que si");
+            } else if( optional.get() == b2){
+                System.out.println("Has pulsado que no");
+            } else if (optional.get() == ButtonType.CLOSE) {
+                System.out.println("Has cerrado");
+            }
+        } else if (event.getSource() == menuUpdate){
+            TextInputDialog textInputDialog = new TextInputDialog();
+            textInputDialog.setTitle("Introduce");
+            textInputDialog.setHeaderText("Datos a introducir");
+            textInputDialog.setContentText("Introduce tu nombre para continiar");
+            Optional<String> opcional = textInputDialog.showAndWait();
+            System.out.println(opcional.get());
+        } else if (event.getSource() == menuInfo) {
+            // String[] listaOpciones = new String[]{"Opcion 1","Opcion 2", "Opcion 3"};
+            Usuario[] listaOpciones = new Usuario[]{new Usuario("Borja","Martin"),new Usuario("Juan", "Gomez"),new Usuario("Luis","Aguado")};
+            ChoiceDialog<Usuario> choiceDialog = new ChoiceDialog(listaOpciones[0],listaOpciones);
+            choiceDialog.setTitle("Selecciona");
+            choiceDialog.setHeaderText("Seleccion de opcion");
+            choiceDialog.setHeaderText("Selecciona la opcion correspodiente");
+            Optional<Usuario> optional = choiceDialog.showAndWait();
+            System.out.println("La seleccion es "+optional.get().getApellido());
+            if (optional.get().getApellido().equalsIgnoreCase("martin")){
+                Alert dialogo = new Alert(Alert.AlertType.CONFIRMATION);
+                dialogo.setContentText("Quieres cerrar la app");
+                Optional<ButtonType> option = dialogo.showAndWait();
+                if (option.get() == ButtonType.OK){
+                    System.exit(0);
+                }
+            }
+
+        } else if (event.getSource() == menuAdd) {
+            Stage stage = new Stage();
+            stage.setTitle("Dialogo de añadir");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
         }
 
     }
