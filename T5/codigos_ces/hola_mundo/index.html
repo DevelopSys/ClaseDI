@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
@@ -21,7 +25,10 @@
       <h1>Primera app web con TS</h1>
       <div class="row">
         <div class="col-8">
-          <p id="parrafo-principal">texto que se introduce</p>
+          <div
+            class="row row-cols-1 row-cols-md-2 g-4"
+            id="resultadoCartas"
+          ></div>
         </div>
         <div class="col-4">
           <input
@@ -42,7 +49,34 @@
             <option value="2">Media</option>
             <option value="3">Alta</option>
           </select>
-          <button id="boton-agregar" class="btn btn-primary">Registrar</button>
+          <div class="form-check">
+            <input
+              value="0"
+              class="form-check-input"
+              type="radio"
+              name="grupoTarea"
+              id="radioPersonal"
+            />
+            <label class="form-check-label" for="radioPersonal">
+              Tarea personal
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              value="1"
+              class="form-check-input"
+              type="radio"
+              name="grupoTarea"
+              id="radioTrabajo"
+              checked
+            />
+            <label class="form-check-label" for="radioTrabajo">
+              Tarea trabajo
+            </label>
+          </div>
+          <button id="boton-agregar" class="btn btn-primary mt-3">
+            Agregar
+          </button>
         </div>
       </div>
     </main>
