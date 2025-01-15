@@ -1,1 +1,33 @@
-<p>Esto es la primera app realizada con angular</p>
+<img [src]="imagen" style="width: 20%" />
+<p>
+  Esto es la primera app realizada con angular por {{ nombre }} para la
+  asignatura {{ asignatura }}
+</p>
+<input
+  type="text"
+  class="form-control mb-3"
+  placeholder="introduce nombre"
+  #inputNombre
+/>
+<input
+  type="text"
+  class="form-control mb-3"
+  placeholder="introduce apellido"
+  #inputApellido
+/>
+<input
+  type="text"
+  class="form-control mb-3"
+  placeholder="introduce correo"
+  #inputCorreo
+/>
+<button class="btn btn-success" (click)="cambiarFondo()">Cambiar fondo</button>
+<button
+  class="btn btn-success"
+  (click)="
+    obtenerDatos(inputNombre.value, inputApellido.value, inputCorreo.value)
+  "
+>
+  Sacar datos
+</button>
+<button class="btn btn-success">Vaciar datos</button>
