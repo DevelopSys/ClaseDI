@@ -31,10 +31,15 @@ function obtenerValorCarta(carta) {
   }
   return parseInt(valor);
 }
+function obtenerImagenCarta(carta) {
+  console.log(carta);
+  return carta;
+}
 
 function pedirCarta() {
-  let valor = obtenerValorCarta(baraja.pop());
-  puntuacion += valor;
+  let carta = baraja.pop();
+  let valor = obtenerValorCarta(carta);
+  let imagen = obtenerImagenCarta(carta);
   if (puntuacion == 21) {
     // ganado
     Swal.fire({
@@ -63,6 +68,7 @@ function pedirCarta() {
     });
   } else {
     Swal.fire({
+      imageUrl: `./utils/images/${imagen}.png`,
       title: `Tu puntuacion es de ${puntuacion}, ¿Quieres sacar más cartas?`,
       showDenyButton: true,
       showCancelButton: true,
