@@ -1,5 +1,5 @@
 // foreach
-const listado = ["Opcion 1", "Opcion 2", "Opcion 3", "Opcion 4"]; //
+const listado = ["Opcion 11", "Opcion 21", "Opcion 33", "Opcion 43"]; //
 /* se pueden meter cosas en el array -> arraylist */
 /* for (let index = 0; index < array.length; index++) {
   const element = array[index]; 
@@ -38,3 +38,16 @@ listado.shift();
 
 // buscar o filtrar elementos
 console.log(listado);
+
+// ["Opcion 11", "Opcion 21", "Opcion 33", "Opcion 43"]
+
+// find > encuentra un elemento sobre lista -> "" | undefined
+/* let busqueda = listado.find((item) => {
+  return item.includes("2")
+}); */
+
+// filter > obtengo una lista de todos los elementos que cumplan condicion  -> []
+let busqueda = listado.filter((item) => {
+  return item.includes("9");
+});
+console.log(busqueda);
