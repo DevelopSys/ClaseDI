@@ -26,5 +26,14 @@ for (let i = 0; i < palos.length; i++) {
 baraja = _.shuffle(baraja);
 
 botonPedir.addEventListener("click", (e) => {
-  console.log("Boton pulsado correctamente");
+  // sacar por sweetAlert la carta que saca, indicando por separado!!!
+  // el palo y el valor de la carta
+  // 1,2,3,4,5,6,7,8,9,10
+  // J,!,K -> 10
+  // console.log("Boton pulsado correctamente");
 });
+
+/* let correo =  "borja@gmail.com"
+correo.charAt(1) // caracter en la posicion correspondiente
+correo.split('@') // [asdasdasd,asdasdasd]
+correo.substring(3,7) */
