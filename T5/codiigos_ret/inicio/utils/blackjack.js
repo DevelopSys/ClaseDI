@@ -31,6 +31,12 @@ botonPedir.addEventListener("click", (e) => {
   // 1,2,3,4,5,6,7,8,9,10
   // J,!,K -> 10
   // console.log("Boton pulsado correctamente");
+  let cartaSacada = baraja.pop();
+  let valor = cartaSacada.substring(0, cartaSacada.length - 1);
+  let palo = cartaSacada.substring(cartaSacada.length - 1);
+  console.log(`La carta sacada es ${cartaSacada}`);
+  console.log(`Su valor es ${valor}`);
+  console.log(`Su valor es ${palo}`);
 });
 
 /* let correo =  "borja@gmail.com"
