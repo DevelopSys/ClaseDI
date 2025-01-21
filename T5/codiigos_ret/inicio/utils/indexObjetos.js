@@ -102,7 +102,13 @@ asdasdasdasdasdasd
 
 // baraja = [cartas]
 // Cartas -> new Carta(QC)
-// valor -> 10 -> calculado
-// palo -> C -> calculado
-// representacion QC
-// imagen QC.png -> calculado
+// valor = 10 -> calculado
+// palo = C -> calculado
+// representacion  = QC
+// imagen = QC.png -> calculado
+
+// Cartas -> new Carta(2C)
+// valor = 10 -> calculado
+// palo = C -> calculado
+// representacion  = QC
+// imagen = 2C.png -> calculado

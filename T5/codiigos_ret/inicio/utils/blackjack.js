@@ -10,13 +10,13 @@ function iniciarBaraja() {
   for (let i = 0; i < palos.length; i++) {
     for (let j = 1; j <= 13; j++) {
       if (j == 11) {
-        baraja.push(`J${palos[i]}`);
+        baraja.push(new Carta(`J${palos[i]}`));
       } else if (j == 12) {
-        baraja.push(`Q${palos[i]}`);
+        baraja.push(new Carta(`Q${palos[i]}`));
       } else if (j == 13) {
-        baraja.push(`K${palos[i]}`);
+        baraja.push(new Carta(`K${palos[i]}`));
       } else {
-        baraja.push(`${j}${palos[i]}`);
+        baraja.push(new Carta(`${j}${palos[i]}`));
       }
     }
   }
@@ -24,22 +24,17 @@ function iniciarBaraja() {
 }
 
 function obtenerValorCarta(carta) {
-  let valor = carta.substring(0, carta.length - 1);
-  if (isNaN(parseInt(valor))) {
-    console.log(valor);
-    return 10;
-  }
-  return parseInt(valor);
+  return carta.valor;
 }
+
 function obtenerImagenCarta(carta) {
-  console.log(carta);
-  return carta;
+  return carta.imagen;
 }
 
 function pedirCarta() {
   let carta = baraja.pop();
-  let valor = obtenerValorCarta(carta);
-  let imagen = obtenerImagenCarta(carta);
+  //let valor = obtenerValorCarta(carta);
+  // let imagen = obtenerImagenCarta(carta);
   if (puntuacion == 21) {
     // ganado
     Swal.fire({
