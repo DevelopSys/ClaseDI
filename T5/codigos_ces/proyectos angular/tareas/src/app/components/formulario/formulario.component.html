@@ -1,1 +1,25 @@
-<p>formulario works!</p>
+<h2>Directiva estructural NG IF</h2>
+<p>
+  La directiva estructural ng if sirve para poder renderizar o no dependiendo de
+  una condicion o variable declarada en el TS
+</p>
+
+<input
+  class="form-control"
+  placeholder="Introduce palabra a buscar"
+  [(ngModel)]="palabraBusqueda"
+/>
+
+<ng-container *ngIf="mostrar" ; else elseTemplate>
+  <div class="alert alert-success" role="alert">
+    La palabra buscada {{ palabraBusqueda }} esta dentro de la lista
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <div class="alert alert-danger" role="alert">
+    La palabra no esta en la lista
+  </div>
+</ng-template>
+<button class="btn btn-primary mt-3" (click)="realizarBusqueda()">
+  Buscar
+</button>
