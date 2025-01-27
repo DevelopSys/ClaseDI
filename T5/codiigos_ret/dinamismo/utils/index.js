@@ -6,11 +6,15 @@
 // input[type=radio]
 // unicas -> querySelect -> un elemento -> HtmlNode
 // unicas -> querySelectAll -> varios elementos -> NodeList
+let usuarios = [];
 let inputNombre = document.querySelector("#inputNombre");
 let inputApellido = document.querySelector("#inputApellido");
 let inputEdad = document.querySelector("#inputEdad");
 let selectFormacion = document.querySelector("#selectFormacion");
+let selectFiltro = document.querySelector("#selectFiltro");
 let boton = document.querySelector("#botonAnadir");
+let botonBorrar = document.querySelector("#botonBorrar");
+let botonFiltrar = document.querySelector("#botonFiltrar");
 let lista = document.querySelector("div#resultados ul");
 // let parrafo = document.querySelector("p");
 boton.addEventListener("click", (e) => {
@@ -23,6 +27,32 @@ boton.addEventListener("click", (e) => {
     parseInt(inputEdad.value),
     selectFormacion.value
   );
+  usuarios.push(
+    new Usuario(
+      inputNombre.value,
+      inputApellido.value,
+      inputEdad.value,
+      selectFormacion.value
+    )
+  );
+});
+
+botonBorrar.addEventListener("click", (e) => {
+  lista.innerHTML = "";
+  usuarios = [];
+});
+
+botonFiltrar.addEventListener("click", (e) => {
+  listaFiltrada.innerHTML = "";
+  let seleccionBusqueda = selectFormacion.value;
+  // todos aquellos que cumplen con la formacion
+  usuarios
+    .filter((element) => {
+      return (element.formacion = seleccionBusqueda);
+    })
+    .forEach((item) => {
+      agregarNodoLI(item.nombre, item.apellido);
+    });
 });
 
 function agregarNodoLI(nombre, apellido, edad, estudios) {

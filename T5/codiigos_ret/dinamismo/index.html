@@ -58,14 +58,25 @@
             </select>
 
             <button class="btn btn-success" id="botonAnadir">Pulsar</button>
+            <button class="btn btn-warning" id="botonBorrar">Borrar</button>
           </div>
           <div class="col" id="resultados">
             <h3>Elementos</h3>
             <ul class="list-group"></ul>
           </div>
         </div>
+        <div class="row">
+          <select class="form-select col" id="selectFiltro">
+            <option>Formacion basica</option>
+            <option>Formacion avanzada</option>
+            <option>Formacion superior</option>
+            <option>Formacion doctorado</option>
+          </select>
+          <button class="btn btn-success col" id="botonFiltrar">Fitrar</button>
+        </div>
       </main>
     </div>
+    <script src="./utils/model/usuario.js"></script>
     <script src="./utils/index.js"></script>
   </body>
 </html>
