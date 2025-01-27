@@ -21,7 +21,7 @@ export class FormularioComponent {
     new Tarea('Tarea5', 'Descripcion5', false),
   ];
   tareasITF: TareaITF[] = [
-    { nombre: 'TareaITF', descripcion: 'asdasdasd', completada: false },
+    { titulo: 'TareaITF', descripcion: 'asdasdasd', completada: false},
   ];
 
   realizarBusqueda() {
