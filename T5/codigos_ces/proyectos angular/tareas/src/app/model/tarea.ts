@@ -5,6 +5,10 @@ export class Tarea {
     private completada: boolean
   ) {}
 
+  getTitulo(): string {
+    return this.titulo;
+  }
+
   completarTarea() {
     if (!this.completada) {
       this.completada = true;

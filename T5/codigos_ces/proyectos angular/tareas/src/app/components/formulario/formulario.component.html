@@ -9,17 +9,78 @@
   placeholder="Introduce palabra a buscar"
   [(ngModel)]="palabraBusqueda"
 />
-
-<ng-container *ngIf="mostrar" ; else elseTemplate>
-  <div class="alert alert-success" role="alert">
-    La palabra buscada {{ palabraBusqueda }} esta dentro de la lista
-  </div>
-</ng-container>
-<ng-template #elseTemplate>
-  <div class="alert alert-danger" role="alert">
-    La palabra no esta en la lista
-  </div>
-</ng-template>
+<!-- <ng-container *ngIf="mostrar" ; else elseTemplate>
+        <div class="alert alert-success" role="alert">
+          La palabra buscada {{ palabraBusqueda }} esta dentro de la lista
+        </div>
+      </ng-container>
+      <ng-template #elseTemplate>
+        <div class="alert alert-danger" role="alert">
+          La palabra no esta en la lista
+        </div>
+      </ng-template> -->
 <button class="btn btn-primary mt-3" (click)="realizarBusqueda()">
   Buscar
 </button>
+
+<h2>Directiva estructural NG SWITCH</h2>
+<p>
+  La directiva estructural ng switch sirve para poder renderizar elementos
+  dependiendo del valor de una variable declarada en el TS
+</p>
+
+<input
+  class="form-control"
+  placeholder="Introduce el caso a mostrar"
+  type="number"
+  [(ngModel)]="caso"
+/>
+
+<div [ngSwitch]="caso">
+  <div *ngSwitchCase="0" class="alert alert-success" role="alert">
+    La variable tiene un valor de 0
+  </div>
+  <div *ngSwitchCase="1" class="alert alert-warning" role="alert">
+    La variable tiene un valor de 1
+  </div>
+  <div *ngSwitchCase="2" class="alert alert-danger" role="alert">
+    La variable tiene un valor de 2
+  </div>
+
+  <app-home *ngSwitchCase="3"> </app-home>
+</div>
+
+<h2>Directiva estructural NG FOR</h2>
+<p>
+  La directiva estructural ng for, permite replicar de forma iterativa un
+  conjunto de etiquetas escribiendolas a partir de un array de elementos
+</p>
+
+<div class="row">
+  <div class="col">
+    <input
+      class="form-control mb-3"
+      type="text"
+      placeholder="Introduce el nombre de la terea"
+      [(ngModel)]="nombreTarea"
+    />
+    <select class="form-select mb-3" [(ngModel)]="completadaTarea">
+      <option value="1">Completada</option>
+      <option value="0">No completada</option>
+    </select>
+    <input
+      class="form-control mb-3"
+      type="text"
+      placeholder="Introduce el descripcion de la terea"
+      [(ngModel)]="descripcionTarea"
+    />
+    <button (click)="agregarTarea()" class="btn btn-primary">Agregar</button>
+  </div>
+  <div class="col">
+    <ul class="list-group">
+      <li *ngFor="let item of listaTareas">
+        El nombre es {{ item.getTitulo() }}
+      </li>
+    </ul>
+  </div>
+</div>
