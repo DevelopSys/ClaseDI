@@ -16,6 +16,7 @@ let boton = document.querySelector("#botonAnadir");
 let botonBorrar = document.querySelector("#botonBorrar");
 let botonFiltrar = document.querySelector("#botonFiltrar");
 let lista = document.querySelector("div#resultados ul");
+let listaFiltrada = document.querySelector("#listaFiltrada");
 // let parrafo = document.querySelector("p");
 boton.addEventListener("click", (e) => {
   // parrafo.innerText = `Mi nombre es ${inputNombre.value} y mi apellido es ${inputApellido.value}`;
@@ -38,21 +39,40 @@ boton.addEventListener("click", (e) => {
 });
 
 botonBorrar.addEventListener("click", (e) => {
-  lista.innerHTML = "";
-  usuarios = [];
+  /* lista.innerHTML = "";
+  usuarios = []; */
+  lista.childNodes[0].classList.remove("animate__fadeInUp");
+  lista.childNodes[0].classList.add("animate__rubberBand");
+  setTimeout(() => {
+    lista.childNodes[0].classList.remove("animate__rubberBand");
+    lista.childNodes[0].classList.add("animate__fadeOutRight");
+    setTimeout(() => {
+      lista.removeChild(lista.childNodes[0]);
+      lista.childNodes.forEach((item) => {
+        setTimeout(() => {
+          item.classList.remove("animate__fadeInUp");
+          item.classList.add("animate__fadeInDownBig");
+        }, 200);
+      });
+    }, 600);
+  }, 600);
 });
 
 botonFiltrar.addEventListener("click", (e) => {
   listaFiltrada.innerHTML = "";
-  let seleccionBusqueda = selectFormacion.value;
+  let seleccionBusqueda = selectFiltro.value;
+
+  console.log(seleccionBusqueda);
+
   // todos aquellos que cumplen con la formacion
-  usuarios
-    .filter((element) => {
-      return (element.formacion = seleccionBusqueda);
-    })
-    .forEach((item) => {
-      agregarNodoLI(item.nombre, item.apellido);
-    });
+  let listaFiltro = usuarios.filter((element) => {
+    return element.formacion == seleccionBusqueda;
+  });
+  console.log(listaFiltro);
+
+  listaFiltro.forEach((item) => {
+    agregarNodoLIFiltro(item.nombre, item.apellido, item.edad, item.estudios);
+  });
 });
 
 function agregarNodoLI(nombre, apellido, edad, estudios) {
@@ -70,6 +90,7 @@ function agregarNodoLI(nombre, apellido, edad, estudios) {
       "animate__fadeInUp"
     );
     lista.append(nodoLI);
+    usuarios.push(new Usuario(nombre, apellido, edad, estudios));
   } else {
     Swal.fire({
       title: "Error",
@@ -77,6 +98,18 @@ function agregarNodoLI(nombre, apellido, edad, estudios) {
       icon: "error",
     });
   }
+}
+
+function agregarNodoLIFiltro(nombre, apellido, edad, estudios) {
+  let nodoLI = document.createElement("li");
+  // nodoLI.className = "list-group-item animate__animated animate__fadeInUp"
+  nodoLI.textContent = `${nombre} ${apellido}`;
+  nodoLI.classList.add(
+    "list-group-item",
+    "animate__animated",
+    "animate__fadeInUp"
+  );
+  listaFiltrada.append(nodoLI);
 }
 
 function limpiarElementos() {

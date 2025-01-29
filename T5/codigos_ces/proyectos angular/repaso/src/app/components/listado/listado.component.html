@@ -1,0 +1,45 @@
+<input class="form-control" [(ngModel)]="nombre" (keypress)="obtenerInput()" />
+<select
+  class="form-select"
+  [(ngModel)]="opcionSelect"
+  (change)="obtenerCambio()"
+>
+  <option value="0">Opcion 1</option>
+  <option value="1">Opcion 2</option>
+  <option value="2">Opcion 3</option>
+  <option value="3">Opcion 4</option>
+</select>
+
+<span [ngSwitch]="mostrar">
+  <p *ngSwitchCase="true">Esto se muesta con mostrar</p>
+  <p *ngSwitchCase="false">Esto no se muestra con mostrar</p>
+</span>
+
+<button class="btn btn-primary" (click)="agregar()">Agregar</button>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col" *ngFor="let item of tareas">
+    <div class="card">
+      <img src="..." class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{ item.getTitulo }}</h5>
+        <p class="card-text">
+          {{ item.getDescripcion }}
+        </p>
+        <button
+          class="btn btn-primary"
+          (click)="mostrarDetalle(item.getTitulo)"
+        >
+          <ul class="list-group">
+            <li
+              class="list-group-item"
+              *ngFor="let element of item.getSubtareas"
+            >
+              {{ element.getTitulo }}
+            </li>
+          </ul>
+          Detalle
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
