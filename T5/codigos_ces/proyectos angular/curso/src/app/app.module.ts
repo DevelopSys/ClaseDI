@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import {
   BrowserModule,
   provideClientHydration,
@@ -25,7 +26,7 @@ import { DatosService } from './services/datos.service';
     DetalleComponent,
     ErrorComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideClientHydration(withEventReplay()), DatosService],
   bootstrap: [AppComponent],
 })
