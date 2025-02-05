@@ -29,17 +29,29 @@ const routes: Routes = [
   {
     path: 'cursos',
     component: CursosComponent,
+    children: [
+      {
+        path: 'detalle',
+        component: DetalleComponent,
+      },
+    ],
   },
   {
     path: 'asignaturas',
     component: AsignaturasComponent,
+    children: [
+      {
+        path: 'detalle',
+        component: DetalleComponent,
+      },
+    ],
   },
   {
     path: 'buscador',
     component: BuscadorComponent,
   },
   {
-    path: 'detalle/:id',
+    path: 'detalle/:tipo/:id',
     component: DetalleComponent,
   },
   {
