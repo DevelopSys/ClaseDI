@@ -3,7 +3,6 @@
   <li class="list-group-item" *ngFor="let item of cursos">{{ item.nombre }}</li>
 </ul>
 <button [routerLink]="['/detalle', 'curso', 1]">Ver detalle</button>
-<router-outlet></router-outlet>
 
 <!-- http://localhost:8080/detalle/:curso/:id 
  <!-- http://localhost:8080/detalle/:asignatura/:id 
