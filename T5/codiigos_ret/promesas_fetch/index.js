@@ -1,3 +1,12 @@
+async function obtencionDatos() {
+  let datos = await fetch("https://dummyjson.com/products");
+  let respuesta = await datos.json();
+  console.log(respuesta);
+}
+
+obtencionDatos();
+
+/* 
 fetch("https://dummyjson.com/products")
   .then((ok) => {
     return ok.json();
@@ -7,4 +16,4 @@ fetch("https://dummyjson.com/products")
       console.log(element.title);
     });
   })
-  .catch((fail) => {});
+  .catch((fail) => {}); */

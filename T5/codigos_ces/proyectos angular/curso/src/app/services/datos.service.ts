@@ -491,4 +491,8 @@ export class DatosService {
   getAllCursos(): Curso[] {
     return this.cursos;
   }
+
+
+  // getAsgnaturaById(id) -> asginaturas
+  // getCursoById(id) -> cursos
 }
