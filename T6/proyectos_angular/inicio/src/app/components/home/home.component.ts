@@ -18,7 +18,12 @@ export class HomeComponent {
     this.imagenUrl = url;
   }
 
-  enviarDatos(
+  gestionarCambio(event: Event) {
+    // throw new Error('Method not implemented.');
+    (event.target! as HTMLInputElement).value;
+  }
+
+  /* enviarDatos(
     nombre: string,
     apellido: string,
     correo: string,
@@ -28,5 +33,5 @@ export class HomeComponent {
     this.apellido = apellido;
     this.correo = correo;
     this.profesion = profesion;
-  }
+  } */
 }

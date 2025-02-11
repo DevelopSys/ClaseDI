@@ -24,6 +24,7 @@
       class="form-control"
       type="text"
       placeholder="introduce nombre"
+      [(ngModel)]="nombre"
       #inputN
     />
     <input
@@ -31,26 +32,21 @@
       type="text"
       placeholder="introduce apellido"
       #inputA
+      [(ngModel)]="apellido"
     />
     <input
       class="form-control"
       type="text"
       placeholder="introduce correo"
+      [(ngModel)]="correo"
       #inputC
     />
-    <select class="form-select" #selectP>
+    <select class="form-select" [(ngModel)]="profesion" #selectP>
       <option>Profesor</option>
       <option>Contable</option>
       <option>Vendedor</option>
     </select>
-    <button
-      class="btn btn-primary"
-      (click)="
-        enviarDatos(inputN.value, inputA.value, inputC.value, selectP.value)
-      "
-    >
-      Enviar datos
-    </button>
+    <button class="btn btn-primary">Enviar datos</button>
   </div>
   <div class="col ms-4">
     <p>Nombre {{ nombre }}</p>
