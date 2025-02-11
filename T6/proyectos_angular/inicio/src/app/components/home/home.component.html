@@ -46,12 +46,15 @@
       <option>Contable</option>
       <option>Vendedor</option>
     </select>
-    <button class="btn btn-primary">Enviar datos</button>
+    <button class="btn btn-primary" (click)="agregarUsuario()">
+      Enviar datos
+    </button>
   </div>
   <div class="col ms-4">
-    <p>Nombre {{ nombre }}</p>
+    <p>El numero de usuarios actual es de: {{ usuarios.length }}</p>
+    <!-- <p>Nombre {{ nombre }}</p>
     <p>Apellido {{ apellido }}</p>
     <p>Correo {{ correo }}</p>
-    <p>Profesion {{ profesion }}</p>
+    <p>Profesion {{ profesion }}</p> -->
   </div>
 </div>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Usuario } from '../../model/clases';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +15,7 @@ export class HomeComponent {
   apellido = '';
   correo = '';
   profesion = '';
+  usuarios: Usuario[] = [];
 
   cambiarImagen(url: string) {
     this.imagenUrl = url;
@@ -21,6 +24,37 @@ export class HomeComponent {
   gestionarCambio(event: Event) {
     // throw new Error('Method not implemented.');
     (event.target! as HTMLInputElement).value;
+  }
+
+  agregarUsuario() {
+    if (
+      (this.nombre.length > 0,
+      this.apellido.length > 0,
+      this.correo.length > 0,
+      this.profesion.length > 0)
+    ) {
+      this.usuarios.push(
+        new Usuario(this.nombre, this.apellido, this.correo, this.profesion)
+      );
+      this.limpiarDatos();
+    } else {
+      this.lanzarAviso('No se puede agregar, faltan datos');
+    }
+  }
+
+  lanzarAviso(msn: string) {
+    Swal.fire({
+      title: 'Formulario',
+      text: msn,
+      icon: 'warning',
+    });
+  }
+
+  limpiarDatos() {
+    this.nombre = '';
+    this.apellido = '';
+    this.correo = '';
+    this.profesion = '';
   }
 
   /* enviarDatos(
