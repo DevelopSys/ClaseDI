@@ -12,6 +12,7 @@ import { ListadoComponent } from './components/listado/listado.component';
 import { DetalleComponent } from './components/detalle/detalle.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './service/api.service';
+import { ImagesPipe } from './pipe/images.pipe';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ApiService } from './service/api.service';
     HomeComponent,
     ListadoComponent,
     DetalleComponent,
+    ImagesPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [provideClientHydration(withEventReplay()), ApiService],

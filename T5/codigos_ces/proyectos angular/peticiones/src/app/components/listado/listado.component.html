@@ -1,14 +1,23 @@
-<p>listado works!</p>
-
 <div class="row row-cols-1 row-cols-md-2 g-4">
   <div class="col" *ngFor="let item of listado">
     <div class="card">
-      <img src="..." class="card-img-top" alt="..." />
+      <img [src]="item | images" class="card-img-top" alt="..." />
       <div class="card-body">
         <h5 class="card-title">{{ item.title }}</h5>
         <p class="card-text">
           {{ item.body }}
         </p>
+        <ul class="list-group">
+          <li
+            *ngFor="let tag of item.tags; let i = index"
+            class="list-group-item"
+          >
+            {{ tag | uppercase }}
+          </li>
+        </ul>
+        <a class="btn btn-primary mt-4" (click)="verDetalle(item.id)"
+          >Ver detalle</a
+        >
       </div>
     </div>
   </div>
