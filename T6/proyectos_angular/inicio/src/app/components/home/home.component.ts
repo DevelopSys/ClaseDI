@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
+  mostrar = false;
   nombreFiltro: string = '';
   bindingUno: string | undefined = 'primer binding';
   imagenUrl = 'https://i.ytimg.com/vi/Wjj8fluz6rk/maxresdefault.jpg';
@@ -73,6 +74,10 @@ export class HomeComponent {
     this.listaFiltrada = this.usuarios.filter(
       (item) => item.getNombre == this.nombreFiltro
     );
+    this.mostrar = true;
+    setTimeout(() => {
+      this.mostrar = false;
+    }, 3000);
   }
 
   /* enviarDatos(

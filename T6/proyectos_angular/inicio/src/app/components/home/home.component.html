@@ -65,6 +65,8 @@
       Buscar resultados
     </button>
 
-    <p>El numero de resultados coincidentes es de {{ listaFiltrada.length }}</p>
+    <p *ngIf="mostrar">
+      El numero de resultados coincidentes es de {{ listaFiltrada.length }}
+    </p>
   </div>
 </div>
