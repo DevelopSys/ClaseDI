@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Usuario } from '../../model/clases';
+import { Usuario as UsuarioAlias } from '../../model/interfaces';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -9,6 +10,7 @@ import Swal from 'sweetalert2';
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
+  nombreFiltro: string = '';
   bindingUno: string | undefined = 'primer binding';
   imagenUrl = 'https://i.ytimg.com/vi/Wjj8fluz6rk/maxresdefault.jpg';
   nombre = '';
@@ -16,6 +18,16 @@ export class HomeComponent {
   correo = '';
   profesion = '';
   usuarios: Usuario[] = [];
+  usuariosInterfaz: UsuarioAlias[] = [
+    {
+      nombre: 'Borja',
+      apellido: 'Martin',
+      correo: 'borja@gmail.com',
+      profesion: 'Profesor',
+      edad: 2,
+    },
+  ];
+  listaFiltrada: Usuario[] = [];
 
   cambiarImagen(url: string) {
     this.imagenUrl = url;
@@ -57,6 +69,12 @@ export class HomeComponent {
     this.profesion = '';
   }
 
+  realizaBusqueda() {
+    this.listaFiltrada = this.usuarios.filter(
+      (item) => item.getNombre == this.nombreFiltro
+    );
+  }
+
   /* enviarDatos(
     nombre: string,
     apellido: string,
@@ -69,3 +87,12 @@ export class HomeComponent {
     this.profesion = profesion;
   } */
 }
+
+/* 
+
+Directiva -> modificaciones de DOM directa
+  17>=
+  16<=
+  estructura
+  estilo
+*/

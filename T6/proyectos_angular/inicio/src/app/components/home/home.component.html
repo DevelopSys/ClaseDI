@@ -56,5 +56,15 @@
     <p>Apellido {{ apellido }}</p>
     <p>Correo {{ correo }}</p>
     <p>Profesion {{ profesion }}</p> -->
+    <input
+      class="form-control"
+      placeholder="introduce nombre a buscar"
+      [(ngModel)]="nombreFiltro"
+    />
+    <button class="btn btn-primary" (click)="realizaBusqueda()">
+      Buscar resultados
+    </button>
+
+    <p>El numero de resultados coincidentes es de {{ listaFiltrada.length }}</p>
   </div>
 </div>
