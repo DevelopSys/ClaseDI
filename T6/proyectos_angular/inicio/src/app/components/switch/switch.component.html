@@ -4,15 +4,14 @@
   dependiendo de un valor determinado
 </p>
 
-<select class="form-select">
-  <option>Valor 1</option>
-  <option>Valor 2</option>
-  <option>Valor 3</option>
-  <option>Valor 4</option>
-  <option>Valor 5</option>
-  <option>Valor 6</option>
-  <option>Valor 7</option>
-  <option>Valor 8</option>
+<select class="form-select" (change)="cambiarSeleccion($event)">
+  <!-- #selectValor
+  [(ngModel)]="valor" -->
+  <option value="1">Valor 1</option>
+  <option value="2">Valor 2</option>
+  <option value="3">Valor 3</option>
+  <option value="4">Valor 4</option>
+  <option value="5">Valor 5</option>
 </select>
 <div [ngSwitch]="valor">
   <div *ngSwitchCase="1" class="alert alert-primary" role="alert">

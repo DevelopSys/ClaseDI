@@ -9,4 +9,13 @@ import { Component } from '@angular/core';
 })
 export class SwitchComponent {
   valor = 0;
+
+  cambiarSeleccion($event: Event) {
+    let seleccion = ($event.target as HTMLInputElement).value;
+    this.valor = Number(seleccion);
+  }
+
+  cambioSeleccionDos(seleccion: string) {
+    this.valor = Number(seleccion);
+  }
 }
