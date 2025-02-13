@@ -1,0 +1,27 @@
+<h2>NgSwitch</h2>
+<p>
+  La directiva estructural ngswitch permite mostrar un contenendor u otro
+  dependiendo de un valor determinado
+</p>
+<div [ngSwitch]="valor">
+  <div *ngSwitchCase="1" class="alert alert-primary" role="alert">
+    Este div se muesta con valor 1
+  </div>
+  <div *ngSwitchCase="2" class="alert alert-success" role="alert">
+    Este div se muesta con valor2
+  </div>
+  <div *ngSwitchCase="3" class="alert alert-warning" role="alert">
+    Este div se muesta con valor 3
+  </div>
+  <div *ngSwitchCase="4" class="alert alert-danger" role="alert">
+    Este div se muesta con valor 4
+  </div>
+  <div *ngSwitchDefault class="alert alert-info">
+    Este div se muesta con valor restante
+  </div>
+</div>
+<div></div>
+<!-- alert -> 1 -->
+<!-- alert -> 2 -->
+<!-- alert -> 3 -->
+<!-- alert -> restane -->
