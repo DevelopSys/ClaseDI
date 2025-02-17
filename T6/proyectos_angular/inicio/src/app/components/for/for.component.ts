@@ -9,6 +9,7 @@ import { Asignatura } from '../../model/interfaces';
   styleUrl: './for.component.css',
 })
 export class ForComponent {
+  mostrar = false;
   conocimientoBusqueda: string = '';
   listaAsignaturas: Asignatura[] = [
     {
@@ -52,6 +53,7 @@ export class ForComponent {
   listaFiltrada: Asignatura[] = this.listaAsignaturas;
 
   realizarBusqueda() {
+    this.mostrar = true;
     // dependiendo del conocimiento, esta en la lista asignaturas?
     this.listaFiltrada = this.listaAsignaturas.filter((item) =>
       item.conocimientos.includes(this.conocimientoBusqueda)

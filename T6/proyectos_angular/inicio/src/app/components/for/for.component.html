@@ -15,33 +15,35 @@
   </button>
 </div>
 
-<div [ngSwitch]="listaFiltrada.length">
-  <div *ngSwitchCase="0">
-    <div class="alert alert-warning" role="alert">
-      El numero de resultados es {{ listaFiltrada.length }}
+<ng-container *ngIf="mostrar">
+  <div [ngSwitch]="listaFiltrada.length">
+    <div *ngSwitchCase="0">
+      <div class="alert alert-warning" role="alert">
+        El numero de resultados es {{ listaFiltrada.length }}
+      </div>
+    </div>
+    <div *ngSwitchCase="1">
+      <div class="alert alert-info" role="alert">
+        El numero de resultados es {{ listaFiltrada.length }}
+      </div>
+    </div>
+    <div *ngSwitchCase="2">
+      <div class="alert alert-info" role="alert">
+        El numero de resultados es {{ listaFiltrada.length }}
+      </div>
+    </div>
+    <div *ngSwitchCase="3">
+      <div class="alert alert-info" role="alert">
+        El numero de resultados es {{ listaFiltrada.length }}
+      </div>
+    </div>
+    <div *ngSwitchDefault>
+      <div class="alert alert-success" role="alert">
+        El numero de resultados es {{ listaFiltrada.length }}
+      </div>
     </div>
   </div>
-  <div *ngSwitchCase="1">
-    <div class="alert alert-info" role="alert">
-      El numero de resultados es {{ listaFiltrada.length }}
-    </div>
-  </div>
-  <div *ngSwitchCase="2">
-    <div class="alert alert-info" role="alert">
-      El numero de resultados es {{ listaFiltrada.length }}
-    </div>
-  </div>
-  <div *ngSwitchCase="3">
-    <div class="alert alert-info" role="alert">
-      El numero de resultados es {{ listaFiltrada.length }}
-    </div>
-  </div>
-  <div *ngSwitchDefault>
-    <div class="alert alert-success" role="alert">
-      El numero de resultados es {{ listaFiltrada.length }}
-    </div>
-  </div>
-</div>
+</ng-container>
 
 <div class="row row-cols-1 row-cols-md-2 g-4">
   <div class="col" *ngFor="let item of listaFiltrada">
