@@ -13,6 +13,7 @@ export interface Usuario {
 }
 
 export interface Asignatura {
+  imagen: string;
   nombre: string;
   siglas: string;
   horas: number;

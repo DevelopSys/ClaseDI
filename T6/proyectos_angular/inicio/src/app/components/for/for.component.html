@@ -4,8 +4,21 @@
   lista. La lista de todas las asignaturas que teneis en el curso es:
 </p>
 
-<ul class="list-group">
-  <li class="list-group-item" *ngFor="let item of listaAsignaturas">
-    {{ item.nombre }}
-  </li>
-</ul>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col" *ngFor="let item of listaAsignaturas">
+    <div class="card">
+      <img [src]="item.imagen" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{ item.nombre }}</h5>
+        <p class="card-text">
+          {{ item.profesor }}
+        </p>
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let item1 of item.conocimientos">
+            {{ item1 }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
