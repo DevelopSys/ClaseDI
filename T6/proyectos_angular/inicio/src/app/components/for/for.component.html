@@ -4,8 +4,47 @@
   lista. La lista de todas las asignaturas que teneis en el curso es:
 </p>
 
+<div class="row mb-4">
+  <input
+    class="form-select col-8"
+    placeholder="Por favor introduce el conocimiento a buscar"
+    [(ngModel)]="conocimientoBusqueda"
+  />
+  <button class="btn btn-primary col-4" (click)="realizarBusqueda()">
+    Buscar
+  </button>
+</div>
+
+<div [ngSwitch]="listaFiltrada.length">
+  <div *ngSwitchCase="0">
+    <div class="alert alert-warning" role="alert">
+      El numero de resultados es {{ listaFiltrada.length }}
+    </div>
+  </div>
+  <div *ngSwitchCase="1">
+    <div class="alert alert-info" role="alert">
+      El numero de resultados es {{ listaFiltrada.length }}
+    </div>
+  </div>
+  <div *ngSwitchCase="2">
+    <div class="alert alert-info" role="alert">
+      El numero de resultados es {{ listaFiltrada.length }}
+    </div>
+  </div>
+  <div *ngSwitchCase="3">
+    <div class="alert alert-info" role="alert">
+      El numero de resultados es {{ listaFiltrada.length }}
+    </div>
+  </div>
+  <div *ngSwitchDefault>
+    <div class="alert alert-success" role="alert">
+      El numero de resultados es {{ listaFiltrada.length }}
+    </div>
+  </div>
+</div>
+
 <div class="row row-cols-1 row-cols-md-2 g-4">
-  <div class="col" *ngFor="let item of listaAsignaturas">
+  <div class="col" *ngFor="let item of listaFiltrada">
     <div class="card">
       <img [src]="item.imagen" class="card-img-top" alt="..." />
       <div class="card-body">

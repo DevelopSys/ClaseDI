@@ -9,6 +9,7 @@ import { Asignatura } from '../../model/interfaces';
   styleUrl: './for.component.css',
 })
 export class ForComponent {
+  conocimientoBusqueda: string = '';
   listaAsignaturas: Asignatura[] = [
     {
       imagen:
@@ -17,7 +18,7 @@ export class ForComponent {
       horas: 6,
       siglas: 'DI',
       profesor: 'Borja Martin',
-      conocimientos: ['java', 'js', 'xml', 'html', 'ts', 'angular', 'msql'],
+      conocimientos: ['java', 'js', 'xml', 'html', 'ts', 'angular', 'mysql'],
     },
     {
       imagen:
@@ -47,4 +48,15 @@ export class ForComponent {
       conocimientos: ['php', 'pasher', 'js', 'mysql'],
     },
   ];
+
+  listaFiltrada: Asignatura[] = this.listaAsignaturas;
+
+  realizarBusqueda() {
+    // dependiendo del conocimiento, esta en la lista asignaturas?
+    this.listaFiltrada = this.listaAsignaturas.filter((item) =>
+      item.conocimientos.includes(this.conocimientoBusqueda)
+    );
+    console.log(this.conocimientoBusqueda);
+    console.log(this.listaFiltrada);
+  }
 }

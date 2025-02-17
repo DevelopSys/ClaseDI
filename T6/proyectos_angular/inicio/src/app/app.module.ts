@@ -13,7 +13,13 @@ import { SwitchComponent } from './components/switch/switch.component';
 import { ForComponent } from './components/for/for.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, IfComponent, SwitchComponent, ForComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    IfComponent,
+    SwitchComponent,
+    ForComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideClientHydration(withEventReplay())],
   bootstrap: [AppComponent],
