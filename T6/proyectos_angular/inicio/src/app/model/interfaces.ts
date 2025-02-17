@@ -11,3 +11,11 @@ export interface Usuario {
   profesion: string;
   edad: number;
 }
+
+export interface Asignatura {
+  nombre: string;
+  siglas: string;
+  horas: number;
+  profesor: string;
+  conocimientos: string[];
+}
