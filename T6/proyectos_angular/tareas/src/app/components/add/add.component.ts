@@ -8,9 +8,20 @@ import { TareasService } from '../../services/tareas.service';
   styleUrl: './add.component.css',
 })
 export class AddComponent {
+  titulo: string = '';
+  descripcion: string = '';
+  fecha = new Date();
+  prioridad = '';
+
   constructor(private servicio: TareasService) {}
 
   agregarTarea() {
+    this.servicio.agregarTarea({
+      titulo: this.titulo,
+      prioridad: this.prioridad,
+      descripcion: this.descripcion,
+      fecha: this.fecha,
+    });
     this.servicio.lanzarDatos();
     // capturo los campos del formulario -> variables de la clase, form (JSON), paramentros del metodo
     // agregarlo en la parte de datos -> []

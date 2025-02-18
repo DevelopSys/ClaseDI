@@ -13,4 +13,8 @@ export class TareasService {
   lanzarDatos() {
     console.log('El numero de tareas actuales es de ' + this.tareas.length);
   }
+
+  agregarTarea(tarea: Tarea) {
+    this.tareas.push(tarea);
+  }
 }

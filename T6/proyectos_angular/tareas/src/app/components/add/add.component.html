@@ -1,16 +1,22 @@
 <h2>Agrega tarea</h2>
-<input class="form-control mb-4" placeholder="Introduce titulo de la tarea" />
 <input
+  class="form-control mb-4"
+  placeholder="Introduce titulo de la tarea"
+  [(ngModel)]="titulo"
+/>
+<input
+  [(ngModel)]="descripcion"
   #inputDescripcion
   class="form-control mb-4"
   placeholder="Introduce descripcion de la tarea"
 />
 <input
+  [(ngModel)]="fecha"
   type="date"
   class="form-control mb-4"
   placeholder="Introduce fecha de la tarea"
 />
-<select class="form-select">
+<select class="form-select" [(ngModel)]="prioridad">
   <option>Baja</option>
   <option>Media</option>
   <option>Alta</option>
