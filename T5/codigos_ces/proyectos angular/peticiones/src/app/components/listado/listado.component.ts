@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../service/api.service';
-import { Post } from '../model/modelos';
+import { Post } from '../../model/modelos';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,17 +11,16 @@ import { Router } from '@angular/router';
 })
 export class ListadoComponent {
   listado: Post[] = [];
+  mostrar = true;
 
   constructor(private apiService: ApiService, private router: Router) {
     this.apiService.getAllPost().subscribe((data) => {
       // console.log(data);
       this.listado = data.posts;
     });
+    this.apiService.getAllTags().subscribe((data) => {
+      console.log(data);
+    });
     // console.log(apiService.getAllPost());
-  }
-
-  verDetalle(id: number) {
-    // proceso datos
-    this.router.navigate(['/detail', id]);
   }
 }

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Post } from '../components/model/modelos';
+import { Post } from '../model/modelos';
 
 @Pipe({
   name: 'images',

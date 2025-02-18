@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../service/api.service';
 import { ActivatedRoute } from '@angular/router';
-import { Post } from '../model/modelos';
+import { Post } from '../../model/modelos';
 
 @Component({
   selector: 'app-detalle',

@@ -1,0 +1,33 @@
+<!-- Pintar como se comporta una carta, pintando un POST-->
+<div
+  class="card"
+  [ngClass]="{
+    'text-bg-primary': mostrar,
+    'border-primary': post.reactions.likes < 200,
+    'border-success': post.reactions.likes >= 200 && post.reactions.likes < 360,
+    'border-danger': post.reactions.likes >= 361 && post.reactions.likes < 800,
+    'border-warning': post.reactions.likes >= 800
+  }"
+>
+  <img [src]="post | images" class="card-img-top" alt="..." />
+  <div class="card-body">
+    <h5 class="card-title">{{ post.title }}</h5>
+    <p class="card-text">
+      {{ post.body }}
+    </p>
+    <ul class="list-group">
+      <li *ngFor="let tag of post.tags; let i = index" class="list-group-item">
+        {{ tag | uppercase }}
+      </li>
+    </ul>
+    <div class="row">
+      <div class="col">{{ post.reactions.likes }}</div>
+      <div class="col">{{ post.reactions.dislikes }}</div>
+    </div>
+    <a class="btn btn-primary mt-4" (click)="verDetalle(post.id)"
+      >Ver detalle</a
+    >
+  </div>
+</div>
+
+<!--   -->

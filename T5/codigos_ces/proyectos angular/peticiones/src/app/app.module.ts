@@ -13,6 +13,7 @@ import { DetalleComponent } from './components/detalle/detalle.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './service/api.service';
 import { ImagesPipe } from './pipe/images.pipe';
+import { PostcardComponent } from './components/postcard/postcard.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ImagesPipe } from './pipe/images.pipe';
     ListadoComponent,
     DetalleComponent,
     ImagesPipe,
+    PostcardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [provideClientHydration(withEventReplay()), ApiService],
