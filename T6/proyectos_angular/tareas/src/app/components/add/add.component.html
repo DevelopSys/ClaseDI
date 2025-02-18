@@ -1,1 +1,20 @@
-<p>add works!</p>
+<h2>Agrega tarea</h2>
+<input class="form-control mb-4" placeholder="Introduce titulo de la tarea" />
+<input
+  #inputDescripcion
+  class="form-control mb-4"
+  placeholder="Introduce descripcion de la tarea"
+/>
+<input
+  type="date"
+  class="form-control mb-4"
+  placeholder="Introduce fecha de la tarea"
+/>
+<select class="form-select">
+  <option>Baja</option>
+  <option>Media</option>
+  <option>Alta</option>
+</select>
+<button class="btn btn-primary mt-4" (click)="agregarTarea()">
+  Agregar tarea
+</button>

@@ -9,4 +9,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'tareas';
   seleccion = '1';
+
+  realizarCambio($event: Event) {
+    this.seleccion = ($event.target as HTMLInputElement).value;
+  }
 }

@@ -1,10 +1,10 @@
 <div class="container mt-4">
-  <select class="form-select mb-4">
-    <option>Home</option>
-    <option>Add</option>
+  <select class="form-select mb-4" [(ngModel)]="seleccion">
+    <option value="1">Home</option>
+    <option value="2">Add</option>
   </select>
   <div [ngSwitch]="seleccion">
-    <app-home *ngSwitchCase="1"></app-home>
-    <app-add *ngSwitchCase="2"></app-add>
+    <app-home *ngSwitchCase="'1'"></app-home>
+    <app-add *ngSwitchCase="'2'"></app-add>
   </div>
 </div>
