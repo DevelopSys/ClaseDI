@@ -7,6 +7,7 @@ import { DetalleComponent } from './components/detalle/detalle.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'list', component: ListadoComponent },
+  { path: 'detail/:id?', component: DetalleComponent },
   { path: '**', component: HomeComponent },
 ];
 
