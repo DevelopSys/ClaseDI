@@ -1,0 +1,8 @@
+<button class="btn btn-primary" (click)="mostrar = !mostrar">
+  Cambiar estilo
+</button>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col" *ngFor="let item of listado">
+    <app-postcard [post]="item" [mostrar]="mostrar"></app-postcard>
+  </div>
+</div>

@@ -17,4 +17,8 @@ export class TareasService {
   agregarTarea(tarea: Tarea) {
     this.tareas.push(tarea);
   }
+
+  getAllTareas(): Tarea[] {
+    return this.tareas;
+  }
 }

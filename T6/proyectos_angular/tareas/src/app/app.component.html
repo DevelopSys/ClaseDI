@@ -2,9 +2,13 @@
   <select class="form-select mb-4" [(ngModel)]="seleccion">
     <option value="1">Home</option>
     <option value="2">Add</option>
+    <option value="3">List</option>
+    <option value="4">Find</option>
   </select>
   <div [ngSwitch]="seleccion">
     <app-home *ngSwitchCase="'1'"></app-home>
     <app-add *ngSwitchCase="'2'"></app-add>
+    <app-list *ngSwitchCase="'3'"></app-list>
+    <app-find *ngSwitchCase="'4'"></app-find>
   </div>
 </div>

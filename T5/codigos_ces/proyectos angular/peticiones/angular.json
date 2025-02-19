@@ -41,6 +41,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            
             "outputPath": "dist/peticiones",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -60,6 +61,7 @@
             "scripts": [],
             "server": "src/main.server.ts",
             "outputMode": "server",
+            "prerender": {"routesFile": "src/routes.json"},
             "ssr": {
               "entry": "src/server.ts"
             }
