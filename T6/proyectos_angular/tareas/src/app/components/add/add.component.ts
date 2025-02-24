@@ -18,8 +18,8 @@ export class AddComponent {
   agregarTarea() {
     this.servicio.agregarTarea({
       titulo: this.titulo,
-      prioridad: this.prioridad,
       descripcion: this.descripcion,
+      prioridad: this.prioridad,
       fecha: this.fecha,
     });
     this.servicio.lanzarDatos();

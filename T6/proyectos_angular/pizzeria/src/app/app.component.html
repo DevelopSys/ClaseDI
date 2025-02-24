@@ -1,0 +1,11 @@
+<select class="form-select" [ngModel]="seleccion">
+  <option value="1">Home</option>
+  <option value="2">Carta</option>
+  <option value="3">Pedidos</option>
+</select>
+
+<div class="container" [ngSwitch]="seleccion">
+  <app-home *ngSwitchCase="'1'"></app-home>
+  <app-carta *ngSwitchCase="'2'"></app-carta>
+  <app-pedidos *ngSwitchCase="'3'"></app-pedidos>
+</div>
