@@ -1,4 +1,5 @@
 <input
+  class="form-control"
   placeholder="introduce el nombre del pedidio"
   [(ngModel)]="nombrePedido"
 />
@@ -9,9 +10,11 @@
       <option *ngFor="let item of ingredientes">{{ item.getNombre }}</option>
     </select>
   </div>
-  <button class="btn btn-primary col" (click)="agregarIngrediente()"></button>
+  <button class="btn btn-primary col" (click)="agregarIngrediente()">
+    Agregar ingrediente
+  </button>
   <p></p>
-  <button class="btb btn-primary" (click)="enviarPedido()">Enviar</button>
+  <button class="btn btn-primary" (click)="enviarPedido()">Enviar</button>
   <h2>Pedidios</h2>
   <div class="row row-cols-1 row-cols-md-2 g-4">
     <div class="col" *ngFor="let item of listaPedidos">

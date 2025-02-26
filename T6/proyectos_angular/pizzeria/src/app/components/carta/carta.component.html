@@ -3,7 +3,6 @@
   class="form-select"
   [(ngModel)]="ingredienteBusqueda"
   (change)="realizarFiltro()"
-  ]
 >
   <option>Selecciona opcion</option>
   <option *ngFor="let item of ingredientes">{{ item.getNombre }}</option>
@@ -23,11 +22,8 @@
     <div class="card">
       <img src="..." class="card-img-top" alt="..." />
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">
-          This is a longer card with supporting text below as a natural lead-in
-          to additional content. This content is a little bit longer.
-        </p>
+        <h5 class="card-title">Titulo de la carta</h5>
+        <p class="card-text">Cuerpo de la carta</p>
         <ul class="list-group">
           <li
             class="list-group-item"

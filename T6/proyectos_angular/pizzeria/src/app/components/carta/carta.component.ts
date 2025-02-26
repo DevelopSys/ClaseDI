@@ -16,6 +16,7 @@ export class CartaComponent {
   constructor(private servicio: DataService) {
     this.ingredientes = servicio.getIngredientes();
     this.listaFiltrada = this.servicio.getPizzas();
+    console.log(this.listaFiltrada.length);
   }
 
   realizarFiltro() {
