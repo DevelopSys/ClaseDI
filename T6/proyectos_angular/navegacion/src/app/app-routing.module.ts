@@ -21,7 +21,7 @@ const routes: Routes = [
       },
     ],
   },
-  { path: 'buscador', component: BuscadorComponent },
+  { path: 'buscador/:id', component: BuscadorComponent },
   { path: 'detalle', component: DetalleComponent },
   { path: '**', component: ErrorComponent },
 ];
