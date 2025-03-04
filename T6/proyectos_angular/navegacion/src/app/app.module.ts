@@ -14,6 +14,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './services/api.service';
+import { ImagenesPipe } from './pipes/imagenes.pipe';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ApiService } from './services/api.service';
     ListadoComponent,
     DetalleComponent,
     ErrorComponent,
+    ImagenesPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [provideClientHydration(withEventReplay()), ApiService],
