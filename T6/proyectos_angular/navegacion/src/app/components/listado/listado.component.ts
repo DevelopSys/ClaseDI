@@ -9,11 +9,10 @@ import { Post } from '../../model/interfeces';
   styleUrl: './listado.component.css',
 })
 export class ListadoComponent {
+  posts!: Post[];
   constructor(private apiServive: ApiService) {
     apiServive.getAllPost().subscribe((data) => {
-      data.posts.forEach((element: Post) => {
-        console.log(element.body);
-      });
+      this.posts = data.posts;
     });
   }
 }

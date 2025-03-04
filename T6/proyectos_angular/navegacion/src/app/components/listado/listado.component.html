@@ -1,4 +1,18 @@
-<p>listado works!</p>
-<!-- <a class="btn btn-primary" routerLink="detalle">Ir a hija 1</a>
-<a class="btn btn-primary" routerLink="comun">Ir a hija 2</a>
-<router-outlet></router-outlet> -->
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col" *ngFor="let item of posts">
+    <div class="card">
+      <img src="..." class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{ item.title }}</h5>
+        <p class="card-text">
+          {{ item.body }}
+        </p>
+        <div class="row">
+          <span class="col">{{ item.reactions.likes }}</span>
+          <span class="col">{{ item.reactions.dislikes }}</span>
+        </div>
+        <button class="btn btn-primary mt-3">Ver detalle</button>
+      </div>
+    </div>
+  </div>
+</div>
