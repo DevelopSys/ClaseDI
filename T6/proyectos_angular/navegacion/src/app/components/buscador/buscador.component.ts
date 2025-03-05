@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ApiService } from '../../services/api.service';
+import { Post } from '../../model/interfeces';
+import { log } from 'console';
 
 @Component({
   selector: 'app-buscador',
@@ -9,10 +12,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BuscadorComponent {
   parametro = 'ejemplo';
+  tag = '';
+  posts!: Post[];
 
-  constructor(private activated: ActivatedRoute) {
-    this.activated.params.subscribe((param) => {
-      this.parametro = param['id'];
+  constructor(private service: ApiService) {}
+
+  consultarTag() {
+    //
+    // console.log(this.service.getAllPostByTag('history'));
+
+    this.service.getAllPostByTag(this.tag).subscribe((data) => {
+      this.posts = data.posts;
     });
   }
 }

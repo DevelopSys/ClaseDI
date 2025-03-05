@@ -20,21 +20,13 @@
           >
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/buscador', seleccion]" class="nav-link"
-            >Buscador</a
-          >
+          <a [routerLink]="['/buscador']" class="nav-link">Buscador</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
-<select class="form-select" [(ngModel)]="seleccion">
-  <option>1</option>
-  <option>2</option>
-  <option>3</option>
-  <option>4</option>
-  <option>5</option>
-</select>
+
 <div class="container">
   <router-outlet>
     <!-- no pongo nada, renderiza la ruta indicada en el navegado -->
