@@ -1,1 +1,14 @@
-<p>pedidos works!</p>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col" *ngFor="let item of pedidos">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ item.id }}</h5>
+        <h6 class="card-title">{{ item.nombre }}</h6>
+        <h6 class="card-title">{{ item.precio }}</h6>
+        <button class="btn btn-primary" [routerLink]="['/detalle', item.id]">
+          Ver detalle
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

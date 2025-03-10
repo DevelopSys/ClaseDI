@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Producto } from '../../model/clases';
+import { CompraService } from '../../services/compra.service';
 
 @Component({
   selector: 'app-producto',
@@ -9,4 +10,11 @@ import { Producto } from '../../model/clases';
 })
 export class ProductoComponent {
   @Input() producto!: Producto;
+
+  constructor(private compraService: CompraService) {}
+
+  realizarAccion(producto: Producto) {
+    // al pulsarlo se agregar a un pedido
+    this.compraService.carrito.productos.push(producto);
+  }
 }

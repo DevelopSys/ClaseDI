@@ -1,1 +1,8 @@
-<p>detalle works!</p>
+<p>El nombre asociado al pedidio es: {{ pedido.nombre }}</p>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <app-producto
+    *ngFor="let item of pedido.productos"
+    [producto]="item"
+  ></app-producto>
+</div>
+<p>El precio total del pedidio es: {{ pedido.precio }}</p>
