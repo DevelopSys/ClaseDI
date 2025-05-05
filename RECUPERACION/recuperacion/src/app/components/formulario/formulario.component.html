@@ -1,1 +1,27 @@
-<p>formulario works!</p>
+<h2>Introduccion de usuarios</h2>
+
+<input
+  type="text"
+  placeholder="Nombre"
+  class="form-control mb-3"
+  [(ngModel)]="nombre"
+/>
+<input
+  type="text"
+  placeholder="Apellido"
+  class="form-control mb-3"
+  [(ngModel)]="apellido"
+/>
+<input
+  type="text"
+  placeholder="Email"
+  class="form-control mb-3"
+  [(ngModel)]="email"
+/>
+<input
+  type="text"
+  placeholder="Pass"
+  class="form-control mb-3"
+  [(ngModel)]="pass"
+/>
+<button class="btn btn-primary" (click)="guardarUsuario()">Enviar</button>

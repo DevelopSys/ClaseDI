@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,4 +10,10 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
   title = 'recuperacion';
+
+  constructor(private router: Router) {}
+
+  navegar(params: string) {
+    this.router.navigate([params]);
+  }
 }
