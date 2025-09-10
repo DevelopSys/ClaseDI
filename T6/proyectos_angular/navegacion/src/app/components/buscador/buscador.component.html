@@ -1,6 +1,0 @@
-<input type="text" class="form-control mt-3" [(ngModel)]="tag" />
-<button class="btn btn-primary" (click)="consultarTag()">Buscar</button>
-<div class="row row-cols-1 row-cols-md-2 g-4">
-  <!-- tantas cartas como post tenga -->
-  <app-post *ngFor="let item of posts" [item]="item"></app-post>
-</div>

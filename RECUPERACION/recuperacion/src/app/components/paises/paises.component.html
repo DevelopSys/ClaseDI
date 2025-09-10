@@ -1,9 +1,0 @@
-<!-- 
- La lista de paises que estan en la base de datos
--->
-<ul class="list-group">
-  <!-- replicar tantos como paises tenga ngFor-->
-  <li class="list-group-item" *ngFor="let item of paises">
-    <img [src]="item.flags.png" /> {{ item.name.common }} {{ item.population }}
-  </li>
-</ul>
