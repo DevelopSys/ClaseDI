@@ -17,7 +17,7 @@ public class Entrada {
     // fun main(args:Array<String>){}
     public static void main(String[] args) {
 
-        Scanner lecturaTeclado = new Scanner(System.in);
+        /*Scanner lecturaTeclado = new Scanner(System.in);
         System.out.println("Por favor introduce tu nombre");
         String nombre = lecturaTeclado.next();
         System.out.println("Por favor introduce tu edad");
@@ -26,8 +26,10 @@ public class Entrada {
         System.out.println("Mi nombre es "+nombre);
         System.out.printf("Mi nombre es %s y tengo %s%n"
                 ,nombre,edad);
-        System.out.println("Fin del mensaje");
-
+        System.out.println("Fin del mensaje");*/
+        SentenciasControl sentencias = new SentenciasControl();
+        sentencias.sentenciasRepeticion();
+        // sentencias.tablasMultiplicar();
     }
 
 }
