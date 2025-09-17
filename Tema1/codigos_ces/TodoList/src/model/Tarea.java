@@ -40,6 +40,10 @@ public class Tarea {
     // si no hay hueco, saltar un aviso,
     // no podrás agregar dos personas que tengan el mismo DNI
 
+    // en una tarea se pueden quitar responsables. Solo podre quitar una tarea si el DNI
+    // que me indicas esta dentro de la lista de responsables. Mostrar aviso tanto para
+    // proceso OK como proceso no OK
+
     public void asignarResponsable(Persona persona){
         for (int i = 0; i < encargados.length; i++) {
             if (encargados[i]==null && !estaDNI(persona.getDni())){
@@ -50,6 +54,21 @@ public class Tarea {
         }
         System.out.println("No hay hueco disponible, tarea completa");
     }
+
+    public void eliminarResponsable(String dni){
+        for ( Persona persona: encargados ) {
+            if (persona !=null && persona.getDni().equalsIgnoreCase(dni)){
+                persona = null;
+                System.out.println("Persona eliminada correctamente");
+                return;
+            }
+        }
+        System.out.printf("La persona con DNI %s no esta en esta tarea%n",dni);
+    }
+
+    // mostrar los datos de todos los usuarios que son responsables de dicha tarea
+    // en caso de no tener ninguna avisar
+    // en caso de tener huecos disponibles, avisar de cuantos
     private boolean estaDNI(String dni){
         for ( Persona persona : encargados ) {
             if (persona != null && persona.getDni().equalsIgnoreCase(dni)){
