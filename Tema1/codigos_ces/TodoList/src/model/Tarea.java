@@ -42,14 +42,21 @@ public class Tarea {
 
     public void asignarResponsable(Persona persona){
         for (int i = 0; i < encargados.length; i++) {
-            if (encargados[i]==null){
+            if (encargados[i]==null && !estaDNI(persona.getDni())){
                 encargados[i]=persona;
                 System.out.println("Persona agregada correctamente");
                 return;
             }
         }
         System.out.println("No hay hueco disponible, tarea completa");
-
+    }
+    private boolean estaDNI(String dni){
+        for ( Persona persona : encargados ) {
+            if (persona != null && persona.getDni().equalsIgnoreCase(dni)){
+                return true;
+            }
+        }
+        return false;
     }
     public String getTitulo() {
         return titulo;

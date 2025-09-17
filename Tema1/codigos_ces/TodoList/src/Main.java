@@ -11,6 +11,7 @@ public class Main {
         tarea.asignarResponsable(new Persona("123A","Nombre1","Apellido1",23));
         tarea.asignarResponsable(new Persona("123A","Nombre1","Apellido1",23));
         tarea.asignarResponsable(new Persona("123A","Nombre1","Apellido1",23));
+        
 
     }
 }
