@@ -27,9 +27,23 @@ public class Entrada {
         System.out.printf("Mi nombre es %s y tengo %s%n"
                 ,nombre,edad);
         System.out.println("Fin del mensaje");*/
-        SentenciasControl sentencias = new SentenciasControl();
-        sentencias.sentenciasRepeticion();
+        // SentenciasControl sentencias = new SentenciasControl();
+        // sentencias.sentenciasRepeticion();
         // sentencias.tablasMultiplicar();
+        EstructurasArrays estructurasArrays = new EstructurasArrays();
+        //estructurasArrays.incluirNumero(5,30);
+        //estructurasArrays.mostrarElementos();
+        // estructurasArrays.incluirNumero(2,90);
+        //estructurasArrays.mostrarElementos();
+        //estructurasArrays.buscarRepetidos(0);
+        /*if(estructurasArrays.estaNumero(90)){
+            System.out.println("El numero esta");
+        } else {
+            System.out.println("El numero no esta");
+        }*/
+        estructurasArrays.rellenarArray();
+        estructurasArrays.mostrarElementos();
+        estructurasArrays.realizarCalculos();
     }
 
 }
