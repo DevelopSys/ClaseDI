@@ -37,7 +37,20 @@ public class Tarea {
     // solo se podrá asignar una persona si hay hueco disponible
     // cada vez que se asigne una persona, se deberá colocar en el primer hueco
     // disponible
+    // si no hay hueco, saltar un aviso,
+    // no podrás agregar dos personas que tengan el mismo DNI
 
+    public void asignarResponsable(Persona persona){
+        for (int i = 0; i < encargados.length; i++) {
+            if (encargados[i]==null){
+                encargados[i]=persona;
+                System.out.println("Persona agregada correctamente");
+                return;
+            }
+        }
+        System.out.println("No hay hueco disponible, tarea completa");
+
+    }
     public String getTitulo() {
         return titulo;
     }
