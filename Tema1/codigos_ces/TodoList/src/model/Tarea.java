@@ -7,15 +7,16 @@ public class Tarea {
     // encargaran de la tarea
 
     // variables
-    private String titulo,descripcion;
+    private String titulo, descripcion;
     private boolean prioritario, completada;
     private Persona[] encargados;
 
     // constructores
-    public Tarea(){
+    public Tarea() {
 
     }
-    public Tarea(String titulo, String descripcion, boolean prioritario, int numeroPersonas){
+
+    public Tarea(String titulo, String descripcion, boolean prioritario, int numeroPersonas) {
         // completada = false;
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -23,7 +24,7 @@ public class Tarea {
         encargados = new Persona[numeroPersonas];
     }
 
-    public Tarea(String titulo, String descripcion, int numeroPersonas){
+    public Tarea(String titulo, String descripcion, int numeroPersonas) {
         // completada = false;
         // prioritario = false
         this.titulo = titulo;
@@ -44,10 +45,10 @@ public class Tarea {
     // que me indicas esta dentro de la lista de responsables. Mostrar aviso tanto para
     // proceso OK como proceso no OK
 
-    public void asignarResponsable(Persona persona){
+    public void asignarResponsable(Persona persona) {
         for (int i = 0; i < encargados.length; i++) {
-            if (encargados[i]==null && !estaDNI(persona.getDni())){
-                encargados[i]=persona;
+            if (encargados[i] == null && !estaDNI(persona.getDni())) {
+                encargados[i] = persona;
                 System.out.println("Persona agregada correctamente");
                 return;
             }
@@ -55,28 +56,51 @@ public class Tarea {
         System.out.println("No hay hueco disponible, tarea completa");
     }
 
-    public void eliminarResponsable(String dni){
-        for ( Persona persona: encargados ) {
-            if (persona !=null && persona.getDni().equalsIgnoreCase(dni)){
+    public void eliminarResponsable(String dni) {
+        for (Persona persona : encargados) {
+            if (persona != null && persona.getDni().equalsIgnoreCase(dni)) {
                 persona = null;
                 System.out.println("Persona eliminada correctamente");
                 return;
             }
         }
-        System.out.printf("La persona con DNI %s no esta en esta tarea%n",dni);
+        System.out.printf("La persona con DNI %s no esta en esta tarea%n", dni);
     }
 
     // mostrar los datos de todos los usuarios que son responsables de dicha tarea
     // en caso de no tener ninguna avisar
     // en caso de tener huecos disponibles, avisar de cuantos
-    private boolean estaDNI(String dni){
-        for ( Persona persona : encargados ) {
-            if (persona != null && persona.getDni().equalsIgnoreCase(dni)){
+
+    public void mostrarResponsables() {
+        int numeroHuecos = 0;
+        for (Persona persona : encargados) {
+            if (persona == null) {
+                numeroHuecos++;
+            } else {
+                System.out.println(persona);
+            }
+        }
+
+        if (numeroHuecos == encargados.length) {
+            System.out.println("No hay resposonsables asignados");
+        } else if (numeroHuecos > 0) {
+            System.out.printf("Hay %d huecos disponibles%n", numeroHuecos);
+        } else {
+            System.out.println("Todos los responsables estan ubicados");
+        }
+
+
+    }
+
+    private boolean estaDNI(String dni) {
+        for (Persona persona : encargados) {
+            if (persona != null && persona.getDni().equalsIgnoreCase(dni)) {
                 return true;
             }
         }
         return false;
     }
+
     public String getTitulo() {
         return titulo;
     }
@@ -119,3 +143,8 @@ public class Tarea {
                 '}';
     }
 }
+
+
+// creamos un encargo.
+// Los encargos tienen una propiedad llamada descripcion,
+// una propiedad llamda id y una propiedad llamada completa
