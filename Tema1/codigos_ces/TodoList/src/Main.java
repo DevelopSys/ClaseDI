@@ -16,6 +16,14 @@ public class Main {
         tarea.agregarEncargo(new Encargo(2,"Codiicar la practica"));
         tarea.agregarEncargo(new Encargo(3,"Grabar video"));
         tarea.agregarEncargo(new Encargo(4,"Entregar practica"));
+        tarea.completarEncargo(1);
+        tarea.completarEncargo(2);
+        tarea.completarEncargo(3);
+        tarea.completarEncargo(4);
+        // tarea.listarEncargos();
+        tarea.completarTarea();
+        // tarea.buscarEncargoId(9);
+        // tarea.listarEncargosCompletados();
 
 
         

@@ -28,6 +28,21 @@ Completar una tarea -> Una tarea quedará completa si todos sus encargos
 estan completos
  */
 
+/*
+Crear los metodos de:
+asignar a un encargo un responsable
+Para moder asignar un responsable al encargo, previamente debe estar como integrande del
+equipo
+ */
+
+/*
+Cambiar responsable de tarea
+ */
+
+/*
+Mostrar tareas por responsbale -> DNI
+ */
+
 public class Tarea {
 
     // una tarea tiene asociadas una serie de personas
@@ -161,6 +176,47 @@ public class Tarea {
 
     public boolean borrarEncargo1(int id) {
         return listaTareas.remove(estaEncargo(id));
+    }
+
+    public void listarEncargos(){
+        for (Encargo item : listaTareas) {
+            item.mostrarDatos();
+        }
+    }
+
+    public void listarEncargosCompletados(){
+        for (Encargo encargo: listaTareas) {
+            if(encargo.isCompletada()){
+                encargo.mostrarDatos();
+            }
+        }
+    }
+
+    public void buscarEncargoId(int id){
+        if (estaEncargo(id)!=null)
+            estaEncargo(id).mostrarDatos();
+        else
+            System.out.println("El id no se enscuentra en la lista");
+    }
+
+    public void completarEncargo(int id){
+        if (estaEncargo(id)!=null && !estaEncargo(id).isCompletada()){
+            estaEncargo(id).setCompletada(true);
+            System.out.println("Encargo completado correctamente");
+        } else {
+            System.out.println("El encargo no se puede completar, " +
+                    "no esta en la lista o ya esta completado");
+        }
+    }
+    public void completarTarea(){
+        for (Encargo encargo: listaTareas) {
+            if (!encargo.isCompletada()){
+                System.out.println("No se puede completar la tarea");
+                return;
+            }
+        }
+        completada = true;
+        System.out.println("tarea completada con exito");
     }
 
     public Persona[] getEncargados() {
