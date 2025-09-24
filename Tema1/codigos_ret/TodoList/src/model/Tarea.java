@@ -26,7 +26,7 @@ public class Tarea {
         equipoTrabajo = new Persona[4];
     }
 
-    public Tarea(int id, String titulo, String descripcion, Persona responsable,int horasEmpleadas) {
+    public Tarea(int id, String titulo, String descripcion, Persona responsable, int horasEmpleadas) {
         this.id = id;
         this.horasEmpleadas = horasEmpleadas;
         this.titulo = titulo;
@@ -35,13 +35,36 @@ public class Tarea {
         equipoTrabajo = new Persona[4];
     }
 
+    public void agregarPersonaEquipo(Persona persona) {
+        // cuando tenga un hueco libre (null)
+        // cuando el dni no este en la lista
+        Persona estaPersona = estaPersona(persona.getDni());
+        for (int i = 0; i < equipoTrabajo.length; i++) {
+            if (equipoTrabajo[i] == null && estaPersona ==null) {
+                equipoTrabajo[i] = persona;
+                System.out.printf("Agregado correctamente la persona con nombre %s%n"
+                        , persona.getNombre());
+                return;
+            }
+        }
+        System.out.println("No se ha podido agregar");
+    }
+
+    private Persona estaPersona(String dni) {
+
+        for (int i = 0; i < equipoTrabajo.length; i++) {
+            if (equipoTrabajo[i] != null
+                    && equipoTrabajo[i].getDni().equalsIgnoreCase(dni)){
+               return equipoTrabajo[i];
+            }
+        }
+        return null;
+    }
+
     public Persona[] getEquipoTrabajo() {
         return equipoTrabajo;
     }
 
-    /*
-
-     */
 
     public void setEquipoTrabajo(Persona[] equipoTrabajo) {
         this.equipoTrabajo = equipoTrabajo;
@@ -139,6 +162,6 @@ public class Tarea {
 // Agregar una persona al equipo de trabajo
 // Si no tengo hueco, saltara un aviso
 // Si intento agregar una persona al equipo de
-    // trabajo con un DNI ya existente
-    // saltará un aviso
+// trabajo con un DNI ya existente
+// saltará un aviso
 // en caso de agregar saltar un aviso de todo OK
