@@ -3,9 +3,30 @@ package model;
 import java.util.ArrayList;
 
 // crear el método que permite agregar un encargo
-    // los encargos deben tener ID unico -> PONER AVISOS
+// los encargos deben tener ID unico -> PONER AVISOS
 // crear el método que permite eliminar un encargo
-    // para ello se pide el id del encargo y se quita de la lista -> PONER AVISOS
+// para ello se pide el id del encargo y se quita de la lista -> PONER AVISOS
+
+/*
+Listar todos los encargos de una tarea
+ */
+
+/*
+Buscar un encargo por id y mostrar sus datos
+ */
+
+/*
+Completar un encargo -> pasar su variable completada a true
+ */
+
+/*
+Mostrar un encargo que estan completados
+ */
+
+/*
+Completar una tarea -> Una tarea quedará completa si todos sus encargos
+estan completos
+ */
 
 public class Tarea {
 
@@ -110,6 +131,36 @@ public class Tarea {
             }
         }
         return false;
+    }
+
+    private Encargo estaEncargo(int id) {
+
+        for (Encargo encargo : listaTareas) {
+            if (encargo.getId() == id) return encargo;
+        }
+        return null;
+    }
+
+    public void agregarEncargo(Encargo encargo) {
+        if (estaEncargo(encargo.getId()) != null) {
+            System.out.println("Error en el proceso, no se puede agregar");
+        } else {
+            listaTareas.add(encargo);
+            System.out.println("Agregado correctamente");
+        }
+    }
+
+    public void borrarEncargo(int id) {
+        if (estaEncargo(id) != null) {
+            listaTareas.remove(estaEncargo(id));
+            System.out.println("Borrado correctamente");
+        } else {
+            System.out.println("No esta en la lista el id especificado");
+        }
+    }
+
+    public boolean borrarEncargo1(int id) {
+        return listaTareas.remove(estaEncargo(id));
     }
 
     public Persona[] getEncargados() {
