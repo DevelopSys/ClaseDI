@@ -1,5 +1,8 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Objects;
 
 public class Tarea {
@@ -10,6 +13,7 @@ public class Tarea {
     private Persona responsable;
     private Persona[] equipoTrabajo;
     private boolean completada;
+    private ArrayList<Encargo> encargos;
 
     // constructores -> el vacio (desaparece cuando se escribe uno)
 
@@ -24,6 +28,9 @@ public class Tarea {
         this.descripcion = descripcion;
         this.responsable = responsable;
         equipoTrabajo = new Persona[4];
+        encargos = new ArrayList<>();
+
+
     }
 
     public Tarea(int id, String titulo, String descripcion, Persona responsable, int horasEmpleadas) {
@@ -33,6 +40,7 @@ public class Tarea {
         this.descripcion = descripcion;
         this.responsable = responsable;
         equipoTrabajo = new Persona[4];
+        encargos = new ArrayList<>();
     }
 
     public void agregarPersonaEquipo(Persona persona) {
@@ -59,6 +67,27 @@ public class Tarea {
             }
         }
         return null;
+    }
+    public void mostrarEquipoTrabajo(){
+        for ( Persona persona : equipoTrabajo) {
+            if(persona !=null){
+                persona.mostrarDatos();
+                // System.out.println(persona);
+            }
+        }
+    }
+
+    public void eliminarPersona(String dni){
+        for (int i = 0; i < equipoTrabajo.length; i++) {
+            if (equipoTrabajo[i]!=null &&
+                    equipoTrabajo[i].getDni().equalsIgnoreCase(dni)){
+                System.out.printf("Eliminado correctamente " +
+                        "con nombre %s\n",equipoTrabajo[i].getNombre());
+                equipoTrabajo[i] = null;
+                return;
+            }
+        }
+        System.out.println("DNI no encontrado");
     }
 
     public Persona[] getEquipoTrabajo() {
@@ -165,3 +194,16 @@ public class Tarea {
 // trabajo con un DNI ya existente
 // saltará un aviso
 // en caso de agregar saltar un aviso de todo OK
+
+// crear un metodo para mostrar todos los datos de
+// las personas del equipo de trabajo
+// en caso de tener una persona null no mostrará nada
+
+// Eliminar una persona del equipo de trabajo
+// para ello el metodo pedirá un dni
+// en caso de tener el dni en la lista, igualara a null su posicion->aviso
+// en caso de no estar en la lista, saltará un aviso
+
+// crear un metodo para poder agregar encargos en la tarea
+// no pueden existir encargos con el mismo ID
+// en todos los casos se mostrará un aviso del resultado del proceso

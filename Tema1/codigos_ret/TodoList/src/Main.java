@@ -32,6 +32,18 @@ public class Main {
         Tarea tarea = new Tarea(3, "Practicar", "descipcion de la tarea",
                 new Persona("2345C", "Juan", "Garcia", 26),
                 5);
+        // cuantas personas entran en esta tarea
+        System.out.println(tarea.getEquipoTrabajo().length);
+        tarea.agregarPersonaEquipo(new Persona("1","Borja","Martin",41));
+        tarea.agregarPersonaEquipo(new Persona("2","Juan1","Martin",41));
+        tarea.agregarPersonaEquipo(new Persona("3","Juan2","Martin",41));
+        tarea.agregarPersonaEquipo(new Persona("4","Juan3","Martin",41));
+        tarea.eliminarPersona("4");
+        tarea.agregarPersonaEquipo(new Persona("5","Juan4","Martin",41));
+        // tarea.agregarPersonaEquipo(new Persona("3","Marcos","Martin",41));
+        //tarea.agregarPersonaEquipo(new Persona("4","Luis","Martin",41));
+        //tarea.agregarPersonaEquipo(new Persona("5","Lucas","Martin",41));
+        // tarea.mostrarEquipoTrabajo();
 
     }
 }
