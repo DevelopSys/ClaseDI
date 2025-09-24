@@ -3,6 +3,7 @@ import model.Tarea;
 
 public class Main {
     public static void main(String[] args) {
+        /*
         Tarea tareaPrincipal = new Tarea();
         Tarea tareaSecundaria = new Tarea(1, "Estudiar", "Esta tarea me ayudara a centrarme en el dia a dia del estucio",
                 new Persona("1234A", "Borja", "Martin", 41));
@@ -26,6 +27,11 @@ public class Main {
         System.out.println(persona);
         // tareaSecundaria.setTitulo("Estu");
         // System.out.println(tareaSecundaria.getTitulo(1234));
+
+         */
+        Tarea tarea = new Tarea(3, "Practicar", "descipcion de la tarea",
+                new Persona("2345C", "Juan", "Garcia", 26),
+                5);
 
     }
 }

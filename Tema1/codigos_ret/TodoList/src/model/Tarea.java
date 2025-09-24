@@ -39,6 +39,10 @@ public class Tarea {
         return equipoTrabajo;
     }
 
+    /*
+
+     */
+
     public void setEquipoTrabajo(Persona[] equipoTrabajo) {
         this.equipoTrabajo = equipoTrabajo;
     }
@@ -131,3 +135,10 @@ public class Tarea {
 
 // una tarea tiene hueco para 4 personas del equipo
 // inicialmente la tarea no tiene personas en el equipo asignadas
+
+// Agregar una persona al equipo de trabajo
+// Si no tengo hueco, saltara un aviso
+// Si intento agregar una persona al equipo de
+    // trabajo con un DNI ya existente
+    // saltará un aviso
+// en caso de agregar saltar un aviso de todo OK
