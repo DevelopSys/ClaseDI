@@ -1,5 +1,12 @@
 package model;
 
+import java.util.ArrayList;
+
+// crear el método que permite agregar un encargo
+    // los encargos deben tener ID unico -> PONER AVISOS
+// crear el método que permite eliminar un encargo
+    // para ello se pide el id del encargo y se quita de la lista -> PONER AVISOS
+
 public class Tarea {
 
     // una tarea tiene asociadas una serie de personas
@@ -10,18 +17,21 @@ public class Tarea {
     private String titulo, descripcion;
     private boolean prioritario, completada;
     private Persona[] encargados;
+    private ArrayList<Encargo> listaTareas;
 
     // constructores
     public Tarea() {
 
     }
 
-    public Tarea(String titulo, String descripcion, boolean prioritario, int numeroPersonas) {
+    public Tarea(String titulo, String descripcion, boolean prioritario,
+                 int numeroPersonas) {
         // completada = false;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.prioritario = prioritario;
         encargados = new Persona[numeroPersonas];
+        listaTareas = new ArrayList<>();
     }
 
     public Tarea(String titulo, String descripcion, int numeroPersonas) {
@@ -30,6 +40,7 @@ public class Tarea {
         this.titulo = titulo;
         this.descripcion = descripcion;
         encargados = new Persona[numeroPersonas];
+        listaTareas = new ArrayList<>();
     }
 
     // metodos -> getter / setter
@@ -99,6 +110,22 @@ public class Tarea {
             }
         }
         return false;
+    }
+
+    public Persona[] getEncargados() {
+        return encargados;
+    }
+
+    public void setEncargados(Persona[] encargados) {
+        this.encargados = encargados;
+    }
+
+    public ArrayList<Encargo> getListaTareas() {
+        return listaTareas;
+    }
+
+    public void setListaTareas(ArrayList<Encargo> listaTareas) {
+        this.listaTareas = listaTareas;
     }
 
     public String getTitulo() {

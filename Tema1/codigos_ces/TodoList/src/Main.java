@@ -8,9 +8,11 @@ public class Main {
                 "Esta practica de DI es hacer un programa todolist",
                 true,
                 2);
-        tarea.asignarResponsable(new Persona("123A","Nombre1","Apellido1",23));
-        tarea.asignarResponsable(new Persona("123A","Nombre1","Apellido1",23));
-        tarea.asignarResponsable(new Persona("123A","Nombre1","Apellido1",23));
+        // tarea.asignarResponsable(new Persona("123A","Nombre1","Apellido1",23));
+        // tarea.asignarResponsable(new Persona("123A","Nombre1","Apellido1",23));
+        // tarea.asignarResponsable(new Persona("123A","Nombre1","Apellido1",23));
+        System.out.printf("Esta tarea cuenta con %d encargos %n",tarea.getListaTareas().size());
+
         
 
     }
