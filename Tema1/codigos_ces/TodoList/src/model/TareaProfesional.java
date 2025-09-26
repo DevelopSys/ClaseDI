@@ -22,6 +22,15 @@ public class TareaProfesional extends Tarea{
         // se imprime por consola, a cada uno de los responbles el mensaje
             // Borja, recuerda terminar las tareas asociadas a esta tarea
             // Borja, recuerda terminar las tareas asociadas a esta tarea
+
+        for ( Persona persona : getEncargados() ) {
+            if (persona !=null){
+                System.out.printf("%s recuerda que completar %d tareas pendientes\n"
+                        ,persona.getNombre(),getListaTareas().size());
+            }
+
+        }
+
     }
 
     public TareaProfesional(String titulo, String descripcion, int numeroPersonas,
