@@ -29,8 +29,6 @@ public class Tarea {
         this.responsable = responsable;
         equipoTrabajo = new Persona[4];
         encargos = new ArrayList<>();
-
-
     }
 
     public Tarea(int id, String titulo, String descripcion, Persona responsable, int horasEmpleadas) {
@@ -93,7 +91,6 @@ public class Tarea {
     public Persona[] getEquipoTrabajo() {
         return equipoTrabajo;
     }
-
 
     public void setEquipoTrabajo(Persona[] equipoTrabajo) {
         this.equipoTrabajo = equipoTrabajo;

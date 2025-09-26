@@ -43,7 +43,7 @@ Cambiar responsable de tarea
 Mostrar tareas por responsbale -> DNI
  */
 
-public class Tarea {
+abstract public class Tarea {
 
     // una tarea tiene asociadas una serie de personas
     // cuando se crea la tarea es necesario pedir cuantas personas (NO QUE PERSONAS)
@@ -78,6 +78,9 @@ public class Tarea {
         encargados = new Persona[numeroPersonas];
         listaTareas = new ArrayList<>();
     }
+
+    // enviarRecordatorio -> totalmente diferente en TPro TPer
+    public abstract void enviarRecordatorio();
 
     // metodos -> getter / setter
 
