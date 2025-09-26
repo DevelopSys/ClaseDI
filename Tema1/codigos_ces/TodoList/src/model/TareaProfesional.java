@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class TareaProfesional extends Tarea{
+public class TareaProfesional extends Tarea implements FuncionalidadCompartida{
 
     /*
     private String titulo, descripcion;
@@ -69,5 +69,21 @@ public class TareaProfesional extends Tarea{
                 "presupuesto=" + presupuesto +
                 ", fechaLimite=" + fechaLimite +
                 '}';
+    }
+
+
+    @Override
+    public void metodoComun1() {
+        System.out.println("Funcionalidad 1 desde la clase Profesional");
+    }
+
+    @Override
+    public void metodoComun2() {
+        System.out.println("Funcionalidad 2 desde la clase Profesional");
+    }
+
+    @Override
+    public void metodoComun3() {
+        System.out.println("Funcionalidad 3 desde la clase Profesional");
     }
 }

@@ -1,6 +1,6 @@
 package model;
 
-public class TareaPersonal extends Tarea{
+public class TareaPersonal extends Tarea implements FuncionalidadCompartida{
     @Override
     public void enviarRecordatorio() {
         System.out.println("Enviar un recordatorio para reservar sitio en "+ubicacion);
@@ -39,5 +39,21 @@ public class TareaPersonal extends Tarea{
         return super.toString()+ "TareaPersonal{" +
                 "ubicacion='" + ubicacion + '\'' +
                 '}';
+    }
+
+
+    @Override
+    public void metodoComun1() {
+        System.out.println("Funcionalidad 1 desde la clase Personal");
+    }
+
+    @Override
+    public void metodoComun2() {
+        System.out.println("Funcionalidad 2 desde la clase Personal");
+    }
+
+    @Override
+    public void metodoComun3() {
+        System.out.println("Funcionalidad 3 desde la clase Personal");
     }
 }
