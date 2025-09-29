@@ -46,7 +46,7 @@ public class Tarea {
         // cuando el dni no este en la lista
         Persona estaPersona = estaPersona(persona.getDni());
         for (int i = 0; i < equipoTrabajo.length; i++) {
-            if (equipoTrabajo[i] == null && estaPersona ==null) {
+            if (equipoTrabajo[i] == null && estaPersona == null) {
                 equipoTrabajo[i] = persona;
                 System.out.printf("Agregado correctamente la persona con nombre %s%n"
                         , persona.getNombre());
@@ -60,32 +60,61 @@ public class Tarea {
 
         for (int i = 0; i < equipoTrabajo.length; i++) {
             if (equipoTrabajo[i] != null
-                    && equipoTrabajo[i].getDni().equalsIgnoreCase(dni)){
-               return equipoTrabajo[i];
+                    && equipoTrabajo[i].getDni().equalsIgnoreCase(dni)) {
+                return equipoTrabajo[i];
             }
         }
         return null;
     }
-    public void mostrarEquipoTrabajo(){
-        for ( Persona persona : equipoTrabajo) {
-            if(persona !=null){
+
+    public void mostrarEquipoTrabajo() {
+        for (Persona persona : equipoTrabajo) {
+            if (persona != null) {
                 persona.mostrarDatos();
                 // System.out.println(persona);
             }
         }
     }
 
-    public void eliminarPersona(String dni){
+    public void eliminarPersona(String dni) {
         for (int i = 0; i < equipoTrabajo.length; i++) {
-            if (equipoTrabajo[i]!=null &&
-                    equipoTrabajo[i].getDni().equalsIgnoreCase(dni)){
+            if (equipoTrabajo[i] != null &&
+                    equipoTrabajo[i].getDni().equalsIgnoreCase(dni)) {
                 System.out.printf("Eliminado correctamente " +
-                        "con nombre %s\n",equipoTrabajo[i].getNombre());
+                        "con nombre %s\n", equipoTrabajo[i].getNombre());
                 equipoTrabajo[i] = null;
                 return;
             }
         }
         System.out.println("DNI no encontrado");
+    }
+
+    // realizar el metodo que me permite agregar un encargo a la lista.
+    // no se podrán meter encargos con id duplicado
+    public void agregarEncargo(Encargo encargo) {
+        if (estaEncargo(encargo.getId()) == null){
+            System.out.println("Agregado encargo correctamente");
+            encargos.add(encargo);
+        } else {
+            System.out.println("Ya tienes un id metido en la lista");
+        }
+    }
+
+    // realizar un metodo que muestre la informacion de todos los encargos de la tarea
+        // en caso de estar vacia, saltar un aviso de no se encuentran encargos
+
+    // realizar un metodo que muestre la informacion de UNO encargo. Para ello se pasa
+        // el id y se muestra la info del encargo correspondiente
+        // en caso de no estar, se muestra un aviso
+    private Encargo estaEncargo(int id) {
+
+        for (Encargo encargo: encargos) {
+            if (encargo.getId() == id){
+                return encargo;
+            }
+        }
+        // System.out.println("No se ha encontrado el encargo");
+        return null;
     }
 
     public Persona[] getEquipoTrabajo() {
@@ -149,6 +178,14 @@ public class Tarea {
 
     public void setCompletada(boolean completada) {
         this.completada = completada;
+    }
+
+    public ArrayList<Encargo> getEncargos() {
+        return encargos;
+    }
+
+    public void setEncargos(ArrayList<Encargo> encargos) {
+        this.encargos = encargos;
     }
 
     @Override

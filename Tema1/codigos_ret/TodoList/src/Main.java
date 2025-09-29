@@ -1,3 +1,4 @@
+import model.Encargo;
 import model.Persona;
 import model.Tarea;
 
@@ -33,13 +34,15 @@ public class Main {
                 new Persona("2345C", "Juan", "Garcia", 26),
                 5);
         // cuantas personas entran en esta tarea
-        System.out.println(tarea.getEquipoTrabajo().length);
-        tarea.agregarPersonaEquipo(new Persona("1","Borja","Martin",41));
+        // System.out.println(tarea.getEquipoTrabajo().length);
+        tarea.agregarEncargo(new Encargo(1,"Planificar Practica DI"));
+        tarea.agregarEncargo(new Encargo(2,"Codificar Practica DI"));
+        /* tarea.agregarPersonaEquipo(new Persona("1","Borja","Martin",41));
         tarea.agregarPersonaEquipo(new Persona("2","Juan1","Martin",41));
         tarea.agregarPersonaEquipo(new Persona("3","Juan2","Martin",41));
         tarea.agregarPersonaEquipo(new Persona("4","Juan3","Martin",41));
         tarea.eliminarPersona("4");
-        tarea.agregarPersonaEquipo(new Persona("5","Juan4","Martin",41));
+        tarea.agregarPersonaEquipo(new Persona("5","Juan4","Martin",41));*/
         // tarea.agregarPersonaEquipo(new Persona("3","Marcos","Martin",41));
         //tarea.agregarPersonaEquipo(new Persona("4","Luis","Martin",41));
         //tarea.agregarPersonaEquipo(new Persona("5","Lucas","Martin",41));
