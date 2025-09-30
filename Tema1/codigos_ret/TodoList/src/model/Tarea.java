@@ -102,10 +102,60 @@ public class Tarea {
 
     // realizar un metodo que muestre la informacion de todos los encargos de la tarea
         // en caso de estar vacia, saltar un aviso de no se encuentran encargos
+    public void mostrarEncargos(){
+        if (!encargos.isEmpty()) {
+            for ( Encargo item: encargos ) {
+                System.out.println(item);
+            }
+        } else {
+            System.out.println("Vacia, no hay nada");
+        }
+    }
 
     // realizar un metodo que muestre la informacion de UNO encargo. Para ello se pasa
         // el id y se muestra la info del encargo correspondiente
         // en caso de no estar, se muestra un aviso
+
+    public void mostrarEncargo(int id){
+        Encargo encargoEncontrado = estaEncargo(id);
+        if(encargoEncontrado!=null){
+            System.out.println(encargoEncontrado);
+        } else {
+            System.out.println("No hay encargo con ese ID");
+        }
+    }
+
+    // crear un metodo que elimine un encargo, para ello me dara el id
+        // y eliminará el encargo con ese ID
+
+    public void eliminarEncargo(int id){
+        Encargo encargoEncontrado = estaEncargo(id);
+        if(encargoEncontrado!=null){
+            encargos.remove(encargoEncontrado);
+        } else {
+            System.out.println("No hay encargo con ese ID");
+        }
+    }
+
+    // crear un metodo que permita completar un encargo, Para eñlo se pedira un id
+        // y dicho encargo quedará completado
+
+    public void completarEncargo(int id){
+        Encargo encargoEncontrado = estaEncargo(id);
+        if(encargoEncontrado!=null){
+            encargoEncontrado.setRealizado(true);
+        } else {
+            System.out.println("No hay encargo con ese ID");
+        }
+    }
+
+    // realizar un metodo que permita completar una tarea
+        // una tarea estara completa cuando todos sus encargos estan completos
+
+    // mostrar encargos pendientes
+        // se mostrara la informacion de los encargos asociados a una tarea
+        // que no esta completos
+
     private Encargo estaEncargo(int id) {
 
         for (Encargo encargo: encargos) {

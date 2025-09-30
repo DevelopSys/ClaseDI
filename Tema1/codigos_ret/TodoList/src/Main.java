@@ -33,11 +33,21 @@ public class Main {
         Tarea tarea = new Tarea(3, "Practicar", "descipcion de la tarea",
                 new Persona("2345C", "Juan", "Garcia", 26),
                 5);
+        tarea.agregarEncargo(new Encargo(1,"Planificar Practica DI"));
+        tarea.agregarEncargo(new Encargo(2, "Planificar Practica DI"));
+        tarea.completarEncargo(2);
+        tarea.eliminarEncargo(2);
+        tarea.mostrarEncargos();
+        //tarea.agregarEncargo(new Encargo(2, "Codificar Practica DI"));
+        //tarea.agregarEncargo(new Encargo(2, "Codificar Practica DI"));
+        // tarea.mostrarEncargo(5);
+        //tarea.mostrarEncargos();
         // cuantas personas entran en esta tarea
         // System.out.println(tarea.getEquipoTrabajo().length);
-        tarea.agregarEncargo(new Encargo(1,"Planificar Practica DI"));
-        tarea.agregarEncargo(new Encargo(2,"Codificar Practica DI"));
+        // tarea.agregarEncargo(new Encargo(1,"Planificar Practica DI"));
+        // tarea.agregarEncargo(new Encargo(2,"Codificar Practica DI"));
         /* tarea.agregarPersonaEquipo(new Persona("1","Borja","Martin",41));
+
         tarea.agregarPersonaEquipo(new Persona("2","Juan1","Martin",41));
         tarea.agregarPersonaEquipo(new Persona("3","Juan2","Martin",41));
         tarea.agregarPersonaEquipo(new Persona("4","Juan3","Martin",41));

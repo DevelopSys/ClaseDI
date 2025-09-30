@@ -41,6 +41,12 @@ public class Encargo {
         this.realizado = realizado;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Encargo{" +
+                "id=" + id +
+                ", titulo='" + titulo + '\'' +
+                ", realizado=" + realizado +
+                '}';
+    }
 }
