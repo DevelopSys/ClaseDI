@@ -13,4 +13,5 @@ module org.example.appinicial {
 
     opens org.example.appinicial to javafx.fxml;
     exports org.example.appinicial;
+
 }
