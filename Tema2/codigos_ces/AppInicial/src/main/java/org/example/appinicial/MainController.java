@@ -77,18 +77,12 @@ public class MainController implements Initializable {
 
         buttonVaciar.setOnAction(new ManejoAccion());
         buttonPulsar.setOnAction(new ManejoAccion());
-        buttonPulsar.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                buttonPulsar.setEffect(sombra);
-            }
-        });
-        buttonPulsar.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                buttonPulsar.setEffect(null);
-            }
-        });
+        // buttonPulsar.setOnMouseEntered(mouseEvent -> buttonPulsar.setEffect(sombra));
+        // buttonPulsar.setOnMouseExited(mouseEvent -> buttonPulsar.setEffect(null));
+        buttonPulsar.setOnMouseExited(new ManejoRaton());
+        buttonPulsar.setOnMouseEntered(new ManejoRaton());
+        buttonVaciar.setOnMouseExited(new ManejoRaton());
+        buttonVaciar.setOnMouseEntered(new ManejoRaton());
 
     }
 
@@ -113,4 +107,13 @@ public class MainController implements Initializable {
             }
         }
     }
+    class ManejoRaton implements EventHandler<MouseEvent>{
+
+        @Override
+        public void handle(MouseEvent mouseEvent) {
+            System.out.println("Foco raton");
+        }
+    }
+
 }
+
