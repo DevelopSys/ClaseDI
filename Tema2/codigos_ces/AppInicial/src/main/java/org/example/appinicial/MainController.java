@@ -78,21 +78,12 @@ public class MainController implements Initializable {
 
         buttonVaciar.setOnAction(new ManejoAccion());
         buttonPulsar.setOnAction(new ManejoAccion());
-        buttonPulsar.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                buttonPulsar.setCursor(Cursor.OPEN_HAND);
-            }
-        });
-        buttonPulsar.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                buttonPulsar.setCursor(Cursor.CLOSED_HAND);
-            }
-        });
+
         // buttonPulsar.setOnMouseExited(mouseEvent -> buttonPulsar.setEffect(null));
+        buttonPulsar.setOnMousePressed(new ManejoRaton());
+        buttonPulsar.setOnMouseReleased(new ManejoRaton());
         buttonPulsar.setOnMouseExited(new ManejoRaton());
-        // buttonPulsar.setOnMouseEntered(new ManejoRaton());
+        buttonPulsar.setOnMouseEntered(new ManejoRaton());
         buttonVaciar.setOnMouseExited(new ManejoRaton());
         buttonVaciar.setOnMouseEntered(new ManejoRaton());
 
@@ -127,8 +118,15 @@ public class MainController implements Initializable {
             Button boton = (Button) mouseEvent.getSource();
             if (mouseEvent.getEventType() == MouseEvent.MOUSE_ENTERED) {
                 boton.setEffect(sombra);
+                if (boton == buttonPulsar){
+                    boton.setCursor(Cursor.OPEN_HAND);
+                }
             } else if (mouseEvent.getEventType() == MouseEvent.MOUSE_EXITED) {
                 boton.setEffect(null);
+            } else if (mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED) {
+                buttonPulsar.setCursor(Cursor.CLOSED_HAND);
+            } else if (mouseEvent.getEventType() == MouseEvent.MOUSE_RELEASED) {
+                buttonPulsar.setCursor(Cursor.OPEN_HAND);
             }
         }
     }
