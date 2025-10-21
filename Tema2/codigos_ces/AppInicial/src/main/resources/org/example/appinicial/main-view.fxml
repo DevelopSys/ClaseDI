@@ -33,4 +33,7 @@
             </BorderPane.margin>
         </TextField>
     </center>
+   <right>
+      <Button fx:id="buttonLimpiar" mnemonicParsing="false" text="Limpiar" BorderPane.alignment="CENTER" />
+   </right>
 </BorderPane>

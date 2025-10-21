@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
 
     @FXML
-    private Button buttonPulsar, buttonVaciar;
+    private Button buttonPulsar, buttonVaciar, buttonLimpiar;
 
     @FXML
     private Label labelSaludo;
@@ -86,6 +86,7 @@ public class MainController implements Initializable {
         buttonPulsar.setOnMouseEntered(new ManejoRaton());
         buttonVaciar.setOnMouseExited(new ManejoRaton());
         buttonVaciar.setOnMouseEntered(new ManejoRaton());
+        buttonLimpiar.addEventHandler(ActionEvent.ACTION,new ManejoAccion());
 
     }
 
@@ -106,6 +107,8 @@ public class MainController implements Initializable {
                 }
             } else if (actionEvent.getSource() == buttonVaciar) {
                 labelSaludo.setText("");
+                textfieldNombre.clear();
+            } else if (actionEvent.getSource() == buttonLimpiar) {
                 textfieldNombre.clear();
             }
         }
