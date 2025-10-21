@@ -7,6 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,12 +24,25 @@ public class MainController implements Initializable {
     @FXML
     private TextField textfieldNombre;
 
+    private DropShadow sombra;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Ejecutado directamente en la asociacion de la stage
+        instancias();
+        initGUI();
 
         acciones();
+    }
+
+    private void initGUI() {
+        // personalizara las partes de la UI
+        // buttonPulsar.setEffect(sombra);
+    }
+
+    private void instancias() {
+        sombra = new DropShadow();
     }
 
     private void acciones() {
@@ -62,19 +77,39 @@ public class MainController implements Initializable {
 
         buttonVaciar.setOnAction(new ManejoAccion());
         buttonPulsar.setOnAction(new ManejoAccion());
+        buttonPulsar.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                buttonPulsar.setEffect(sombra);
+            }
+        });
+        buttonPulsar.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                buttonPulsar.setEffect(null);
+            }
+        });
+
     }
 
 
-    class ManejoAccion implements EventHandler<ActionEvent>{
+    class ManejoAccion implements EventHandler<ActionEvent> {
 
         @Override
         public void handle(ActionEvent actionEvent) {
             System.out.println("Pulsado boton");
             // que boton se ha pulsado?
-            if (actionEvent.getSource()==buttonPulsar){
-
-            } else if (actionEvent.getSource()==buttonVaciar){
-
+            if (actionEvent.getSource() == buttonPulsar) {
+                String nombre = textfieldNombre.getText();
+                if (nombre.isBlank()) {
+                    System.out.println("Por favor rellena el nombre");
+                } else {
+                    labelSaludo.setText(String.format("Enhorabuena %s has completado el 1er ejercicio", nombre));
+                    textfieldNombre.clear();
+                }
+            } else if (actionEvent.getSource() == buttonVaciar) {
+                labelSaludo.setText("");
+                textfieldNombre.clear();
             }
         }
     }
