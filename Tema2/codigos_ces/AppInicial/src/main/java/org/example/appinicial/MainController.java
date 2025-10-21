@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -77,10 +78,21 @@ public class MainController implements Initializable {
 
         buttonVaciar.setOnAction(new ManejoAccion());
         buttonPulsar.setOnAction(new ManejoAccion());
-        // buttonPulsar.setOnMouseEntered(mouseEvent -> buttonPulsar.setEffect(sombra));
+        buttonPulsar.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                buttonPulsar.setCursor(Cursor.OPEN_HAND);
+            }
+        });
+        buttonPulsar.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                buttonPulsar.setCursor(Cursor.CLOSED_HAND);
+            }
+        });
         // buttonPulsar.setOnMouseExited(mouseEvent -> buttonPulsar.setEffect(null));
         buttonPulsar.setOnMouseExited(new ManejoRaton());
-        buttonPulsar.setOnMouseEntered(new ManejoRaton());
+        // buttonPulsar.setOnMouseEntered(new ManejoRaton());
         buttonVaciar.setOnMouseExited(new ManejoRaton());
         buttonVaciar.setOnMouseEntered(new ManejoRaton());
 
@@ -107,11 +119,17 @@ public class MainController implements Initializable {
             }
         }
     }
-    class ManejoRaton implements EventHandler<MouseEvent>{
+
+    class ManejoRaton implements EventHandler<MouseEvent> {
 
         @Override
         public void handle(MouseEvent mouseEvent) {
-            System.out.println("Foco raton");
+            Button boton = (Button) mouseEvent.getSource();
+            if (mouseEvent.getEventType() == MouseEvent.MOUSE_ENTERED) {
+                boton.setEffect(sombra);
+            } else if (mouseEvent.getEventType() == MouseEvent.MOUSE_EXITED) {
+                boton.setEffect(null);
+            }
         }
     }
 
