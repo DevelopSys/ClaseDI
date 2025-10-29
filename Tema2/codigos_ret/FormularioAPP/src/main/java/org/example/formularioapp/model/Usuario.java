@@ -1,4 +1,4 @@
-package org.example.formularioapp;
+package org.example.formularioapp.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

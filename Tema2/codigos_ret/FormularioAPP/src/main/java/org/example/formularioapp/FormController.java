@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
+import org.example.formularioapp.model.Usuario;
 
 import java.net.URL;
 import java.util.ResourceBundle;

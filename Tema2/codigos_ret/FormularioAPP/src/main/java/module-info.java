@@ -6,6 +6,9 @@ module org.example.formularioapp {
     requires net.synedra.validatorfx;
     requires lombok;
 
-    opens org.example.formularioapp to javafx.fxml, lombok;
+    opens org.example.formularioapp to javafx.fxml;
     exports org.example.formularioapp;
+
+    exports org.example.formularioapp.model;
+    opens org.example.formularioapp.model to javafx.fxml, lombok;
 }
