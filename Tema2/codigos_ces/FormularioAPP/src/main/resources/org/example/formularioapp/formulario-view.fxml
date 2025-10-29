@@ -16,7 +16,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane
+        fx:controller="org.example.formularioapp.FormController"
+        fx:id="panelGeneral" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -31,15 +33,15 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField promptText="introduce nombre" />
-            <TextField promptText="introduce correo" GridPane.rowIndex="1" />
-            <TextField promptText="introduce localizacion" GridPane.rowIndex="2" />
-            <ComboBox maxWidth="1.7976931348623157E308" promptText="Selecciona tu edad" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
-            <CheckBox mnemonicParsing="false" text="Disponibilidad" GridPane.rowIndex="5" />
+            <TextField fx:id="texfieldNombre" promptText="introduce nombre" />
+            <TextField fx:id="textfieldCorreo" promptText="introduce correo" GridPane.rowIndex="1" />
+            <TextField fx:id="textfieldLocalizacion" promptText="introduce localizacion" GridPane.rowIndex="2" />
+            <ComboBox fx:id="comboEdad" maxWidth="1.7976931348623157E308" promptText="Selecciona tu edad" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+            <CheckBox fx:id="checkDisponibilidad" selected="true" mnemonicParsing="false" text="Disponibilidad" GridPane.rowIndex="5" />
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.rowIndex="4">
                <children>
-                  <RadioButton mnemonicParsing="false" text="Masculino" />
-                  <RadioButton mnemonicParsing="false" text="Femenino" />
+                  <RadioButton fx:id="radioMasculino" mnemonicParsing="false" text="Masculino" />
+                  <RadioButton fx:id="radioFemenino" mnemonicParsing="false" text="Femenino" />
                </children>
             </HBox>
          </children>
@@ -51,9 +53,9 @@
    <bottom>
       <FlowPane alignment="CENTER" hgap="20.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Agregar" />
-            <Button mnemonicParsing="false" text="Eliminar" />
-            <ToggleButton mnemonicParsing="false" text="Ver lista" />
+            <Button fx:id="botonAgregar" mnemonicParsing="false" text="Agregar" />
+            <Button fx:id="botonEliminar" mnemonicParsing="false" text="Eliminar" />
+            <ToggleButton fx:id="toggleLista" mnemonicParsing="false" text="Ver lista" />
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -61,7 +63,7 @@
       </FlowPane>
    </bottom>
    <right>
-      <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <FlowPane fx:id="parteDerecha" alignment="CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="Label" />
          </children>
