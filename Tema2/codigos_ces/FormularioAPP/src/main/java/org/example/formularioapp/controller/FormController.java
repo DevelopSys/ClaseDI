@@ -1,4 +1,4 @@
-package org.example.formularioapp;
+package org.example.formularioapp.controller;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
+import org.example.formularioapp.model.Usuario;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -56,6 +57,7 @@ public class FormController implements Initializable {
     private ToggleGroup grupoGenero;
 
     private ObservableList<Integer> listaEdades;
+    private ObservableList<Usuario> listaUsuarios;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -72,8 +74,19 @@ public class FormController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue,
                                 Boolean oldValue, Boolean newValue) {
-                    botonAgregar.setDisable(!newValue);
+                botonAgregar.setDisable(!newValue);
 
+            }
+        });
+        toggleLista.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observableValue,
+                                Boolean aBoolean, Boolean t1) {
+                if (t1) {
+                    panelGeneral.setRight(parteDerecha);
+                } else {
+                    panelGeneral.setRight(null);
+                }
             }
         });
     }
@@ -82,6 +95,7 @@ public class FormController implements Initializable {
         grupoGenero = new ToggleGroup();
         grupoGenero.getToggles().addAll(radioMasculino, radioFemenino);
         listaEdades = FXCollections.observableArrayList();
+        listaUsuarios = FXCollections.observableArrayList();
         for (int i = 18; i < 91; i++) {
             listaEdades.add(i);
         }
@@ -90,6 +104,11 @@ public class FormController implements Initializable {
     private void initGUI() {
         comboEdad.setItems(listaEdades);
         botonAgregar.setDisable(!checkDisponibilidad.isSelected());
+        if (toggleLista.isSelected()) {
+            panelGeneral.setRight(parteDerecha);
+        } else {
+            panelGeneral.setRight(null);
+        }
     }
 
     class ManejoActions implements EventHandler<ActionEvent> {
@@ -98,19 +117,29 @@ public class FormController implements Initializable {
         public void handle(ActionEvent actionEvent) {
             if (actionEvent.getSource() == botonAgregar) {
 
-                String nombre = texfieldNombre.getText();
-                String correo = textfieldCorreo.getText();
-                String localizacion = textfieldLocalizacion.getText();
-                String genero = ((RadioButton) grupoGenero.getSelectedToggle()).getText();
-                boolean disponibilidad = checkDisponibilidad.isSelected();
-                int edad = comboEdad.getSelectionModel().getSelectedItem();
 
-                System.out.println("nombre = " + nombre);
-                System.out.println("correo = " + correo);
-                System.out.println("localizacion = " + localizacion);
-                System.out.println("genero = " + genero);
-                System.out.println("disponibilidad = " + disponibilidad);
-                System.out.println("edad = " + edad);
+                if (!texfieldNombre.getText().isEmpty()
+                        && !textfieldCorreo.getText().isEmpty()
+                        && !textfieldLocalizacion.getText().isEmpty()
+                        && grupoGenero.getSelectedToggle() != null
+                        && comboEdad.getSelectionModel().getSelectedItem() >= 0
+                ) {
+                    String nombre = texfieldNombre.getText();
+                    String correo = textfieldCorreo.getText();
+                    String localizacion = textfieldLocalizacion.getText();
+                    String genero = ((RadioButton) grupoGenero.getSelectedToggle()).getText();
+                    boolean disponibilidad = checkDisponibilidad.isSelected();
+                    int edad = comboEdad.getSelectionModel().getSelectedItem();
+                    Usuario usuario = new Usuario(
+                            nombre, correo, localizacion, genero, edad, disponibilidad
+                    );
+                    listaUsuarios.add(usuario);
+
+                    // limpiar todos los datso
+                } else {
+                    System.out.println("Error, faltan datoss");
+                }
+
 
             } else if (actionEvent.getSource() == botonEliminar) {
 
