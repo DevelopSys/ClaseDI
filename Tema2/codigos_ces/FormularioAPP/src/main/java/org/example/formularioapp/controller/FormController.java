@@ -20,17 +20,15 @@ import java.util.ResourceBundle;
 public class FormController implements Initializable {
 
     @FXML
+    private Button botonDetalle;
+    @FXML
     private Button botonAgregar;
-
     @FXML
     private Button botonEliminar;
-
     @FXML
     private CheckBox checkDisponibilidad;
-
     @FXML
     private ComboBox<Integer> comboEdad;
-
     @FXML
     private BorderPane panelGeneral;
     @FXML
@@ -71,6 +69,7 @@ public class FormController implements Initializable {
     }
 
     private void acciones() {
+        botonDetalle.setOnAction(new ManejoActions());
         botonAgregar.setOnAction(new ManejoActions());
         botonEliminar.setOnAction(new ManejoActions());
         checkDisponibilidad.selectedProperty().addListener(new ChangeListener<Boolean>() {
@@ -115,6 +114,26 @@ public class FormController implements Initializable {
         }
     }
 
+    private void limpiarDatos() {
+        texfieldNombre.clear();
+        textfieldCorreo.clear();
+        textfieldLocalizacion.clear();
+        checkDisponibilidad.setSelected(false);
+        grupoGenero.selectToggle(null);
+        comboEdad.getSelectionModel().select(-1);
+    }
+
+    private Usuario estaUsuario(String correo) {
+
+        for (Usuario item : listaUsuarios) {
+            if (item.getCorreo().equalsIgnoreCase(correo)) {
+                return item;
+            }
+        }
+
+        return null;
+    }
+
     class ManejoActions implements EventHandler<ActionEvent> {
 
         @Override
@@ -134,20 +153,36 @@ public class FormController implements Initializable {
                     String genero = ((RadioButton) grupoGenero.getSelectedToggle()).getText();
                     boolean disponibilidad = checkDisponibilidad.isSelected();
                     int edad = comboEdad.getSelectionModel().getSelectedItem();
-                    Usuario usuario = new Usuario(
-                            nombre, correo, localizacion, genero, edad, disponibilidad
-                    );
-                    listaUsuarios.add(usuario);
 
-                    // limpiar todos los datso
-                } else {
-                    System.out.println("Error, faltan datoss");
+                    if (estaUsuario(correo) != null) {
+
+                        System.out.println("El usuario ya esta en la lista");
+                    } else {
+                        Usuario usuario = new Usuario(
+                                nombre, correo, localizacion, genero, edad, disponibilidad
+                        );
+                        listaUsuarios.add(usuario);
+                        System.out.println("Usuario agregado correctamente");
+                        limpiarDatos();
+                    }
+
                 }
 
 
-            } else if (actionEvent.getSource() == botonEliminar) {
-
+                // limpiar todos los datso
             }
+            else if (actionEvent.getSource() == botonDetalle) {
+                int posicionSeleccionada = listViewUsuarios.getSelectionModel().getSelectedIndex();
+                Usuario usuarioSeleccionado = listViewUsuarios.getSelectionModel().getSelectedItem();
+                System.out.println("La posicion seleccionada es "+posicionSeleccionada);
+                System.out.println("El elemento seleccionado es "+usuarioSeleccionado.getCorreo());
+            }
+            else if (actionEvent.getSource() == botonEliminar) {
+                listaUsuarios.remove(0);
+            }
+
+
         }
     }
 }
+
