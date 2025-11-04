@@ -13,4 +13,8 @@ public class Usuario {
     private int edad;
     private boolean disponibilidad;
 
+    @Override
+    public String toString() {
+        return nombre;
+    }
 }

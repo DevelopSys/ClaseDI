@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
 import org.example.formularioapp.model.Usuario;
 
 import java.net.URL;
@@ -32,9 +33,11 @@ public class FormController implements Initializable {
 
     @FXML
     private BorderPane panelGeneral;
+    @FXML
+    private ListView<Usuario> listViewUsuarios;
 
     @FXML
-    private FlowPane parteDerecha;
+    private GridPane parteDerecha;
 
     @FXML
     private RadioButton radioFemenino;
@@ -102,6 +105,7 @@ public class FormController implements Initializable {
     }
 
     private void initGUI() {
+        listViewUsuarios.setItems(listaUsuarios);
         comboEdad.setItems(listaEdades);
         botonAgregar.setDisable(!checkDisponibilidad.isSelected());
         if (toggleLista.isSelected()) {
