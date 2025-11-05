@@ -9,6 +9,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
@@ -178,12 +179,35 @@ public class FormController implements Initializable {
 
 
                 // limpiar todos los datso
-            } else if (actionEvent.getSource() == botonDetalle) {
+            }
+            else if (actionEvent.getSource() == botonDetalle)
+            {
                 int posicionSeleccionada = listViewUsuarios.getSelectionModel().getSelectedIndex();
-                Usuario usuarioSeleccionado = listViewUsuarios.getSelectionModel().getSelectedItem();
+                if (posicionSeleccionada!=-1){
+                    Usuario usuario = listViewUsuarios.getSelectionModel().getSelectedItem();
+                    Stage ventanaDetalle = new Stage();
+                    FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("detalle-view.fxml"));
+                    Parent root = null;
+                    try {
+                        root = loader.load();
+                        DialogoController dialogoController = loader.getController();
+                        dialogoController.setUsuario(usuario);
+                        Scene scene = new Scene(root);
+                        ventanaDetalle.setScene(scene);
+                        ventanaDetalle.initModality(Modality.APPLICATION_MODAL);
+                        ventanaDetalle.setTitle("Ventana detalle");
+                        ventanaDetalle.show();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                /*Usuario usuarioSeleccionado = listViewUsuarios.getSelectionModel().getSelectedItem();
                 System.out.println("La posicion seleccionada es " + posicionSeleccionada);
                 System.out.println("El elemento seleccionado es " + usuarioSeleccionado.getCorreo());
-            } else if (actionEvent.getSource() == botonEliminar) {
+
+                 */
+            }
+            else if (actionEvent.getSource() == botonEliminar) {
                 if (listViewUsuarios.getSelectionModel().getSelectedIndex() != -1) {
                     listaUsuarios.remove(listViewUsuarios.getSelectionModel().getSelectedIndex());
                 } else {
