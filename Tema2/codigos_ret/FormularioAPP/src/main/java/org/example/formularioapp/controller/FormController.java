@@ -1,4 +1,4 @@
-package org.example.formularioapp;
+package org.example.formularioapp.controller;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
 import org.example.formularioapp.model.Usuario;
 
 import java.net.URL;
@@ -28,7 +29,7 @@ public class FormController implements Initializable {
     private ComboBox<Integer> comboEdad;
 
     @FXML
-    private FlowPane panelLista;
+    private GridPane panelLista;
 
     @FXML
     BorderPane panelGeneral;
@@ -42,9 +43,14 @@ public class FormController implements Initializable {
     @FXML
     private ToggleButton toggleLista;
 
+    @FXML
+    private ListView<Usuario> listViewUsuarios;
+
     private ToggleGroup grupoGenero;
 
     private ObservableList<Integer> listaEdades;
+
+    private ObservableList<Usuario> listaUsuarios;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -74,21 +80,7 @@ public class FormController implements Initializable {
 
             }
         });
-        buttonAgregar.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-
-                Usuario usuario = new Usuario(textFieldNombre.getText(),
-                        textfieldApellido.getText(),
-                        textfieldCorreo.getText(),
-                        ((RadioButton)grupoGenero.getSelectedToggle()).getText(),
-                        comboEdad.getSelectionModel().getSelectedItem(),
-                        checkDisponibilidad.isSelected()
-                        );
-
-
-            }
-        });
+        buttonAgregar.setOnAction(new ManejoAcciones());
     }
 
     private void initGUI() {
@@ -96,13 +88,32 @@ public class FormController implements Initializable {
         panelGeneral.setRight(null);
         grupoGenero.getToggles().addAll(radioFemenino, radioMasculino);
         comboEdad.setItems(listaEdades);
+        listViewUsuarios.setItems(listaUsuarios);
     }
 
     private void instancias() {
+        listaUsuarios = FXCollections.observableArrayList();
         listaEdades = FXCollections.observableArrayList();
         for (int i = 18; i <= 90; i++) {
             listaEdades.add(i); // [18....90]
         }
         grupoGenero = new ToggleGroup();
+    }
+
+    class ManejoAcciones implements EventHandler<ActionEvent> {
+
+        @Override
+        public void handle(ActionEvent actionEvent) {
+            if (actionEvent.getSource() == buttonAgregar) {
+                Usuario usuario = new Usuario(textFieldNombre.getText(),
+                        textfieldApellido.getText(),
+                        textfieldCorreo.getText(),
+                        ((RadioButton) grupoGenero.getSelectedToggle()).getText(),
+                        comboEdad.getSelectionModel().getSelectedItem(),
+                        checkDisponibilidad.isSelected()
+                );
+                listaUsuarios.add(usuario);
+            }
+        }
     }
 }

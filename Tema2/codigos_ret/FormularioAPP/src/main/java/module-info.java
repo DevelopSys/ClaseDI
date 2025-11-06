@@ -11,4 +11,7 @@ module org.example.formularioapp {
 
     exports org.example.formularioapp.model;
     opens org.example.formularioapp.model to javafx.fxml, lombok;
+
+    exports org.example.formularioapp.controller;
+    opens org.example.formularioapp.controller to javafx.fxml;
 }

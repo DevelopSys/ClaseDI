@@ -187,7 +187,8 @@ public class FormController implements Initializable {
                 }
 
                 // limpiar todos los datso
-            } else if (actionEvent.getSource() == botonDetalle || actionEvent.getSource() == menuDetalle ) {
+            }
+            else if (actionEvent.getSource() == botonDetalle || actionEvent.getSource() == menuDetalle ) {
                 int posicionSeleccionada = listViewUsuarios.getSelectionModel().getSelectedIndex();
                 if (posicionSeleccionada != -1) {
                     Usuario usuario = listViewUsuarios.getSelectionModel().getSelectedItem();
@@ -234,8 +235,9 @@ public class FormController implements Initializable {
                 }
 
             }
-
-
+            else if (actionEvent.getSource() == menuLista){
+                toggleLista.setSelected(!toggleLista.isSelected());
+            }
         }
     }
 }
