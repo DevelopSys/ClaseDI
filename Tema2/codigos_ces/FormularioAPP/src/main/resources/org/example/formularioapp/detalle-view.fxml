@@ -4,6 +4,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
+<?import javafx.scene.control.Button?>
 <VBox
         fx:controller="org.example.formularioapp.controller.DialogoController"
         alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
@@ -13,5 +14,6 @@
       <Label fx:id="textoLocalizacion" />
       <Label fx:id="textoEdad" />
       <Label fx:id="textoGenero" />
+       <Button fx:id="botonContestar" text="Modificar"/>
    </children>
 </VBox>

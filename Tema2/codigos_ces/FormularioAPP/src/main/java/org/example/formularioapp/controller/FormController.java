@@ -29,6 +29,9 @@ import java.util.Scanner;
 public class FormController implements Initializable {
 
     @FXML
+    private MenuItem menuEliminar, menuDetalle, menuLista;
+
+    @FXML
     private Button botonDetalle;
     @FXML
     private Button botonAgregar;
@@ -81,6 +84,9 @@ public class FormController implements Initializable {
         botonDetalle.setOnAction(new ManejoActions());
         botonAgregar.setOnAction(new ManejoActions());
         botonEliminar.setOnAction(new ManejoActions());
+        menuDetalle.setOnAction(new ManejoActions());
+        menuEliminar.setOnAction(new ManejoActions());
+        menuLista.setOnAction(new ManejoActions());
         checkDisponibilidad.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue,
@@ -143,13 +149,17 @@ public class FormController implements Initializable {
         return null;
     }
 
+    public void actualizarUsuario(Usuario u) {
+        // actualizar el usuario
+        System.out.println("Contestacion realizada con exito");
+
+    }
+
     class ManejoActions implements EventHandler<ActionEvent> {
 
         @Override
         public void handle(ActionEvent actionEvent) {
             if (actionEvent.getSource() == botonAgregar) {
-
-
                 if (!texfieldNombre.getText().isEmpty()
                         && !textfieldCorreo.getText().isEmpty()
                         && !textfieldLocalizacion.getText().isEmpty()
@@ -174,16 +184,12 @@ public class FormController implements Initializable {
                         System.out.println("Usuario agregado correctamente");
                         limpiarDatos();
                     }
-
                 }
 
-
                 // limpiar todos los datso
-            }
-            else if (actionEvent.getSource() == botonDetalle)
-            {
+            } else if (actionEvent.getSource() == botonDetalle || actionEvent.getSource() == menuDetalle ) {
                 int posicionSeleccionada = listViewUsuarios.getSelectionModel().getSelectedIndex();
-                if (posicionSeleccionada!=-1){
+                if (posicionSeleccionada != -1) {
                     Usuario usuario = listViewUsuarios.getSelectionModel().getSelectedItem();
                     Stage ventanaDetalle = new Stage();
                     FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("detalle-view.fxml"));
@@ -192,6 +198,7 @@ public class FormController implements Initializable {
                         root = loader.load();
                         DialogoController dialogoController = loader.getController();
                         dialogoController.setUsuario(usuario);
+                        dialogoController.setFormController(FormController.this);
                         Scene scene = new Scene(root);
                         ventanaDetalle.setScene(scene);
                         ventanaDetalle.initModality(Modality.APPLICATION_MODAL);
@@ -206,8 +213,7 @@ public class FormController implements Initializable {
                 System.out.println("El elemento seleccionado es " + usuarioSeleccionado.getCorreo());
 
                  */
-            }
-            else if (actionEvent.getSource() == botonEliminar) {
+            } else if (actionEvent.getSource() == botonEliminar || actionEvent.getSource() == menuEliminar) {
                 if (listViewUsuarios.getSelectionModel().getSelectedIndex() != -1) {
                     listaUsuarios.remove(listViewUsuarios.getSelectionModel().getSelectedIndex());
                 } else {

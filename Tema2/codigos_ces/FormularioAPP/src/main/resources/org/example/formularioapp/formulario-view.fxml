@@ -5,9 +5,13 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
@@ -45,6 +49,9 @@
          <BorderPane.margin>
             <Insets right="10.0" />
          </BorderPane.margin>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
       </GridPane>
    </center>
    <bottom>
@@ -69,11 +76,42 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <ListView fx:id="listViewUsuarios" maxHeight="1.7976931348623157E308" prefHeight="300.0" prefWidth="200.0" />
+            <ListView fx:id="listViewUsuarios" maxHeight="1.7976931348623157E308" prefHeight="300.0" prefWidth="200.0">
+               <padding>
+                  <Insets right="20.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin></ListView>
          </children>
       </GridPane>
    </right>
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="20.0" />
+         </BorderPane.margin>
+         <menus>
+            <Menu mnemonicParsing="false" text="Acciones">
+              <items>
+                <MenuItem fx:id="menuEliminar" mnemonicParsing="false" text="Eliminar">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="X" control="ANY" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="menuDetalle" mnemonicParsing="false" text="Ver detalle">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="D" control="ANY" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="menuLista" mnemonicParsing="false" text="Ver lista">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="L" control="ANY" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+              </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+   </top>
 </BorderPane>
