@@ -11,4 +11,9 @@ public class Usuario {
     private String nombre, apellido, correo, genero;
     private int edad;
     private boolean disponibilidad;
+
+    @Override
+    public String toString() {
+        return nombre+" "+apellido;
+    }
 }

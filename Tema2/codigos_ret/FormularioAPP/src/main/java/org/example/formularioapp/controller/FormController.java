@@ -81,6 +81,7 @@ public class FormController implements Initializable {
             }
         });
         buttonAgregar.setOnAction(new ManejoAcciones());
+        buttonDetalle.setOnAction(new ManejoAcciones());
     }
 
     private void initGUI() {
@@ -100,19 +101,55 @@ public class FormController implements Initializable {
         grupoGenero = new ToggleGroup();
     }
 
+    private void limpiarCampos(){
+        textfieldCorreo.clear();
+        textFieldNombre.clear();
+        textfieldApellido.clear();
+        comboEdad.getSelectionModel().select(-1);
+        grupoGenero.selectToggle(null);
+        checkDisponibilidad.setSelected(false);
+    }
+
     class ManejoAcciones implements EventHandler<ActionEvent> {
 
         @Override
         public void handle(ActionEvent actionEvent) {
             if (actionEvent.getSource() == buttonAgregar) {
-                Usuario usuario = new Usuario(textFieldNombre.getText(),
-                        textfieldApellido.getText(),
-                        textfieldCorreo.getText(),
-                        ((RadioButton) grupoGenero.getSelectedToggle()).getText(),
-                        comboEdad.getSelectionModel().getSelectedItem(),
-                        checkDisponibilidad.isSelected()
-                );
-                listaUsuarios.add(usuario);
+
+                if (textfieldApellido.getText().isEmpty()
+                        || textfieldCorreo.getText().isEmpty()
+                        || textFieldNombre.getText().isEmpty()
+                        || grupoGenero.getSelectedToggle() == null
+                        || comboEdad.getSelectionModel().getSelectedIndex() == -1
+                ) {
+                    System.out.println("Datos invalidos");
+                    Alert alerta = new Alert(Alert.AlertType.ERROR);
+                    alerta.setTitle("Error");
+                    alerta.setContentText("Faltan datos por rellenar");
+                    alerta.show();
+                } else {
+                    Usuario usuario = new Usuario(textFieldNombre.getText(),
+                            textfieldApellido.getText(),
+                            textfieldCorreo.getText(),
+                            ((RadioButton) grupoGenero.getSelectedToggle()).getText(),
+                            comboEdad.getSelectionModel().getSelectedItem(),
+                            checkDisponibilidad.isSelected()
+                    );
+                    listaUsuarios.add(usuario);
+
+                    Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                    alerta.setTitle("Correcto");
+                    alerta.setContentText("Usuario agregado correctamente");
+                    alerta.show();
+                    limpiarCampos();
+                }
+
+            }
+            else if (actionEvent.getSource() == buttonDetalle) {
+                if(listViewUsuarios.getSelectionModel().getSelectedIndex()!=-1){
+                    Usuario usuarioSeleccionado = listViewUsuarios.getSelectionModel().getSelectedItem();
+                    System.out.println(usuarioSeleccionado.getGenero());
+                }
             }
         }
     }
