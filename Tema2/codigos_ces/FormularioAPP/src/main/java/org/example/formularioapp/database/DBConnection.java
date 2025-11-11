@@ -24,9 +24,10 @@ public class DBConnection {
         try {
             //connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/formularios",user,pass);
             connection = DriverManager.getConnection(String.format("jdbc:mysql://%s:%s/%s",
-                    SchemeDB.URL, SchemeDB.PORT, SchemeDB.DB_NAME));
+                    SchemeDB.URL, SchemeDB.PORT, SchemeDB.DB_NAME),user,pass);
         } catch (SQLException e) {
             System.out.println("Error en la conexion con la base de datos");
+            System.out.println(e.getMessage());
         }
     }
 }
