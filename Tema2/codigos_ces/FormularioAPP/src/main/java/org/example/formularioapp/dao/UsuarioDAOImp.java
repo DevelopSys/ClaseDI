@@ -6,7 +6,9 @@ import org.example.formularioapp.model.Usuario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,7 +23,8 @@ public class UsuarioDAOImp implements UsuarioDAO {
     // STATEMENT o PREPARESTATEMENT
     // execute -> bool -> INSERT
     // executeUpdate -> int -> UPDATE DELETE
-
+    // PS o ST -> executeQuery
+    // RESULTSET -> SELECT
     public UsuarioDAOImp() {
         connection = DBConnection.getConnection();
     }
@@ -46,7 +49,31 @@ public class UsuarioDAOImp implements UsuarioDAO {
 
     @Override
     public List<Usuario> obtenerUsuarios() {
-        return List.of();
+
+        List<Usuario> lista = new ArrayList<>();
+
+        try {
+            preparedStatement = connection.prepareStatement("SELECT * FROM "+SchemeDB.TAB_NAME);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            //[                            x]
+            //  [r,r,r,r,r,r,r,r,r,r,r,r,r,r]
+            while (resultSet.next()){
+                // añadir los usuarios a la lista
+                String nombre = resultSet.getString(SchemeDB.COL_NAME);
+                String mail =resultSet.getString(SchemeDB.COL_MAIL);
+                String localizacion = resultSet.getString(SchemeDB.COL_LOCATE);
+                String genero = resultSet.getString(SchemeDB.COL_GEN);
+                int edad = resultSet.getInt(SchemeDB.COL_AG);
+                Usuario usuario = new Usuario(nombre,mail,localizacion,genero,edad,true);
+                lista.add(usuario);
+            }
+
+
+        } catch (SQLException e) {
+            System.out.println("Error en la query");
+        }
+
+        return lista;
     }
 
     @Override

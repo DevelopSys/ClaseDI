@@ -116,7 +116,8 @@ public class FormController implements Initializable {
         usuarioDAOImp = new UsuarioDAOImp();
         grupoGenero = new ToggleGroup();
         listaEdades = FXCollections.observableArrayList();
-        listaUsuarios = FXCollections.observableArrayList();
+        listaUsuarios =
+                FXCollections.observableArrayList(usuarioDAOImp.obtenerUsuarios());
     }
 
     private void initGUI() {
@@ -183,6 +184,7 @@ public class FormController implements Initializable {
                     boolean fallo = false;
                     try {
                         usuarioDAOImp.insertarUsuario(usuario);
+                        listaUsuarios.add(usuario);
                     } catch (SQLException e) {
                         fallo = true;
                         Alert alert = new Alert(Alert.AlertType.ERROR);
