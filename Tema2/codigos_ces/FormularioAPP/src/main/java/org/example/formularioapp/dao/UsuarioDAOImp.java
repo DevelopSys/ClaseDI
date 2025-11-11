@@ -71,6 +71,7 @@ public class UsuarioDAOImp implements UsuarioDAO {
 
         } catch (SQLException e) {
             System.out.println("Error en la query");
+            System.out.println(e.getMessage());
         }
 
         return lista;
