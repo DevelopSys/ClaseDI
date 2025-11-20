@@ -10,12 +10,19 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import org.example.formularioapp.FormApplication;
 import org.example.formularioapp.model.Usuario;
+import org.example.formularioapp.model.UsuarioJSON;
 import org.example.formularioapp.model.UsuariosResponse;
 
 import java.io.IOException;
@@ -35,7 +42,7 @@ public class FormController implements Initializable {
     private ComboBox<Integer> comboEdad;
 
     @FXML
-    private GridPane panelLista;
+    private GridPane panelLista, panelJSON;
 
     @FXML
     BorderPane panelGeneral;
@@ -52,11 +59,15 @@ public class FormController implements Initializable {
     @FXML
     private ListView<Usuario> listViewUsuarios;
 
+    @FXML
+    private ListView<UsuarioJSON> listViewJSON;
+
     private ToggleGroup grupoGenero;
 
     private ObservableList<Integer> listaEdades;
 
     private ObservableList<Usuario> listaUsuarios;
+    private ObservableList<UsuarioJSON> listaUsuariosJSON;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -72,8 +83,10 @@ public class FormController implements Initializable {
                                 Boolean aBoolean, Boolean newValue) {
                 if (newValue) {
                     panelGeneral.setRight(panelLista);
+                    panelGeneral.setLeft(panelJSON);
                 } else {
                     panelGeneral.setRight(null);
+                    panelGeneral.setLeft(null);
                 }
             }
         });
@@ -91,8 +104,8 @@ public class FormController implements Initializable {
         listViewUsuarios.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Usuario>() {
             @Override
             public void changed(ObservableValue<? extends Usuario> observableValue, Usuario usuario, Usuario t1) {
-                System.out.println("Usuario anterior - "+usuario);
-                System.out.println("Usuario nuevo - "+t1);
+                System.out.println("Usuario anterior - " + usuario);
+                System.out.println("Usuario nuevo - " + t1);
             }
         });
     }
@@ -100,24 +113,22 @@ public class FormController implements Initializable {
     private void initGUI() {
         buttonAgregar.setDisable(!checkDisponibilidad.isSelected());
         panelGeneral.setRight(null);
+        panelGeneral.setLeft(null);
         grupoGenero.getToggles().addAll(radioFemenino, radioMasculino);
         comboEdad.setItems(listaEdades);
         listViewUsuarios.setItems(listaUsuarios);
-
-        listaUsuarios.add(new Usuario("Nombre1","Apellido1","correo@gmail","Masculino",22,true));
-        listaUsuarios.add(new Usuario("Nombre2","Apellido2","correo@gmail","Masculino",22,true));
-        listaUsuarios.add(new Usuario("Nombre3","Apellido3","correo@gmail","Masculino",22,true));
-        listaUsuarios.add(new Usuario("Nombre4","Apellido4","correo@gmail","Masculino",22,true));
-        listaUsuarios.add(new Usuario("Nombre5","Apellido5","correo@gmail","Masculino",22,true));
-        listaUsuarios.add(new Usuario("Nombre6","Apellido6","correo@gmail","Masculino",22,true));
-        listaUsuarios.add(new Usuario("Nombre7","Apellido7","correo@gmail","Masculino",22,true));
+        listViewJSON.setItems(listaUsuariosJSON);
 
 
         // 1 Mapper
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             URL url = new URL("https://dummyjson.com/users");
-            UsuariosResponse response = objectMapper.readValue(url,UsuariosResponse.class);
+            UsuariosResponse response = objectMapper.readValue(url, UsuariosResponse.class);
+            listaUsuariosJSON.addAll(response.getUsers());
+            /*for (UsuarioJSON item:response.getUsers()) {
+                listaUsuariosJSON.add(item);
+            }*/
         } catch (MalformedURLException e) {
             System.out.println("La url es invalida");
         } catch (StreamReadException | DatabindException e) {
@@ -128,6 +139,7 @@ public class FormController implements Initializable {
     }
 
     private void instancias() {
+        listaUsuariosJSON = FXCollections.observableArrayList();
         listaUsuarios = FXCollections.observableArrayList();
         listaEdades = FXCollections.observableArrayList();
         for (int i = 18; i <= 90; i++) {
@@ -136,7 +148,7 @@ public class FormController implements Initializable {
         grupoGenero = new ToggleGroup();
     }
 
-    private void limpiarCampos(){
+    private void limpiarCampos() {
         textfieldCorreo.clear();
         textFieldNombre.clear();
         textfieldApellido.clear();
@@ -178,20 +190,38 @@ public class FormController implements Initializable {
                     limpiarCampos();
                 }
 
-            }
-            else if (actionEvent.getSource() == buttonDetalle) {
-                if(listViewUsuarios.getSelectionModel().getSelectedIndex()!=-1){
-                    Usuario usuarioSeleccionado = listViewUsuarios.getSelectionModel().getSelectedItem();
-                    System.out.println(usuarioSeleccionado);
+            } else if (actionEvent.getSource() == buttonDetalle) {
+                if (listViewUsuarios.getSelectionModel().getSelectedIndex() != -1) {
+                    // Usuario usuarioSeleccionado = listViewUsuarios.getSelectionModel().getSelectedItem();
+                    // System.out.println(usuarioSeleccionado);
+                    // Stage -> ventanas
+                    try {
+                        Stage ventanaDetalle = new Stage();
+                        ventanaDetalle.initModality(Modality.APPLICATION_MODAL);
+                        ventanaDetalle.setTitle("Detalle del usuario");
+                        // Scene -> escenas + Controller
+                        // Node -> botones listas radios
+                        FXMLLoader loader = new FXMLLoader(FormApplication.class.getResource("detail-view.fxml"));
+                        Parent parent = null;
+                        parent = loader.load();
+                        ventanaDetalle.setScene(new Scene(parent));
+                        ventanaDetalle.show();
+
+                        // ((Stage)buttonDetalle.getScene().getWindow()).close();
+
+
+                    } catch (IOException e) {
+                        System.out.println("Error en la localizacion del fichero");
+                    }
+
                 } else {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setContentText("No hay elemento seleccionado");
                     alert.setTitle("Seleccion");
                     alert.show();
                 }
-            }
-            else if (actionEvent.getSource() == buttonEliminar) {
-                if (listViewUsuarios.getSelectionModel().getSelectedIndex() != -1){
+            } else if (actionEvent.getSource() == buttonEliminar) {
+                if (listViewUsuarios.getSelectionModel().getSelectedIndex() != -1) {
                     listaUsuarios.remove(listViewUsuarios.getSelectionModel().getSelectedIndex());
                     listViewUsuarios.getSelectionModel().select(-1);
                     // listViewUsuarios.getSelectionModel().select(null);
