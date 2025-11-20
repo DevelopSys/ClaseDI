@@ -204,7 +204,10 @@ public class FormController implements Initializable {
                         FXMLLoader loader = new FXMLLoader(FormApplication.class.getResource("detail-view.fxml"));
                         Parent parent = null;
                         parent = loader.load();
+                        DetailController detailController = loader.getController();
+                        detailController.setTexto("Comunicar");
                         ventanaDetalle.setScene(new Scene(parent));
+
                         ventanaDetalle.show();
 
                         // ((Stage)buttonDetalle.getScene().getWindow()).close();

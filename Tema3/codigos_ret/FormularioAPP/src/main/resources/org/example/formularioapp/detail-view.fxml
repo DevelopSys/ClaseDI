@@ -7,10 +7,12 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane xmlns="http://javafx.com/javafx"
-            prefHeight="400.0" prefWidth="400.0">
+            xmlns:fx="http://javafx.com/fxml"
+            prefHeight="400.0" prefWidth="400.0"
+            fx:controller="org.example.formularioapp.controller.DetailController">
 
     <center>
-        <Label text="Ventana detalle"/>
+        <Label text="Ventana detalle" fx:id="etiquetaTitulo" />
     </center>
 
 </BorderPane>
