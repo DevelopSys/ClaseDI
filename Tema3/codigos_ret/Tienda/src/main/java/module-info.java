@@ -5,6 +5,8 @@ module org.example.tienda {
     requires lombok;
 
 
+    opens org.example.tienda.dao to java.sql;
+    exports org.example.tienda.dao;
     opens org.example.tienda.model to lombok;
     exports org.example.tienda.model;
     opens org.example.tienda to javafx.fxml;
