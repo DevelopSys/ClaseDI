@@ -4,6 +4,7 @@ let inputNombre = document.querySelector("#inputNombre");
 let inputApellido = document.querySelector("#inputApellido");
 let inputFecha = document.querySelector("#inputFecha");
 let listaAgregados = document.querySelector("#divAgregados ul");
+
 botonAgregar.addEventListener("click", (ev) => {
   let nombre = inputNombre.value;
   let apellido = inputApellido.value;
@@ -13,7 +14,7 @@ botonAgregar.addEventListener("click", (ev) => {
   if (nombre.length == 0 || apellido.length == 0 || fecha.length == 0) {
     lanzarDialogo("Error", "Faltan datos", "warning");
   } else {
-    agregarLi();
+    agregarLi(nombre, apellido, fecha);
   }
 });
 
@@ -36,9 +37,30 @@ function lanzarDialogo(title, text, icon) {
 }
 
 function agregarLi(nombre, apellido, fecha) {
-  lanzarDialogo(
+  /* listaAgregados.innerHTML += `<li
+            class="animate__animated animate__fadeInRight list-group-item d-flex justify-content-between align-items-start"
+          >
+            ${nombre} ${apellido} ${fecha}
+          </li>`; */
+
+  let nodoLI = document.createElement("li");
+  nodoLI.innerText = `${nombre} ${apellido} ${fecha}`;
+  /* nodoLI.className =
+    "animate__animated animate__fadeInRight list-group-item d-flex justify-content-between align-items-start"; */
+  nodoLI.classList.add(
+    "animate__animated",
+    "animate__fadeInRight",
+    "list-group-item",
+    "d-flex",
+    "justify-content-between",
+    "align-items-start"
+  );
+  listaAgregados.appendChild(nodoLI);
+  limpiarCampos(inputNombre, inputApellido, inputFecha);
+
+  /* lanzarDialogo(
     "Agregado correctamente",
     `Usuario con nombre ${nombre} agregado correctamente`,
     "success"
-  );
+  ); */
 }
