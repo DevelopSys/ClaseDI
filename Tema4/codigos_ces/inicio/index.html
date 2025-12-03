@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <main class="container">
+      <h1 style="text-align: center" class="mt-4">Listin telefonico</h1>
+
+      <div class="mt-4">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Introduce tu nombre"
+          id="inputNombre"
+        />
+        <input
+          type="text"
+          class="form-control mt-2"
+          placeholder="Introduce tu apellido"
+          id="inputApellido"
+        />
+        <input
+          type="date"
+          class="form-control mt-2"
+          placeholder="Introduce tu fecha nacimiento"
+          id="inputFecha"
+        />
+        <select class="form-select mt-2" id="selectEdad"></select>
+      </div>
+      <div class="row mt-4" id="botones1">
+        <button class="btn btn-primary col" id="btnAgregar">Agregar</button>
+        <button class="btn btn-warning col" id="btnLimpiar">Limpar</button>
+      </div>
+    </main>
+
+    <script type="text/javascript">
+      // codigo js deonde puedo manipular el DOM
+      console.log("Ejecutado JS desde el HTML");
+    </script>
+    <!-- <script src="./utils/js/index.js"></script> -->
+    <!-- <script src="./utils/js/funciones.js"></script> -->
+    <!-- <script src="./utils/js/listas.js"></script> -->
+    <script src="./utils/js/modificaciones.js"></script>
+  </body>
+</html>
