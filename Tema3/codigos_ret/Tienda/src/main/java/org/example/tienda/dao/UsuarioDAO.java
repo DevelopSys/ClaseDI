@@ -2,6 +2,7 @@ package org.example.tienda.dao;
 
 import org.example.tienda.model.Usuario;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface UsuarioDAO {
@@ -9,7 +10,7 @@ public interface UsuarioDAO {
     // contra base de datos y el modelo Usuario
 
     // TODO cuidado con la clave unique
-    void addUsuario(Usuario usuario);
+    void addUsuario(Usuario usuario) throws SQLException;
 
     int borrarUsuario(String nombre);
 
