@@ -44,6 +44,14 @@ function agregarLi(nombre, apellido, fecha) {
           </li>`; */
 
   let nodoLI = document.createElement("li");
+  let nodoBoton = document.createElement("button");
+
+  nodoBoton.classList.add("btn", "btn-danger");
+  nodoBoton.innerText = "Borrar";
+  nodoBoton.addEventListener("click", (e) => {
+    nodoLI.remove();
+  });
+
   nodoLI.innerText = `${nombre} ${apellido} ${fecha}`;
   /* nodoLI.className =
     "animate__animated animate__fadeInRight list-group-item d-flex justify-content-between align-items-start"; */
@@ -55,6 +63,9 @@ function agregarLi(nombre, apellido, fecha) {
     "justify-content-between",
     "align-items-start"
   );
+
+  nodoLI.appendChild(nodoBoton);
+
   listaAgregados.appendChild(nodoLI);
   limpiarCampos(inputNombre, inputApellido, inputFecha);
 
