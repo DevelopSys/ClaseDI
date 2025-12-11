@@ -18,8 +18,33 @@
   </head>
   <body>
     <main class="container m-4">
-      <button class="btn btn-primary" id="btnAgregar">Agregar</button>
-      <p id="contenido"></p>
+      <div class="row">
+        <div class="col-8">
+          <input
+            placeholder="Introduce nombre tarea"
+            type="text"
+            id="inputNombre"
+            class="form-control"
+          />
+          <input
+            placeholder="Introduce fecha tarea"
+            type="date"
+            id="inputFecha"
+            class="form-control mt-2"
+          />
+          <select class="form-select mt-2" id="selectPrioridad">
+            <option value="0">Selecciona opcion</option>
+            <option value="1">Baja</option>
+            <option value="2">Media</option>
+            <option value="3">Alta</option>
+          </select>
+
+          <button class="btn btn-primary mt-4" id="btnAgregar">Agregar</button>
+        </div>
+        <div class="col-4">
+          <ul id="listaTareas" class="list-group"></ul>
+        </div>
+      </div>
     </main>
     <script src="./utils/tarea.js"></script>
     <script src="./utils/index.js"></script>
