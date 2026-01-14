@@ -1,1 +1,31 @@
-<h1>Primera app de angular</h1>
+<main class="container mt-4">
+  <h1>App Angular</h1>
+
+  <input class="form-control mt-2 mb-2" placeholder="Introduce tu nombre" [(ngModel)]="nombre" />
+  <p>
+    Esta es la primera app realizada por {{ nombre }} {{ apellido }} para la asignatura de
+    Desarrollo de Interfaces de {{ curso }}º {{ nombreCurso }}
+  </p>
+
+  <input
+    class="form-control mt-2 mb-2"
+    placeholder="Introduce el nombre de la variable"
+    #inputNota
+  />
+  <button class="btn btn-primary" (click)="pulsarComenzar(inputNota.value)">
+    Pulsa para comnezar
+  </button>
+  <p>{{ nota }}</p>
+
+  <h2>Generacion de componentes</h2>
+
+  <div class="row">
+    <div class="col">
+      <app-decisiones></app-decisiones>
+    </div>
+    <div class="col">
+      <app-selecciones></app-selecciones>
+    </div>
+    <div class="col"></div>
+  </div>
+</main>
