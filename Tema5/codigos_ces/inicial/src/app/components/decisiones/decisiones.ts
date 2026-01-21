@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './decisiones.css',
 })
 export class Decisiones {
+  mostrar: boolean = true;
 
+  cambiarMostar() {
+    this.mostrar = !this.mostrar;
+  }
 }
