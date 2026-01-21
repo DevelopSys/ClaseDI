@@ -8,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class Selecciones {
   seleccion = '1';
+  tipoPago = '1';
 }

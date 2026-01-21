@@ -1,18 +1,41 @@
 <h2>Componente selecciones</h2>
 <p>Vamos a evaluar el mostrado de un elemento HTML dependiendo de una seleccion</p>
-<span [ngSwitch]="seleccion">
-  <div *ngSwitchCase="'1'" class="alert alert-success" role="alert">
-    A simple success alert—check it out!
-  </div>
+<input placeholder="Introduce el nombre" class="form-control" />
+<input placeholder="Introduce el direccion envio" class="form-control mt-3" />
+<input placeholder="Introduce el direccion facturacion" class="form-control mt-3" />
+<input placeholder="Introduce el coste" type="number" class="form-control mt-3" />
+<select class="form-select mt-3 mb-3" [(ngModel)]="tipoPago">
+  <option value="1">Bizum</option>
+  <option value="2">Transferencia</option>
+  <option value="3">Trajeta</option>
+</select>
 
-  <div *ngSwitchCase="'2'" class="alert alert-danger" role="alert">
-    A simple success alert—check it out!
-  </div>
+@switch (tipoPago) {
+  @case ('1') {
+    <input class="form-control" placeholder="Introduce telefono" />
+  }
+  @case ('2') {
+    <input class="form-control" placeholder="Introduce cuenta corriente" />
+  }
+  @case ('3') {
+    <input class="form-control" placeholder="Introduce numero tarjeta" />
+    <input class="form-control" type="date" placeholder="Introduce fecha caducidad" />
+    <input class="form-control" type="number" placeholder="Introduce fecha CVV" />
+  }
+}
+<!-- <span [ngSwitch]="">
+<p *ngSwitchCase="true">
 
-  <div *ngSwitchDefault class="alert alert-warning" role="alert">
-    A simple success alert—check it out!
-  </div>
-</span>
+</p>
+<p *ngSwitchCase="false">
+
+</p>
+<p *ngSwitchDefault>
+
+</p>
+</span> -->
+
+<button class="btn btn-primary mt-3">Validar</button>
 
 <!-- 
 Crear un formulario donde indique cual es el tipo de pago que se 
