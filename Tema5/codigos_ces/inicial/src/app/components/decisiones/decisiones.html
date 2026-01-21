@@ -1,11 +1,42 @@
-n
 <h2>Componente decisiones</h2>
 <p>Este componente mostrará un dato dependiendo de una condición</p>
+<input placeholder="Introduce el nombre" class="form-control" [(ngModel)]="nombre" />
+<input placeholder="Introduce el apellido" class="form-control mt-3" [(ngModel)]="apellido" />
+<input
+  placeholder="Introduce el salario"
+  type="number"
+  class="form-control mt-3"
+  [(ngModel)]="salario"
+/>
+<select class="form-select mt-3" [(ngModel)]="edad">
+  <option>16</option>
+  <option>17</option>
+  <option>18</option>
+  <option>19</option>
+  <option>20</option>
+</select>
+<select class="form-select mt-3" [(ngModel)]="experiencia">
+  <option>1</option>
+  <option>3</option>
+  <option>5</option>
+  <option>7</option>
+  <option>11</option>
+</select>
+<button class="btn btn-primary mt-3" (click)="contratar()">Validar</button>
+@if (resolucion && analizada) {
+  <div class="alert alert-success" role="alert">
+    El empleado con nombre {{ nombre }} contratado correctamente
+  </div>
+} @else if (!resolucion && analizada) {
+  <div class="alert alert-danger" role="alert">
+    El empleado con nombre {{ nombre }} se desestima su solicitud
+  </div>
+}
 <!-- crear un boton donde al pulsarlo muestre u oculete el bloq del if -->
-<button class="btn btn-primary" (click)="cambiarMostar()">Mostrar</button>
+<!-- <button class="btn btn-primary" (click)="cambiarMostar()">Mostrar</button>
 @if (mostrar) {
   <p>La condición de evaluacion es true</p>
-} @else {}
+} @else if {} -->
 <!-- <ng-container *ngIf="mostrar">
 </ng-container> -->
 

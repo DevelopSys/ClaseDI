@@ -1,1 +1,15 @@
-<p>selecciones works!</p>
+<h2>Componente selecciones</h2>
+<p>Vamos a evaluar el mostrado de un elemento HTML dependiendo de una seleccion</p>
+<span [ngSwitch]="seleccion">
+  <div *ngSwitchCase="'1'" class="alert alert-success" role="alert">
+    A simple success alert—check it out!
+  </div>
+
+  <div *ngSwitchCase="'2'" class="alert alert-danger" role="alert">
+    A simple success alert—check it out!
+  </div>
+
+  <div *ngSwitchDefault class="alert alert-warning" role="alert">
+    A simple success alert—check it out!
+  </div>
+</span>
