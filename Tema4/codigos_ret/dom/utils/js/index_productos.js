@@ -7,6 +7,7 @@
 // document.querySelector("tag") -> HTML
 // document.querySelector("div.contenido ul.lista-principal input[type=text]")
 const botonRegistrar = document.querySelector("#boton-registrar");
+const botonLimpiar = document.querySelector("#boton-limpiar");
 const inputNombre = document.querySelector("#input-nombre");
 const inputPrecio = document.querySelector("#input-precio");
 const inputDescripcion = document.querySelector("#input-descripcion");
@@ -15,6 +16,16 @@ const spanCaracteres = document.querySelector("span");
 const listaProductos = document.querySelector("ul");
 
 // spanCaracteres.innerText = "Esto lo cambio";
+botonLimpiar.addEventListener("click", () => {
+  listaProductos.classList.add("animate__animated", "animate__swing");
+  setTimeout(() => {
+    listaProductos.innerHTML = "";
+    listaProductos.classList.remove("animate__animated", "animate__swing");
+  }, 700);
+
+  // listaProductos.remove();
+});
+
 botonRegistrar.addEventListener("click", (e) => {
   // ver si los campos esta completos
   // si
@@ -50,7 +61,7 @@ function insertarProducto(nombre, precio) {
   // listaProductos.innerHTML += `<li class='list-group-item animate__animated animate__fadeInRight'>${nombre} - ${precio} </li>`;
   let nodoLI = document.createElement("li");
   nodoLI.innerText = `${nombre} - ${precio}`;
-  nodoLI.className = "list-group-item animate__animated animate__fadeInRight";
+  // nodoLI.className = "list-group-item animate__animated animate__fadeInRight";
   nodoLI.classList.add(
     "list-group-item",
     "animate__animated",
@@ -60,7 +71,11 @@ function insertarProducto(nombre, precio) {
   nodoBoton.classList.add("btn", "btn-danger", "ms-4");
   nodoBoton.textContent = "Eliminar";
   nodoBoton.addEventListener("click", (e) => {
-    listaProductos.removeChild(nodoLI);
+    nodoLI.classList.remove("animate__fadeInRight");
+    nodoLI.classList.add("animate__bounceOut");
+    setTimeout(() => {
+      listaProductos.removeChild(nodoLI);
+    }, 700);
   });
   nodoLI.appendChild(nodoBoton);
   listaProductos.appendChild(nodoLI);
