@@ -47,15 +47,22 @@ function limpiarCampos() {
 }
 
 function insertarProducto(nombre, precio) {
-  // listaProductos.innerHTML += `<li class='list-group-item animate__animated animate__fadeInRight'>${nombre} - ${precio} <button class='btn btn-danger'>Eliminar</button></li>`;
+  // listaProductos.innerHTML += `<li class='list-group-item animate__animated animate__fadeInRight'>${nombre} - ${precio} </li>`;
   let nodoLI = document.createElement("li");
-  nodoLI.textContent = `${nombre} - ${precio}`;
+  nodoLI.innerText = `${nombre} - ${precio}`;
   nodoLI.className = "list-group-item animate__animated animate__fadeInRight";
   nodoLI.classList.add(
     "list-group-item",
     "animate__animated",
     "animate__fadeInRight",
   );
+  let nodoBoton = document.createElement("button");
+  nodoBoton.classList.add("btn", "btn-danger", "ms-4");
+  nodoBoton.textContent = "Eliminar";
+  nodoBoton.addEventListener("click", (e) => {
+    listaProductos.removeChild(nodoLI);
+  });
+  nodoLI.appendChild(nodoBoton);
   listaProductos.appendChild(nodoLI);
   Swal.fire({
     title: "Existo",
