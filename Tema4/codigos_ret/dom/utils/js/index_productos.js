@@ -18,15 +18,50 @@ const listaProductos = document.querySelector("ul");
 botonRegistrar.addEventListener("click", (e) => {
   // ver si los campos esta completos
   // si
-  console.log(inputNombre.value);
-  console.log(inputPrecio.value);
-  console.log(inputDescripcion.value);
-  console.log(selectCategoria.value);
   // añadir a la lista -> <li>asdasd</li>
-  listaProductos.innerHTML += `<li class='list-group-item'>${inputNombre.value} - ${inputPrecio.value}</li>`;
+
+  if (
+    inputNombre.value.length > 0 &&
+    Number(inputPrecio.value) > 0 &&
+    inputDescripcion.value.length > 0
+  ) {
+    insertarProducto(inputNombre.value, inputPrecio.value);
+  } else {
+    Swal.fire({
+      title: "Error",
+      text: "Falta algun dato por rellenar",
+      icon: "error",
+      timer: 1500,
+    });
+  }
   // mediante swAlerts avisar de que el producto con nombre XX añadido correctamente
   // desaparece a las 2seg
   // todos los campos se limpian
   // no
   // lanza un dialogo de error con swAlerts
 });
+function limpiarCampos() {
+  for (let index = 0; index < arguments.length; index++) {
+    arguments[index].value = "";
+  }
+}
+
+function insertarProducto(nombre, precio) {
+  // listaProductos.innerHTML += `<li class='list-group-item animate__animated animate__fadeInRight'>${nombre} - ${precio} <button class='btn btn-danger'>Eliminar</button></li>`;
+  let nodoLI = document.createElement("li");
+  nodoLI.textContent = `${nombre} - ${precio}`;
+  nodoLI.className = "list-group-item animate__animated animate__fadeInRight";
+  nodoLI.classList.add(
+    "list-group-item",
+    "animate__animated",
+    "animate__fadeInRight",
+  );
+  listaProductos.appendChild(nodoLI);
+  Swal.fire({
+    title: "Existo",
+    text: "Producto agregado correctamente",
+    icon: "success",
+    timer: 1500,
+  });
+  limpiarCampos(inputNombre, inputPrecio, inputDescripcion);
+}
