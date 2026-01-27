@@ -8,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class Repeticiones {
   usuarios: string[] = ['Borja', 'Maria', 'Juan', 'Marta', 'Pedro', 'Celia', 'Claudia'];
+  nombreIntroducido: string = '';
+
+  agregarUsuario() {
+    throw new Error('Method not implemented.');
+  }
 }

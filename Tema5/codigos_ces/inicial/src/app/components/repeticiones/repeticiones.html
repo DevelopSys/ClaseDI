@@ -1,5 +1,15 @@
 <h2>Repeticiones</h2>
 <p>El for sirve para poder crear elementos de forma iterativa sobre un []</p>
+
+<!-- Crear un input para poder introducir un nombre
+    Una vez introducido pulsar el boton agregar:
+    - en caso de no tener nada en el input -> sweet Alert con el aviso
+    - en caso de tener algo:
+        - Si el nombre ya esta en la lista, aviso de error -> sweet Alert
+        - Si el nombre on esta en la lista, agregarlo
+-->
+<input class="form-control" placeholder="Introduce nombre" [(ngModel)]="nombreIntroducido" />
+<button class="btn btn-primary" (click)="agregarUsuario()">Agregar</button>
 <ul class="list-group">
   <li *ngFor="let item of usuarios" class="list-group-item">{{ item }}</li>
 </ul>
