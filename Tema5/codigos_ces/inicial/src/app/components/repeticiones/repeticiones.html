@@ -9,6 +9,16 @@
         - Si el nombre on esta en la lista, agregarlo
 -->
 <input class="form-control" placeholder="Introduce nombre" [(ngModel)]="nombreIntroducido" />
+<input class="form-control" placeholder="Introduce apellido" [(ngModel)]="apellidoIntroducido" />
+<input
+  class="form-control"
+  placeholder="Introduce edad"
+  type="number"
+  [(ngModel)]="edadIntroducido"
+/>
+<input class="form-control" placeholder="Introduce hobbie" [(ngModel)]="hobbieIntroducido" />
+
+<button class="btn btn-primary" (click)="agregarHobbie()">Agregar hobbie</button>
 <button class="btn btn-primary" (click)="agregarUsuario()">Agregar</button>
 <ul class="list-group">
   <!-- <li *ngFor="let item of usuarios" class="list-group-item">{{ item }}</li> -->

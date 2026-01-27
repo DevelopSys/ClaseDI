@@ -14,7 +14,27 @@ export class usuario {
     this.hobbies.push(item);
   }
 
+  vaciarHobbies() {
+    this.hobbies = [];
+  }
+
   getNombre(): string {
     return this.nombre;
+  }
+
+  getListaHobbies() {
+    return this.hobbies;
+  }
+
+  setNombre(nombre: string) {
+    this.nombre = nombre;
+  }
+
+  setApellido(apellido: string) {
+    this.apellido = apellido;
+  }
+
+  setEdad(edad: number) {
+    this.edad = edad;
   }
 }
