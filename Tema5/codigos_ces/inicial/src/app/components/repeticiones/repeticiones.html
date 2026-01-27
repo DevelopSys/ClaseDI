@@ -13,6 +13,6 @@
 <ul class="list-group">
   <!-- <li *ngFor="let item of usuarios" class="list-group-item">{{ item }}</li> -->
   @for (item of usuarios; track $index) {
-    <li class="list-group-item">{{ item }}</li>
+    <li class="list-group-item">{{ item.getNombre() }}</li>
   }
 </ul>

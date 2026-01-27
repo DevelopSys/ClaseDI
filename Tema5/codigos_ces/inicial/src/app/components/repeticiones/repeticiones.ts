@@ -9,8 +9,12 @@ import { usuario } from '../../model/usuario';
   styleUrl: './repeticiones.css',
 })
 export class Repeticiones {
-  usauriosData?: usuario[];
-  usuarios: string[] = ['Borja', 'Maria', 'Juan', 'Marta', 'Pedro', 'Celia', 'Claudia'];
+  usuarios: usuario[] = [
+    new usuario('Borja', 'Martin', 30),
+    new usuario('Maria', 'Martin', 40),
+    new usuario('Juan', 'Martin', 30),
+  ];
+  // usuarios: string[] = ['Borja', 'Maria', 'Juan', 'Marta', 'Pedro', 'Celia', 'Claudia'];
   nombreIntroducido: string = '';
 
   agregarUsuario() {
@@ -19,10 +23,11 @@ export class Repeticiones {
     // lo agrego
     if (this.nombreIntroducido.length == 0) {
       this.lanzarCuadro('Error', 'No hay datos en el campo', 'error');
-    } else if (this.usuarios.find((p) => p == this.nombreIntroducido) != undefined) {
+    } else if (this.usuarios.find((p) => p.getNombre() == this.nombreIntroducido) != undefined) {
       this.lanzarCuadro('Error', 'El usuario esta en la lista', 'error');
     } else {
-      this.usuarios.push(this.nombreIntroducido);
+      // no tengo que introducir un string, sino un objeto de tipo usuario
+      this.usuarios.push(new usuario('Marta', 'Lopez', 30));
       this.lanzarCuadro('Existo', 'Usuario agregado correctamente', 'success');
     }
   }
