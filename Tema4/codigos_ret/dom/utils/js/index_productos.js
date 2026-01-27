@@ -57,17 +57,47 @@ function limpiarCampos() {
   }
 }
 
+function asociarEvento(element, funcion) {
+  element.addEventListener("click", funcion);
+}
+
+function crearElemento(tipo, texto, clases, funcion) {
+  let nodo = document.crearElemento(tipo);
+  nodo.innerHTML = texto;
+  nodo.classList.add(clases);
+  if (funcion != undefined) {
+    nodo.addEventListener("click", funcion);
+  }
+  return nodo;
+}
+
 function insertarProducto(nombre, precio) {
   // listaProductos.innerHTML += `<li class='list-group-item animate__animated animate__fadeInRight'>${nombre} - ${precio} </li>`;
-  let nodoLI = document.createElement("li");
+  /* let nodoLI = document.createElement("li");
   nodoLI.innerText = `${nombre} - ${precio}`;
   // nodoLI.className = "list-group-item animate__animated animate__fadeInRight";
   nodoLI.classList.add(
     "list-group-item",
     "animate__animated",
     "animate__fadeInRight",
+  ); */
+
+  let nodoLI = crearElemento("li", `${nombre} - ${precio}`, [
+    "list-group-item animate__animated animate__fadeInRight",
+  ]);
+  let nodoButon = crearElemento(
+    "button",
+    `Eliminar`,
+    ["btn", "btn-danger", "ms-4"],
+    (e) => {
+      nodoLI.classList.remove("animate__fadeInRight");
+      nodoLI.classList.add("animate__bounceOut");
+      setTimeout(() => {
+        listaProductos.removeChild(nodoLI);
+      }, 700);
+    },
   );
-  let nodoBoton = document.createElement("button");
+  /* let nodoBoton = document.createElement("button");
   nodoBoton.classList.add("btn", "btn-danger", "ms-4");
   nodoBoton.textContent = "Eliminar";
   nodoBoton.addEventListener("click", (e) => {
@@ -76,7 +106,7 @@ function insertarProducto(nombre, precio) {
     setTimeout(() => {
       listaProductos.removeChild(nodoLI);
     }, 700);
-  });
+  }); */
   nodoLI.appendChild(nodoBoton);
   listaProductos.appendChild(nodoLI);
   Swal.fire({

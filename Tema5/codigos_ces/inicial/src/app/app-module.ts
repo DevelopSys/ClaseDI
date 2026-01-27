@@ -6,9 +6,10 @@ import { App } from './app';
 import { FormsModule } from '@angular/forms';
 import { Decisiones } from './components/decisiones/decisiones';
 import { Selecciones } from './components/selecciones/selecciones';
+import { Repeticiones } from './components/repeticiones/repeticiones';
 
 @NgModule({
-  declarations: [App, Decisiones, Selecciones],
+  declarations: [App, Decisiones, Selecciones, Repeticiones],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideBrowserGlobalErrorListeners(), provideClientHydration(withEventReplay())],
   bootstrap: [App],
