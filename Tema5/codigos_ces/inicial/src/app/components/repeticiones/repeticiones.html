@@ -11,5 +11,8 @@
 <input class="form-control" placeholder="Introduce nombre" [(ngModel)]="nombreIntroducido" />
 <button class="btn btn-primary" (click)="agregarUsuario()">Agregar</button>
 <ul class="list-group">
-  <li *ngFor="let item of usuarios" class="list-group-item">{{ item }}</li>
+  <!-- <li *ngFor="let item of usuarios" class="list-group-item">{{ item }}</li> -->
+  @for (item of usuarios; track $index) {
+    <li class="list-group-item">{{ item }}</li>
+  }
 </ul>
