@@ -1,0 +1,22 @@
+<h2>Agregar</h2>
+<input class="form-control mb-2" placeholder="Introduce nombre tarea" [(ngModel)]="nombre" />
+<input
+  class="form-control mb-2"
+  type="date"
+  placeholder="Introduce la fecha de la tarea"
+  [(ngModel)]="fecha"
+/>
+<input
+  class="form-control mb-2"
+  placeholder="Introduce el responsable de la tarea"
+  [(ngModel)]="responsable"
+/>
+<input class="form-control mb-2" placeholder="Introduce los items de la tarea" [(ngModel)]="item" />
+<button class="btn btn-warning mb-2" (click)="agregarItem()">Agregar item</button>
+<input class="form-control mb-2" placeholder="Introduce la descripcion" [(ngModel)]="descripcion" />
+<select class="form-select mb-2" [(ngModel)]="prioridad">
+  <option value="1">Baja</option>
+  <option value="2">Media</option>
+  <option value="3">Alta</option>
+</select>
+<button class="btn btn-primary mb-2" (click)="agregarTarea()">Agregar tarea</button>

@@ -1,0 +1,19 @@
+<main class="container mt-4">
+  <h1>TODO LIST</h1>
+  <select class="form-select mb-4" [(ngModel)]="opcion">
+    <option value="1">Agregar</option>
+    <option value="2">Buscar</option>
+    <option value="3">Listar</option>
+  </select>
+  @switch (opcion) {
+    @case ('1') {
+      <app-agregar></app-agregar>
+    }
+    @case ('2') {
+      <app-buscar></app-buscar>
+    }
+    @case ('3') {
+      <app-listar></app-listar>
+    }
+  }
+</main>
