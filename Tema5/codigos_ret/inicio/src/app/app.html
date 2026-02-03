@@ -1,0 +1,35 @@
+<main class="container mt-4">
+  <h1>APP Angular</h1>
+  <p>
+    Esta app servira como explicacion para entender el funcionamiento de angular. Para comenzar
+    introduce tus datso
+  </p>
+  <input class="form-control mb-3" placeholder="introduce nombre" type="text" #inputNombre />
+  <input class="form-control mb-3" placeholder="introduce apellido" type="text" #inputApellido />
+  <select class="form-select mb-3" #selectNota>
+    <option value="0">Indica la nota que piensas sacar en angular</option>
+    <option value="1">1-3</option>
+    <option value="2">4-5</option>
+    <option value="3">5-7</option>
+    <option value="4">8-9</option>
+    <option value="5">10</option>
+  </select>
+  <button
+    class="btn btn-primary mb-3 w-100"
+    (click)="procesarRespuesta(inputNombre.value, inputApellido.value, selectNota.value)"
+  >
+    Procesar respuesta
+  </button>
+
+  <div class="row">
+    <div class="col-2">
+      <img [src]="imagen" style="width: 50%" />
+    </div>
+    <div class="col-10">
+      <p>Los resultados son:</p>
+      <p>Nombre: {{ nombre }}</p>
+      <p>Apellido: {{ apellido }}</p>
+      <p>Nota: {{ nota }}</p>
+    </div>
+  </div>
+</main>

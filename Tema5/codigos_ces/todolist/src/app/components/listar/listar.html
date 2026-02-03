@@ -1,1 +1,22 @@
 <h2>Listar</h2>
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  @for (item of tareas; track $index) {
+    <div class="col">
+      <div class="card">
+        @switch (item.prioridad) {
+          @case (1) {}
+          @case (2) {}
+          @case (3) {}
+        }
+        <img src="..." class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{ item.nombre }}</h5>
+          <p class="card-text">
+            {{ item.descipcion }}
+          </p>
+        </div>
+      </div>
+    </div>
+  }
+</div>
