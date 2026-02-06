@@ -7,9 +7,10 @@ import { Agregar } from './components/agregar/agregar';
 import { Buscar } from './components/buscar/buscar';
 import { Listar } from './components/listar/listar';
 import { FormsModule } from '@angular/forms';
+import { ImagenesPipe } from './pipes/imagenes-pipe';
 
 @NgModule({
-  declarations: [App, Agregar, Buscar, Listar],
+  declarations: [App, Agregar, Buscar, Listar, ImagenesPipe],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideBrowserGlobalErrorListeners(), provideClientHydration(withEventReplay())],
   bootstrap: [App],

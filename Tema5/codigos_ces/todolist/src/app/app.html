@@ -1,5 +1,12 @@
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="['agregar']">Agregar</a>
+    <a class="navbar-brand" [routerLink]="['listar']">Listar</a>
+    <a class="navbar-brand" [routerLink]="['buscar', '45']">Buscar</a>
+  </div>
+</nav>
 <main class="container mt-4">
-  <h1>TODO LIST</h1>
+  <!-- <h1>TODO LIST</h1>
   <select class="form-select mb-4" [(ngModel)]="opcion">
     <option value="1">Agregar</option>
     <option value="2">Buscar</option>
@@ -15,5 +22,7 @@
     @case ('3') {
       <app-listar></app-listar>
     }
-  }
+  } -->
+
+  <router-outlet></router-outlet>
 </main>

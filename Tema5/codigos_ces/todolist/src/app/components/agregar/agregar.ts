@@ -32,7 +32,7 @@ export class Agregar {
 
   agregarTarea() {
     /* if(){
-
+      items.length == 0
     } else {
 
     } */
@@ -47,5 +47,9 @@ export class Agregar {
 
     // llamar al metodo agregarTarea del servicio
     this.tareasServicio.agregarTarea(tarea);
+
+    // limpiar los campos
+    // vaciar el array
+    this.items = [];
   }
 }
