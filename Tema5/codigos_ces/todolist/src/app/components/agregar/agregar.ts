@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { tarea } from '../../model/tarea';
 import { Tareas } from '../../services/tareas';
+import { Api } from '../../services/api';
 
 @Component({
   selector: 'app-agregar',
@@ -17,8 +18,12 @@ export class Agregar {
   descripcion?: string;
   item?: string;
   tareas: tarea[] = [];
+  contador = 0;
 
-  constructor(private tareasServicio: Tareas) {
+  constructor(
+    private tareasServicio: Tareas,
+    private apiService: Api,
+  ) {
     // logica
   }
 
@@ -37,6 +42,7 @@ export class Agregar {
 
     } */
     let tarea: tarea = {
+      id: -1,
       nombre: this.nombre,
       responsable: this.responsable,
       items: this.items,

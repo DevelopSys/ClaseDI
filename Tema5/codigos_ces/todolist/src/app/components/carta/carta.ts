@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { tarea } from '../../model/tarea';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-carta',
@@ -9,4 +10,10 @@ import { tarea } from '../../model/tarea';
 })
 export class Carta {
   @Input() item?: tarea;
+
+  constructor(private gestorRutas: Router) {}
+
+  verDetalle(id: number) {
+    this.gestorRutas.navigate(['detalle', id]);
+  }
 }

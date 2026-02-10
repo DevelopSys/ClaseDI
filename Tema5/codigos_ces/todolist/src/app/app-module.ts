@@ -9,11 +9,17 @@ import { Listar } from './components/listar/listar';
 import { FormsModule } from '@angular/forms';
 import { ImagenesPipe } from './pipes/imagenes-pipe';
 import { Carta } from './components/carta/carta';
+import { Detail } from './components/detail/detail';
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 
 @NgModule({
-  declarations: [App, Agregar, Buscar, Listar, ImagenesPipe, Carta],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [provideBrowserGlobalErrorListeners(), provideClientHydration(withEventReplay())],
+  declarations: [App, Agregar, Buscar, Listar, ImagenesPipe, Carta, Detail],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    provideClientHydration(withEventReplay()),
+    provideHttpClient(withFetch()),
+  ],
   bootstrap: [App],
 })
 export class AppModule {}

@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col">
+    <img [src]="tarea!!.prioridad | imagenes" />
+  </div>
+  <div>
+    <p>
+      {{ tarea?.nombre }}
+    </p>
+    <p>
+      {{ tarea?.descipcion }}
+    </p>
+    <p>
+      {{ tarea?.responsable }}
+    </p>
+    <p>
+      {{ tarea?.fecha | date }}
+    </p>
+    <ul class="list-group">
+      @for (item of tarea?.items; track $index) {
+        <li class="lit-group-item">
+          {{ item }}
+        </li>
+      }
+    </ul>
+  </div>
+</div>
