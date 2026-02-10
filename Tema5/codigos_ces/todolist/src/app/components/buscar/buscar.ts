@@ -12,5 +12,8 @@ export class Buscar {
 
   constructor(private gestorRutasActivas: ActivatedRoute) {
     // this.prioridad = gestorRutasActivas.snapshot.params['id'];
+    this.gestorRutasActivas.paramMap.subscribe((item) => {
+      this.prioridad = item.get('id') ?? undefined;
+    });
   }
 }

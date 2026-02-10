@@ -5,7 +5,56 @@ import { tarea } from '../model/tarea';
   providedIn: 'root',
 })
 export class Tareas {
-  tareas: tarea[] = [];
+  tareas: tarea[] = [
+    {
+      nombre: 't1',
+      responsable: 'R1',
+      items: [],
+      fecha: '',
+      prioridad: 1,
+      descipcion: 'Ejemplo t1',
+    },
+    {
+      nombre: 't2',
+      responsable: 'R2',
+      items: [],
+      fecha: '',
+      prioridad: 2,
+      descipcion: 'Ejemplo t2',
+    },
+    {
+      nombre: 't3',
+      responsable: 'R1',
+      items: [],
+      fecha: '',
+      prioridad: 3,
+      descipcion: 'Ejemplo t3',
+    },
+    {
+      nombre: 't4',
+      responsable: 'R1',
+      items: [],
+      fecha: '',
+      prioridad: 1,
+      descipcion: 'Ejemplo t4',
+    },
+    {
+      nombre: 't5',
+      responsable: 'R5',
+      items: [],
+      fecha: '',
+      prioridad: 1,
+      descipcion: 'Ejemplo t5',
+    },
+    {
+      nombre: 't6',
+      responsable: 'R7',
+      items: [],
+      fecha: '',
+      prioridad: 2,
+      descipcion: 'Ejemplo t7',
+    },
+  ];
 
   // agregar una tarea
   agregarTarea(tarea: tarea) {
