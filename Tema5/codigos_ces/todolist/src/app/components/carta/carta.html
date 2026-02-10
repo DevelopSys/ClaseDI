@@ -1,0 +1,20 @@
+<div class="col">
+  <div class="card">
+    <img [src]="item!!.prioridad | imagenes" class="card-img-top" style="width: 50%" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title">{{ item!!.nombre | uppercase }}</h5>
+      <p class="card-text">
+        {{ item!!.descipcion }}
+      </p>
+      <p>
+        {{ item!!.responsable }}
+      </p>
+      <ul class="list-group">
+        @for (data of item!!.items; track $index) {
+          <li class="list-group-item">{{ data }}</li>
+        }
+      </ul>
+      <p>{{ item!!.fecha | date }}</p>
+    </div>
+  </div>
+</div>

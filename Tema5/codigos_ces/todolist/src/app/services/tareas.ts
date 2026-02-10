@@ -66,5 +66,9 @@ export class Tareas {
     return this.tareas;
   }
 
+  getTareasPrioridad(numero: string | undefined): tarea[] {
+    return this.tareas.filter((tarea) => tarea.prioridad == Number(numero));
+  }
+
   // obtener todas las tareas por prioridad
 }

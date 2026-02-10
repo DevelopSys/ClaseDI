@@ -1,23 +1,7 @@
 <h2>Listar</h2>
 
 <div class="row row-cols-1 row-cols-md-4 g-4">
-  @for (item of tareas; track $index) {
-    <div class="col">
-      <div class="card">
-        <img [src]="item.prioridad | imagenes" class="card-img-top" style="width: 50%" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title">{{ item.nombre | uppercase }}</h5>
-          <p class="card-text">
-            {{ item.descipcion }}
-          </p>
-          <ul class="list-group">
-            @for (data of item.items; track $index) {
-              <li class="list-group-item">{{ data }}</li>
-            }
-          </ul>
-          <p>{{ item.fecha | date }}</p>
-        </div>
-      </div>
-    </div>
+  @for (data of tareas; track $index) {
+    <app-carta [item]="data"></app-carta>
   }
 </div>

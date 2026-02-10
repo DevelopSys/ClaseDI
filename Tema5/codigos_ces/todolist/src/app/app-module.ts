@@ -8,9 +8,10 @@ import { Buscar } from './components/buscar/buscar';
 import { Listar } from './components/listar/listar';
 import { FormsModule } from '@angular/forms';
 import { ImagenesPipe } from './pipes/imagenes-pipe';
+import { Carta } from './components/carta/carta';
 
 @NgModule({
-  declarations: [App, Agregar, Buscar, Listar, ImagenesPipe],
+  declarations: [App, Agregar, Buscar, Listar, ImagenesPipe, Carta],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideBrowserGlobalErrorListeners(), provideClientHydration(withEventReplay())],
   bootstrap: [App],

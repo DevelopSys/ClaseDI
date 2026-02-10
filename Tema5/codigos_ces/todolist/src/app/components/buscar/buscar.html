@@ -6,3 +6,16 @@
   <option value="2">Media</option>
   <option value="3">Alta</option>
 </select> -->
+
+<input placeholder="introduce responsable" class="form-control" [(ngModel)]="responsable" />
+<button class="btn btn-primary w-100" (click)="realizarBusqueda()">Buscar</button>
+
+@if (busqueda) {
+  <p class="alert alert-primary">Encontradas {{ filtradas.length }}</p>
+}
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+  @for (data of filtradas; track $index) {
+    <app-carta [item]="data"></app-carta>
+  }
+</div>
