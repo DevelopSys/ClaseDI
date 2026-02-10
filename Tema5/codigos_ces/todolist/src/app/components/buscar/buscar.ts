@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-buscar',
@@ -7,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './buscar.css',
 })
 export class Buscar {
-  prioridad: any;
+  prioridad?: string;
+
+  constructor(private gestorRutasActivas: ActivatedRoute) {
+    // this.prioridad = gestorRutasActivas.snapshot.params['id'];
+  }
 }

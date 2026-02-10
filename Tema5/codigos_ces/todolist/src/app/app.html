@@ -1,8 +1,25 @@
 <nav class="navbar bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" [routerLink]="['agregar']">Agregar</a>
-    <a class="navbar-brand" [routerLink]="['listar']">Listar</a>
-    <a class="navbar-brand" [routerLink]="['buscar', '45']">Buscar</a>
+    <div>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <a class="navbar-brand" [routerLink]="['agregar']">Agregar</a>
+        <a class="navbar-brand" [routerLink]="['listar']">Listar</a>
+        <a
+          class="nav-link dropdown-toggle"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Buscar
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" (click)="navegar('1')">Alta</a></li>
+          <li><a class="dropdown-item" (click)="navegar('2')">Media</a></li>
+          <li><a class="dropdown-item" (click)="navegar('3')">Baja</a></li>
+          <li><a class="dropdown-item" (click)="navegar('4')">Todas</a></li>
+        </ul>
+      </ul>
+    </div>
   </div>
 </nav>
 <main class="container mt-4">
