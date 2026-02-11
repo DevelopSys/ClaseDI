@@ -27,6 +27,13 @@ export class Agregar {
     // logica
   }
 
+  /* peticionAPI(){
+    this.apiService.getAll().subscribe({
+      ok:(data)=>{},
+      err:(data)=>{}
+    })
+  } */
+
   agregarItem() {
     if (this.item != undefined) {
       this.items.push(this.item);
