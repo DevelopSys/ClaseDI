@@ -1,14 +1,19 @@
 import { Component } from '@angular/core';
 import { hobbieintf } from '../../model/hobbieintf';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-hobbies',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './hobbies.html',
   styleUrl: './hobbies.css',
 })
 export class Hobbies {
-  hobbie?: hobbieintf = { nombre: 'Futbol', nivel: 1, fecha: 'agosto' };
+  nombre?: string;
+  nivel?: number;
+  fecha?: string;
+  hobbies: hobbieintf[] = [];
+  // hobbie?: hobbieintf = { nombre: 'Futbol', nivel: 1, fecha: 'agosto' };
   // hobbie: hobbieclass
   /* 
   crear un formulario para poder incluis un hobbie dentro de una lista. 
@@ -21,4 +26,11 @@ export class Hobbies {
   - Cada vez que agrego un hobbie se lleve a un array
   
   */
+  agregarHobbie() {
+    // si esta todo ok
+    this.hobbies.push({ name: this.nombre, level: this.nivel, date: this.fecha });
+    this.nombre = '';
+    this.fecha = '';
+    this.nivel = 0;
+  }
 }

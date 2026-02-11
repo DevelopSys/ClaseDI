@@ -1,6 +1,6 @@
 export interface hobbieintf {
-  nombre: string;
-  nivel: number;
-  fecha: string;
+  name?: string;
+  level?: number;
+  date?: string;
   // metodo: () => {};
 }

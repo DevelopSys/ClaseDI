@@ -1,1 +1,5 @@
-<p>hobbies works!</p>
+<input placeholder="Introduce nombre" class="form-control" [(ngModel)]="nombre" />
+<input placeholder="Introduce nivel" type="number" class="form-control" [(ngModel)]="nivel" />
+<input placeholder="Introduce fecha" type="date" class="form-control" [(ngModel)]="fecha" />
+
+<button class="btn btn-primary" (click)="agregarHobbie()">Agregar</button>
