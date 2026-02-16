@@ -1,64 +1,46 @@
-<main class="container mt-4">
-  <h1>APP Angular</h1>
-  <p>
-    Esta app servira como explicacion para entender el funcionamiento de angular. Para comenzar
-    introduce tus datso
-  </p>
-  <input
-    class="form-control mb-3"
-    placeholder="introduce nombre"
-    type="text"
-    #inputNombre
-    [(ngModel)]="nombre"
-  />
-  <input
-    class="form-control mb-3"
-    placeholder="introduce apellido"
-    type="text"
-    #inputApellido
-    [(ngModel)]="apellido"
-  />
-  <select class="form-select mb-3" #selectNota [(ngModel)]="nota">
-    <option value="0">Indica la nota que piensas sacar en angular</option>
-    <option value="1">1-3</option>
-    <option value="2">4-5</option>
-    <option value="3">5-7</option>
-    <option value="4">8-9</option>
-    <option value="5">10</option>
-  </select>
-  <button class="btn btn-primary mb-3 w-100" (click)="procesarRespuesta()">
-    Procesar respuesta
-  </button>
-
-  @if (mostrar) {
-    <div class="row">
-      <div class="col-2">
-        <img [src]="imagen" style="width: 50%" />
-      </div>
-      <div class="col-10">
-        <p>Los resultados son:</p>
-        <p>Nombre: {{ nombre }}</p>
-        <p>Apellido: {{ apellido }}</p>
-        <p>Nota: {{ nota }}</p>
-      </div>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/hobbies">Hobbies</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/tareas">Tareas</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Dropdown link
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
-    <select class="form-select mb-3" [(ngModel)]="seleccion">
-      <option value="0">Indica que quieres hacer</option>
-      <option value="1">Definir tareas</option>
-      <option value="2">Definir hobbies</option>
-    </select>
-
-    @switch (seleccion) {
-      @case ('1') {
-        <app-tareas></app-tareas>
-      }
-      @case ('2') {
-        <app-hobbies></app-hobbies>
-      }
-    }
-  } @else {
-    <div class="alert alert-primary">
-      <p>Por favor introduce datos a validar</p>
-    </div>
-  }
-</main>
+  </div>
+</nav>
+<router-outlet></router-outlet>

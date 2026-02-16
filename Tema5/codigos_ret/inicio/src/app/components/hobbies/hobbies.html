@@ -3,3 +3,10 @@
 <input placeholder="Introduce fecha" type="date" class="form-control" [(ngModel)]="fecha" />
 
 <button class="btn btn-primary" (click)="agregarHobbie()">Agregar</button>
+
+<ul class="list-group">
+  <!-- repetir es el LI -->
+  @for (item of hobbies; track $index) {
+    <li class="list-group-item">{{ item.name }} - {{ item.level }}</li>
+  }
+</ul>
