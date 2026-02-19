@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tareas',
@@ -6,6 +7,4 @@ import { Component } from '@angular/core';
   templateUrl: './tareas.html',
   styleUrl: './tareas.css',
 })
-export class Tareas {
-
-}
+export class Tareas {}

@@ -1,15 +1,19 @@
+import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import Swal from 'sweetalert2';
-import { RouterOutlet } from '@angular/router';
-import { not } from 'rxjs/internal/util/not';
-import { Hobbies } from './components/hobbies/hobbies';
-import { Tareas } from './components/tareas/tareas';
+
+import { RouterOutlet, RouterLinkWithHref, ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, RouterOutlet],
+  imports: [FormsModule, RouterOutlet, RouterLinkWithHref, CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
-export class App {}
+export class App {
+  constructor(private gestorRutas: Router) {}
+
+  navegar(param: string) {
+    this.gestorRutas.navigate(['tareas', param]);
+  }
+}

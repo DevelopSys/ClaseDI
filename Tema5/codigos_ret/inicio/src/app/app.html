@@ -15,13 +15,14 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/home">Home</a>
+          <a class="nav-link active" aria-current="page" [routerLink]="['home']">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/hobbies">Hobbies</a>
+          <!-- routerLink -->
+          <a class="nav-link" [routerLink]="['hobbies']">Hobbies</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/tareas">Tareas</a>
+          <a class="nav-link" [routerLink]="['tareas']">Tareas</a>
         </li>
         <li class="nav-item dropdown">
           <a
@@ -31,12 +32,16 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Dropdown link
+            Links
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" (click)="navegar('1')" role="button">Action</a></li>
+            <li>
+              <a class="dropdown-item" (click)="navegar('2')" role="button">Another action</a>
+            </li>
+            <li>
+              <a class="dropdown-item" (click)="navegar('3')" role="button">Something else here</a>
+            </li>
           </ul>
         </li>
       </ul>
