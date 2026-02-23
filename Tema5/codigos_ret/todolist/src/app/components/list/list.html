@@ -6,9 +6,7 @@
         <img [src]="item.prioridad | imagenes" class="card-img-top" alt="..." />
         <div class="card-body">
           <h5 class="card-title">{{ item.titulo | uppercase }}</h5>
-          <p>
-            {{ item.responsable }}
-          </p>
+          <p>El responsable de la tarea es: {{ item.responsable }}</p>
           <p>
             {{ item.fecha | date | uppercase }}
           </p>
