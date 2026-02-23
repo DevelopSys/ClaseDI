@@ -1,0 +1,20 @@
+<h2>Lista de tareas</h2>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  @for (item of listaTareas; track $index) {
+    <div class="col">
+      <div class="card">
+        <img [src]="item" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{ item.titulo | uppercase }}</h5>
+          <p>
+            {{ item.responsable }}
+          </p>
+          <p>
+            {{ item.fecha | date | uppercase }}
+          </p>
+          <button class="btn btn-primary w-100">Ver detalle</button>
+        </div>
+      </div>
+    </div>
+  }
+</div>
