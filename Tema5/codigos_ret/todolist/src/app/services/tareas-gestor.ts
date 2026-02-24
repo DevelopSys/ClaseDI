@@ -23,4 +23,7 @@ export class TareasGestor {
   public getTareasPrioridad(prioridad: number) {
     return this.listaTareas.filter((item) => item.prioridad == prioridad);
   }
+  public getTareasById(id: number): Tarea | undefined {
+    return this.listaTareas.find((item) => item.id == id);
+  }
 }

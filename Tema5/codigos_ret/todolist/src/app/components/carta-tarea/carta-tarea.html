@@ -7,7 +7,7 @@
       <p>
         {{ item!!.fecha | date | lowercase }}
       </p>
-      <button class="btn btn-primary w-100" [routerLink]="['detalle', item!!.id]">
+      <button class="btn btn-primary w-100" [routerLink]="['/detalle', item!!.id]">
         Ver detalle
       </button>
     </div>
