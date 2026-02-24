@@ -1,1 +1,17 @@
-<p>find works!</p>
+<h2>Buscador de tareas</h2>
+<select class="form-select" [(ngModel)]="prioridad">
+  <option value="0">Selecciona la prioridad a buscar</option>
+  <option value="1">Baja</option>
+  <option value="2">Media</option>
+  <option value="3">Alta</option>
+</select>
+<button class="btn btn-primary" (click)="realizarBusqueda()">Buscar</button>
+
+@if (busando) {
+  <div class="alert alert-primary">El numero de tareas es de {{ tareas.length }}</div>
+}
+<div class="row row-cols-1 row-cols-md-4 g-6">
+  @for (data of tareas; track $index) {
+    <app-carta-tarea [item]="data"></app-carta-tarea>
+  }
+</div>

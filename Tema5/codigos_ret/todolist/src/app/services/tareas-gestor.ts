@@ -19,4 +19,8 @@ export class TareasGestor {
   public getAllTareas(): Tarea[] {
     return this.listaTareas;
   }
+
+  public getTareasPrioridad(prioridad: number) {
+    return this.listaTareas.filter((item) => item.prioridad == prioridad);
+  }
 }

@@ -3,6 +3,7 @@ import { Home } from './components/home/home';
 import { Add } from './components/add/add';
 import { List } from './components/list/list';
 import { Find } from './components/find/find';
+import { Detalle } from './components/detalle/detalle';
 
 export const routes: Routes = [
   {
@@ -20,6 +21,10 @@ export const routes: Routes = [
   {
     path: 'buscar',
     component: Find,
+  },
+  {
+    path: 'detalle/:id',
+    component: Detalle,
   },
   {
     path: '**',

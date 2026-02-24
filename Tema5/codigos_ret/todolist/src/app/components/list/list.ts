@@ -3,10 +3,11 @@ import { Tarea } from '../../model/tarea';
 import { TareasGestor } from '../../services/tareas-gestor';
 import { CommonModule } from '@angular/common';
 import { ImagenesPipe } from '../../pipes/imagenes-pipe';
+import { CartaTarea } from '../carta-tarea/carta-tarea';
 
 @Component({
   selector: 'app-list',
-  imports: [CommonModule, ImagenesPipe],
+  imports: [CommonModule, CartaTarea],
   templateUrl: './list.html',
   styleUrl: './list.css',
 })

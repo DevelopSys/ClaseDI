@@ -1,0 +1,15 @@
+<div class="col">
+  <div class="card">
+    <img [src]="item!!.prioridad | imagenes" class="card-img-top" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title">{{ item!!.titulo | uppercase }}</h5>
+      <p>El responsable de la tarea es: {{ item!!.responsable }}</p>
+      <p>
+        {{ item!!.fecha | date | lowercase }}
+      </p>
+      <button class="btn btn-primary w-100" [routerLink]="['detalle', item!!.id]">
+        Ver detalle
+      </button>
+    </div>
+  </div>
+</div>
