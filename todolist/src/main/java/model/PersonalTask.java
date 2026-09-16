@@ -13,8 +13,8 @@ public class PersonalTask extends Task {
     }
 
     @Override
-    public void mostrarDatos() {
-        super.mostrarDatos();
+    public void showData() {
+        super.showData();
         System.out.println("location = " + location);
     }
 

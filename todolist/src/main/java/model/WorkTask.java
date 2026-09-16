@@ -10,9 +10,10 @@ public class WorkTask extends Task{
     }
 
     @Override
-    public void mostrarDatos() {
-        super.mostrarDatos();
+    public void showData() {
+        super.showData();
         System.out.println("expirationDate = " + expirationDate);
+
     }
 
     @Override
