@@ -26,4 +26,24 @@ public class TaskController {
         return taskList.add(task);
     }
     // listar tareas
+
+
+    public void listTask() {
+
+        taskList.stream().forEach(Task::showData);
+        taskList.stream()
+                .filter(task -> task.getPerson().getName().equals("nombre"))
+                .toList().forEach(Task::showData);
+        taskList.stream()
+                .filter(task -> task.getLevel() == 1)
+                .toList().forEach(Task::showData);
+        taskList.stream()
+                .filter(Task::isComplete)
+                .toList().forEach(Task::showData);
+
+
+
+
+
+    }
 }

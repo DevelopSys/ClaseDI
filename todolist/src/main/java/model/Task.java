@@ -26,7 +26,7 @@ public abstract class Task {
         this.person =new Person(name, surname, email, dni);
     }
 
-    public void mostrarDatos(){
+    public void showData(){
         System.out.println("title = " + title);
         System.out.println("level = " + level);
         System.out.println("complete = " + complete);
