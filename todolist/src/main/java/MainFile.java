@@ -4,7 +4,7 @@ public class MainFile {
 
     public static void main(String[] args) {
         File file = new File("src/main/java/files/task.txt");
-        // BufferedWriter bufferedWriter = null;
+        BufferedWriter bufferedWriter = null;
         FileWriter fileWriter = null;
         PrintWriter printWriter = null;
         try {

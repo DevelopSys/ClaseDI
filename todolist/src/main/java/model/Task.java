@@ -73,4 +73,9 @@ public abstract class Task {
     public void setPerson(Person person) {
         this.person = person;
     }
+
+    public String toCSV(){
+        return String.format("%d,%s,%d,%s,%s",
+                id,title,level,person.getEmail(),getClass().getName());
+    }
 }

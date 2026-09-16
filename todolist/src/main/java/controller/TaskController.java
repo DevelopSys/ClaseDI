@@ -2,15 +2,18 @@ package controller;
 
 import model.Task;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class TaskController {
 
     private ArrayList<Task> taskList;
+    private FileController fileController;
     private long id;
 
     public TaskController() {
         taskList = new ArrayList<>();
+        fileController = new FileController();
         // id = 0
     }
 
@@ -42,8 +45,26 @@ public class TaskController {
                 .toList().forEach(Task::showData);
 
 
+    }
 
+    public void exportTaskAll() {
+        System.out.println("Logica de las tareas a exportar");
+        try {
+            fileController.exportByMailAll(taskList, null);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-
+    public void exportTaskByEmail(String mail) {
+        System.out.println("Logica de las tareas a exportar");
+        System.out.println("Existe algun task con ese email???");
+        try {
+            fileController.exportByMailAll(
+                    taskList.stream().filter(task -> task.getPerson().getEmail().equalsIgnoreCase(mail)).toList()
+                    , mail);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
