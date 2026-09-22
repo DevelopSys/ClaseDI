@@ -1,16 +1,19 @@
 package controller;
 
+import model.Person;
+import model.PersonalTask;
 import model.Task;
+import model.WorkTask;
 
 import java.awt.*;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FileController {
     private File file;
     private FileWriter fileWriter;
+    private BufferedReader bufferedReader;
     private String basePath = "src/main/java/files/";
 
     public void exportAll(List<Task> listAll) throws IOException {
@@ -60,5 +63,42 @@ public class FileController {
         fileWriter.write(listMail.getLast().toCSV());
 
 
+    }
+
+    public ArrayList<Task> importTask() {
+        ArrayList<Task> list = new ArrayList<>();
+        file = new File(basePath + "import.csv");
+
+
+        try {
+            bufferedReader = new BufferedReader(new FileReader(file));
+            String linea = bufferedReader.readLine();
+            Task task = null;
+            while ((linea = bufferedReader.readLine()) != null) {
+                String[] data = linea.split(",");
+                if (data[4].equalsIgnoreCase("personal")) {
+                    task = new PersonalTask(data[1],Integer.valueOf(data[2]),
+                            new Person(null, null,data[3], null), null);
+                } else {
+                    task = new WorkTask(data[1],Integer.valueOf(data[2]),
+                            new Person(null, null,data[3], null), null);
+                }
+                list.add(task);
+            }
+
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                bufferedReader.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        return list;
     }
 }

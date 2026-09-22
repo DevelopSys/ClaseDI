@@ -67,4 +67,10 @@ public class TaskController {
             throw new RuntimeException(e);
         }
     }
+
+    public void importTask() {
+        for (Task task : fileController.importTask()) {
+            addTask(task);
+        }
+    }
 }
