@@ -1,6 +1,10 @@
 package model;
 
-public class Person {
+import java.io.Serializable;
+import java.util.List;
+
+public class Person implements Serializable {
+    // private static Long serialVersionUID = 1234L;
     private String name, surname, email, dni;
 
     public Person(){}
