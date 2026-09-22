@@ -93,7 +93,12 @@ public class Main {
                 String title = jsonPost.getString("title");
                 System.out.println(title);
                 // clase post con los datos identicos a los nombre de las KEYs
-                Post post = gson.fromJSON(jsonPost.toString(), Post.class);
+                if (jsonPost.keySet().contains("locate")) {
+                    Post post = gson.fromJSON(jsonPost.toString(), PersonalTask.class);
+
+                } else {
+                    Post post = gson.fromJSON(jsonPost.toString(), WorkTask.class);
+                }
             }
 
             // 1. IMPORTAR TODAS LAS TARDEAS DEL JSON EN LA LISTA
