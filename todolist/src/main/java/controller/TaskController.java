@@ -73,4 +73,14 @@ public class TaskController {
             addTask(task);
         }
     }
+
+    public void exportObj(){
+        // logica
+        fileController.exportObjectTask(taskList);
+    }
+
+    public void importObj(){
+        taskList.addAll(fileController.importObjectTask());
+        taskList = fileController.importObjectTask();
+    }
 }

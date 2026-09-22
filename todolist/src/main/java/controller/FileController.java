@@ -14,6 +14,8 @@ public class FileController {
     private File file;
     private FileWriter fileWriter;
     private BufferedReader bufferedReader;
+    private ObjectInputStream ois;
+    private ObjectOutputStream oos;
     private String basePath = "src/main/java/files/";
 
     public void exportAll(List<Task> listAll) throws IOException {
@@ -94,6 +96,48 @@ public class FileController {
         } finally {
             try {
                 bufferedReader.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        return list;
+    }
+
+    public void exportObjectTask(ArrayList<Task> tasks){
+        file = new File(basePath+"data.obj");
+        try {
+            oos = new ObjectOutputStream(new FileOutputStream(file));
+            oos.writeObject(tasks);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                oos.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public ArrayList<Task> importObjectTask(){
+        ArrayList<Task> list = new ArrayList();
+
+        file = new File(basePath+"data.obj");
+        try {
+            ois = new ObjectInputStream(new FileInputStream(file));
+            list = (ArrayList<Task>) ois.readObject();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (ClassCastException e){
+            System.out.println("Clases incompatibles");
+        }
+
+        finally {
+            try {
+                ois.close();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
