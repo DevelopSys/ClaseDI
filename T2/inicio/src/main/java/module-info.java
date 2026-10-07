@@ -13,4 +13,6 @@ module org.example.inicio {
 
     opens org.example.inicio to javafx.fxml;
     exports org.example.inicio;
+    exports org.example.inicio.controller;
+    opens org.example.inicio.controller to javafx.fxml;
 }
