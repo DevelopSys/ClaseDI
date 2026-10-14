@@ -9,12 +9,16 @@ import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Text;
+import org.example.inicio.HelloApplication;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
@@ -39,6 +43,7 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("Inicializando la parte logica");
+
         instances();
         initGUI();
         actions();
@@ -76,7 +81,6 @@ public class MainController implements Initializable {
         btnSalir.setOnMouseExited(new ManejoRaton());
         btnVaciar.setOnMouseEntered(new ManejoRaton());
         btnVaciar.setOnMouseExited(new ManejoRaton());
-
 
     }
 
