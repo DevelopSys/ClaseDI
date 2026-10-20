@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/26">
+<GridPane fx:controller="org.example.tiendaapp.controller.RegisterController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/26">
   <columnConstraints>
     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -32,7 +32,7 @@
       <TextField fx:id="editMail" GridPane.columnSpan="2" GridPane.rowIndex="3" />
       <Spinner fx:id="spinnerAge" maxWidth="1.7976931348623157E308" GridPane.columnSpan="2" GridPane.rowIndex="4" />
       <TextField fx:id="editPass" GridPane.columnSpan="2" GridPane.rowIndex="5" />
-      <ComboBox fx:id="editProfile" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+      <ComboBox fx:id="comboProfile" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnSpan="2" GridPane.rowIndex="6" />
       <Button fx:id="btnRegister" mnemonicParsing="false" text="Registrar" GridPane.rowIndex="7" />
       <Button fx:id="btnBack" mnemonicParsing="false" text="Volver" GridPane.columnIndex="1" GridPane.rowIndex="7" />
    </children>
