@@ -3,16 +3,17 @@ package org.example.tiendaapp.model;
 public class User {
 
     private Long id;
-    private String name, surname, mail;
+    private String name, surname, mail, password;
     private int profile;
 
     public User() {
     }
 
-    public User(String name, String surname, String mail, int profile) {
+    public User(String name, String surname, String mail, String password, int profile) {
         this.name = name;
         this.surname = surname;
         this.mail = mail;
+        this.password = password;
         this.profile = profile;
     }
 
@@ -54,5 +55,13 @@ public class User {
 
     public void setProfile(int profile) {
         this.profile = profile;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

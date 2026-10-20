@@ -11,6 +11,8 @@ module org.example.tiendaapp {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires java.sql;
+    requires java.desktop;
+
 
     opens org.example.tiendaapp to javafx.fxml;
     exports org.example.tiendaapp;
