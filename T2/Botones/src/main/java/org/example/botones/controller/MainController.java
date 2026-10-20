@@ -2,6 +2,7 @@ package org.example.botones.controller;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -33,7 +34,7 @@ public class MainController implements Initializable {
     @FXML
     private ImageView image;
     @FXML
-    private Label label1, label2;
+    private TextArea textArea;
     @FXML
     private RadioButton radio1, radio2, radio3, radio4;
     @FXML
@@ -52,22 +53,37 @@ public class MainController implements Initializable {
     }
 
     private void actions() {
-        check1.selectedProperty().addListener(new ChangeListener<Boolean>() {
+        /*check1.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 toggle.setDisable(!newValue);
+                textArea.appendText("Seleccion check "+newValue+"\n");
             }
         });
         toggle.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 check1.setDisable(!newValue);
+                textArea.appendText("Seleccion toggle "+newValue+"\n");
             }
         });
         grupoRadios.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
-                System.out.println(((RadioButton)newValue).getText());
+                // System.out.println(((RadioButton)newValue).getText());
+                textArea.appendText(((RadioButton)newValue).getText()+"\n");
+            }
+        });*/
+        boton1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                boolean estadoCheck = check1.isSelected();
+                boolean estadoToggle = toggle.isSelected();
+                RadioButton estadoGrupo = (RadioButton) grupoRadios.getSelectedToggle();
+                textArea.appendText("Seleccion formulario\n");
+                textArea.appendText("Check "+estadoCheck+"\n");
+                textArea.appendText("Toggle "+estadoToggle+"\n");
+                textArea.appendText("Grupo "+estadoGrupo.getText()+"\n");
             }
         });
     }
@@ -75,6 +91,7 @@ public class MainController implements Initializable {
 
     private void initGUI() {
 
+        textArea.setEditable(false);
         grupoRadios.getToggles().setAll(radio1,radio2,radio3,radio4);
         // al boton 1 le pongo una imagen
         configButton(boton1, "images/start.png");

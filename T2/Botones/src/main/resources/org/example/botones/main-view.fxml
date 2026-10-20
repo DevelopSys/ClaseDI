@@ -2,8 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -12,8 +12,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<BorderPane fx:controller="org.example.botones.controller.MainController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.botones.controller.MainController">
    <center>
       <GridPane fx:id="gridGeneral" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -42,8 +41,7 @@
             <CheckBox fx:id="check2" mnemonicParsing="false" text="Opcion 2" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <ToggleButton fx:id="toggle" mnemonicParsing="false" text="Activar" GridPane.columnSpan="3" GridPane.rowIndex="3" />
             <ImageView fx:id="image" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
-            <Label fx:id="label1" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Label fx:id="label2" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <TextArea fx:id="textArea" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.rowSpan="2" />
          </children>
       </GridPane>
    </center>
