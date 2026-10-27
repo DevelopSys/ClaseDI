@@ -12,10 +12,18 @@ public class DataSet {
 
     public static void initListUser() {
         // String name, String surname, String mail, String password, int profile
-        listUser.add(new User("Administrador", "Administrador", "admin@gmail.com", "admin", 1));
+        listUser.add(new User("Administrador", "Administrador", "admin@gmail.com", "admin", 0));
     }
 
     public static boolean addUser(User user) {
+
+        // listUser.stream().filter(item -> item.getMail().equalsIgnoreCase(user.getMail())).findAny().orElseThrow();
+        Optional<User> userOptional =
+                listUser.stream().filter(item -> item.getMail().equalsIgnoreCase(user.getMail())).findAny();
+        if (!userOptional.isPresent()){
+            listUser.add(user);
+            return true;
+        }
         // en caso de tener un correo ya en la lista -> retorno false
         // en caso de tener un correo ya en la lista -> añado y retorno true
         return false;

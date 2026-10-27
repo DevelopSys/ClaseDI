@@ -42,8 +42,8 @@ public class LoginController implements Initializable, EventHandler<ActionEvent>
     public void initialize(URL location, ResourceBundle resources) {
 
         // En caso de pulsar el boton Login, si los datos son correctos
-            // en el texto -> login correcto
-            // en el texto -> login fallido
+        // en el texto -> login correcto
+        // en el texto -> login fallido
 
         actions();
     }
@@ -55,19 +55,33 @@ public class LoginController implements Initializable, EventHandler<ActionEvent>
 
     @Override
     public void handle(ActionEvent event) {
-        if (event.getSource() == botonLogin){
+        if (event.getSource() == botonLogin) {
             String mail = editCorreo.getText();
             String pass = editPass.getText();
-            int loginNumber = DataSet.getLogin(mail,pass);
-            if (loginNumber!=-1){
+            int loginNumber = DataSet.getLogin(mail, pass);
+            if (loginNumber != -1) {
                 textWarning.setFill(Color.GREEN);
                 textWarning.setText("Login correcto");
+                if (loginNumber == 0) {
+                    FXMLLoader loader = new FXMLLoader(TiendaApplication.class.getResource("admin-view.fxml"));
+                    try {
+                        Parent root = loader.load();
+                        Stage stage = (Stage) botonLogin.getScene().getWindow();
+                        Scene scene = new Scene(root);
+                        stage.setScene(scene);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                } else {
+
+                }
+
             } else {
                 textWarning.setFill(Color.RED);
                 textWarning.setText("Login incorrecto");
             }
 
-        }else if (event.getSource() == botonRegistro){
+        } else if (event.getSource() == botonRegistro) {
             FXMLLoader loader = new FXMLLoader(TiendaApplication.class.getResource("register-view.fxml"));
             try {
                 Stage stage = (Stage) botonRegistro.getScene().getWindow();
