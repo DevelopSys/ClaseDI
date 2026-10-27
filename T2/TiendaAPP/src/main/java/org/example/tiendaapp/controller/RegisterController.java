@@ -34,6 +34,7 @@ public class RegisterController implements Initializable {
     private SpinnerValueFactory<Integer> numberModelValue;
     @FXML
     private Spinner<Integer> spinnerAge;
+    private AdminController adminController;
 
 
     @Override
@@ -46,9 +47,9 @@ public class RegisterController implements Initializable {
     private void instances() {
         numberModelValue
                 = new SpinnerValueFactory
-                .IntegerSpinnerValueFactory(18,99,18,1);
+                .IntegerSpinnerValueFactory(18, 99, 18, 1);
         profileList = FXCollections.observableArrayList();
-        profileList.addAll("Admin","Usuario");
+        profileList.addAll("Admin", "Usuario");
     }
 
     private void initGUI() {
@@ -58,7 +59,7 @@ public class RegisterController implements Initializable {
         spinnerAge.setValueFactory(numberModelValue);
     }
 
-    private void actions(){
+    private void actions() {
         btnRegister.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -71,24 +72,47 @@ public class RegisterController implements Initializable {
                 String apellido = editSurname.getText();
                 String pass = editPass.getText();
                 String mail = editMail.getText();
-                User user = new User(nombre,apellido,mail,pass, seleccionIndexCombo);
-                if(DataSet.addUser(user)){
-                    // ir al login
-                    FXMLLoader loader = new FXMLLoader(TiendaApplication.class.getResource("login-view.fxml"));
-                    Stage stage = (Stage) btnRegister.getScene().getWindow();
-                    try {
-                        Parent root = loader.load();
-                        Scene scene = new Scene(root);
-                        stage.setScene(scene);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
+
+                if (!nombre.isEmpty()
+                        && !apellido.isEmpty()
+                        && !pass.isEmpty()
+                        && !mail.isEmpty()
+                        && seleccionIndexCombo > -1
+                ) {
+                    User user = new User(nombre, apellido, mail, pass, seleccionIndexCombo);
+                    if (DataSet.addUser(user)) {
+                        adminController.refreshNumbers();
+                        // ir al login
+                        /*FXMLLoader loader = new FXMLLoader(TiendaApplication.class.getResource("login-view.fxml"));
+                        Stage stage = (Stage) btnRegister.getScene().getWindow();
+                        try {
+                            Parent root = loader.load();
+                            Scene scene = new Scene(root);
+                            stage.setScene(scene);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }*/
+                        Stage stage = (Stage) btnRegister.getScene().getWindow();
+                        stage.close();
+
+                    } else {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Error");
+                        alert.setContentText("Usuario con correo duplicado");
+                        alert.show();
                     }
-
-                }else {
-
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Error");
+                    alert.setContentText("Faltan datos por rellenar");
+                    alert.show();
                 }
 
             }
         });
+    }
+
+    public void setAdminController(AdminController controller){
+        adminController = controller;
     }
 }
