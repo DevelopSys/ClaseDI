@@ -42,7 +42,7 @@ public class UserController implements Initializable {
     @FXML
     private Button btnCarr, btnComp, btnLog, btnVac;
     @FXML
-    private TableColumn<?, ?> colId, colName, colPrice;
+    private TableColumn<?, ?> colId, colName, colPrice, colStock;
     @FXML
     private TextField editFiltrar;
     @FXML
@@ -82,7 +82,12 @@ public class UserController implements Initializable {
             if (productSelected != null) {
                 // productSelected.mostrarDatos();
                 currentUser.addProduct(productSelected);
-                tableViewProducts.getSelectionModel().select(-1);
+                productSelected.setStock(productSelected.getStock()-1);
+                tableViewProducts.refresh();
+                if (productSelected.getStock()==0){
+                    observableListProduct.remove(productSelected);
+                }
+                tableViewProducts.getSelectionModel().select(null);
                 txtTot.setText(String.format("%.2f", currentUser.getTotal()));
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -118,6 +123,7 @@ public class UserController implements Initializable {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("title"));
         colPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
+        colStock.setCellValueFactory(new PropertyValueFactory<>("stock"));
         taskJSON.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
             @Override
             public void handle(WorkerStateEvent event) {
