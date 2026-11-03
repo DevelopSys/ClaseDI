@@ -23,4 +23,6 @@ module org.example.tiendaapp {
     opens org.example.tiendaapp.controller to javafx.fxml, org.json, com.google.gson;
     exports org.example.tiendaapp.data;
     opens org.example.tiendaapp.data to javafx.fxml;
+    exports org.example.tiendaapp.model;
+    opens org.example.tiendaapp.model to com.google.gson;
 }
