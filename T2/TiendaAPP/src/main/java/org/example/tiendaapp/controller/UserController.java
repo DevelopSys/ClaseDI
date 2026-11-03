@@ -21,6 +21,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
@@ -29,8 +30,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
+import org.example.tiendaapp.data.DataSet;
 import org.example.tiendaapp.model.Product;
 import org.example.tiendaapp.model.ResponseProduct;
+import org.example.tiendaapp.model.User;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -49,6 +52,7 @@ public class UserController implements Initializable {
     private Text txtTot;
     private FilteredList<Product> filteredListProducts;
     private Task<List<Product>> taskJSON;
+    private User currentUser;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -76,7 +80,10 @@ public class UserController implements Initializable {
             // selectedModel -> selectedIndex / selecterItem
             Product productSelected = tableViewProducts.getSelectionModel().getSelectedItem();
             if (productSelected != null) {
-                productSelected.mostrarDatos();
+                // productSelected.mostrarDatos();
+                currentUser.addProduct(productSelected);
+                tableViewProducts.getSelectionModel().select(-1);
+                txtTot.setText(String.format("%.2f", currentUser.getTotal()));
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Info product");
@@ -84,6 +91,23 @@ public class UserController implements Initializable {
                 alert.show();
             }
 
+        });
+        btnVac.setOnAction(event -> {
+            if (!currentUser.getProducts().isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.getButtonTypes().addAll(ButtonType.FINISH);
+                alert.setTitle("Vaciar");
+                alert.setContentText(String.format("Actualmente tienes %d productos en carrito" +
+                        ", ¿seguro que quieres vaciar?", currentUser.getProducts().size()));
+                Optional<ButtonType> alerteResponse = alert.showAndWait();
+                if (alerteResponse.get() == ButtonType.OK) {
+                    currentUser.clearList();
+                    txtTot.setText(String.format("%.2f", currentUser.getTotal()));
+                }
+                /*else if(alerteResponse.get() == ButtonType.CANCEL){
+
+                }*/
+            }
         });
     }
 
@@ -143,5 +167,10 @@ public class UserController implements Initializable {
                 return new ArrayList<Product>();
             }
         };
+    }
+
+    public void setCurrentUser(String mail) {
+        this.currentUser = DataSet.getUser(mail);
+        txtTot.setText(String.format("%.2f", currentUser.getTotal()));
     }
 }

@@ -1,10 +1,13 @@
 package org.example.tiendaapp.model;
 
+import java.util.ArrayList;
+
 public class User {
 
     private Long id;
     private String name, surname, mail, password;
     private int profile;
+    private ArrayList<Product> products;
 
     public User() {
     }
@@ -15,6 +18,19 @@ public class User {
         this.mail = mail;
         this.password = password;
         this.profile = profile;
+        products = new ArrayList<>();
+    }
+
+    public void addProduct(Product product){
+        this.products.add(product);
+    }
+
+    public void clearList(){
+        products.clear();
+    }
+
+    public double getTotal(){
+        return products.stream().mapToDouble(Product::getPrice).sum();
     }
 
     public Long getId() {
@@ -51,6 +67,14 @@ public class User {
 
     public int getProfile() {
         return profile;
+    }
+
+    public ArrayList<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(ArrayList<Product> products) {
+        this.products = products;
     }
 
     public void setProfile(int profile) {

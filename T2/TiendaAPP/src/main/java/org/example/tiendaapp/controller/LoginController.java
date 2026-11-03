@@ -79,8 +79,8 @@ public class LoginController implements Initializable, EventHandler<ActionEvent>
                     loader = new FXMLLoader(TiendaApplication.class.getResource("user-view.fxml"));
                     try {
                         Parent root = loader.load();
-                        // AdminController adminController = loader.getController();
-                        // adminController.setUser(loginData[0].toString());
+                        UserController userController = loader.getController();
+                        userController.setCurrentUser(loginData[0].toString());
                         stage.setTitle("Tienda de " + loginData[0].toString());
                         Scene scene = new Scene(root);
                         stage.setScene(scene);
