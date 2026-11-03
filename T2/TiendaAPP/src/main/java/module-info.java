@@ -10,14 +10,17 @@ module org.example.tiendaapp {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
-    requires java.sql;
     requires java.desktop;
+    requires org.json;
+    requires com.google.gson;
+    requires java.net.http;
+    requires static lombok;
 
 
     opens org.example.tiendaapp to javafx.fxml;
     exports org.example.tiendaapp;
     exports org.example.tiendaapp.controller;
-    opens org.example.tiendaapp.controller to javafx.fxml;
+    opens org.example.tiendaapp.controller to javafx.fxml, org.json, com.google.gson;
     exports org.example.tiendaapp.data;
-    opens org.example.tiendaapp.data to javafx.fxml, java.sql;
+    opens org.example.tiendaapp.data to javafx.fxml;
 }

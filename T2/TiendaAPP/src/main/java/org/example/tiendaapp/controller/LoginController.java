@@ -59,14 +59,15 @@ public class LoginController implements Initializable, EventHandler<ActionEvent>
             String mail = editCorreo.getText();
             String pass = editPass.getText();
             Object[] loginData = DataSet.getLogin(mail, pass);
-            if ((int)loginData[1] != -1) {
+            if ((int) loginData[1] != -1) {
                 textWarning.setFill(Color.GREEN);
                 textWarning.setText("Login correcto");
-                if ((int)loginData[1] == 0) {
-                    FXMLLoader loader = new FXMLLoader(TiendaApplication.class.getResource("admin-view.fxml"));
+                Stage stage = (Stage) botonLogin.getScene().getWindow();
+                FXMLLoader loader;
+                if ((int) loginData[1] == 0) {
+                    loader = new FXMLLoader(TiendaApplication.class.getResource("admin-view.fxml"));
                     try {
                         Parent root = loader.load();
-                        Stage stage = (Stage) botonLogin.getScene().getWindow();
                         AdminController adminController = loader.getController();
                         adminController.setUser(loginData[0].toString());
                         Scene scene = new Scene(root);
@@ -75,7 +76,17 @@ public class LoginController implements Initializable, EventHandler<ActionEvent>
                         throw new RuntimeException(e);
                     }
                 } else {
-
+                    loader = new FXMLLoader(TiendaApplication.class.getResource("user-view.fxml"));
+                    try {
+                        Parent root = loader.load();
+                        // AdminController adminController = loader.getController();
+                        // adminController.setUser(loginData[0].toString());
+                        stage.setTitle("Tienda de " + loginData[0].toString());
+                        Scene scene = new Scene(root);
+                        stage.setScene(scene);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
 
             } else {
