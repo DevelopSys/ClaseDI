@@ -29,6 +29,10 @@ public class Teacher {
     private double salary;
     @Column
     private int phone;
+    @OneToOne
+    @JoinColumn(name = "id_course")
+    private Course course;
+
 
     public Teacher(String name, String last, String email, String studies, double salary, int phone) {
         this.name = name;

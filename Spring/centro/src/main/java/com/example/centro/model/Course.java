@@ -25,6 +25,9 @@ public class Course {
     private int time;
     @Column
     private int level;
+    // Bidireccion
+    @OneToOne(mappedBy = "course")
+    private Teacher teacher;
 
     public Course(String name, String sign, int time, int level) {
         this.name = name;
