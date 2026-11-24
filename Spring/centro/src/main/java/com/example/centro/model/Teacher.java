@@ -29,4 +29,13 @@ public class Teacher {
     private double salary;
     @Column
     private int phone;
+
+    public Teacher(String name, String last, String email, String studies, double salary, int phone) {
+        this.name = name;
+        this.last = last;
+        this.email = email;
+        this.studies = studies;
+        this.salary = salary;
+        this.phone = phone;
+    }
 }

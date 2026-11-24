@@ -28,4 +28,11 @@ public class Student {
     @Column
     private String address;
 
+    public Student(String name, String last, String email, int phone, String address) {
+        this.name = name;
+        this.last = last;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+    }
 }
