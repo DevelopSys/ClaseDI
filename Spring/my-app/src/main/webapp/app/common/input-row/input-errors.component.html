@@ -1,0 +1,13 @@
+@if (showErrors && errors) {
+<div class="invalid-feedback d-block">
+    @for (error of errors | keyvalue; track error.key) {
+    <div class="mb-0">
+        @if (isString(error.value)) {
+            {{ error.value }}
+        } @else {
+            {{ getMessage(error.key, error.value) }}
+        }
+    </div>
+    }
+</div>
+}

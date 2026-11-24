@@ -1,0 +1,39 @@
+<div class="d-flex flex-wrap mb-4">
+    <h1 class="flex-grow-1" i18n="@@alumno.list.headline">Alumnoes</h1>
+    <div>
+        <a routerLink="/alumnoes/add" class="btn btn-primary ms-2" i18n="@@alumno.list.createNew">Create new Alumno</a>
+    </div>
+</div>
+@if (!alumnoes || alumnoes.length === 0) {
+<div i18n="@@alumno.list.empty">No Alumnoes could be found.</div>
+} @else {
+<div class="table-responsive">
+    <table class="table table-striped table-hover align-middle">
+        <thead>
+            <tr>
+                <th scope="col" i18n="@@alumno.id.label">Id</th>
+                <th scope="col" i18n="@@alumno.name.label">Name</th>
+                <th scope="col" i18n="@@alumno.mail.label">Mail</th>
+                <th scope="col" i18n="@@alumno.curso.label">Curso</th>
+                <th><!-- --></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (alumno of alumnoes; track alumno.id) {
+            <tr>
+                <td>{{ alumno.id }}</td>
+                <td>{{ alumno.name }}</td>
+                <td>{{ alumno.mail }}</td>
+                <td>{{ alumno.curso }}</td>
+                <td>
+                    <div class="float-end text-nowrap">
+                        <a [routerLink]="['/alumnoes/edit', alumno.id]" class="btn btn-sm btn-secondary" i18n="@@alumno.list.edit">Edit</a>
+                        <button type="button" (click)="confirmDelete(alumno.id!)" class="btn btn-sm btn-secondary" i18n="@@alumno.list.delete">Delete</button>
+                    </div>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+}

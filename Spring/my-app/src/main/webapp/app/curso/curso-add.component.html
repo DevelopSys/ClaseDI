@@ -1,0 +1,10 @@
+<div class="d-flex flex-wrap mb-4">
+    <h1 class="flex-grow-1" i18n="@@curso.add.headline">Add Curso</h1>
+    <div>
+        <a routerLink="/cursoes" class="btn btn-secondary" i18n="@@curso.add.back">Back to list</a>
+    </div>
+</div>
+<form [formGroup]="addForm" (ngSubmit)="handleSubmit()">
+    <app-input-row [group]="addForm" field="name" i18n-label="@@curso.name.label" label="Name" />
+    <input type="submit" i18n-value="@@curso.add.headline" value="Add Curso" class="btn btn-primary mt-4" />
+</form>

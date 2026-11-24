@@ -1,0 +1,61 @@
+<div [formGroup]="group!" class="row mb-3">
+    @if (rowType === 'checkbox') {
+    <div class="col-md-10 offset-md-2">
+        <div class="form-check">
+            <input [id]="field" [formControlName]="field" type="checkbox"
+                    class="form-check-input {{ getInputClasses() }}" />
+            <label [for]="field" class="form-check-label">
+                {{ label + (isRequired() ? '*' : '') }}
+            </label>
+        </div>
+        <app-input-errors [showErrors]="hasErrors()" [errors]="control?.errors" />
+    </div>
+    } @else {
+    <label [for]="rowType === 'radio' ? '' : field" class="col-md-2 col-form-label">
+        {{ label + (isRequired() ? '*' : '') }}
+    </label>
+    <div class="col-md-10">
+        @if (rowType === 'text' || rowType === 'password' || rowType === 'email' || rowType === 'tel') {
+        <input [id]="field" [type]="rowType" [formControlName]="field"
+                class="form-control {{ getInputClasses() }}" />
+        } @else if (rowType === 'number') {
+        <input [id]="field" type="number" [formControlName]="field"
+                class="form-control {{ getInputClasses() }}" />
+        } @else if (rowType === 'textarea') {
+        <textarea [id]="field" [formControlName]="field"
+                class="form-control {{ getInputClasses() }}"></textarea>
+        } @else if (rowType === 'select') {
+        <select [id]="field" [formControlName]="field"
+                class="form-select {{ getInputClasses() }}">
+            <option [ngValue]="null" i18n="@@select.empty.label">Please select</option>
+            @for (option of optionsMap | keyvalue: null; track option.key) {
+            <option [ngValue]="option.key">{{ option.value }}</option>
+            }
+        </select>
+        } @else if (rowType === 'multiselect') {
+        <select [id]="field" [formControlName]="field" multiple="true"
+                class="form-select {{ getInputClasses() }}">
+            @for (option of optionsMap | keyvalue: null; track option.key) {
+            <option [ngValue]="option.key">{{ option.value }}</option>
+            }
+        </select>
+        } @else if (rowType === 'radio') {
+            @if (!isRequired()) {
+            <div class="form-check form-check-inline pt-2">
+                <input [id]="field" [formControlName]="field" [value]="null" type="radio"
+                       class="form-check-input {{ inputClass }}" />
+                <label [for]="field" class="form-check-label" i18n="@@select.empty.label">Please select</label>
+            </div>
+            }
+            @for (option of optionsMap | keyvalue: null; track option.key) {
+            <div class="form-check form-check-inline pt-2">
+                <input [id]="field + '_' + option.key" [formControlName]="field" [value]="option.key" type="radio"
+                        class="form-check-input {{ getInputClasses() }}" />
+                <label [for]="field + '_' + option.key" class="form-check-label">{{ option.value }}</label>
+            </div>
+            }
+        }
+        <app-input-errors [showErrors]="hasErrors()" [errors]="control?.errors" />
+    </div>
+    }
+</div>

@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -28,6 +30,9 @@ public class Course {
     // Bidireccion
     @OneToOne(mappedBy = "course")
     private Teacher teacher;
+    // Bidireccion
+    @OneToMany (mappedBy = "course")
+    private List<Subject> subjectList;
 
     public Course(String name, String sign, int time, int level) {
         this.name = name;
