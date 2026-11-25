@@ -2,7 +2,6 @@ package com.example.centro.service;
 
 import com.example.centro.model.Student;
 import com.example.centro.repository.StudentRepository;
-import com.example.centro.repository.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,20 +32,25 @@ public class StudentService {
         List<Student> studentList = repository.findAll();
         return studentList;
     }
+
     public Optional<Student> getById(Long id) {
         // logica
         return repository.findById(id);
     }
+
     public Student add(Student student) {
-        Optional<Student> studentFind
+        /*Optional<Student> studentFind
                 = repository.findByEmail(student.getEmail());
 
-        if (studentFind.isPresent()) {
+
+        if (!studentFind.isPresent()) {
             return repository.save(student);
         } else {
             return null;
-        }
+        }*/
+        return repository.save(student);
     }
+
     public String updateByEmail(String email, Student student) {
         Optional<Student> studentFind = repository.findByEmail(email);
         if (studentFind.isPresent()) {
@@ -59,6 +63,7 @@ public class StudentService {
         }
         return "No hay usuario para actualizar";
     }
+
     public String updateById(Long id, Student student) {
         Optional<Student> studentFind = repository.findById(id);
         if (studentFind.isPresent()) {
@@ -70,5 +75,29 @@ public class StudentService {
             return "Actualizado correctamente";
         }
         return "No hay usuario para actualizar";
+    }
+
+    public int updateByLocation(String location, int phone) {
+        /*List<Student> list = repository.findByAddress(location);
+        for (Student item : list) {
+            item.setPhone(phone);
+            repository.save(item);
+        }
+        return list.size();*/
+        // return repository.updateByLocation(location, phone);
+        return -1;
+    }
+
+    public Optional<Student> getByEmail(String email) {
+        return repository.findByEmail(email);
+    }
+
+    public Student deleteById(Long id) {
+        Optional<Student> student = repository.findById(id);
+        if (student.isPresent()) {
+            repository.deleteById(id);
+            return student.get();
+        }
+        return null;
     }
 }
